@@ -48,13 +48,15 @@ kf = KFold(n_splits=n_folds)
 xval_err = 0
 t_rmse = np.array([])
 cv_rmse = np.array([])
-fig, ax = plt.subplots()
+#fig, ax = plt.subplots()
+
 for train, test in kf.split(train_data):
 	reg.fit(train_data[train], train_labels[train])
 	predictions = reg.predict(train_data[test])
 	err = predictions - train_labels[test]
 	xval_err += np.dot(err,err)
 	rmse_10cv = np.sqrt(xval_err/len(train_data))
+
 	#print('Coefficients:', reg.coef_) # The coefficients
 	print("Mean squared error: %.2f" % mean_squared_error(predictions, train_labels[test])) # The mean squared error
 	# Explained variance score: 1 is perfect prediction
@@ -65,8 +67,8 @@ for train, test in kf.split(train_data):
 	print('Variance score: %.2f' % r2_score(predictions, train_labels[test]))
 	print 'slope = {0}'.format(reg.coef_[0])
 	print 'intercept(bias) = {0}'.format(reg.intercept_)
-	plt.scatter(train_data[test][:,0], train_labels[test],  color='red')
-	plt.plot(train_data[test][:,0], predictions, color='blue', linewidth=1)
+#	plt.scatter(train_data[test][:,0], train_labels[test],  color='red')
+#	plt.plot(train_data[test][:,0], predictions, color='blue', linewidth=1)
 
 t_rmse = np.append(t_rmse, [rmse_train])
 cv_rmse = np.append(cv_rmse, [rmse_10cv])
@@ -76,17 +78,17 @@ print('RMSE treino {:.4f}\t\t RMSE 10CV {:.4f}'.format(rmse_train,rmse_10cv))
 train_sz, train_errs, cv_errs = learning_curve(estimator=reg, X=train_data, y=train_labels, cv=n_folds, train_sizes=np.linspace(0.05, 1, 20), scoring="neg_mean_squared_error")  
 tr_err = np.mean(train_errs, axis=1)
 cv_err = np.mean(cv_errs, axis=1)
-plt.show()
-#fig, ax = plt.subplots()
+
+fig, ax = plt.subplots()
 ax.plot(train_sz, tr_err, linestyle="--", color="r", label="training error")
 ax.plot(train_sz, cv_err, linestyle="-", color="b", label="cv error")
 ax.legend(loc="lower right")
 plt.show()
 
 	# Plot outputs
-#plt.scatter(train_data[test][:,0], train_labels[test],  color='red')
-#plt.scatter(train_data[test][:,0], predictions, color='blue', linewidth=1)
-
+plt.scatter(train_data[test][:,0], train_labels[test],  color='red')
+plt.scatter(train_data[test][:,0], predictions, color='blue', linewidth=1)
+plt.show()
 
 # ---- TEST ----
 # Reading test file

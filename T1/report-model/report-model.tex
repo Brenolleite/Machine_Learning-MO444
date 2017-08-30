@@ -1,3 +1,6 @@
+% TO DO: Melhorar forma como os dados estao sendo plotados no espaço 
+% definir metricas a serem apresentadas para validacao (media?)
+% definir modelo final (depois de arrumar over fitting) e fazer TESTE
 \documentclass[conference]{IEEEtran}
 \IEEEoverridecommandlockouts
 % The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
@@ -11,7 +14,7 @@
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
 
-\title{Relatorio da Atividade #1}
+\title{Relatorio da Atividade \#1}
 
 \author{\IEEEauthorblockN{Barbara Caroline Benato}
 \IEEEauthorblockA{
@@ -43,18 +46,50 @@ What are the conclusions?
 
 \section{Materiais e M´etodos}
 
+base: subset of the Million Song Dataset (descrever)
+explicar cada um deles e parametros utilizados
 sklearn:
 - pre processing: scale, normalize, pca
 - metodos: LinearRegression e SGDRegressor
-- base: subset of the Million Song Dataset (descrever)
 - treino validaç~ao (validaç~ao cruzada) e teste
 - metricas
-- graficos: learning_curve e plot
+- graficos: learning curve e plot
 
 \section{Experiments and Discussion}
 
 Como a soluç~ao foi constru´ida a partir de um processo gradativo, optou-se por apresentar o desenvolvimento de tal processo.
 
+(Apresentar os dois graficos pra cada processo abaixo)\\
+
+>> LinearRegression\\
+--- Pre processamento\\
+- Modelo sem nenhuma alteraç~ao: resultado\\
+- Modelo com scale\\
+- Modelo com normalize\\
+- Modelo scale + normalize\\
+--- Feature Selection\\
+- Modelo com normalize + pca\\
+- Modelo buscando features: escolhe primeiras 10, primeiras 12, primeiras 13, primeiras 50, ultimas 78, ultimas 80\\
+---Definir modelo\\
+---Analisar overfitting do modelo\\
+--- validaç~ao cruzada: 3 / 5 / 10 folds\\
+- iteraç~oes: 50\\
+\\
+\\
+>> SGDRegressor \\
+--- Pre processamento\\
+- Modelo sem nenhuma alteraç~ao: resultado\\
+- Modelo com scale\\
+- Modelo com normalize\\
+- Modelo scale + normalize\\
+--- Feature Selection\\
+- Modelo com normalize + pca\\
+- Modelo buscando features: escolhe primeiras 10, primeiras 12, primeiras 13, primeiras 50, ultimas 78, ultimas 80\\
+--- Definir modelo\\
+--- Analisar overfitting do modelo\\
+--- validaç~ao cruzada: 3 / 5 / 10 folds\\
+- iteraç~oes: 50\\
+valores de alpha: 0.1/0.01/0.001/0.0001 + (?)\\
 
 \section{Conclusions and Future Work}
 

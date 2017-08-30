@@ -1,3 +1,4 @@
+% TO DO: Falta arrumar o plot
 \documentclass[conference]{IEEEtran}
 \IEEEoverridecommandlockouts
 % The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
@@ -11,7 +12,7 @@
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
 
-\title{Relatorio da Atividade #1}
+\title{Relatorio da Atividade \#1}
 
 \author{\IEEEauthorblockN{Barbara Caroline Benato}
 \IEEEauthorblockA{
@@ -25,34 +26,48 @@ email address}}
 
 \maketitle
 
-\section{Introduction}
+\section{Introduç~ao}
 
+A primeira tarefa da disciplina visava explorar a t´ecnica de regress~ao linear, a fim de encontrar o melhor modelo poss´ivel para um determinado problema evitando o overfitting do modelo, ou seja, que o modelo seja super treinado para o conjunto de dados dispon´ivel de tal forma que n~ao seja capaz de predizer para outros dados. Para tal tarefa, optou-se por predizer o ano de lançamento de de m´usica atrav´es de caracter´isticas espec´ificas de a´udio. Assim, varios modelos foram analisados utilizando uma validaç~ao cruzada para melhor an´alise dos dados. Uma abordagem de regress~ao linear utilizando a Equaç~ao Normal foi comparada com a utilizando o Gradiente Descendente.
 
-
-
-The introduction and motivation of the work. 
-
-Some directions for the paper:
-
-\begin{itemize}
-	\item Figures and graphics are encouraged for making the
-	report richer.
-	\item {\bf The sections proposed here are not hard-constrained}. It means you can propose other sections as well as change the existing ones.
-	\item Please number citations consecutively within brackets \cite{b1}. 
-\end{itemize}
-
-\section{Activities}
+\section{Atividades}
  
-The state-of-the-art research (about prior work for solving the same problem).
+1. Perform Linear Regression (LR) as the baseline (first solution) and devise LR-based alternative (more
+powerful) solutions.
+2. Use the specified training/test data for providing your results and avoid overfitting.
+3. Devise and test more complex models.
+4. Plot the cost function vs. number of iterations in the training set and analyze the model complexity.
+What are the conclusions? What are the actions after such analyses?
+5. Use different Gradient Descent (GD) learning rates when optimizing. Compare the GD-based solutions
+with Normal Equations if possible (perhaps you should try with smaller sample sizes for this task).
+What are the conclusions?
 
-\section{Proposed Solutions}
+\section{Materiais e M´etodos}
 
-The proposed solutions for the selected problem.
+explicar
+sklearn:
+- pre processing: scale, normalize, pca
+- metodos: LinearRegression e SGDRegressor
+- base: subset of the Million Song Dataset (descrever)
+- treino validaç~ao (validaç~ao cruzada) e teste
+- metricas
+- graficos: learning curve e plot
 
 \section{Experiments and Discussion}
 
-The experiments carried out and the obtained
-results.
+Como a soluç~ao foi constru´ida a partir de um processo gradativo, optou-se por apresentar o desenvolvimento de tal processo.
+
+>> LinearRegression
+--- Pre processamento
+- Modelo sem nenhuma alteraç~ao: resultado
+- Modelo com scale
+- Modelo com normalize
+- Modelo scale + normalize
+--- Feature Selection
+- Modelo com normalize + pca
+- Modelo buscando features: escolhe primeiras 10, primeiras 12, primeiras 13, primeiras 50, ultimas 78, ultimas 80
+
+
 
 \section{Conclusions and Future Work}
 
