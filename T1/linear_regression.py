@@ -31,7 +31,7 @@ train_data = data_norm[:,1:]
 
 # ---- REGRESSION MODEL ----
 	# Create linear regression
-reg = linear_model.SGDRegressor(alpha=0.0001, average=True, n_iter=50, verbose=False)
+reg = linear_model.SGDRegressor(penalty='l1', alpha=0.00001, average=True, n_iter=5, verbose=False)
 #reg = linear_model.LinearRegression(n_jobs=-1) # Create linear regression
 print reg
 
@@ -75,14 +75,32 @@ cv_rmse = np.append(cv_rmse, [rmse_10cv])
 print('RMSE treino {:.4f}\t\t RMSE 10CV {:.4f}'.format(rmse_train,rmse_10cv))
 
 	# Plot Learning Curve
-train_sz, train_errs, cv_errs = learning_curve(estimator=reg, X=train_data, y=train_labels, cv=n_folds, train_sizes=np.linspace(0.05, 1, 20), scoring="neg_mean_squared_error")  
-tr_err = np.mean(train_errs, axis=1)
-cv_err = np.mean(cv_errs, axis=1)
+train_sizes, train_scores, test_scores = learning_curve(estimator=reg, X=train_data, y=train_labels, cv=n_folds, n_jobs=-1, train_sizes=np.linspace(0.1, 1.0, 5), scoring="neg_mean_squared_error")
 
-fig, ax = plt.subplots()
-ax.plot(train_sz, tr_err, linestyle="--", color="r", label="training error")
-ax.plot(train_sz, cv_err, linestyle="-", color="b", label="cv error")
-ax.legend(loc="lower right")
+train_scores_mean = np.mean(train_scores, axis=1)
+train_scores_std = np.std(train_scores, axis=1)
+test_scores_mean = np.mean(test_scores, axis=1)
+test_scores_std = np.std(test_scores, axis=1)
+plt.grid()
+
+plt.fill_between(train_sizes, train_scores_mean - train_scores_std,
+                     train_scores_mean + train_scores_std, alpha=0.1,
+                     color="r")
+plt.fill_between(train_sizes, test_scores_mean - test_scores_std,
+                     test_scores_mean + test_scores_std, alpha=0.1, color="g")
+plt.plot(train_sizes, train_scores_mean, 'o-', color="r",
+             label="Training score")
+plt.plot(train_sizes, test_scores_mean, 'o-', color="g",
+             label="Cross-validation score")
+
+plt.legend(loc="best")
+#tr_err = np.mean(train_errs, axis=1)
+#cv_err = np.mean(cv_errs, axis=1)
+
+#fig, ax = plt.subplots()
+#ax.plot(train_sz, tr_err, linestyle="--", color="r", label="training error")
+#ax.plot(train_sz, cv_err, linestyle="-", color="b", label="cv error")
+#ax.legend(loc="lower right")
 plt.show()
 
 	# Plot outputs
@@ -94,9 +112,11 @@ plt.show()
 # Reading test file
 #test_file = np.loadtxt('year-prediction-msd-test.txt', delimiter=',')
 
+#data_norm_test = preprocessing.normalize(test_file, norm='l2')
+
 # Need to FIX
-#test_gt = test_file[:,0]
-#test_data = test_file[:,1:]
+#test_gt = data_norm_test[:,0]
+#test_data = data_norm_test[:,1:]
 
 #predictions = reg.predict(test_data)
 
@@ -105,8 +125,11 @@ plt.show()
 #print('Coefficients: \n', reg.coef_)
 
 # The mean squared error
-#print("Mean squared error: %.2f"
-#      % mean_squared_error(predictions, test_gt))
+#print("Mean squared error: %.2f"      % mean_squared_error(predictions, test_gt))
 
 # Explained variance score: 1 is perfect prediction
 #print('Variance score: %.2f' % r2_score(predictions, test_gt))
+#r2_train = reg.score(train_data, train_labels)
+#r2_test = reg.score(test_data, test_gt)
+#print('R2 no set de treino: %.2f' % r2_train)
+#print('R2 no set de teste: %.2f' % r2_test)
