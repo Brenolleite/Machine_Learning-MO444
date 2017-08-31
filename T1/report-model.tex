@@ -1,0 +1,68 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+
+\usepackage{cite}
+\usepackage[portuguese,brazil,english]{babel}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage[utf8]{inputenc}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\begin{document}
+
+\title{Relatorio da Atividade \#1}
+
+\author{\IEEEauthorblockN{Barbara Caroline Benato}
+\IEEEauthorblockA{
+RA 192865\\
+barbarabenato@gmail.com}
+\and
+\IEEEauthorblockN{Breno Leite}
+\IEEEauthorblockA{
+RA 192863\\
+brenolleite@gmail.com}}
+
+\maketitle
+
+\section{Introdução}
+
+A primeira tarefa da disciplina visava explorar a técnica de regressão linear, a fim de encontrar o melhor modelo possível para um determinado problema evitando o overfitting do modelo, ou seja, que o modelo seja super treinado para o conjunto de dados disponível de tal forma que não seja capaz de predizer para outros dados. Para tal tarefa, optou-se por predizer o ano de lançamento de de música através de características específicas de áudio. Assim, vários modelos foram analisados utilizando uma validação cruzada para melhor análise dos dados. Uma abordagem de regressão linear utilizando a Equação Normal foi comparada com a utilizando o Gradiente Descendente.
+
+\section{Atividades}
+
+1. Perform Linear Regression (LR) as the baseline (first solution) and devise LR-based alternative (more
+powerful) solutions.
+2. Use the specified training/test data for providing your results and avoid overfitting.
+3. Devise and test more complex models.
+4. Plot the cost function vs. number of iterations in the training set and analyze the model complexity.
+What are the conclusions? What are the actions after such analyses?
+5. Use different Gradient Descent (GD) learning rates when optimizing. Compare the GD-based solutions
+with Normal Equations if possible (perhaps you should try with smaller sample sizes for this task).
+What are the conclusions?
+
+\section{Materiais e Métodos}
+
+sklearn:
+- pre processing: scale, normalize, pca
+- metodos: LinearRegression e SGDRegressor
+- base: subset of the Million Song Dataset (descrever)
+- treino validação (validação cruzada) e teste
+- metricas
+- graficos: learning\_curve e plot
+
+\section{Experiments and Discussion}
+
+Como a solução foi construída a partir de um processo gradativo, optou-se por apresentar o desenvolvimento de tal processo.
+
+
+\section{Conclusions and Future Work}
+
+The main conclusions of the work as well as some future directions for other people interested in continuing this work.
+
+\begin{thebibliography}{00}
+\bibitem{b1} Christopher M. Bishop. ``Pattern Recognition and Machine Learning''. Springer-Verlag New York, Inc., Secaucus, NJ, USA, 2006.
+\end{thebibliography}
+
+\end{document}

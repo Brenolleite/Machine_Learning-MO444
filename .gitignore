@@ -1,0 +1,8 @@
+.vscode/*
+*.pdf
+*.log
+*.gz
+*.backup
+*.fdb_latexmk
+*.aux
+*.fls
