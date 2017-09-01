@@ -6,7 +6,6 @@ from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import PolynomialFeatures
 import metrics
 
-
 def create_model(type, learning_rate, deg, iterations):
     # Create linear regression
     if type == "gradient":
@@ -55,7 +54,8 @@ def kfold(model_params, train_data, train_labels, n_folds, verbose, generate_gra
         # Create the model using the params
         model = create_model(*model_params)
 
-        print("================== Fold {0} ==========================".format(fold))
+        if verbose:
+            print("================== Fold {0} ==========================".format(fold))
         fold += 1
 
         for i in range(iterations):
