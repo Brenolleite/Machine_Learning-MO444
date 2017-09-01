@@ -188,22 +188,24 @@ Os dados fornecidos pelo experimento anterior, ou seja, utilizando métricas com
 
 \subsection{Learning Rate}
 
+O objetivo desta seção é mostrar como o \emph{learning rate} influência no resultado dos modelos, a Tabela \ref{tab:rates} mostra uma comparação dos resultados para diferentes \emph{learning rates}. Em todos os experimentos foram utilizados 100 iterações, o motivo desta escolha é o custo para executar mais iterações.
 
 \begin{table}[!h]
 	\centering
 	
 	\begin{tabular}{ccccc} \\ \hline
 		\textbf{Learning Rates} & \textbf{M/C*} & \textbf{M/C} & \textbf{C} & \textbf{M} \\ \hline
-		\textbf{0,01}   & 7,54          & 7,63         & 7,50       & 7,63       \\
+		\textbf{0,01}   & 7,71          & 7,60         & 7,49       & 7,87       \\
 		\textbf{0,001}  & 7,33          & 7,42         & 7,53       & 7,77       \\
 		\textbf{0,0001} & 7,34          & 7,54         & 7,57       & 7,80      
 	\end{tabular}
-	\caption{Comparação de diferentes \emph{learning rates}.}
-	\label{tab:comp}
+	\caption{Comparação do resultado com diferentes \emph{learning rates}.}
+	\label{tab:rates}
 \end{table}
 
+Pode-se perceber que houve uma melhora nos resultados utilizando \emph{learning rates} menores, porém os mesmos podem demorar mais para generalizar, pois é necessário mais iterações. O que faz com que os resultados mostrados com o para o \emph{learning rate} = 0,0001 sejam piores que o 0,001.
 
-[Pensei em escolher uma das de cima e colocar 3 gráficos mais ou menos igual os do learning curve para 0.01, 0.001, e 0.0001]
+Escolher o melhor deles pode ser uma tarefa difícil, pois há necessidade de comparar o tempo de processamento com as melhorias nos resultados. Neste trabalho consideramos que o valor 0,001 foi melhor, devido a baixa diferença entre os resultados e o baixo número de iterações que foram utilizadas. A Figura \ref{fig:learningrate} mostra como o número de iterações afeta a descida do gradiente mostrando a função de custo (\emph{Mean Squared Error}).
 
 \subsection{Modelos com equações de segundo e terceiro grau: }
 
