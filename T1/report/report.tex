@@ -1,11 +1,8 @@
-% TO DO: Melhorar forma como os dados estao sendo plotados no espaço
-% definir metricas a serem apresentadas para validacao (media?)
-% definir modelo final (depois de arrumar over fitting) e fazer TESTE
 \documentclass[conference]{IEEEtran}
 \IEEEoverridecommandlockouts
 
 \usepackage{cite}
-\usepackage[portuguese,brazil,english]{babel}
+\usepackage[portuguese,brazil]{babel}
 \usepackage{amsmath, amssymb, amsfonts}
 \usepackage[utf8]{inputenc}
 \usepackage{algorithmic}
@@ -147,6 +144,42 @@ Os dados fornecidos pelo experimento anterior, ou seja, utilizando métricas com
 
 \begin{figure}[!h]
 	\centering
+
+	{
+		\setlength{\fboxsep}{1pt}
+		\setlength{\fboxrule}{1pt}
+		\fbox{\includegraphics[scale=0.4]{../graphs/CostXInteractions.png}}
+	}
+	
+	\caption{Custo comparada com o número de iterações.}
+	\label{fig:learningcurves}
+\end{figure}
+
+\textbf{[Discutir sobre as imagens, acho que a C está melhor de todas, não tenho certeza pq ta negativo o score] [curveC trainamente sei que ta errado amanhã gero outro kkk]}
+
+\subsection{Learning Rate}
+
+O objetivo desta seção é mostrar como o \emph{learning rate} influência no resultado dos modelos, a Tabela \ref{tab:rates} mostra uma comparação dos resultados para diferentes \emph{learning rates}. Em todos os experimentos foram utilizados 100 iterações, o motivo desta escolha é o custo para executar mais iterações.
+
+\begin{table}[!h]
+	\centering
+	
+	\begin{tabular}{ccccc} \\ \hline
+		\textbf{Learning Rates} & \textbf{M/C*} & \textbf{M/C} & \textbf{C} & \textbf{M} \\ \hline
+		\textbf{0,01}   & 7,71          & 7,60         & 7,49       & 7,87       \\
+		\textbf{0,001}  & 7,33          & 7,42         & 7,53       & 7,77       \\
+		\textbf{0,0001} & 7,34          & 7,54         & 7,57       & 7,80       \\ \hline 
+	\end{tabular}
+	\caption{Comparação do resultado com diferentes \emph{learning rates}.}
+	\label{tab:rates}
+\end{table}
+
+Pode-se perceber que houve uma melhora nos resultados utilizando \emph{learning rates} menores, porém os mesmos podem demorar mais para generalizar, pois é necessário mais iterações. O que faz com que os resultados mostrados com o para o \emph{learning rate} = 0,0001 sejam piores que o 0,001.
+
+Escolher o melhor deles pode ser uma tarefa difícil, pois há necessidade de comparar o tempo de processamento com as melhorias nos resultados. Neste trabalho consideramos que o valor 0,001 foi melhor, devido a baixa diferença entre os resultados e o baixo número de iterações que foram utilizadas. A Figura \ref{fig:learningrate} mostra como o número de iterações afeta a descida do gradiente mostrando a função de custo (\emph{Mean Squared Error}).
+
+\begin{figure}[!h]
+	\centering
 	\subfloat[Curva de aprendizado para média do timbre.]{
 		{
 			\setlength{\fboxsep}{1pt}
@@ -172,12 +205,12 @@ Os dados fornecidos pelo experimento anterior, ou seja, utilizando métricas com
 	}
 	\quad
 	\subfloat[Curva de aprendizado para média e covariância do timbre e normalização separada.]{
-			{
-				\setlength{\fboxsep}{1pt}
-				\setlength{\fboxrule}{1pt}
-				\fbox{\includegraphics[scale=0.2]{../graphs/cuvreMC*.png}}
-			}
+		{
+			\setlength{\fboxsep}{1pt}
+			\setlength{\fboxrule}{1pt}
+			\fbox{\includegraphics[scale=0.2]{../graphs/cuvreMC*.png}}
 		}
+	}
 	\caption{Curvas de aprendizado para os diferentes modelos.}
 	\label{fig:learningcurves}
 \end{figure}
@@ -231,7 +264,23 @@ Para esse modelo foi utilizado somente as \emph{features} que representam o méd
 
 \subsection{Resultados na base de testes }
 
-\textbf{[Escolher alguns modelos e testar, ou testar todos os modelos (prefiro testar os 3 melhores, algo do tipo)]}
+Esta seção tem como objetivo verificar nossos modelos no base de testes, para todo o processo de treinamento foram utilizados dados normalizados. Além disso, para a descida de gradiente foi utilizado o \emph{learning rate} 0,001 que foi o que proporcionou o melhor resultado quando utilizando 100 iterações.
+
+
+\begin{table}[!h]
+	\centering
+	
+	\begin{tabular}{ccccc}
+		\hline
+		& \textbf{M/C*} & \textbf{M/C} & \textbf{C} & \textbf{M} \\ \hline
+		Gradiente & 7,22          & 7,34         & 7,66       & 7,76       \\
+		Eq Normal & 7,23          & 7,31         & 7,46       & 7,82       \\ \hline
+	\end{tabular}
+	\caption{Resultados dos modelos na base de teste.}
+	\label{tab:comp}
+\end{table}
+
+
 
 
 %(Apresentar os dois graficos pra cada processo abaixo)\\
