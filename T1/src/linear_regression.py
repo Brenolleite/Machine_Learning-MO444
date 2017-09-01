@@ -1,51 +1,81 @@
-import matplotlib.pyplot as plt
-import matplotlib
 import numpy as np
 from sklearn import linear_model
-from sklearn import preprocessing
-from sklearn.decomposition import PCA
-from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error
-from sklearn.preprocessing import scale, normalize
 from sklearn.linear_model import SGDRegressor
 from sklearn.model_selection import KFold, cross_val_predict, train_test_split, learning_curve
+from sklearn.pipeline import make_pipeline
+from sklearn.preprocessing import PolynomialFeatures
+import metrics
 
-# Defines type of linear regression
-type = "gradient"
 
-# Defines number of foldes using on traing
-n_folds = 10
+def create_model(type, learning_rate, deg, iterations):
+    # Create linear regression
+    if type == "gradient":
+        # Linear regression using stochastic gradient descent
+        model = make_pipeline(PolynomialFeatures(degree = deg),
+                              linear_model.SGDRegressor(learning_rate = 'constant',
+                                                        eta0          = learning_rate,
+                                                        max_iter      = iterations,
+                                                        loss          = 'squared_loss',
+                                                        warm_start    = (iterations == 1)))
+    else:
+        # Linear regression using normal equation
+        model = make_pipeline(PolynomialFeatures(degree = deg),
+                              linear_model.LinearRegression(n_jobs = -1))
 
-# Read training data
-train_file = np.loadtxt('../dataset/year-prediction-msd-train.txt', delimiter=',')
+    return model
 
-# Divide data from labels
-train_labels = train_file[:, 0]
-train_data = train_file[:, 1:12]
-
-train_data = preprocessing.normalize(train_data, norm = 'l2')
-
-# Create linear regression
-if type == "gradient":
-    # Linear regression using stochastic gradient descent
-    reg = linear_model.SGDRegressor(penalty = 'l1', alpha = 0.00001, average = True, max_iter = 5, verbose = False)
-else:
-    # Linear regression using normal equation
-    reg = linear_model.LinearRegression(n_jobs = -1)
-
-print(reg)
-
-# Create KFold validation
-kf = KFold(n_splits = n_folds)
-
-for train, validate in kf.split(train_data, train_labels):
-    print("================== New Fold ==========================")
-    # Train our model using train data
-    reg.fit(train_data[train], train_labels[train])
-
+def predict(model, data, labels, verbose):
     # Predict data on the validation
-    predictions = reg.predict(train_data[validate])
+    predictions = model.predict(data)
 
-    # Printing metrics
-    print("Mean squared error: {0}".format(mean_squared_error(train_labels[validate], predictions)))
-    print("R2 score: {0}".format(r2_score(train_labels[validate], predictions)))
-    print("Mean Absolute Error: {0}".format(mean_absolute_error(train_labels[validate], predictions)))
+    # Compute metrics
+    errors = metrics.compute_errors(model.steps[1][1], predictions, labels, verbose)
+
+    return errors
+
+def kfold(model_params, train_data, train_labels, n_folds, verbose, generate_graphs):
+    # Create array for storage models and errors
+    models = []
+
+    # If tenerate graphs set iterations on model to 1
+    # in order to get cost vs iterations
+    if generate_graphs:
+        iterations = model_params[4]
+        model_params[4] = 1
+        steps = []
+    else:
+        steps = None
+        iterations = 1
+
+    # Create KFold validation
+    kf = KFold(n_splits = n_folds)
+    fold = 0
+
+    for train, validate in kf.split(train_data, train_labels):
+        # Create the model using the params
+        model = create_model(*model_params)
+
+        print("================== Fold {0} ==========================".format(fold))
+        fold += 1
+
+        for i in range(iterations):
+            # Train our model using train set
+            model.fit(train_data[train], train_labels[train])
+
+            # Verify on validation set
+            errors = predict(model, train_data[validate], train_labels[validate], verbose)
+
+            if generate_graphs:
+                steps.append(errors[0])
+
+        # Store model and erros related to it
+        models.append([model, errors, steps])
+
+
+    # Print avr error
+    print("Average errors on {0}-Fold \n============================\n".format(n_folds))
+    models = np.array(models)
+    errors = np.sum(models[:, 1], 0)/n_folds
+    metrics.print_errors(*errors)
+
+    return models

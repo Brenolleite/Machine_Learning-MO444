@@ -1,16 +1,14 @@
-
-# ---- PRE-PROCESSING DATA----
+from sklearn.preprocessing import scale, normalize
+from sklearn.decomposition import PCA
 
 # Scale data
-#data_s = scale(train_file)
+def scale(data):
+    return scale(data)
 
 # Normalize data
+def normalize_l2(data):
+    return normalize(data, norm = 'l2')
 
-
-	# Reduce Dimensionality
-#pca = PCA(n_components=20)
-#data_pca = pca.fit_transform(data_norm)
-
-	# Select some features
-#train_labels = train_labels[78:]
-#train_data = train_data[78:]
+# Reduce Dimensionality using PCA
+def PCA_reduction(data, comp):
+    return PCA(n_components = comp).fit_transform(data)

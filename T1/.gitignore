@@ -1,3 +1,4 @@
 year-prediction-msd*
+src/__pycache__/*
 !report/report.tex
 !report/IEEEtran.cls
