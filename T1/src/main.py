@@ -1,6 +1,7 @@
 import numpy as np
 import linear_regression as linear
 import processing as proc
+import graphs
 
 # -------------- Params -------------
 
@@ -33,7 +34,7 @@ train_file = np.loadtxt('../dataset/year-prediction-msd-train.txt', delimiter=',
 
 # Divide data from labels
 train_labels = train_file[:, 0]
-train_data = train_file[:, 1:12]
+train_data = train_file[:,:]
 
 # Pre-prossesing data
 train_data = proc.normalize_l2(train_data)
@@ -45,7 +46,10 @@ models = linear.kfold(model_params, train_data, train_labels, n_folds, verbose, 
 best_model = models[models[:, 1][0].argmax()]
 
 if generate_graphs:
-    print("generate graphs")
+    # Generating cost vs iterations
+    costs = best_model[2]
+    iterations = np.arange(costs.shape[0]) + 1
+    graphs.line_plot("CostXInteractions", "Cost vs Interactions", "Interactions", "Cost", iterations, costs)
 
 # Reading test file
 #test_file = np.loadtxt('year-prediction-msd-test.txt', delimiter=',')

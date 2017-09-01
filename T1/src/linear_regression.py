@@ -40,8 +40,8 @@ def kfold(model_params, train_data, train_labels, n_folds, verbose, generate_gra
     # If tenerate graphs set iterations on model to 1
     # in order to get cost vs iterations
     if generate_graphs:
-        iterations = model_params[4]
-        model_params[4] = 1
+        iterations = model_params[3]
+        model_params[3] = 1
         steps = []
     else:
         steps = None
@@ -69,8 +69,11 @@ def kfold(model_params, train_data, train_labels, n_folds, verbose, generate_gra
                 steps.append(errors[0])
 
         # Store model and erros related to it
-        models.append([model, errors, steps])
+        models.append([model, errors, np.array(steps)])
 
+        # Reset interations counter
+        if generate_graphs:
+            steps = []
 
     # Print avr error
     print("Average errors on {0}-Fold \n============================\n".format(n_folds))
