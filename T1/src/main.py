@@ -21,10 +21,10 @@ deg = 1
 verbose = True
 
 # Defines if should generate graphs
-generate_graphs = True
+generate_graphs = False
 
 # Defines number of iterations on GD
-iterations = 100
+iterations = 40
 
 model_params = [reg_type, learning_rate, deg, iterations]
 # -----------------------------------
@@ -37,10 +37,7 @@ train_labels = train_file[:, 0]
 train_data = train_file[:, 1:]
 
 # Pre-prossesing data
-#train_data = proc.normalize_l2(train_data)
-
-train_data[:, 0:12] = proc.normalize_l2(train_data[:, 0:12])
-train_data[:, 12:90] = proc.normalize_l2(train_data[:, 12:90])
+train_data = proc.normalize_l2(train_data)
 
 # Training process using K-Fold
 models = linear.kfold(model_params, train_data, train_labels, n_folds, verbose, generate_graphs)
@@ -67,9 +64,6 @@ test_data = test_file[:, 1:]
 # Pre-prossesing test
 test_data = proc.normalize_l2(test_data)
 
-#test_data[:, 0:12] = proc.normalize_l2(test_data[:, 0:12])
-#test_data[:, 12:90] = proc.normalize_l2(test_data[:, 12:90])
-
 # Predicting test
-#print("Results on Test dataset")
-#linear.predict(best_model[0], test_data, test_labels, verbose)
+print("Results on Test dataset")
+linear.predict(best_model[0], test_data, test_labels, verbose)
