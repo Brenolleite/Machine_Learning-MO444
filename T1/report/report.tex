@@ -14,7 +14,7 @@
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
 
-\title{Relatório da Atividade \#1}
+\title{MO444 - Machine Learning - Relatório da Atividade \#1}
 
 \author{\IEEEauthorblockN{Bárbara Caroline Benato}
 \IEEEauthorblockA{
@@ -32,7 +32,7 @@ brenolleite@gmail.com}}
 
 A primeira atividade da disciplina de \textit{Machine Learning} (MO444) tem como intuito explorar técnicas de regressão linear, a fim de encontrar o melhor modelo possível para predizer o ano das músicas presentes na base de dados \textit{Million Song}. Assim, utilizando as informações de cada música contida na base, objetiva-se prever seu ano de lançamento. Cabe destacar que a base de dados utilizada não possui áudio, apenas as características de timbre extraídas do som, bem como seu rótulo, ou seja, o ano de lançamento.
 
-O objetivo deste relatório é apresentar os experimentos que foram desenvolvidos com intuito de encontrar o melhor modelo para predizer os anos das músicas, utilizando a Equação Normal e a Descida de Gradiente. 
+O objetivo deste relatório é apresentar os experimentos que foram desenvolvidos com intuito de encontrar o melhor modelo para predizer os anos das músicas, utilizando a Equação Normal e a Descida de Gradiente.
 
 O presente trabalho é dividido em Seções. Na Seção \ref{sec:base}, alguns dados interessantes sobre a base de dados são mostrados, bem com a Seção \ref{sec:ativ}, descreve as atividades desenvolvidas. A Seção \ref{sec:meto} explica as métricas e configurações aplicadas para os experimentos, que são mostrados na Seção \ref{sec:exp}. Por fim, a Seção \ref{sec:conc} discute os principais aprendizados e os objetivos que foram atingidos com o desenvolvimento do trabalho.
 
@@ -44,33 +44,31 @@ Os materiais, como a base de dados e pacote utilizados, e a metodologia empregad
 
 A base de dados \emph{Million Song Dataset} é utilizada para a validação dos estudos e objetivos propostos para o presente trabalho. Nela, informações dos timbres de músicas, bem como seu ano de lançamento, são encontrados.  A base apresenta $90$ características de timbres, sendo as $12$ primeiras características presentes na base, as médias do timbre e as $78$ características restantes, as covariâncias do timbre. Cada característica presente na base de dados apresenta um vetor de timbre de dimensão $12$. A informação de rótulo é fornecida como o ano do lançamento da música dentro do intervalo de $1922$ e $2011$. Uma versão reduzida da base foi utilizada. Tal versão apresenta $463.715$ exemplos de dados de treinamento e $36.285$ exemplos de dados para teste.
 
-Neste trabalho, um número menor de características da base de dados citada foi abordado, motivado pela qualidade e representatividade de tais características para a base de dados. Tal motivação é melhor elucidada no contexto dos experimentos realizados. 
-
-\textbf{[Descrever probabilidades e distribuição do dataset. (Se tivermos espaco)]}
+Neste trabalho, um número menor de características da base de dados citada foi abordado, motivado pela qualidade e representatividade de tais características para a base de dados. Tal motivação é melhor elucidada no contexto dos experimentos realizados.
 
 \subsection{Pacote \textit{Scikit-Learn}} \label{sec:base}
 
-Os modelos desenvolvidos para a Regressão Linear foram implementados utilizando funções do pacote \emph{Scikit-Learn}, em linguagem de programação \emph{Python}. As funções \emph{LinearRegression} e \emph{SDGRegressor} são responsáveis pelas técnicas de Equação Normal e Descida de Gradiente, respectivamente. \textbf{[MENCIONAR REFERENCIA DO LINEAR REGRESSION}
+Os modelos desenvolvidos para a Regressão Linear foram implementados utilizando funções do pacote \emph{Scikit-Learn}, em linguagem de programação \emph{Python}. As funções \emph{LinearRegression} e \emph{SDGRegressor} são responsáveis pelas técnicas de Equação Normal\cite{b1} e Descida de Gradiente, respectivamente.
 
 A configuração dos parâmetros da função \emph{LinearRegression} foi dada da seguinte forma:
 \begin{itemize}
-	\item fit\_intercept: Verdadeiro, ou seja, a intersecção com o eixo y é calculada.
-	\item normalize: Falso, a normalização dos dados nesta função não é realizada.
-	\item copy\_X: Verdadeiro, os dados não serão sobre-escritos.
+	\item \textit{fit\_intercept}: Verdadeiro, ou seja, a intersecção com o eixo y é calculada.
+	\item \textit{normalize}: Falso, a normalização dos dados nesta função não é realizada.
+	\item \textit{copy\_X}: Verdadeiro, os dados não serão sobre-escritos.
 \end{itemize}
 
-Os parâmetros da função \emph{SGDRegressor} também foram configurados, como segue :
+Os parâmetros da função \emph{SGDRegressor} também foram configurados, como segue:
 \begin{itemize}
-	\item loss: Squared\_loss, define a função utilizada no custo da regressão linear.
-	\item max\_iter: Padrão como 100, é setado para 1 quando o gráfico de custo vs iteração é gerado.
-	\item eta0: Determina o \emph{learning\_rate}, valores de 0.01, 0.001 e 0.0001 foram utilizados.
-	\item learning\_rate: Determina a forma que o \emph{learning\_rate} funciona, usamos o valor \emph{constant} que faz com que o mesmo seja igual a eta0 durante toda a descida do gradiente.
-	\item warm\_start: Utilizado somente para gerar o gráfico de custo vs iteração, faz com que a função fit utilize os coeficientes anteriores, proporcionando assim uma forma de executar iteração por iteração.
+	\item \textit{loss}: Squared\_loss, define a função utilizada no custo da regressão linear.
+	\item \textit{max\_iter}: Padrão como 100, é setado para 1 quando o gráfico de custo vs iteração é gerado.
+	\item \textit{eta0}: Determina o \emph{learning\_rate}, valores de 0.01, 0.001 e 0.0001 foram utilizados.
+	\item \textit{learning\_rate}: Determina a forma que o \emph{learning\_rate} funciona, usamos o valor \emph{constant} que faz com que o mesmo seja igual a eta0 durante toda a descida do gradiente.
+	\item \textit{warm\_start}: Utilizado somente para gerar o gráfico de custo vs iteração, faz com que a função fit utilize os coeficientes anteriores, proporcionando assim uma forma de executar iteração por iteração.
 \end{itemize}
 
 \subsection{Metodologia} \label{sec:metodologia}
 
-Um processo gradual de estudo e aprendizado foi utilizado para verificar a qualidade e custo de cada modelo.  Diversas abordagens foram aplicadas aos modelos escolhidos como \textit{baseline}, dentre elas estão a escala dos dados, normalização dos dados, regularização, redução de dimensionalidade, escolha do \emph{learning rate}, além de modelos mais complexos utilizando-se de funções polinomiais de segundo e terceiro grau. 
+Um processo gradual de estudo e aprendizado foi utilizado para verificar a qualidade e custo de cada modelo.  Diversas abordagens foram aplicadas aos modelos escolhidos como \textit{baseline}, dentre elas estão a escala dos dados, normalização dos dados, regularização, redução de dimensionalidade, escolha do \emph{learning rate}, além de modelos mais complexos utilizando-se de funções polinomiais de segundo e terceiro grau.
 
 A metodologia empregada dividiu o conjunto de treinamento oferecido pela base de dados em treinamento e validação, a fim de comparar os modelos, bem como fazer o ajuste de parâmetros necessários evitando o \textit{overfitting} no conjunto de dados. Assim, empregou-se uma validação cruzada do tipo \textit{$k$-Fold} no conjunto de treinamento com $k=10$.
 
@@ -123,13 +121,13 @@ Nesta seção são mostrados os resultados obtidos para os modelos mais simples,
 
 \begin{table}[!h]
 	\centering
-	
+
 	\begin{tabular}{ccccc} \hline
 		\backslashbox{\textbf{Modelos}}{\textbf{Features}}  & \textbf{M/C*} & \textbf{M/C} & \textbf{C} & \textbf{M} \\ \hline
 		\textbf{Gradiente} & 7,71          & 7,60         & 7,49       & 7,87       \\
-		\textbf{Eq Normal} & 6,81          & 7,31         & 7,45       & 7,80       \\ \hline   
+		\textbf{Eq Normal} & 6,81          & 7,31         & 7,45       & 7,80       \\ \hline
 	\end{tabular}
-	
+
 	\caption{Resultados da métrica \textit{Mean Absolute Error} usando diferentes features.}
 	\label{tab:feat}
 \end{table}
@@ -182,62 +180,46 @@ Os dados fornecidos pelo experimento anterior, ou seja, utilizando métricas com
 \end{figure}
 
 
-\textbf{[Discutir sobre as imagens, acho que a C está melhor de todas, não tenho certeza pq ta negativo o score] [curveC trainamente sei que ta errado amanhã gero outro kkk]}
-
 \subsection{Learning Rate}
 
-O objetivo desta seção é mostrar como o \emph{learning rate} influência no resultado dos modelos, a Tabela \ref{tab:rates} mostra uma comparação dos resultados para diferentes \emph{learning rates}. Em todos os experimentos foram utilizados 100 iterações, o motivo desta escolha é o custo para executar mais iterações.
+O objetivo desta seção é mostrar como o \emph{learning rate} influência no resultado dos modelos, a Tabela \ref{tab:rates} mostra uma comparação dos resultados para diferentes \emph{learning rates} para as diversas combinações de features. Em todos os experimentos foram utilizados $100$ iterações.
 
 \begin{table}[!h]
 	\centering
-	
+
 	\begin{tabular}{ccccc} \\ \hline
 		\textbf{Learning Rates} & \textbf{M/C*} & \textbf{M/C} & \textbf{C} & \textbf{M} \\ \hline
 		\textbf{0,01}   & 7,71          & 7,60         & 7,49       & 7,87       \\
 		\textbf{0,001}  & 7,33          & 7,42         & 7,53       & 7,77       \\
-		\textbf{0,0001} & 7,34          & 7,54         & 7,57       & 7,80       \\ \hline 
+		\textbf{0,0001} & 7,34          & 7,54         & 7,57       & 7,80       \\ \hline
 	\end{tabular}
-	\caption{Comparação do resultado com diferentes \emph{learning rates}.}
+	\caption{Comparação do resultado obtido com a métrica \textit{Mean Absolute Error} com diferentes \emph{learning rates}.}
 	\label{tab:rates}
 \end{table}
 
-Pode-se perceber que houve uma melhora nos resultados utilizando \emph{learning rates} menores, porém os mesmos podem demorar mais para generalizar, pois é necessário mais iterações. O que faz com que os resultados mostrados com o para o \emph{learning rate} = 0,0001 sejam piores que o 0,001.
+Pôde-se perceber que houve uma melhora nos resultados, a medida que se reduzia o \textit{learning rate}, isto é, o tamanho do \textit{learning rate} é inversamente proporcional a um melhor desempenho no treinamento do modelo. Os resultados mostrados para o \emph{learning rate} $= 0,0001$ são inferiores (e no caso, melhores) aos mostrados para os valores de $0,001$ nos modelos abordados. Contudo, para menores valores de tal parâmetro, o tempo de cômputo é maior, uma vez que demora sua convergência é demorada. Assim, para maiores valores do \textit{learning rate}, o método pode convergir mais rápido ou nunca atingir a solução esperada para tal problema.
 
-Escolher o melhor deles pode ser uma tarefa difícil, pois há necessidade de comparar o tempo de processamento com as melhorias nos resultados. Neste trabalho consideramos que o valor 0,001 foi melhor, devido a baixa diferença entre os resultados e o baixo número de iterações que foram utilizadas. A Figura \ref{fig:costitera} mostra como o número de iterações afeta a descida do gradiente mostrando a função de custo (\emph{Mean Squared Error}).
+Escolher o melhor modelo baseado no \textit{learning rate} pode ser uma tarefa difícil, pois há necessidade de considerar o tempo de processamento e as melhorias nos resultados. Neste trabalho, consideramos que o valor $0,001$ foi melhor, devido a baixa diferença entre os resultados e o número de iterações que foram utilizadas. A Figura \ref{fig:learningrate} mostra como o número de iterações afeta a descida do gradiente mostrando a função de custo (\emph{Mean Squared Error}).
 
+\subsection{Modelos com equações polinomiais mais complexas}
 
-\begin{figure}[!h]
-	\centering
-	
-	{
-		\setlength{\fboxsep}{1pt}
-		\setlength{\fboxrule}{1pt}
-		\fbox{\includegraphics[scale=0.4]{../graphs/CostXInteractions.png}}
-	}
-	
-	\caption{Custo comparada com o número de iterações.}
-	\label{fig:costitera}
-\end{figure}
+Com intuito de testar modelos mais complexos, foi utilizado de equações polinomiais para representar os dados. Esse modelo se torna muito caro dependendo da quantidade de dados, devido a isso não foi possível fazer todos os testes.
 
-\subsection{Modelos com equações polinomiais mais complexas: }
-
-Com intuito de testar modelos mais complexos, foi utilizado de equações polinomiais para representar os dados. Esse modelo se torna muito caro dependendo da quantidade de dados, devido a isso não foi possível fazer todos os testes. 
-
-A Tabela \ref{tab:comp} mostra os resultados obtidos pela equação polinomial de segundo grau, para a equação normal apenas as \emph{features} de média foram testadas, utilizando um maior número de \emph{features} o custo computacional fica muito elevado. Desta forma, como o intuito do trabalho é testar diversas estratégia, foi optado por não realizar esses experimentos. Todos os resultados foram obtidos utilizando \emph{learning rate} igual a 0,01.
+A Tabela \ref{tab:comp} mostra os resultados obtidos pela equação polinomial de segundo grau, para a equação normal apenas as \emph{features} de média foram testadas, utilizando um maior número de \emph{features} o custo computacional fica muito elevado. Desta forma, como o intuito do trabalho é testar diversas estratégia, foi optado por não realizar esses experimentos. Todos os resultados foram obtidos utilizando \emph{learning rate} igual a $0,01$.
 
 \begin{table}[!h]
 	\centering
-	
+
 	\begin{tabular}{ccccc} \\ \hline
 		\backslashbox{\textbf{Modelos}}{\textbf{Features}} & \textbf{M/C*} & \textbf{M/C} & \textbf{C} & \textbf{M} \\ \hline
-		\textbf{Gradiente}      & 7,54     & 7,63         & 7,50       & 7,63  \\  
-		\textbf{Eq Normal}      & -       & -         & -       & 7,58    \\ \hline 
+		\textbf{Gradiente}      & 7,54     & 7,63         & 7,50       & 7,63  \\
+		\textbf{Eq Normal}      & -       & -         & -       & 7,58    \\ \hline
 	\end{tabular}
 	\caption{Resultados da métrica \textit{Mean Absolute Error} usando diferentes características para as equações de segundo grau.}
 	\label{tab:comp}
 \end{table}
 
-A tabela mostra que os resultados utilizando a equação polinomial de segundo grau foram um pouco melhores que a linear, esses resultados poderiam ser ainda mais melhorados utilizando mais iterações. Além deste experimento, foi feito um experimento utilizando de uma equação polinomial de terceiro grau. 
+A tabela mostra que os resultados utilizando a equação polinomial de segundo grau foram um pouco melhores que a linear, esses resultados poderiam ser ainda mais melhorados utilizando mais iterações. Além deste experimento, foi feito um experimento utilizando de uma equação polinomial de terceiro grau.
 
 Para esse modelo foi utilizado somente as \emph{features} que representam o médio do timbre, o motivo é que o alto número de dados tornava o modelo muito lento para generalizar. O resultado deste experimento foi de 7,58 \emph{Mean Absolute Error}, ou seja, uma pequena melhora foi obtida em relação a equação polinomial de segunda ordem.
 
@@ -245,63 +227,35 @@ Para esse modelo foi utilizado somente as \emph{features} que representam o méd
 
 \subsection{Resultados na base de testes }
 
-Esta seção tem como objetivo verificar nossos modelos no base de testes, para todo o processo de treinamento foram utilizados dados normalizados. Além disso, para a descida de gradiente foi utilizado o \emph{learning rate} 0,001 que foi o que proporcionou o melhor resultado quando utilizando 100 iterações.
+Esta seção tem como objetivo verificar nossos modelos no base de testes, para todo o processo de treinamento foram utilizados dados normalizados. Além disso, para a descida de gradiente foi utilizado o \emph{learning rate} 0,001 que foi o que proporcionou o melhor resultado quando utilizando 100 iterações. A Tabela \ref{tab:result} mostra os resultados obtidos com as utilizando funções de primeiro grau, que e mostraram melhor no decorrer do trabalho.
 
 
 \begin{table}[!h]
 	\centering
-	
+
 	\begin{tabular}{ccccc}
 		\hline
 		& \textbf{M/C*} & \textbf{M/C} & \textbf{C} & \textbf{M} \\ \hline
 		Gradiente & 7,22          & 7,34         & 7,66       & 7,76       \\
 		Eq Normal & 7,23          & 7,31         & 7,46       & 7,82       \\ \hline
 	\end{tabular}
-	\caption{Resultados dos modelos na base de teste.}
-	\label{tab:comp}
+	\caption{Resultados dos modelos lineares na base de teste.}
+	\label{tab:result}
 \end{table}
 
+Pode-se perceber que os resultados foram similares com os encontrados durante a cross-validação, o que indica que nosso modelo pode aprender e predizer de forma a reduzir o erro esperado. Podemos concluir também que outras técnicas poderiam ter sido aplicadas para tornar possível os testes em modelos mais complexos que utilizassem de equações polinomiais.
 
-
-
-%(Apresentar os dois graficos pra cada processo abaixo)\\
-
-%>> LinearRegression\\
-%--- Pre processamento\\
-%- Modelo sem nenhuma alteraç~ao: resultado\\
-%- Modelo com scale\\
-%- Modelo com normalize\\
-%- Modelo scale + normalize\\
-%--- Feature Selection\\
-%- Modelo com normalize + pca\\
-%- Modelo buscando features: escolhe primeiras 10, primeiras 12, primeiras 13, primeiras 50, ultimas 78, ultimas 80\\
-%---Definir modelo\\
-%---Analisar overfitting do modelo\\
-%--- validaç~ao cruzada: 3 / 5 / 10 folds\\
-%- iteraç~oes: 50\\
-%\\
-%\\
-%>> SGDRegressor \\
-%--- Pre processamento\\
-%- Modelo sem nenhuma alteração: resultado\\
-%- Modelo com scale\\
-%- Modelo com normalize\\
-%- Modelo scale + normalize\\
-%--- Feature Selection\\
-%- Modelo com normalize + pca\\
-%- Modelo buscando features: escolhe primeiras 10, primeiras 12, primeiras 13, primeiras 50, ultimas 78, ultimas 80\\
-%--- Definir modelo\\
-%--- Analisar overfitting do modelo\\
-%--- validação cruzada: 3 / 5 / 10 folds\\
-%- iterações: 50\\
-%valores de alpha: 0.1/0.01/0.001/0.0001 + (?)\\
 
 \section{Conclusão} \label{sec:conc}
 
+Regressão linear pode ser uma forma muito eficaz de predizer dados contínuos, a mesma se mostrou capaz de predizer os anos das música de forma a manter o erro médio absoluto baixo. O trabalho também proporcionou uma visão do quão importante a escolha das \emph{features} pode ser, assim como as vantagens da normalização dos dados.
 
 
 \begin{thebibliography}{00}
-\bibitem{b1} Christopher M. Bishop. ``Pattern Recognition and Machine Learning''. Springer-Verlag New York, Inc., Secaucus, NJ, USA, 2006.
+%\bibitem{b1} Christopher M. Bishop. ``Pattern Recognition and Machine Learning''. Springer-Verlag New York, Inc., Secaucus, NJ, USA, 2006.
+\bibitem{b1} Aurélien Géron ``Hands-On Machine Learning with Scikit-Learn and TensorFlow
+Concepts, Tools, and Techniques to Build Intelligent Systems". O'Reilly Media, March 2017.
 \end{thebibliography}
+
 
 \end{document}
