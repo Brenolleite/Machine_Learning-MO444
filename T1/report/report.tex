@@ -85,9 +85,11 @@ Os parâmetros da função \emph{SGDRegressor} também foram configurados, como 
 
 \subsection{Metodologia} \label{sec:metodologia}
 
-Um processo gradual de estudo e aprendizado foi utilizado para verificar a qualidade e custo de cada modelo. A metodologia empregada dividiu o conjunto de treinamento oferecido pela base de dados em treinamento e validação, a fim de comparar os modelos, bem como fazer o ajuste de parâmetros necessários evitando o \textit{overfitting} no conjunto de dados. Assim, empregou-se uma validação cruzada do tipo \textit{$k$-Fold} no conjunto de treinamento com $k=10$.
+Um processo gradual de estudo e aprendizado foi utilizado para verificar a qualidade e custo de cada modelo.  Diversas abordagens foram aplicadas aos modelos escolhidos como \textit{baseline}, dentre elas estão a escala dos dados, normalização dos dados, regularização, redução de dimensionalidade, escolha do \emph{learning rate}, além de modelos mais complexos utilizando-se de funções polinomiais de segundo e terceiro grau. 
 
-Após a divisão um método de regressão linear baseada em Descida de Gradiente foi utilizado como \emph{baseline}. Também foi desenvolvida uma solução que utiliza-se do método da Equação Normal, com a finalidade de comparar o comportamento entre as estas duas técnicas.  Os melhores resultados destes métodos foram escolhidos para testes com modelos mais robustos, a forma de escolha desses métodos foram tanto em performance como em tempo de execução de cada técnica. Em alguns casos, a diferença entre dois métodos era muito pequena, porém o custo computacional era muito diferente entre ambos, sendo assim foi escolhido os modelos que são mais rápidos por falta de tempo para testes mais robustos. \textbf{(DEVERIA SER MOSTRADO?)}
+A metodologia empregada dividiu o conjunto de treinamento oferecido pela base de dados em treinamento e validação, a fim de comparar os modelos, bem como fazer o ajuste de parâmetros necessários evitando o \textit{overfitting} no conjunto de dados. Assim, empregou-se uma validação cruzada do tipo \textit{$k$-Fold} no conjunto de treinamento com $k=10$.
+
+Após a divisão um método de regressão linear baseada em Descida de Gradiente foi utilizado como \emph{baseline}. Também foi desenvolvida uma solução que utiliza-se do método da Equação Normal, com a finalidade de comparar o comportamento entre as estas duas técnicas.  Os melhores resultados destes métodos foram escolhidos para testes com modelos mais robustos, a forma de escolha desses métodos foram tanto em performance como em tempo de execução de cada técnica. Em alguns casos, a diferença entre dois métodos era muito pequena, porém o custo computacional era muito diferente entre ambos, sendo assim foi escolhido os modelos que são mais rápidos para possibilitar uma análise mais robusta.
 
 %Em todos os testes os dados foram normalizados, o que ajuda o modelo tanto quanto em melhores predições como em menores possibilidades de \emph{overfitting}.
 
@@ -119,26 +121,22 @@ O presente trabalho foi conduzido de acordo com as atividades e objetivos propos
 
 \section{Experimentos e Discussões} \label{sec:exp}
 
-Diversas modificações foram feitas em cima desses modelos, dentre elas estão, normalização dos dados, regularização, redução de dimensionalidade, escolha do \emph{learning rate}, além de modelos mais complexos utilizando-se de funções polinomiais de segundo e terceiro grau. Os resultados dessas técnicas serão discutidos na seção \ref{sec:exp}, o intuito é mostrar as diferenças entre os modelos e as decisões neste trabalho tomadas.
-
-
-
-
-
-Esta seção tem como objetivo mostrar os resultados obtidos no desenvolvimento do trabalho, assim como explicar as decisões nele tomadas. Vários outros experimentos foram feitos, como redimensionabilidade de \emph{features} usando PCA, diversas combinações de \emph{features}, porém apenas os melhores resultados obtidos serão mostrados aqui. Nas próximas seções as seguintes abreviações são utilizadas:
+Esta Seção tem como objetivo mostrar os resultados obtidos no desenvolvimento do trabalho, assim como explicar as decisões nele tomadas. Vários outros experimentos preliminares foram feitos, aqui omitidos por falta de espaço. A escalação, bem como a normalização dos dados, foi investigada, sendo que a primeira não apresentou bons resultados. Manteve-se a normalização dos dados para todos os outros experimentos subsequentes. Para seleção de características, primeiramente, tentou-se uma abordagem utilizando redução de dimensionalidade das características utilizando \textit{Principal Component Analysis} (PCA) reduzindo para $85$, $50$, $20$, $5$ e $2$ (para facilitar visualização dos dados em duas dimensões). Nenhuma das abordagens de seleção de características utilizando PCA obteve algum incremento nos resultados. Após alguns breves experimentos, pode-se perceber que havia uma diferença entre usar todas as características ou algumas delas. Assim, optou-se por validar o experimentos utilizando combinações das características de timbres, por estas apresentarem dois tipos diferentes de informação: a média e a covariância dos timbres. Seguem, abaixo, as combinações utilizadas para os experimentos:
 
 \begin{itemize}
-	\item \textbf{M} - Somente as \emph{features} referentes média do timbre;
-	\item \textbf{C} - Somente as \emph{features} referentes a covariância do timbre;
+	\item \textbf{M} - \emph{features} referentes média do timbre;
+	\item \textbf{C} - \emph{features} referentes a covariância do timbre;
 	\item \textbf{M/C} - \emph{features} de covariância e média do timbre;
 	\item \textbf{M/C*} - \emph{features} de covariância e média do timbre sendo normalizadas separadamente.
 \end{itemize}
 
+Optou-se por realizar uma normalização separada das características na quarta combinação, uma vez que as características apresentam um tipo de característica diferente e tal abordagem mostrou-se interessante para maior consistência dos dados.
+
+Seguem os experimentos realizados de acordo com a metodologia descrita na Seção \ref{sec:metodologia}.
+
 \subsection{Equação Normal vs Descida de Gradiente}
 
-Nesta seção serão mostrados os resultados obtidos para os modelos mais simples que é composto de uma função linear dos dados de entrada, assim como valores fixos para os parâmetros como o \emph{learning rate}. Experimentos mais a frente vão tratar de formas melhores de escolher esses parâmetros, nesta seção a preocupação é escolher as melhores \emph{features} a serem usadas assim como um modelo que possa ser posteriormente melhorado.
-
-Depois de um processo de testes envolvendo combinações das \emph{features}, pode-se perceber que havia uma diferença entre usar todas elas, ou somente a variância ou o média do timbre. Neste experimento essas três alternativas foram testadas, a Tabela \ref{tab:feat} mostra os resultados obtidos utilizando a métrica MAE e utilizando diferentes \emph{features}.
+Nesta seção são mostrados os resultados obtidos para os modelos mais simples, compostos de uma \textbf{função linear} dos dados de entrada, assim como valores fixos para os parâmetros, como o \emph{learning rate}. Desta forma, neste experimento, a preocupação não é escolher o melhor valor de \textit{learning rate} para os modelos, mas comparar as técnicas utilizadas. A Tabela \ref{tab:feat} apresenta o MAE utilizando as diferentes combinações de características para a Equação Normal e a Descida do Gradiente.
 
 \begin{table}[!h]
 	\centering
@@ -149,19 +147,19 @@ Depois de um processo de testes envolvendo combinações das \emph{features}, po
 		\textbf{Eq Normal} & 6,81          & 7,31         & 7,45       & 7,80      
 	\end{tabular}
 	
-	\caption{Resultados da métrica Mean Absolute Error usando diferentes features.}
+	\caption{Resultados da métrica \textit{Mean Absolute Error} usando diferentes features.}
 	\label{tab:feat}
 \end{table}
 
+Pode-se perceber que o uso de normalizações separadas para a média e a covariância teve um grande impacto no resultado da Equação Normal, porém esse impacto não foi tão grande na Descida de Gradiente. Para a Descida do Gradiente, usar apenas a característica de covariância obteve o melhor resultado para o experimento abordado.
 
-Pode-se perceber que o uso de normalizações separadas paras a média e a covariância teve um grande impacto no resultado da equação normal, porém esse impacto não foi tão grande na descida de gradiente. Para o gradiente, usar apenas a covariância foi o melhor resultado. Porém analisar os dados desta forma, não é uma forma eficaz de determinar quais modelos estão mais aptos a predizer os dados do mundo real.
+% Porém analisar os dados desta forma, não é uma forma eficaz de determinar quais modelos estão mais aptos a predizer os dados do mundo real.
 
-Para isso devemos analisar outras informações sobre o aprendizado, como a curva de aprendizado que será discutida na próxima seção.
+%Para isso devemos analisar outras informações sobre o aprendizado, como a curva de aprendizado que será discutida na próxima seção.
 
 \subsection{Curva de aprendizado}
 
-Para escolher um dos modelos é necessário não só analisar suas taxas de erro, mas sim a forma com que o aprendizado ocorreu. Esperamos que esse modelo saiba generalizar em outros dados que não foram previamente vistos, a curva de aprendizado pode ajudar a decidir qual modelo tende a ser melhor em uma nova base de dados. Levando isso em conta, a Figura \ref{fig:learningcurves} mostra a curva de aprendizado dos modelos propostos para a descida de gradiente.
-
+Os dados fornecidos pelo experimento anterior, ou seja, utilizando métricas como o MAE, não são evidenciam a qualidade de predição de um modelo como este. Isto se dá devido a incapacidade desses dados apresentarem informações de aprendizado e complexidade do modelo, por exemplo, se o modelo é suficientemente complexo para predizer os dados ou se ele é exageradamente complexo de forma que tenha se moldado ao conjunto de treinamento. Assim, uma outra forma de análise do modelo, a partir da curva de aprendizado, foi abordada com o intuito de observar a complexidade do modelo. A Figura \ref{fig:learningcurves} mostra a curva de aprendizado dos modelos propostos para a Descida de Gradiente.
 
 \begin{figure}[!h]
 	\centering
@@ -200,13 +198,17 @@ Para escolher um dos modelos é necessário não só analisar suas taxas de erro
 	\label{fig:learningcurves}
 \end{figure}
 
-[Discutir sobre as imagens, acho que a C está melhor de todas, não tenho certeza pq ta negativo o score] [curveC trainamente sei que ta errado amanhã gero outro kkk]
+\textbf{[Discutir sobre as imagens, acho que a C está melhor de todas, não tenho certeza pq ta negativo o score] [curveC trainamente sei que ta errado amanhã gero outro kkk]}
 
 \subsection{Learning Rate}
 
 [Pensei em escolher uma das de cima e colocar 3 gráficos mais ou menos igual os do learning curve para 0.01, 0.001, e 0.0001]
 
 \subsection{Modelos com equações de segundo e terceiro grau: }
+
+\textbf{[Evidenciar diferenças entre o modelo de segundo e terceiro grau]}
+
+\textbf{[Explicar o pq do NA na tabela]}
 
 \begin{table}[!h]
 	\centering
@@ -216,7 +218,7 @@ Para escolher um dos modelos é necessário não só analisar suas taxas de erro
 		\textbf{Gradiente}      & 7,54     & 7,63         & 7,50       & 7,63  \\  
 		\textbf{Eq Normal}      & NA       & NA         & NA       & 7,58   
 	\end{tabular}
-	\caption{Resultados da métrica Mean Absolute Error usando diferentes features para as equações de segundo grau.}
+	\caption{Resultados da métrica \textit{Mean Absolute Error} usando diferentes características para as equações de segundo grau.}
 	\label{tab:comp}
 \end{table}
 
@@ -226,7 +228,7 @@ Além disso, uma equação de terceiro grau foi utilizada para a descida de grad
 
 \subsection{Resultados na base de testes }
 
-[Escolher alguns modelos e testar, ou testar todos os modelos (prefiro testar os 3 melhores, algo do tipo)]
+\textbf{[Escolher alguns modelos e testar, ou testar todos os modelos (prefiro testar os 3 melhores, algo do tipo)]}
 
 
 %(Apresentar os dois graficos pra cada processo abaixo)\\
