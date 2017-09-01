@@ -17,7 +17,7 @@
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
 
-\title{Relatório da Atividade \#1}
+\title{MO444 - Machine Learning - Relatório da Atividade \#1}
 
 \author{\IEEEauthorblockN{Bárbara Caroline Benato}
 \IEEEauthorblockA{
@@ -49,26 +49,24 @@ A base de dados \emph{Million Song Dataset} é utilizada para a validação dos 
 
 Neste trabalho, um número menor de características da base de dados citada foi abordado, motivado pela qualidade e representatividade de tais características para a base de dados. Tal motivação é melhor elucidada no contexto dos experimentos realizados. 
 
-\textbf{[Descrever probabilidades e distribuição do dataset. (Se tivermos espaco)]}
-
 \subsection{Pacote \textit{Scikit-Learn}} \label{sec:base}
 
-Os modelos desenvolvidos para a Regressão Linear foram implementados utilizando funções do pacote \emph{Scikit-Learn}, em linguagem de programação \emph{Python}. As funções \emph{LinearRegression} e \emph{SDGRegressor} são responsáveis pelas técnicas de Equação Normal e Descida de Gradiente, respectivamente. \textbf{[MENCIONAR REFERENCIA DO LINEAR REGRESSION}
+Os modelos desenvolvidos para a Regressão Linear foram implementados utilizando funções do pacote \emph{Scikit-Learn}, em linguagem de programação \emph{Python}. As funções \emph{LinearRegression} e \emph{SDGRegressor} são responsáveis pelas técnicas de Equação Normal\cite{b1} e Descida de Gradiente, respectivamente. 
 
 A configuração dos parâmetros da função \emph{LinearRegression} foi dada da seguinte forma:
 \begin{itemize}
-	\item fit\_intercept: Verdadeiro, ou seja, a intersecção com o eixo y é calculada.
-	\item normalize: Falso, a normalização dos dados nesta função não é realizada.
-	\item copy\_X: Verdadeiro, os dados não serão sobre-escritos.
+	\item \textit{fit\_intercept}: Verdadeiro, ou seja, a intersecção com o eixo y é calculada.
+	\item \textit{normalize}: Falso, a normalização dos dados nesta função não é realizada.
+	\item \textit{copy\_X}: Verdadeiro, os dados não serão sobre-escritos.
 \end{itemize}
 
-Os parâmetros da função \emph{SGDRegressor} também foram configurados, como segue :
+Os parâmetros da função \emph{SGDRegressor} também foram configurados, como segue:
 \begin{itemize}
-	\item loss: Squared\_loss, define a função utilizada no custo da regressão linear.
-	\item max\_iter: Padrão como 100, é setado para 1 quando o gráfico de custo vs iteração é gerado.
-	\item eta0: Determina o \emph{learning\_rate}, valores de 0.01, 0.001 e 0.0001 foram utilizados.
-	\item learning\_rate: Determina a forma que o \emph{learning\_rate} funciona, usamos o valor \emph{constant} que faz com que o mesmo seja igual a eta0 durante toda a descida do gradiente.
-	\item warm\_start: Utilizado somente para gerar o gráfico de custo vs iteração, faz com que a função fit utilize os coeficientes anteriores, proporcionando assim uma forma de executar iteração por iteração.
+	\item \textit{loss}: Squared\_loss, define a função utilizada no custo da regressão linear.
+	\item \textit{max\_iter}: Padrão como 100, é setado para 1 quando o gráfico de custo vs iteração é gerado.
+	\item \textit{eta0}: Determina o \emph{learning\_rate}, valores de 0.01, 0.001 e 0.0001 foram utilizados.
+	\item \textit{learning\_rate}: Determina a forma que o \emph{learning\_rate} funciona, usamos o valor \emph{constant} que faz com que o mesmo seja igual a eta0 durante toda a descida do gradiente.
+	\item \textit{warm\_start}: Utilizado somente para gerar o gráfico de custo vs iteração, faz com que a função fit utilize os coeficientes anteriores, proporcionando assim uma forma de executar iteração por iteração.
 \end{itemize}
 
 \subsection{Metodologia} \label{sec:metodologia}
@@ -188,7 +186,7 @@ Os dados fornecidos pelo experimento anterior, ou seja, utilizando métricas com
 
 \subsection{Learning Rate}
 
-O objetivo desta seção é mostrar como o \emph{learning rate} influência no resultado dos modelos, a Tabela \ref{tab:rates} mostra uma comparação dos resultados para diferentes \emph{learning rates}. Em todos os experimentos foram utilizados 100 iterações, o motivo desta escolha é o custo para executar mais iterações.
+O objetivo desta seção é mostrar como o \emph{learning rate} influência no resultado dos modelos, a Tabela \ref{tab:rates} mostra uma comparação dos resultados para diferentes \emph{learning rates} para as diversas combinações de features. Em todos os experimentos foram utilizados $100$ iterações.
 
 \begin{table}[!h]
 	\centering
@@ -199,19 +197,19 @@ O objetivo desta seção é mostrar como o \emph{learning rate} influência no r
 		\textbf{0,001}  & 7,33          & 7,42         & 7,53       & 7,77       \\
 		\textbf{0,0001} & 7,34          & 7,54         & 7,57       & 7,80       \\ \hline 
 	\end{tabular}
-	\caption{Comparação do resultado com diferentes \emph{learning rates}.}
+	\caption{Comparação do resultado obtido com a métrica \textit{Mean Absolute Error} com diferentes \emph{learning rates}.}
 	\label{tab:rates}
 \end{table}
 
-Pode-se perceber que houve uma melhora nos resultados utilizando \emph{learning rates} menores, porém os mesmos podem demorar mais para generalizar, pois é necessário mais iterações. O que faz com que os resultados mostrados com o para o \emph{learning rate} = 0,0001 sejam piores que o 0,001.
+Pôde-se perceber que houve uma melhora nos resultados, a medida que se reduzia o \textit{learning rate}, isto é, o tamanho do \textit{learning rate} é inversamente proporcional a um melhor desempenho no treinamento do modelo. Os resultados mostrados para o \emph{learning rate} $= 0,0001$ são inferiores (e no caso, melhores) aos mostrados para os valores de $0,001$ nos modelos abordados. Contudo, para menores valores de tal parâmetro, o tempo de cômputo é maior, uma vez que demora sua convergência é demorada. Assim, para maiores valores do \textit{learning rate}, o método pode convergir mais rápido ou nunca atingir a solução esperada para tal problema.
 
-Escolher o melhor deles pode ser uma tarefa difícil, pois há necessidade de comparar o tempo de processamento com as melhorias nos resultados. Neste trabalho consideramos que o valor 0,001 foi melhor, devido a baixa diferença entre os resultados e o baixo número de iterações que foram utilizadas. A Figura \ref{fig:learningrate} mostra como o número de iterações afeta a descida do gradiente mostrando a função de custo (\emph{Mean Squared Error}).
+Escolher o melhor modelo baseado no \textit{learning rate} pode ser uma tarefa difícil, pois há necessidade de considerar o tempo de processamento e as melhorias nos resultados. Neste trabalho, consideramos que o valor $0,001$ foi melhor, devido a baixa diferença entre os resultados e o número de iterações que foram utilizadas. A Figura \ref{fig:learningrate} mostra como o número de iterações afeta a descida do gradiente mostrando a função de custo (\emph{Mean Squared Error}).
 
-\subsection{Modelos com equações polinomiais mais complexas: }
+\subsection{Modelos com equações polinomiais mais complexas}
 
 Com intuito de testar modelos mais complexos, foi utilizado de equações polinomiais para representar os dados. Esse modelo se torna muito caro dependendo da quantidade de dados, devido a isso não foi possível fazer todos os testes. 
 
-A Tabela \ref{tab:comp} mostra os resultados obtidos pela equação polinomial de segundo grau, para a equação normal apenas as \emph{features} de média foram testadas, utilizando um maior número de \emph{features} o custo computacional fica muito elevado. Desta forma, como o intuito do trabalho é testar diversas estratégia, foi optado por não realizar esses experimentos. Todos os resultados foram obtidos utilizando \emph{learning rate} igual a 0,01.
+A Tabela \ref{tab:comp} mostra os resultados obtidos pela equação polinomial de segundo grau, para a equação normal apenas as \emph{features} de média foram testadas, utilizando um maior número de \emph{features} o custo computacional fica muito elevado. Desta forma, como o intuito do trabalho é testar diversas estratégia, foi optado por não realizar esses experimentos. Todos os resultados foram obtidos utilizando \emph{learning rate} igual a $0,01$.
 
 \begin{table}[!h]
 	\centering
@@ -271,8 +269,13 @@ Para esse modelo foi utilizado somente as \emph{features} que representam o méd
 \section{Conclusão} \label{sec:conc}
 
 
+
+
 \begin{thebibliography}{00}
-\bibitem{b1} Christopher M. Bishop. ``Pattern Recognition and Machine Learning''. Springer-Verlag New York, Inc., Secaucus, NJ, USA, 2006.
+%\bibitem{b1} Christopher M. Bishop. ``Pattern Recognition and Machine Learning''. Springer-Verlag New York, Inc., Secaucus, NJ, USA, 2006.
+\bibitem{b1} Aurélien Géron ``Hands-On Machine Learning with Scikit-Learn and TensorFlow
+Concepts, Tools, and Techniques to Build Intelligent Systems". O'Reilly Media, March 2017.
 \end{thebibliography}
+
 
 \end{document}
