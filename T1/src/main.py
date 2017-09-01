@@ -21,7 +21,7 @@ deg = 1
 verbose = True
 
 # Defines if should generate graphs
-generate_graphs = False
+generate_graphs = True
 
 # Defines number of iterations on GD
 iterations = 100
@@ -39,8 +39,8 @@ train_data = train_file[:, 1:]
 # Pre-prossesing data
 #train_data = proc.normalize_l2(train_data)
 
-#train_data[:, 0:12] = proc.normalize_l2(train_data[:, 0:12])
-#train_data[:, 12:90] = proc.normalize_l2(train_data[:, 12:90])
+train_data[:, 0:12] = proc.normalize_l2(train_data[:, 0:12])
+train_data[:, 12:90] = proc.normalize_l2(train_data[:, 12:90])
 
 # Training process using K-Fold
 models = linear.kfold(model_params, train_data, train_labels, n_folds, verbose, generate_graphs)
@@ -55,17 +55,20 @@ if generate_graphs:
     # Generating cost vs iterations
     costs = best_model[2]
     iterations = np.arange(costs.shape[0]) + 1
-    graphs.line_plot("CostXInteractions", "Cost vs Interactions", "Interactions", "Cost", iterations, costs)
+    graphs.line_plot("CostXInteractions", "Custo vs Iterações", "Iterações", "Custo", iterations, costs)
 
 # Reading test file
-#test_file = np.loadtxt('year-prediction-msd-test.txt', delimiter=',')
+test_file = np.loadtxt('../dataset/year-prediction-msd-test.txt', delimiter=',')
 
 # Divide data from labels
-#test_labels = train_file[:, 0]
-#test_data = train_file[:, 1:12]
+test_labels = test_file[:, 0]
+test_data = test_file[:, 1:]
 
 # Pre-prossesing test
-#test_data = proc.normalize_l2(test_data)
+test_data = proc.normalize_l2(test_data)
+
+#test_data[:, 0:12] = proc.normalize_l2(test_data[:, 0:12])
+#test_data[:, 12:90] = proc.normalize_l2(test_data[:, 12:90])
 
 # Predicting test
 #print("Results on Test dataset")
