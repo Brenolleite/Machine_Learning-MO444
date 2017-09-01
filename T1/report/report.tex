@@ -64,23 +64,11 @@ A configuração dos parâmetros da função \emph{LinearRegression} foi dada da
 
 Os parâmetros da função \emph{SGDRegressor} também foram configurados, como segue :
 \begin{itemize}
-	\item loss:
-	\item penalty:
-	\item alpha:
-	\item l1\_ratio:
-	\item fit\_intercept:
-	\item max\_iter:
-	\item tol:
-	\item suffle:
-	\item verbose:
-	\item epsilon:
-	\item random\_state:
-	\item learning\_rate:
-	\item eta0:
-	\item power\_t:
-	\item warm\_start:
-	\item average:
-	\item n\_iter:
+	\item loss: Squared\_loss, define a função utilizada no custo da regressão linear.
+	\item max\_iter: Padrão como 100, é setado para 1 quando o gráfico de custo vs iteração é gerado.
+	\item eta0: Determina o \emph{learning\_rate}, valores de 0.01, 0.001 e 0.0001 foram utilizados.
+	\item learning\_rate: Determina a forma que o \emph{learning\_rate} funciona, usamos o valor \emph{constant} que faz com que o mesmo seja igual a eta0 durante toda a descida do gradiente.
+	\item warm\_start: Utilizado somente para gerar o gráfico de custo vs iteração, faz com que a função fit utilize os coeficientes anteriores, proporcionando assim uma forma de executar iteração por iteração.
 \end{itemize}
 
 \subsection{Metodologia} \label{sec:metodologia}
@@ -203,6 +191,21 @@ Para escolher um dos modelos é necessário não só analisar suas taxas de erro
 [Discutir sobre as imagens, acho que a C está melhor de todas, não tenho certeza pq ta negativo o score] [curveC trainamente sei que ta errado amanhã gero outro kkk]
 
 \subsection{Learning Rate}
+
+
+\begin{table}[!h]
+	\centering
+	
+	\begin{tabular}{ccccc} \\ \hline
+		\textbf{Learning Rates} & \textbf{M/C*} & \textbf{M/C} & \textbf{C} & \textbf{M} \\ \hline
+		\textbf{0,01}   & 7,54          & 7,63         & 7,50       & 7,63       \\
+		\textbf{0,001}  & 7,33          & 7,42         & 7,53       & 7,77       \\
+		\textbf{0,0001} & 7,34          & 7,54         & 7,57       & 7,80      
+	\end{tabular}
+	\caption{Comparação de diferentes \emph{learning rates}.}
+	\label{tab:comp}
+\end{table}
+
 
 [Pensei em escolher uma das de cima e colocar 3 gráficos mais ou menos igual os do learning curve para 0.01, 0.001, e 0.0001]
 

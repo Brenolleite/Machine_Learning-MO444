@@ -12,7 +12,7 @@ reg_type = "gradient"
 n_folds = 10
 
 # Defines learning rate
-learning_rate = 0.01
+learning_rate = 0.001
 
 # Defines degree of function used into linear regretion
 deg = 1
@@ -37,10 +37,10 @@ train_labels = train_file[:, 0]
 train_data = train_file[:, 1:]
 
 # Pre-prossesing data
-train_data = proc.normalize_l2(train_data)
+#train_data = proc.normalize_l2(train_data)
 
-#train_data[0:12] = proc.normalize_l2(train_data[1:13])
-#train_data[12:90] = proc.normalize_l2(train_data[12:90])
+#train_data[:, 0:12] = proc.normalize_l2(train_data[:, 0:12])
+#train_data[:, 12:90] = proc.normalize_l2(train_data[:, 12:90])
 
 # Training process using K-Fold
 models = linear.kfold(model_params, train_data, train_labels, n_folds, verbose, generate_graphs)
