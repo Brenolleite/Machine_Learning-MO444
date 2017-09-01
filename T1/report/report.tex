@@ -14,7 +14,7 @@
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
 
-\title{MO444 - Machine Learning - Relatório da Atividade \#1}
+\title{MO444 - Machine Learning - Relatório da Atividade \#1 Grupo 12}
 
 \author{\IEEEauthorblockN{Bárbara Caroline Benato}
 \IEEEauthorblockA{
@@ -140,7 +140,7 @@ Pode-se perceber que o uso de normalizações separadas para a média e a covari
 
 \subsection{Curva de aprendizado}
 
-Os dados fornecidos pelo experimento anterior, ou seja, utilizando métricas como o MAE, não são evidenciam a qualidade de predição de um modelo como este. Isto se dá devido a incapacidade desses dados apresentarem informações de aprendizado e complexidade do modelo, por exemplo, se o modelo é suficientemente complexo para predizer os dados ou se ele é exageradamente complexo de forma que tenha se moldado ao conjunto de treinamento. Assim, uma outra forma de análise do modelo, a partir da curva de aprendizado, foi abordada com o intuito de observar a complexidade do modelo. A Figura \ref{fig:learningcurves} mostra a curva de aprendizado dos modelos propostos para a Descida de Gradiente.
+Os dados fornecidos pelo experimento anterior, ou seja, utilizando métricas como o MAE, não são evidenciam sozinhos a qualidade de predição de um modelo como este. Isto se dá devido a incapacidade desses dados apresentarem informações de aprendizado e complexidade do modelo, por exemplo, se o modelo é suficientemente complexo para predizer os dados ou se ele é exageradamente complexo de forma que tenha se moldado ao conjunto de treinamento. Assim, uma outra forma de análise do modelo, a partir da curva de aprendizado, foi abordada com o intuito de observar a complexidade do modelo. A Figura \ref{fig:learningcurves} mostra a curva de aprendizado dos modelos propostos para a Descida de Gradiente.
 
 \begin{figure}[!h]
 	\centering
@@ -179,6 +179,7 @@ Os dados fornecidos pelo experimento anterior, ou seja, utilizando métricas com
 	\label{fig:learningcurves}
 \end{figure}
 
+Pode-se observar que, para os modelos baseados nas combinações de características abordados, em três dos gráficos a taxa de aprendizado acompanhou a taxa de teste. Isso quer dizer que o modelo era capaz de aprender conforme o número de dados utilizados na validação cruzada aumentava. Para um dos gráficos, houve uma certa oscilação no que diz respeito ao aprendizado do modelo.
 
 \subsection{Learning Rate}
 
@@ -224,10 +225,9 @@ A tabela mostra que os resultados utilizando a equação polinomial de segundo g
 Para esse modelo foi utilizado somente as \emph{features} que representam o médio do timbre, o motivo é que o alto número de dados tornava o modelo muito lento para generalizar. O resultado deste experimento foi de 7,58 \emph{Mean Absolute Error}, ou seja, uma pequena melhora foi obtida em relação a equação polinomial de segunda ordem.
 
 
-
 \subsection{Resultados na base de testes }
 
-Esta seção tem como objetivo verificar nossos modelos no base de testes, para todo o processo de treinamento foram utilizados dados normalizados. Além disso, para a descida de gradiente foi utilizado o \emph{learning rate} 0,001 que foi o que proporcionou o melhor resultado quando utilizando 100 iterações. A Tabela \ref{tab:result} mostra os resultados obtidos com as utilizando funções de primeiro grau, que e mostraram melhor no decorrer do trabalho.
+Esta seção tem como objetivo verificar nossos modelos no base de testes, para todo o processo de treinamento foram utilizados dados normalizados. Além disso, para a descida de gradiente foi utilizado o \emph{learning rate} $0,001$ que foi o que proporcionou o melhor resultado quando utilizando 100 iterações. A Tabela \ref{tab:result} mostra os resultados obtidos com as utilizando funções de primeiro grau, que e mostraram melhor no decorrer do trabalho.
 
 
 \begin{table}[!h]
@@ -248,7 +248,15 @@ Pode-se perceber que os resultados foram similares com os encontrados durante a 
 
 \section{Conclusão} \label{sec:conc}
 
-Regressão linear pode ser uma forma muito eficaz de predizer dados contínuos, a mesma se mostrou capaz de predizer os anos das música de forma a manter o erro médio absoluto baixo. O trabalho também proporcionou uma visão do quão importante a escolha das \emph{features} pode ser, assim como as vantagens da normalização dos dados.
+A partir dos dados fornecidos pelos experimentos, algumas conclusões podem ser feitas. No primeiro experimento, o modelo que apresentou melhor resultado foi utilizando a Equação Normal e fazendo a normalização separada das características presente na base de dados. O modelo que apresentou o pior resultado foi utilizando apenas a média tanto para a Equação Normal, quanto para a Descida do Gradiente.
+
+No segundo experimento, os modelos propostos apresentaram uma curva de aprendizado crescente, demonstrando que o modelo esta aprendendo conforme a quantidade de dados aumenta. O modelo que apresentou uma curva de aprendizado irregular, foi utilizando apenas a média dos timbres, o mesmo que obteve um pior resultado no primeiro experimento.
+
+No terceiro experimento, em que as variações de \textit{learning rate} foram exploradas, o modelo com melhor resultado, foi o que abordou a normalização individual das características diferentes de timbres. E o modelo com pior resultado foi aquele que utilizou apenas a informação da média dos timbres.
+
+Para o experimento realizado no conjunto de teste, o modelo utilizando as características com normalização separada do tipos, apresentou melhor resultado do que o encontrado até mesmo no conjunto de treinamento. 
+
+Regressão linear pode ser uma forma muito eficaz de predizer dados contínuos, a mesma se mostrou capaz de predizer os anos das música de forma a manter o erro médio absoluto baixo. O trabalho também proporcionou uma visão do quão importante a escolha das \emph{features} pode ser, assim como as vantagens da normalização e do pré-processamento dos dados.
 
 
 \begin{thebibliography}{00}
