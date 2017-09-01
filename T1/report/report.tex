@@ -30,11 +30,11 @@ brenolleite@gmail.com}}
 
 \section{Introdução}
 
-A primeira atividade da disciplina de \textit{Machine Learning} (MO444) tem como intuito explorar técnicas de regressão linear, a fim de encontrar o melhor modelo possível para predizer o ano das músicas presentes na base de dados \textit{Million Song}. Assim, utilizando as informações de cada música contida na base, objetiva-se prever seu ano de lançamento. Cabe destacar que a base de dados utilizada não possui áudio, apenas as características de timbre extraídas do som, bem como seu rótulo, ou seja, o ano de lançamento.
+A primeira atividade da disciplina de \textit{Machine Learning} (MO444) tem como intuito explorar técnicas de regressão linear, a fim de encontrar o melhor modelo possível para predizer o ano das músicas presentes na base de dados \textit{Million Song}. Assim, utilizando as informações de cada música contida na base, objetiva-se prever seu ano de lançamento. Cabe destacar que a base de dados utilizada não possui nenhum áudio, apenas as características de timbre extraídas do som, bem como seu rótulo, ou seja, o ano de lançamento.
 
 O objetivo deste relatório é apresentar os experimentos que foram desenvolvidos com intuito de encontrar o melhor modelo para predizer os anos das músicas, utilizando a Equação Normal e a Descida de Gradiente.
 
-O presente trabalho é dividido em Seções. Na Seção \ref{sec:meto}, alguns dados interessantes sobre a base de dados são mostrados, bem como a metodologia empregada e as atividades desenvolvidas. A Seção \ref{sec:exp} apresenta os experimentos e sua discussão. Por fim, a Seção \ref{sec:conc} discute os principais aprendizados e os objetivos que foram atingidos com o desenvolvimento do trabalho.
+O mesmo é dividido em Seções. Na Seção \ref{sec:meto}, alguns dados interessantes sobre a base de dados são mostrados, bem como a metodologia empregada e as atividades desenvolvidas. A Seção \ref{sec:exp} apresenta os experimentos e sua discussão. Por fim, a Seção \ref{sec:conc} discute os principais aprendizados e os objetivos que foram atingidos com o desenvolvimento do trabalho.
 
 \section{Materiais e Métodos} \label{sec:meto}
 
@@ -76,7 +76,7 @@ Após a divisão um método de regressão linear baseada em Descida de Gradiente
 
 %Em todos os testes os dados foram normalizados, o que ajuda o modelo tanto quanto em melhores predições como em menores possibilidades de \emph{overfitting}.
 
-Durante o trabalho optou-se por utilizar as métricas \emph{Mean Average Error} (MAE) e \emph{Mean Absolute Error} (MAE). A primeira métrica foi escolhida com a finalidade de representar a função de custo da regressão linear, assim como a segunda, de encontrar uma média do erro em relação aos anos preditos.
+Durante o trabalho optou-se por utilizar a métrica \emph{Mean Absolute Error} (MAE), que determina uma média do erro em relação aos anos preditos pelo modelo.
 
 O presente trabalho foi conduzido de acordo com as atividades e objetivos propostos na disciplina. Um pipeline dos experimentos são apresentados a seguir.
 
@@ -87,17 +87,6 @@ O presente trabalho foi conduzido de acordo com as atividades e objetivos propos
 	\item \textbf{Verificar modelos mais complexos: } Este experimento tem como objetivo analisar como equações de segundo e terceiro grau influenciam na capacidade de predição dos dados, iremos utilizar neste os parâmetros que obtiveram melhor sucesso nos outros experimentos.
 	\item \textbf{Teste final: } Este experimento tem como intuito verificar como o modelo convergiu nos dados de teste, este foi utilizado somente uma vez no desenvolvimento do trabalho para a execução final dos testes. Desta forma, todos os dados do teste são totalmente novos para os modelos.
 \end{itemize}
-
-%base: subset of the Million Song Dataset (descrever)
-%explicar cada um deles e parametros utilizados
-%sklearn:
-%- pre processing: scale, normalize, pca
-%- metodos: LinearRegression e SGDRegressor
-
-%- base: subset of the Million Song Dataset (descrever)
-%- treino validação (validação cruzada) e teste
-%- metricas
-%- graficos: learning\_curve e plot
 
 
 \section{Experimentos e Discussões} \label{sec:exp}
@@ -200,7 +189,22 @@ O objetivo desta seção é mostrar como o \emph{learning rate} influência no r
 
 Pôde-se perceber que houve uma melhora nos resultados, a medida que se reduzia o \textit{learning rate}, isto é, o tamanho do \textit{learning rate} é inversamente proporcional a um melhor desempenho no treinamento do modelo. Os resultados mostrados para o \emph{learning rate} $= 0,0001$ são inferiores (e no caso, melhores) aos mostrados para os valores de $0,001$ nos modelos abordados. Contudo, para menores valores de tal parâmetro, o tempo de cômputo é maior, uma vez que demora sua convergência é demorada. Assim, para maiores valores do \textit{learning rate}, o método pode convergir mais rápido ou nunca atingir a solução esperada para tal problema.
 
-Escolher o melhor modelo baseado no \textit{learning rate} pode ser uma tarefa difícil, pois há necessidade de considerar o tempo de processamento e as melhorias nos resultados. Neste trabalho, consideramos que o valor $0,001$ foi melhor, devido a baixa diferença entre os resultados e o número de iterações que foram utilizadas. A Figura \ref{fig:learningrate} mostra como o número de iterações afeta a descida do gradiente mostrando a função de custo (\emph{Mean Squared Error}).
+Escolher o melhor modelo baseado no \textit{learning rate} pode ser uma tarefa difícil, pois há necessidade de considerar o tempo de processamento e as melhorias nos resultados. Neste trabalho, consideramos que o valor $0,001$ foi melhor, devido a baixa diferença entre os resultados e o número de iterações que foram utilizadas. A Figura \ref{fig:cost} mostra como o número de iterações afeta a descida do gradiente mostrando a função de custo (\emph{Mean Squared Error}).
+
+
+\begin{figure}[!h]
+	\centering
+	{
+		{
+			\setlength{\fboxsep}{1pt}
+			\setlength{\fboxrule}{1pt}
+			\fbox{\includegraphics[scale=0.4]{../graphs/CostXInteractions.png}}
+		}
+	}
+	\caption{Custo comparada com o número de iterações.}
+	\label{fig:learningrate}
+\end{figure}
+
 
 \subsection{Modelos com equações polinomiais mais complexas}
 
