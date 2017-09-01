@@ -1,11 +1,8 @@
-% TO DO: Melhorar forma como os dados estao sendo plotados no espaço
-% definir metricas a serem apresentadas para validacao (media?)
-% definir modelo final (depois de arrumar over fitting) e fazer TESTE
 \documentclass[conference]{IEEEtran}
 \IEEEoverridecommandlockouts
 
 \usepackage{cite}
-\usepackage[portuguese,brazil,english]{babel}
+\usepackage[portuguese,brazil]{babel}
 \usepackage{amsmath, amssymb, amsfonts}
 \usepackage[utf8]{inputenc}
 \usepackage{algorithmic}
@@ -149,38 +146,14 @@ Os dados fornecidos pelo experimento anterior, ou seja, utilizando métricas com
 
 \begin{figure}[!h]
 	\centering
-	\subfloat[Curva de aprendizado para média do timbre.]{
-		{
-			\setlength{\fboxsep}{1pt}
-			\setlength{\fboxrule}{1pt}
-			\fbox{\includegraphics[scale=0.2]{../graphs/curveM.png}}
-		}
+
+	{
+		\setlength{\fboxsep}{1pt}
+		\setlength{\fboxrule}{1pt}
+		\fbox{\includegraphics[scale=0.4]{../graphs/CostXInteractions.png}}
 	}
-	\quad
-	\subfloat[Curva de aprendizado para covariância do timbre.]{
-		{
-			\setlength{\fboxsep}{1pt}
-			\setlength{\fboxrule}{1pt}
-			\fbox{\includegraphics[scale=0.2]{../graphs/curveC.png}}
-		}
-	}
-	\quad
-	\subfloat[Curva de aprendizado para média e covariância do timbre.]{
-		{
-			\setlength{\fboxsep}{1pt}
-			\setlength{\fboxrule}{1pt}
-			\fbox{\includegraphics[scale=0.2]{../graphs/curveMC.png}}
-		}
-	}
-	\quad
-	\subfloat[Curva de aprendizado para média e covariância do timbre e normalização separada.]{
-			{
-				\setlength{\fboxsep}{1pt}
-				\setlength{\fboxrule}{1pt}
-				\fbox{\includegraphics[scale=0.2]{../graphs/cuvreMC*.png}}
-			}
-		}
-	\caption{Curvas de aprendizado para os diferentes modelos.}
+	
+	\caption{Custo comparada com o número de iterações.}
 	\label{fig:learningcurves}
 \end{figure}
 
@@ -206,6 +179,43 @@ O objetivo desta seção é mostrar como o \emph{learning rate} influência no r
 Pode-se perceber que houve uma melhora nos resultados utilizando \emph{learning rates} menores, porém os mesmos podem demorar mais para generalizar, pois é necessário mais iterações. O que faz com que os resultados mostrados com o para o \emph{learning rate} = 0,0001 sejam piores que o 0,001.
 
 Escolher o melhor deles pode ser uma tarefa difícil, pois há necessidade de comparar o tempo de processamento com as melhorias nos resultados. Neste trabalho consideramos que o valor 0,001 foi melhor, devido a baixa diferença entre os resultados e o baixo número de iterações que foram utilizadas. A Figura \ref{fig:learningrate} mostra como o número de iterações afeta a descida do gradiente mostrando a função de custo (\emph{Mean Squared Error}).
+
+\begin{figure}[!h]
+	\centering
+	\subfloat[Curva de aprendizado para média do timbre.]{
+		{
+			\setlength{\fboxsep}{1pt}
+			\setlength{\fboxrule}{1pt}
+			\fbox{\includegraphics[scale=0.2]{../graphs/curveM.png}}
+		}
+	}
+	\quad
+	\subfloat[Curva de aprendizado para covariância do timbre.]{
+		{
+			\setlength{\fboxsep}{1pt}
+			\setlength{\fboxrule}{1pt}
+			\fbox{\includegraphics[scale=0.2]{../graphs/curveC.png}}
+		}
+	}
+	\quad
+	\subfloat[Curva de aprendizado para média e covariância do timbre.]{
+		{
+			\setlength{\fboxsep}{1pt}
+			\setlength{\fboxrule}{1pt}
+			\fbox{\includegraphics[scale=0.2]{../graphs/curveMC.png}}
+		}
+	}
+	\quad
+	\subfloat[Curva de aprendizado para média e covariância do timbre e normalização separada.]{
+		{
+			\setlength{\fboxsep}{1pt}
+			\setlength{\fboxrule}{1pt}
+			\fbox{\includegraphics[scale=0.2]{../graphs/cuvreMC*.png}}
+		}
+	}
+	\caption{Curvas de aprendizado para os diferentes modelos.}
+	\label{fig:learningcurves}
+\end{figure}
 
 \subsection{Modelos com equações polinomiais mais complexas: }
 
@@ -233,7 +243,23 @@ Para esse modelo foi utilizado somente as \emph{features} que representam o méd
 
 \subsection{Resultados na base de testes }
 
-\textbf{[Escolher alguns modelos e testar, ou testar todos os modelos (prefiro testar os 3 melhores, algo do tipo)]}
+Esta seção tem como objetivo verificar nossos modelos no base de testes, para todo o processo de treinamento foram utilizados dados normalizados. Além disso, para a descida de gradiente foi utilizado o \emph{learning rate} 0,001 que foi o que proporcionou o melhor resultado quando utilizando 100 iterações.
+
+
+\begin{table}[!h]
+	\centering
+	
+	\begin{tabular}{ccccc}
+		\hline
+		& \textbf{M/C*} & \textbf{M/C} & \textbf{C} & \textbf{M} \\ \hline
+		Gradiente & 7,22          & 7,34         & 7,66       & 7,76       \\
+		Eq Normal & 7,23          & 7,31         & 7,46       & 7,82       \\ \hline
+	\end{tabular}
+	\caption{Resultados dos modelos na base de teste.}
+	\label{tab:comp}
+\end{table}
+
+
 
 
 %(Apresentar os dois graficos pra cada processo abaixo)\\
