@@ -7,25 +7,27 @@ import metrics
 def create_model(type, learning_rate, deg, iterations):
     # Create neural network entrada de : 32x32x3 = 3072
     if type == "one":
-        # Linear regression using stochastic gradient descent
+        # Using one hidden layer
         model = make_pipeline(MLPClassifier(activation='relu',
                                             learning_rate_init=learning_rate,
                                             max_iter=iterations,
                                             momentum=0.9,
-                                            solver='sgd',
+                                            solver='adam',
                                             alpha=1e-5,
-                                            hidden_layer_sizes=(1,1000), # layers, neurons
-                                            random_state=1))
+                                            hidden_layer_sizes=(1000,), # layers, neurons
+                                            random_state=1,
+                                            verbose=True))
     else:
-        # Linear regression using normal equation
+        # Using two hidden layers
         model = make_pipeline(MLPClassifier(activation='relu',
                                             learning_rate_init=learning_rate,
                                             max_iter=iterations,
                                             momentum=0.9,
-                                            solver='sgd',
+                                            solver='adam',
                                             alpha=1e-5,
-                                            hidden_layer_sizes=(2,1000), # layers, neurons
-                                            random_state=1))
+                                            hidden_layer_sizes=(1000,1000), # layers, neurons
+                                            random_state=1,
+                                            verbose=True))
 
     return model
 

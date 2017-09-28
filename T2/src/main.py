@@ -11,12 +11,13 @@ import processing as proc
 import graphs
 from keras.datasets import cifar10
 import sys
+from skimage import data, io, filters
 sys.setrecursionlimit(100000)
 
 # -------------- Params -------------
 
 # Defines type of linear regression / size of hidden layers (one or two)
-reg_type = "one"
+reg_type = "two"
 
 # Defines number of foldes using on traing
 n_folds = 10
@@ -37,7 +38,7 @@ generate_graphs = False
 iterations = 200
 
 # neural net
-solver='sgd'
+#solver='sgd'
 
 model_params = [reg_type, learning_rate, deg, iterations]
 # -----------------------------------
@@ -58,9 +59,11 @@ train_data = x_train
 train_labels = y_train
 
 # Pre-prossesing data
-#train_data = proc.normalize_l2(train_data)
+#train_data = proc.normalize_l2(train_data) >> ficou ruim
+#train_data = filters.sobel(train_data) >> ficou ruim
 train_data = proc.st_scale(train_data)
-train_data = proc.PCA_reduction(train_data, 1000)
+#train_data = proc.ZCA(train_data) >> não consegui fazer funcionar
+train_data = proc.PCA_reduction(train_data, 300)
 
 # Training process using K-Fold
 models = net.kfold(model_params, train_data, train_labels, n_folds, verbose, generate_graphs)
