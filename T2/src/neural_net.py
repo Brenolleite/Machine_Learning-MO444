@@ -1,64 +1,57 @@
 import numpy as np
 from sklearn.model_selection import KFold, cross_val_predict, train_test_split, learning_curve
-from sklearn.pipeline import make_pipeline
-from sklearn.neural_network import MLPClassifier
+import keras
+from keras.models import Sequential
+from keras.layers import Dense
 import metrics
 
-def create_model(type, learning_rate, deg, iterations):
-    # Create neural network entrada de : 32x32x3 = 3072
-    if type == "one":
-        # Using one hidden layer
-        model = make_pipeline(MLPClassifier(activation='relu',
-                                            learning_rate_init=learning_rate,
-                                            max_iter=iterations,
-                                            momentum=0.9,
-                                            solver='adam',
-                                            alpha=1e-5,
-                                            hidden_layer_sizes=(1000,), # layers, neurons
-                                            random_state=1,
-                                            verbose=True))
-    else:
-        # Using two hidden layers
-        model = make_pipeline(MLPClassifier(activation='relu',
-                                            learning_rate_init=learning_rate,
-                                            max_iter=iterations,
-                                            momentum=0.9,
-                                            solver='adam',
-                                            alpha=1e-5,
-                                            hidden_layer_sizes=(1000,1000), # layers, neurons
-                                            random_state=1,
-                                            verbose=True))
+def create_model(hidden_layers, n_neurons_input, n_neurons, activation, final_activation, loss, optimizer, batch_size, epochs, generate_confusionMatrix):
+    # Create neural network (input: 3072)
+    model = Sequential()
+
+    model.add(Dense(n_neurons, activation=activation, input_shape=(n_neurons_input,)))
+    model.add(Dense(n_neurons, activation=activation))
+    if hidden_layers == 2:
+        model.add(Dense(n_neurons, activation=activation))
+    model.add(Dense(10, activation=final_activation))
+
+    #model.summary()
+
+    model.compile(loss=loss,
+                  optimizer=optimizer,
+                  metrics=['accuracy'])
 
     return model
 
+
 def predict(model, data, labels, verbose):
+
     # Predict data on the validation
     predictions = model.predict(data)
+    if verbose:
+        metrics.confusionMatrix(predictions, labels)
 
     # Compute metrics
-    errors = metrics.compute_errors(predictions, labels, verbose)
+    score = model.evaluate(data, labels, verbose=0)
+    metrics.print_acc_nn(score)
 
-    return errors
+    return score[1]
+
 
 def kfold(model_params, train_data, train_labels, n_folds, verbose, generate_graphs):
     # Create array for storage models and errors
     models = []
-
-    # If tenerate graphs set iterations on model to 1
-    # in order to get cost vs iterations
-    if generate_graphs:
-        iterations = model_params[3]
-        model_params[3] = 1
-        steps = []
-    else:
-        steps = None
-        iterations = 1
+    iterations = 1
+    batch_size = model_params[7]
+    epochs = model_params[8]
+    generate_confusionMatrix = model_params[9]
 
     # Create KFold validation
     kf = KFold(n_splits = n_folds)
     fold = 0
 
     for train, validate in kf.split(train_data, train_labels):
+        
         # Create the model using the params
         model = create_model(*model_params)
 
@@ -68,25 +61,22 @@ def kfold(model_params, train_data, train_labels, n_folds, verbose, generate_gra
 
         for i in range(iterations):
             # Train our model using train set
-            model.fit(train_data[train], train_labels[train].ravel())
+            model.fit(train_data[train], train_labels[train],
+                      batch_size=batch_size,
+                      epochs=epochs,
+                      verbose=1,
+                      validation_data=(train_data[validate], train_labels[validate]))
 
             # Verify on validation set
-            errors = predict(model, train_data[validate], train_labels[validate].ravel(), verbose)
-
-            if generate_graphs:
-                steps.append(errors[0])
+            acc = predict(model, train_data[validate], train_labels[validate], generate_confusionMatrix)
 
         # Store model and erros related to it
-        models.append([model, errors, np.array(steps)])
-
-        # Reset interations counter
-        if generate_graphs:
-            steps = []
+        models.append([model, acc])
 
     # Print avr error
-    print("Average errors on {0}-Fold \n============================\n".format(n_folds))
+    print("Average accuracy on {0}-Fold \n============================\n".format(n_folds))
     models = np.array(models)
-    errors = np.sum(models[:, 1], 0)/n_folds
-    metrics.print_errors(*errors)
+    accs = np.sum(models[:, 1], 0)/n_folds
+    metrics.print_acc(accs)
 
     return models

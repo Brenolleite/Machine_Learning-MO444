@@ -6,67 +6,88 @@ import re
 from PIL import Image
 #from array import array
 import linear_regression as linear
+import logistic_regression as logistic
 import neural_net as net
 import processing as proc
 import graphs
+import keras
 from keras.datasets import cifar10
 import sys
-from skimage import data, io, filters
+#from skimage import data, io, filters
+from scipy.ndimage.filters import sobel
 sys.setrecursionlimit(100000)
 
 # -------------- Params -------------
 
-# Defines type of linear regression / size of hidden layers (one or two)
-reg_type = "two"
+# Defines type model :
+	# "net": neural net
+	#"logistic": logistic regression,
+	#"multinomial": multinomial logistic regression)
+model_type = "net"
+n_folds = 2 # Defines number of foldes using on traing
+verbose = True # Defines verbose flag (debugging mode)
 
-# Defines number of foldes using on traing
-n_folds = 10
+# --- Regression ---
+penalty='l2' 
+solver='lbfgs' #melhor pra grandes dados
+iterations = 50 # Defines number of iterations 
+generate_graphs = False # Defines if should generate graphs
 
-# Defines learning rate
-learning_rate = 0.001
+if model_type == "logistic":
+    multi_class = 'ovr' # one vs rest (sklearn diz que é usado pra abordagem one vs all, e eu respeito o.o)
+else :
+    if model_type == "multinomial":
+        multi_class = 'multinomial'
 
-# Defines degree of function used into linear regretion
-deg = 1
+# --- Neural Network ---
+hidden_layers=1 # 1 or 2
+n_neurons_input=3072 # se usar pca, mudar
+n_neurons=3072
+activation='relu'
+final_activation='softmax'
+loss='categorical_crossentropy'
+optimizer='adadelta'
+batch_size=256
+epochs=1
+n_pca=300
+generate_confusionMatrix=False
 
-# Defines verbose flag (debugging mode)
-verbose = True
+if model_type == "net":
+    # Neural Network
+    model_params = [hidden_layers,n_neurons_input, n_neurons, activation, final_activation, loss, optimizer, batch_size, epochs, generate_confusionMatrix]
+else :
+    # Regression
+    model_params = [penalty, solver, multi_class, iterations]
 
-# Defines if should generate graphs
-generate_graphs = False
-
-# Defines number of iterations on GD
-iterations = 200
-
-# neural net
-#solver='sgd'
-
-model_params = [reg_type, learning_rate, deg, iterations]
 # -----------------------------------
 
 (x_train, y_train), (x_test, y_test) = cifar10.load_data()
 
-#x_train = x_train.astype('float32') / 255. # normalização
-#x_test = x_test.astype('float32') / 255.
-
 x_train = x_train.reshape((len(x_train), np.prod(x_train.shape[1:])))
 x_test = x_test.reshape((len(x_test), np.prod(x_test.shape[1:])))
 
-print x_train.shape
-print x_test.shape
+x_train = x_train.astype('float32') / 255. # normalizing
+x_test = x_test.astype('float32') / 255.
 
-
-train_data = x_train
-train_labels = y_train
+if model_type == "net":
+    # convert class vectors to binary class matrices
+    y_train = keras.utils.to_categorical(y_train, 10)
+    y_test = keras.utils.to_categorical(y_test, 10)
 
 # Pre-prossesing data
 #train_data = proc.normalize_l2(train_data) >> ficou ruim
-#train_data = filters.sobel(train_data) >> ficou ruim
-train_data = proc.st_scale(train_data)
+#for i in range(x_train.shape[0]):
+#    x_train[i] = sobel(x_train[i]) >> ficou ruim
+x_train = proc.st_scale(x_train)
 #train_data = proc.ZCA(train_data) >> não consegui fazer funcionar
-train_data = proc.PCA_reduction(train_data, 300)
+#x_train = proc.PCA_reduction(x_train, n_pca)
+
 
 # Training process using K-Fold
-models = net.kfold(model_params, train_data, train_labels, n_folds, verbose, generate_graphs)
+if model_type == "net":
+    models = net.kfold(model_params, x_train, y_train, n_folds, verbose, generate_graphs)
+else :
+    models = logistic.kfold(model_params, x_train, y_train, n_folds, verbose, generate_graphs)
 
 # Get best model on the K-Fold training using Mean squared error
 best_model = models[models[:, 1][0].argmax()]
