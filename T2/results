@@ -1,0 +1,100 @@
+ruim pca = 2000
+ruim pca = 1000
+bom pca = 500 (45%)
+
+pca melhor sem whiten
+sem pca = 53%
+
+se duas camadas escondidaS: aumentar número de neurônios
+
+
+
+-----Experiment----
+
+-- UMA CAMADA ESCONDIDA:
+
+hidden_layers =		1    # 1 or 2
+n_neurons_input = 	3072 # se usar pca, mudar (3072)
+n_neurons = 		3800
+activation = 		'relu'
+final_activation = 	'sigmoid'
+loss =			'categorical_crossentropy'
+optimizer =		'adadelta'
+Accuracy: 0.57834
+
+activation = 		'tanh'
+final_activation = 	'sigmoid'
+Accuracy: 0.53302
+
+activation = 		'softmax'
+final_activation = 	'sigmoid'
+Accuracy: 0.09594
+
+activation = 		'linear'
+final_activation = 	'sigmoid'
+Accuracy: 0.36724
+
+----
+
+activation = 		'relu'
+final_activation = 	'softmax'
+Accuracy: 0.57808
+
+activation = 		'tanh'
+final_activation = 	'softmax'
+Accuracy: 0.53188
+
+activation = 		'sigmoid'
+final_activation = 	'softmax'
+
+activation = 		'linear'
+final_activation = 	'softmax'
+
+
+-- DUAS CAMADAS ESCONDIDAS:
+
+hidden_layers =		2    # 1 or 2
+n_neurons_input = 	3072 # se usar pca, mudar (3072)
+n_neurons = 		3800
+activation = 		'relu'
+final_activation = 	'sigmoid'
+loss =			'categorical_crossentropy'
+optimizer =		'adadelta'
+Accuracy: 0.5536
+
+activation = 		'tanh'
+final_activation = 	'sigmoid'
+Accuracy: 0.55036
+
+activation = 		'softmax'
+final_activation = 	'sigmoid'
+Accuracy: 0.09594
+
+activation = 		'linear'
+final_activation = 	'sigmoid'
+Accuracy: 0.18814
+
+
+---
+
+activation = 		'relu'
+final_activation = 	'softmax'
+Accuracy: 0.57454
+
+activation = 		'tanh'
+final_activation = 	'softmax'
+Accuracy: 0.54468
+
+activation = 		'sigmoid'
+final_activation = 	'softmax'
+Accuracy: 0.47032
+
+activation = 		'linear'
+final_activation = 	'softmax'
+Accuracy: 0.21712
+
+
+
+
+
+
