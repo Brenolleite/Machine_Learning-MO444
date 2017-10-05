@@ -8,7 +8,7 @@ def scale(data):
 
 # Normalize data
 def st_scale(data):
-    return StandardScaler().fit_transform(data)
+    return StandardScaler(with_mean=True).fit_transform(data) 
 
 # Normalize data
 def normalize_l2(data):
@@ -16,7 +16,7 @@ def normalize_l2(data):
 
 # Reduce Dimensionality using PCA
 def PCA_reduction(data, comp):
-    return PCA(n_components = comp, whiten=True).fit_transform(data)
+    return PCA(n_components = comp).fit_transform(data) # whiten=True
 
 # ZCA whitening
 def ZCA(inputs):

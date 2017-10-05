@@ -20,18 +20,18 @@ sys.setrecursionlimit(100000)
 # -------------- Params -------------
 
 # Defines type model :
-	# "net": neural net
-	#"logistic": logistic regression,
-	#"multinomial": multinomial logistic regression)
-model_type = "net"
-n_folds = 2 # Defines number of foldes using on traing
-verbose = True # Defines verbose flag (debugging mode)
+	#  "net"		: neural net
+	#  "logistic"		: logistic regression,
+	#  "multinomial"	: multinomial logistic regression)
+model_type = 		"net"
+n_folds = 		5 	# Defines number of foldes using on traing
+verbose = 		True 	# Defines verbose flag (debugging mode)
 
 # --- Regression ---
-penalty='l2' 
-solver='lbfgs' #melhor pra grandes dados
-iterations = 50 # Defines number of iterations 
-generate_graphs = False # Defines if should generate graphs
+penalty =		'l2' 
+solver = 		'lbfgs' #melhor pra grande n de dados
+iterations = 		50 	# Defines number of iterations 
+generate_graphs = 	False 	# Defines if should generate graphs
 
 if model_type == "logistic":
     multi_class = 'ovr' # one vs rest (sklearn diz que é usado pra abordagem one vs all, e eu respeito o.o)
@@ -40,16 +40,16 @@ else :
         multi_class = 'multinomial'
 
 # --- Neural Network ---
-hidden_layers=1 # 1 or 2
-n_neurons_input=3072 # se usar pca, mudar
-n_neurons=3072
-activation='relu'
-final_activation='softmax'
-loss='categorical_crossentropy'
-optimizer='adadelta'
-batch_size=256
-epochs=1
-n_pca=300
+hidden_layers =		1    # 1 or 2
+n_neurons_input = 	3072 # se usar pca, mudar (3072)
+n_neurons = 		3800
+activation = 		'sigmoid'
+final_activation = 	'softmax'
+loss =			'categorical_crossentropy'
+optimizer =		'adadelta'
+batch_size =		256
+epochs = 		20
+n_pca = 		500
 generate_confusionMatrix=False
 
 if model_type == "net":
@@ -75,7 +75,7 @@ if model_type == "net":
     y_test = keras.utils.to_categorical(y_test, 10)
 
 # Pre-prossesing data
-#train_data = proc.normalize_l2(train_data) >> ficou ruim
+x_train = proc.normalize_l2(x_train)
 #for i in range(x_train.shape[0]):
 #    x_train[i] = sobel(x_train[i]) >> ficou ruim
 x_train = proc.st_scale(x_train)
@@ -103,8 +103,14 @@ best_model = models[models[:, 1][0].argmax()]
 
 
 # Pre-prossesing test
-#test_data = proc.normalize_l2(test_data)
+#x_test = proc.normalize_l2(x_test)
+#x_test = proc.st_scale(x_test)
 
-# Predicting test
-#print("Results on Test dataset")
-#linear.predict(best_model[0], test_data, test_labels, verbose)
+#model.fit(x_train, y_train,
+#          batch_size=batch_size,
+#          epochs=epochs,
+#          verbose=1,
+#          validation_data=(x_test, y_test))
+#score = model.evaluate(x_test, y_test, verbose=0)
+#metrics.print_acc_nn(score)
+
