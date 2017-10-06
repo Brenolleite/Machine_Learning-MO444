@@ -11,6 +11,17 @@ se duas camadas escondidaS: aumentar número de neurônios
 
 -----Experiment----
 
+-- LOGISTIC REGRESSION 
+
+penalty =		'l2' 
+solver = 		'lbfgs' #melhor pra grande n de dados
+iterations = 		50 	# Defines number of iterations 
+Accuracy: 0.3864
+
+-- MULTINOMIAL
+Accuracy: 0.40034
+
+
 -- UMA CAMADA ESCONDIDA:
 
 hidden_layers =		1    # 1 or 2
@@ -46,9 +57,11 @@ Accuracy: 0.53188
 
 activation = 		'sigmoid'
 final_activation = 	'softmax'
+Accuracy: 0.43534
 
 activation = 		'linear'
 final_activation = 	'softmax'
+Accuracy: 0.36076
 
 
 -- DUAS CAMADAS ESCONDIDAS:
