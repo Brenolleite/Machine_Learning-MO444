@@ -8,7 +8,7 @@ def scale(data):
 
 # Normalize data
 def st_scale(data):
-    return StandardScaler(with_mean=True).fit_transform(data) 
+    return StandardScaler(with_mean=True).fit_transform(data)
 
 # Normalize data
 def normalize_l2(data):
@@ -22,7 +22,6 @@ def PCA_reduction(data, comp):
 def ZCA(inputs):
     sigma = np.dot(inputs, inputs.T)/inputs.shape[1] #Correlation matrix
     U,S,V = np.linalg.svd(sigma) #Singular Value Decomposition
-    print U
     epsilon = 0.1                #Whitening constant, it prevents division by zero
     ZCAMatrix = np.dot(np.dot(U, np.diag(1.0/np.sqrt(np.diag(S) + epsilon))), U.T)                     #ZCA Whitening matrix
     return np.dot(ZCAMatrix, inputs)   #Data whitening

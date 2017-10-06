@@ -33,7 +33,7 @@ def predict(model, data, labels, verbose):
     pred = np.argmax(predictions, axis=1)
     if verbose:
         cm = confusion_matrix(np.argmax(labels,axis=1), pred)
-	metrics.plot_confusion_matrix(cm, classes=class_name, title='Confusion Matrix')
+        metrics.plot_confusion_matrix(cm, classes=class_name, title='Confusion Matrix')
         metrics.plot_confusion_matrix(cm, classes=class_name, normalize=True, title='Normalized Confusion matrix')
 
     # Compute metrics
@@ -56,7 +56,7 @@ def kfold(model_params, train_data, train_labels, n_folds, verbose, generate_gra
     fold = 0
 
     for train, validate in kf.split(train_data, train_labels):
-        
+
         # Create the model using the params
         model = create_model(*model_params)
 
