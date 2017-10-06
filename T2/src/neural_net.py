@@ -4,6 +4,7 @@ import keras
 from keras.models import Sequential
 from keras.layers import Dense
 import metrics
+from sklearn.metrics import accuracy_score, confusion_matrix
 
 def create_model(hidden_layers, n_neurons_input, n_neurons, activation, final_activation, loss, optimizer, batch_size, epochs, generate_confusionMatrix):
     # Create neural network (input: 3072)
@@ -25,11 +26,15 @@ def create_model(hidden_layers, n_neurons_input, n_neurons, activation, final_ac
 
 
 def predict(model, data, labels, verbose):
+    class_name = ["airplane", "automobile", "bird", "cat", "deer", "dog", "frog", "horse", "ship", "truck"]
 
     # Predict data on the validation
-    predictions = model.predict(data)
+    predictions = model.predict(data, verbose=2)
+    pred = np.argmax(predictions, axis=1)
     if verbose:
-        metrics.confusionMatrix(predictions, labels)
+        cm = confusion_matrix(np.argmax(labels,axis=1), pred)
+	metrics.plot_confusion_matrix(cm, classes=class_name, title='Confusion Matrix')
+        metrics.plot_confusion_matrix(cm, classes=class_name, normalize=True, title='Normalized Confusion matrix')
 
     # Compute metrics
     score = model.evaluate(data, labels, verbose=0)
@@ -80,3 +85,22 @@ def kfold(model_params, train_data, train_labels, n_folds, verbose, generate_gra
     metrics.print_acc(accs)
 
     return models
+
+
+def test(model_params, train_data, train_labels, test_data, test_labels):
+    models = []
+    iterations = 1
+    batch_size = model_params[7]
+    epochs = model_params[8]
+    generate_confusionMatrix = model_params[9]
+
+    model = create_model(*model_params)
+    model.fit(train_data, train_labels,
+          batch_size=batch_size,
+          epochs=epochs,
+          verbose=1,
+          validation_data=(test_data, test_labels))
+
+    acc = predict(model, test_data, test_labels, generate_confusionMatrix)
+
+

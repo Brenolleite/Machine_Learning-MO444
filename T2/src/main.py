@@ -40,17 +40,17 @@ else :
         multi_class = 'multinomial'
 
 # --- Neural Network ---
-hidden_layers =		1    # 1 or 2
+hidden_layers =		2    # 1 or 2
 n_neurons_input = 	3072 # se usar pca, mudar (3072)
 n_neurons = 		3800
-activation = 		'sigmoid'
+activation = 		'relu'
 final_activation = 	'softmax'
 loss =			'categorical_crossentropy'
 optimizer =		'adadelta'
 batch_size =		256
 epochs = 		20
 n_pca = 		500
-generate_confusionMatrix=False
+generate_confusionMatrix=True
 
 if model_type == "net":
     # Neural Network
@@ -64,7 +64,7 @@ else :
 (x_train, y_train), (x_test, y_test) = cifar10.load_data()
 
 x_train = x_train.reshape((len(x_train), np.prod(x_train.shape[1:])))
-x_test = x_test.reshape((len(x_test), np.prod(x_test.shape[1:])))
+x_test = x_test.reshape((len(x_test), np.prod(x_test.shape[1:]))) 
 
 x_train = x_train.astype('float32') / 255. # normalizing
 x_test = x_test.astype('float32') / 255.
@@ -84,13 +84,13 @@ x_train = proc.st_scale(x_train)
 
 
 # Training process using K-Fold
-if model_type == "net":
-    models = net.kfold(model_params, x_train, y_train, n_folds, verbose, generate_graphs)
-else :
-    models = logistic.kfold(model_params, x_train, y_train, n_folds, verbose, generate_graphs)
+#if model_type == "net":
+#    models = net.kfold(model_params, x_train, y_train, n_folds, verbose, generate_graphs)
+#else :
+#    models = logistic.kfold(model_params, x_train, y_train, n_folds, verbose, generate_graphs)
 
 # Get best model on the K-Fold training using Mean squared error
-best_model = models[models[:, 1][0].argmax()]
+#best_model = models[models[:, 1][0].argmax()]
 
 #if generate_graphs:
     # learning curve
@@ -103,14 +103,10 @@ best_model = models[models[:, 1][0].argmax()]
 
 
 # Pre-prossesing test
-#x_test = proc.normalize_l2(x_test)
-#x_test = proc.st_scale(x_test)
+x_test = proc.normalize_l2(x_test)
+x_test = proc.st_scale(x_test)
 
-#model.fit(x_train, y_train,
-#          batch_size=batch_size,
-#          epochs=epochs,
-#          verbose=1,
-#          validation_data=(x_test, y_test))
-#score = model.evaluate(x_test, y_test, verbose=0)
-#metrics.print_acc_nn(score)
+# Testing process
+net.test(model_params, x_train, y_train, x_test, y_test)
+
 

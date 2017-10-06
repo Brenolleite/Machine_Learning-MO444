@@ -1,3 +1,6 @@
+normalização diminuiu diferença entre acurácia no conjunto de treino e teste
+
+
 ruim pca = 2000
 ruim pca = 1000
 bom pca = 500 (45%)
@@ -107,7 +110,11 @@ final_activation = 	'softmax'
 Accuracy: 0.21712
 
 
-
-
+--- Resultado de Teste com melhor modelo e matriz de confusão: Usando treino inteiro e teste da base Cifar10
+2 camadas escondidas
+0.58630000000000004
+activation = 		'relu'
+final_activation = 	'softmax'
+20 epochs
 
 
