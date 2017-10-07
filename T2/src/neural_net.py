@@ -12,7 +12,7 @@ def create_model(hidden_layers, n_neurons_input, n_neurons, activation, final_ac
 
     model.add(Dense(n_neurons, activation=activation, input_shape=(n_neurons_input,)))
     model.add(Dense(n_neurons, activation=activation))
-    if hidden_layers == 2:
+    for i in range(hidden_layers):
         model.add(Dense(n_neurons, activation=activation))
     model.add(Dense(10, activation=final_activation))
 

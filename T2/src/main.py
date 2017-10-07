@@ -28,9 +28,9 @@ n_folds = 		5 	# Defines number of foldes using on traing
 verbose = 		True 	# Defines verbose flag (debugging mode)
 
 # --- Regression ---
-penalty =		'l2' 
+penalty =		'l2'
 solver = 		'lbfgs' #melhor pra grande n de dados
-iterations = 		50 	# Defines number of iterations 
+iterations = 		50 	# Defines number of iterations
 generate_graphs = 	False 	# Defines if should generate graphs
 
 if model_type == "logistic":
@@ -40,7 +40,7 @@ else :
         multi_class = 'multinomial'
 
 # --- Neural Network ---
-hidden_layers =		2    # 1 or 2
+hidden_layers =		3    # 1 or 2
 n_neurons_input = 	3072 # se usar pca, mudar (3072)
 n_neurons = 		3800
 activation = 		'relu'
@@ -64,7 +64,7 @@ else :
 (x_train, y_train), (x_test, y_test) = cifar10.load_data()
 
 x_train = x_train.reshape((len(x_train), np.prod(x_train.shape[1:])))
-x_test = x_test.reshape((len(x_test), np.prod(x_test.shape[1:]))) 
+x_test = x_test.reshape((len(x_test), np.prod(x_test.shape[1:])))
 
 x_train = x_train.astype('float32') / 255. # normalizing
 x_test = x_test.astype('float32') / 255.
