@@ -19,38 +19,38 @@ sys.setrecursionlimit(100000)
 
 # -------------- Params -------------
 
-# Defines type model :
-	#  "net"		: neural net
+# Defines type model (model_type):
+	#  "net"		    : neural net
 	#  "logistic"		: logistic regression,
 	#  "multinomial"	: multinomial logistic regression)
-model_type = 		"net"
-n_folds = 		5 	# Defines number of foldes using on traing
+model_type =    "net"
+n_folds = 		5 	    # Defines number of foldes using on traing
 verbose = 		True 	# Defines verbose flag (debugging mode)
 
 # --- Regression ---
-penalty =		'l2'
-solver = 		'lbfgs' #melhor pra grande n de dados
-iterations = 		50 	# Defines number of iterations
-generate_graphs = 	False 	# Defines if should generate graphs
+penalty =		    'l2'
+solver = 		    'lbfgs'     # Melhor pra grande n de dados
+iterations = 		50 	        # Defines number of iterations
+generate_graphs = 	False 	    # Defines if should generate graphs
 
 if model_type == "logistic":
-    multi_class = 'ovr' # one vs rest (sklearn diz que é usado pra abordagem one vs all, e eu respeito o.o)
+    multi_class = 'ovr' # one vs rest
 else :
     if model_type == "multinomial":
         multi_class = 'multinomial'
 
-# --- Neural Network ---
-hidden_layers =		2    # 1 or 2
-n_neurons_input = 	3072 # se usar pca, mudar (3072)
+# --- Neural Network Config---
+hidden_layers =		2
+n_neurons_input = 	3072
 n_neurons = 		3800
 activation = 		'relu'
 final_activation = 	'softmax'
 loss =			'categorical_crossentropy'
-optimizer =		'adadelta'
-batch_size =		256
+optimizer =     'adadelta'
+batch_size =    256
 epochs = 		20
 n_pca = 		500
-generate_confusionMatrix=True
+generate_confusionMatrix = True
 
 if model_type == "net":
     # Neural Network
@@ -61,12 +61,14 @@ else :
 
 # -----------------------------------
 
+# Load CIFAR10 dataset
 (x_train, y_train), (x_test, y_test) = cifar10.load_data()
 
 x_train = x_train.reshape((len(x_train), np.prod(x_train.shape[1:])))
 x_test = x_test.reshape((len(x_test), np.prod(x_test.shape[1:])))
 
-x_train = x_train.astype('float32') / 255. # normalizing
+# Normalizing
+x_train = x_train.astype('float32') / 255.
 x_test = x_test.astype('float32') / 255.
 
 if model_type == "net":
@@ -76,12 +78,14 @@ if model_type == "net":
 
 # Pre-prossesing data
 x_train = proc.normalize_l2(x_train)
-#for i in range(x_train.shape[0]):
-#    x_train[i] = sobel(x_train[i]) >> ficou ruim
-x_train = proc.st_scale(x_train)
-#train_data = proc.ZCA(train_data) >> não consegui fazer funcionar
-#x_train = proc.PCA_reduction(x_train, n_pca)
 
+#for i in range(x_train.shape[0]):
+#    x_train[i] = sobel(x_train[i])
+
+x_train = proc.st_scale(x_train)
+
+#train_data = proc.ZCA(train_data)
+#x_train = proc.PCA_reduction(x_train, n_pca)
 
 # Training process using K-Fold
 #if model_type == "net":
@@ -108,5 +112,3 @@ x_test = proc.st_scale(x_test)
 
 # Testing process
 net.test(model_params, x_train, y_train, x_test, y_test)
-
-

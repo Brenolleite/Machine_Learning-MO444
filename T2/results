@@ -14,11 +14,11 @@ se duas camadas escondidaS: aumentar número de neurônios
 
 -----Experiment----
 
--- LOGISTIC REGRESSION 
+-- LOGISTIC REGRESSION
 
-penalty =		'l2' 
+penalty =		'l2'
 solver = 		'lbfgs' #melhor pra grande n de dados
-iterations = 		50 	# Defines number of iterations 
+iterations = 		50 	# Defines number of iterations
 Accuracy: 0.3864
 
 -- MULTINOMIAL
@@ -108,6 +108,23 @@ Accuracy: 0.47032
 activation = 		'linear'
 final_activation = 	'softmax'
 Accuracy: 0.21712
+
+
+---------------- 3 hidden layers
+
+hidden_layers =		3    # 1 or 2
+n_neurons_input = 	3072 # se usar pca, mudar (3072)
+n_neurons = 		3800
+activation = 		'relu'
+final_activation = 	'sigmoid'
+loss =			'categorical_crossentropy'
+optimizer =		'adadelta'
+
+100 epochs
+Accuracy: 0.5872
+20 epochs
+Accuracy: 0.5632
+
 
 
 --- Resultado de Teste com melhor modelo e matriz de confusão: Usando treino inteiro e teste da base Cifar10
