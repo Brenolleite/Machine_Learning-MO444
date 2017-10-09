@@ -40,7 +40,7 @@ else :
         multi_class = 'multinomial'
 
 # --- Neural Network ---
-hidden_layers =		3    # 1 or 2
+hidden_layers =		2    # 1 or 2
 n_neurons_input = 	3072 # se usar pca, mudar (3072)
 n_neurons = 		3800
 activation = 		'relu'
