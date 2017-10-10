@@ -281,15 +281,13 @@ A Figura~\ref{fig:confusion} mostra a matriz de confusão normalizada para o mod
 	{
 		\setlength{\fboxsep}{1pt}
 		\setlength{\fboxrule}{1pt}
-		\fbox{\includegraphics[scale=0.38]{Images/cm100epochs_norm.png}}
+		\fbox{\includegraphics[scale=0.28]{Images/cm100epochs_norm.png}}
 	}
 	\caption{\small Matriz de confusão obtida considerando o melhor modelo no conjunto de test.}
 	\label{fig:confusion}
 \end{figure}
 
-A matriz de confusão mostra que o modelo proposto é bom em reconhecer aeronaves, cavalos, carros e navios. Porém o mesmo tem muita dificuldade em diferenciar classes como ave, gato, cachorro e veado. O modelo confunde bastante cachorro e gato, assim como gatos e ave e caminhão e carros.
-
-Pode-se perceber que todos as confusões feitas pelo sistema são relacionada a características similares, como por exemplo, cachorro e gato. Reforçando a necessidade de uma maior quantidade de dados representativos para o processo de treinamento para poder utilizar redes com mais camadas que aprenda informações mais complexas sobre as classes propostas nesse trabalho.
+A matriz de confusão mostra que o modelo proposto é bom em reconhecer aeronaves, cavalos, carros e navios. Porém o mesmo tem muita dificuldade em diferenciar classes como ave, gato, cachorro e veado. O modelo confunde bastante cachorro e gato, assim como gatos e ave e caminhão e carros. Pode-se perceber que todos as confusões feitas pelo sistema são relacionada a características similares, como por exemplo, cachorro e gato. Reforçando a necessidade de uma maior quantidade de dados representativos para o processo de treinamento para poder utilizar redes com mais camadas que aprenda informações mais complexas sobre as classes propostas nesse trabalho.
 
 %\begin{thebibliography}{00}
 %\bibitem{b1} Christopher M. Bishop. ``Pattern Recognition and Machine Learning''. Springer-Verlag New York, Inc., Secaucus, NJ, USA, 2006.
@@ -299,10 +297,8 @@ Pode-se perceber que todos as confusões feitas pelo sistema são relacionada a 
 
 \section{Conclusão}
 
-Primeiramente, os resultados obtidos com o conjunto de teste mostram que as regressões logísticas não são bons candidatos para resolver o problema, ou seja, ambas obtiveram resultados inferiores aos outros modelos. Foi observado também que a rede com $4$ camadas apresentou a menor taxa de acurácia no conjunto de teste, e possivelmente tem a necessidade de um maior número de dados para aprender. A rede neural com $3$ camadas escondidas apresentou um resultado melhor do que mostrado no experimento anterior utilizando apenas $50$ épocas. Um dos motivos para essa melhora pode se dar por haver mais dados para o treinamento, quando antes considerava-se a validação cruzada. Os modelos com uma e duas camadas escondidas obtiveram resultados de acurácia melhores. O melhor resultado foi de $0.594$ de acurácia obtido pela rede com uma única camada escondida durante $100$ épocas. Redes com uma camada escondida convergem com menos facilidade para mínimos locais, comparado com redes com muitas camadas escondidas.
+Primeiramente, os resultados obtidos com o conjunto de teste mostram que as regressões logísticas não são bons candidatos para resolver o problema, ou seja, ambas obtiveram resultados inferiores aos outros modelos. Foi observado também que a rede com $4$ camadas apresentou a menor taxa de acurácia no conjunto de teste, e possivelmente tem a necessidade de um maior número de dados para aprender. A rede neural com $3$ camadas escondidas apresentou um resultado melhor do que mostrado no experimento anterior utilizando apenas $50$ épocas. Um dos motivos para essa melhora pode se dar por haver mais dados para o treinamento, quando antes considerava-se a validação cruzada. Os modelos com uma e duas camadas escondidas obtiveram resultados de acurácia melhores. O melhor resultado foi de $0.594$ de acurácia obtido pela rede com uma única camada escondida durante $100$ épocas. Redes com uma camada escondida convergem com menos facilidade para mínimos locais, comparado com redes com muitas camadas escondidas. A melhora dos resultados em geral sobre os obtidos no processo de treinamento pode ser explicado pelo aumento do número de dados utilizados no treinamento, mostrando o quanto o número de dados importante para o processo. Tal melhora permite observar, também, que o modelo não apresentou \emph{overfitting} nos dados. A normalização realizada no pré-processamento dos dados teve significativa importância para tal questão. Acredita-se que processos de gerar novos de dados para treinamento poderiam melhorar o resultado com redes de mais camadas escondidas e provavelmente ultrapassar o resultado obtido com a rede de só uma camada.
 
-A melhora dos resultados em geral sobre os obtidos no processo de treinamento pode ser explicado pelo aumento do número de dados utilizados no treinamento, mostrando o quanto o número de dados importante para o processo. Tal melhora permite observar, também, que o modelo não apresentou \emph{overfitting} nos dados. A normalização realizada no pré-processamento dos dados teve significativa importância para tal questão.
-
-Acredita-se que processos de gerar novos de dados para treinamento poderiam melhorar o resultado com redes de mais camadas escondidas e provavelmente ultrapassar o resultado obtido com a rede de só uma camada.
+Redes neurais artificias mostraram-se ferramentas promissoras para a classificação de objetos considerando um problema multiclasse utilizando como imagens de entrada a base de dados Cifar10.
 
 \end{document}
