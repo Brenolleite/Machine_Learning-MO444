@@ -43,7 +43,7 @@ def predict(model, data, labels, verbose):
     return score[1]
 
 
-def kfold(model_params, train_data, train_labels, n_folds, verbose, generate_graphs):
+def kfold(model_params, train_data, train_labels, n_folds, verbose):
     # Create array for storage models and errors
     models = []
     iterations = 1

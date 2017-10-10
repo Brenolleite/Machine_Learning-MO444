@@ -20,7 +20,7 @@ training = False # Set for k-fold training
 	#  "net"		    : Neural Net
 	#  "logistic"		: Logistic Regression,
 	#  "multinomial"	: Multinomial Logistic Regression)
-model_type =    "logistic"
+model_type =    "net"
 n_folds = 		5 	    # Defines number of foldes using on traing
 verbose = 		True 	# Defines verbose flag (debugging mode)
 
@@ -45,9 +45,9 @@ final_activation = 	'softmax'
 loss             =	'categorical_crossentropy'
 optimizer        =  'adadelta'
 batch_size       =  256
-epochs           =	1
+epochs           =	20
 n_pca            =	500
-confusionMatrix  = True
+confusionMatrix  =  False
 
 if model_type == "net":
     # Neural Network
@@ -100,8 +100,9 @@ if not training:
         # Testing process on neural net
         net.test(model_params, x_train, y_train, x_test, y_test)
     else:
+        print("Testing Logistic Regression on Test dataset")
          # Testing process on logistic regression
         model = logistic.create_model(*model_params)
-        model.fit(x_train, y_train)
-        score = model.score(x_test, y_test)
+        model.fit(x_train, y_train.ravel())
+        score = model.score(x_test, y_test.ravel())
         metrics.print_acc(score)

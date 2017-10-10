@@ -12,9 +12,7 @@ def create_model(penalty, solver, multi_class, iterations):
     model = LogisticRegression(penalty = penalty,
                                solver = solver,
                                multi_class= multi_class,
-                               max_iter = iterations,
-                               warm_start = (iterations == 1),
-                               n_jobs = -1)
+                               max_iter = iterations)
 
     return model
 
@@ -34,12 +32,11 @@ def kfold(model_params, train_data, train_labels, n_folds, verbose):
             print("================== Fold {0} ==========================".format(fold))
         fold += 1
 
-        for i in range(iterations):
-            # Train our model using train set
-            model.fit(train_data[train], train_labels[train].ravel())
+        # Train our model using train set
+        model.fit(train_data[train], train_labels[train].ravel())
 
-            # Verify on validation set
-            score = model.score(train_data[validate], train_labels[validate].ravel())
+        # Verify on validation set
+        score = model.score(train_data[validate], train_labels[validate].ravel())
 
         # Store model and erros related to it
         models.append([model, score])

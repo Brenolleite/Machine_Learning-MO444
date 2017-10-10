@@ -126,6 +126,28 @@ final_activation = 	'sigmoid'
 loss =			'categorical_crossentropy'
 optimizer =		'adadelta'
 
+
+------------------- 4 hidden layers
+
+
+
+--- Resultado de Teste com melhor modelo e matriz de confusão: Usando treino inteiro e teste da base Cifar10
+2 camadas escondidas
+0.58630000000000004
+activation = 		'relu'
+final_activation = 	'softmax'
+20 epochs
+
+---------------- 3 hidden layers
+
+hidden_layers =		3    # 1 or 2
+n_neurons_input = 	3072 # se usar pca, mudar (3072)
+n_neurons = 		3800
+activation = 		'relu'
+final_activation = 	'sigmoid'
+loss =			'categorical_crossentropy'
+optimizer =		'adadelta'
+
 100 epochs
 Accuracy: 0.5872
 20 epochs
@@ -139,11 +161,52 @@ Test loss: {0} 4.87543922005
 Test accuracy: {0} 0.5559
 
 
---- Resultado de Teste com melhor modelo e matriz de confusão: Usando treino inteiro e teste da base Cifar10
-2 camadas escondidas
-0.58630000000000004
-activation = 		'relu'
-final_activation = 	'softmax'
+LOGISTIC
+Accuracy: 0.3911
+
+Testing Logistic Regression on Test dataset
+Accuracy: 0.4022
+
+
+======================
 20 epochs
 
-
+50000/50000 [==============================] - 21s - loss: 1.7268 - acc: 0.3932 - val_loss: 1.5768 - val_acc: 0.4439
+Epoch 2/20
+50000/50000 [==============================] - 18s - loss: 1.3908 - acc: 0.5049 - val_loss: 1.5039 - val_acc: 0.4702
+Epoch 3/20
+50000/50000 [==============================] - 19s - loss: 1.2051 - acc: 0.5704 - val_loss: 1.5583 - val_acc: 0.4854
+Epoch 4/20
+50000/50000 [==============================] - 19s - loss: 1.0407 - acc: 0.6311 - val_loss: 1.4372 - val_acc: 0.5123
+Epoch 5/20
+50000/50000 [==============================] - 19s - loss: 0.8644 - acc: 0.6923 - val_loss: 1.5655 - val_acc: 0.5101
+Epoch 6/20
+50000/50000 [==============================] - 19s - loss: 0.6812 - acc: 0.7577 - val_loss: 1.9138 - val_acc: 0.4716
+Epoch 7/20
+50000/50000 [==============================] - 19s - loss: 0.5025 - acc: 0.8208 - val_loss: 1.7110 - val_acc: 0.5307
+Epoch 8/20
+50000/50000 [==============================] - 19s - loss: 0.3496 - acc: 0.8770 - val_loss: 1.7559 - val_acc: 0.5466
+Epoch 9/20
+50000/50000 [==============================] - 19s - loss: 0.2281 - acc: 0.9204 - val_loss: 2.0891 - val_acc: 0.5466
+Epoch 10/20
+50000/50000 [==============================] - 19s - loss: 0.1555 - acc: 0.9501 - val_loss: 2.4035 - val_acc: 0.5332
+Epoch 11/20
+50000/50000 [==============================] - 19s - loss: 0.1242 - acc: 0.9574 - val_loss: 2.5087 - val_acc: 0.5378
+Epoch 12/20
+50000/50000 [==============================] - 19s - loss: 0.0917 - acc: 0.9700 - val_loss: 2.7221 - val_acc: 0.5451
+Epoch 13/20
+50000/50000 [==============================] - 19s - loss: 0.0768 - acc: 0.9747 - val_loss: 2.7032 - val_acc: 0.5564
+Epoch 14/20
+50000/50000 [==============================] - 19s - loss: 0.0666 - acc: 0.9782 - val_loss: 2.8377 - val_acc: 0.5561
+Epoch 15/20
+50000/50000 [==============================] - 19s - loss: 0.0564 - acc: 0.9820 - val_loss: 2.8984 - val_acc: 0.5608
+Epoch 16/20
+50000/50000 [==============================] - 19s - loss: 0.0476 - acc: 0.9848 - val_loss: 2.9029 - val_acc: 0.5629
+Epoch 17/20
+50000/50000 [==============================] - 19s - loss: 0.0386 - acc: 0.9875 - val_loss: 3.1240 - val_acc: 0.5633
+Epoch 18/20
+50000/50000 [==============================] - 19s - loss: 0.0361 - acc: 0.9887 - val_loss: 3.1481 - val_acc: 0.5620
+Epoch 19/20
+50000/50000 [==============================] - 19s - loss: 0.0339 - acc: 0.9895 - val_loss: 3.2148 - val_acc: 0.5599
+Epoch 20/20
+50000/50000 [==============================] - 19s - loss: 0.0270 - acc: 0.9915 - val_loss: 3.3774 - val_acc: 0.5559

@@ -87,13 +87,26 @@ A principal função utilizada para as camadas da Rede Neural é denominada \tex
 
 Um processo gradual foi adotado para solucionar o problema proposto neste trabalho. Primeiramente uma regressão logística foi aplicada, utilizando o método \emph{one-vs-all}. Em sequência um modelo de regressão multinomial foi implementado, esses modelos foram utilizados como \emph{baseline} para o trabalho.
 
-Com intuito de melhorar os resultados, redes neurais foram utilizadas. Diversos experimentos foram executados para encontrar a melhor configuração da rede. Os experimentos deste trabalho são divididos em treino e teste, na parte de treino um processo de 5-\emph{fold} foi utilizado, onde os dados de teste nunca são utilizados. Após escolher os melhores modelos estes são testados utilizando da base de teste para verificar o resultado da nossa escolha.
+Com intuito de melhorar os resultados, redes neurais foram utilizadas. Diversos experimentos foram executados para encontrar a melhor configuração da rede. Os experimentos estão divididos da seguinte forma: 
+
+\begin{itemize}
+	\item \textbf{Comparação entre regressão logística multinomial e utilizando a técnica \emph{one-vs-all}:} Neste experimento é realizada uma comparação entre a regressão logística utilizando a técnica \emph{one-vs-all} e a regressão logística multinomial, ambas utilizam os mesmos parâmetros. Como esses modelos são utilizados como \emph{baselines} os experimentos são mais superficiais.
+	
+	\item \textbf{Comparação entre diferentes modelos de redes neurais:} 
+\end{itemize}
+
+
+%Todos os experimentos desse trabalho utilizaram o processo de 5-\emph{fold} para treino e validação. Em todos os experimentos os dados foram normalizados e a normalização $l2$ foi utilizada, a mesma mostrou melhores resultados. 
+
+
+%Os experimentos deste trabalho são divididos em treino e teste, na parte de treino um processo de 5-\emph{fold} foi utilizado, onde os dados de teste nunca são utilizados. Após escolher os melhores modelos estes são testados utilizando da base de teste para verificar o resultado da nossa escolha.
 
 \section{Experimentos e Discussões}
 
 Esta seção tem como objetivo mostrar os resultados obtidos pelos modelos desenvolvidos neste trabalho, assim como explicar os diversos experimentos realizados para a escolha do modelo final.
 
-\subsection{}
+\subsection{Regressão Logística}
+
 
 
 
