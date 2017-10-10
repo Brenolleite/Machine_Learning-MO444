@@ -20,8 +20,8 @@ def PCA_reduction(data, comp):
 
 # ZCA whitening
 def ZCA(inputs):
-    sigma = np.dot(inputs, inputs.T)/inputs.shape[1] #Correlation matrix
-    U,S,V = np.linalg.svd(sigma) #Singular Value Decomposition
-    epsilon = 0.1                #Whitening constant, it prevents division by zero
-    ZCAMatrix = np.dot(np.dot(U, np.diag(1.0/np.sqrt(np.diag(S) + epsilon))), U.T)                     #ZCA Whitening matrix
-    return np.dot(ZCAMatrix, inputs)   #Data whitening
+    sigma = np.dot(inputs, inputs.T)/inputs.shape[1]                                #Correlation matrix
+    U,S,V = np.linalg.svd(sigma)                                                    #Singular Value Decomposition
+    epsilon = 0.1                                                                   #Whitening constant, it prevents division by zero
+    ZCAMatrix = np.dot(np.dot(U, np.diag(1.0/np.sqrt(np.diag(S) + epsilon))), U.T)  #ZCA Whitening matrix
+    return np.dot(ZCAMatrix, inputs)                                                #Data whitening

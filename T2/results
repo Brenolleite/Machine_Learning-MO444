@@ -110,6 +110,12 @@ final_activation = 	'softmax'
 Accuracy: 0.21712
 
 
+100 epochs
+
+Test loss: {0} 4.732545224
+Test accuracy: {0} 0.5613
+
+
 ---------------- 3 hidden layers
 
 hidden_layers =		3    # 1 or 2
@@ -125,6 +131,12 @@ Accuracy: 0.5872
 20 epochs
 Accuracy: 0.5632
 
+------------------- 4 hidden layers
+
+100 epochs
+
+Test loss: {0} 4.87543922005
+Test accuracy: {0} 0.5559
 
 
 --- Resultado de Teste com melhor modelo e matriz de confusão: Usando treino inteiro e teste da base Cifar10

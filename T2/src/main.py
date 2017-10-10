@@ -1,15 +1,10 @@
 # -*- coding: utf-8 -*-
 import numpy as np
-from numpy import array
-import os
-import re
 from PIL import Image
-#from array import array
-import linear_regression as linear
 import logistic_regression as logistic
 import neural_net as net
 import processing as proc
-import graphs
+import metrics
 import keras
 from keras.datasets import cifar10
 import sys
@@ -19,17 +14,19 @@ sys.setrecursionlimit(100000)
 
 # -------------- Params -------------
 
+training = False # Set for k-fold training
+
 # Defines type model (model_type):
-	#  "net"		    : neural net
-	#  "logistic"		: logistic regression,
-	#  "multinomial"	: multinomial logistic regression)
-model_type =    "net"
+	#  "net"		    : Neural Net
+	#  "logistic"		: Logistic Regression,
+	#  "multinomial"	: Multinomial Logistic Regression)
+model_type =    "logistic"
 n_folds = 		5 	    # Defines number of foldes using on traing
 verbose = 		True 	# Defines verbose flag (debugging mode)
 
 # --- Regression ---
 penalty =		    'l2'
-solver = 		    'lbfgs'     # Melhor pra grande n de dados
+solver = 		    'lbfgs'
 iterations = 		50 	        # Defines number of iterations
 generate_graphs = 	False 	    # Defines if should generate graphs
 
@@ -40,21 +37,21 @@ else :
         multi_class = 'multinomial'
 
 # --- Neural Network Config---
-hidden_layers =		2
-n_neurons_input = 	3072
-n_neurons = 		3800
-activation = 		'relu'
+hidden_layers    =  2
+n_neurons_input  = 	3072
+n_neurons        =	3800
+activation       =	'relu'
 final_activation = 	'softmax'
-loss =			'categorical_crossentropy'
-optimizer =     'adadelta'
-batch_size =    256
-epochs = 		20
-n_pca = 		500
-generate_confusionMatrix = True
+loss             =	'categorical_crossentropy'
+optimizer        =  'adadelta'
+batch_size       =  256
+epochs           =	1
+n_pca            =	500
+confusionMatrix  = True
 
 if model_type == "net":
     # Neural Network
-    model_params = [hidden_layers,n_neurons_input, n_neurons, activation, final_activation, loss, optimizer, batch_size, epochs, generate_confusionMatrix]
+    model_params = [hidden_layers,n_neurons_input, n_neurons, activation, final_activation, loss, optimizer, batch_size, epochs, confusionMatrix]
 else :
     # Regression
     model_params = [penalty, solver, multi_class, iterations]
@@ -80,35 +77,31 @@ if model_type == "net":
 x_train = proc.normalize_l2(x_train)
 
 #for i in range(x_train.shape[0]):
-#    x_train[i] = sobel(x_train[i])
+#   x_train[i] = sobel(x_train[i])
 
 x_train = proc.st_scale(x_train)
 
-#train_data = proc.ZCA(train_data)
-#x_train = proc.PCA_reduction(x_train, n_pca)
+# train_data = proc.ZCA(train_data)
+# x_train = proc.PCA_reduction(x_train, n_pca)
 
-# Training process using K-Fold
-#if model_type == "net":
-#    models = net.kfold(model_params, x_train, y_train, n_folds, verbose, generate_graphs)
-#else :
-#    models = logistic.kfold(model_params, x_train, y_train, n_folds, verbose, generate_graphs)
+# Trainning process using K-Fold
+if training:
+    if model_type == "net":
+        models = net.kfold(model_params, x_train, y_train, n_folds, verbose)
+    else :
+        models = logistic.kfold(model_params, x_train, y_train, n_folds, verbose)
 
-# Get best model on the K-Fold training using Mean squared error
-#best_model = models[models[:, 1][0].argmax()]
+if not training:
+    # Pre-prossesing test
+    x_test = proc.normalize_l2(x_test)
+    x_test = proc.st_scale(x_test)
 
-#if generate_graphs:
-    # learning curve
-    #graphs.plot_learning_curve(best_model[0].steps[1][1], "TESTE", train_data, train_labels)
-
-    # Generating cost vs iterations
-#    costs = best_model[2]
-#    iterations = np.arange(costs.shape[0]) + 1
-#    graphs.line_plot("CostXInteractions", "Custo vs Iteracoes", "Iteracoes", "Custo", iterations, costs)
-
-
-# Pre-prossesing test
-x_test = proc.normalize_l2(x_test)
-x_test = proc.st_scale(x_test)
-
-# Testing process
-net.test(model_params, x_train, y_train, x_test, y_test)
+    if model_type == "net":
+        # Testing process on neural net
+        net.test(model_params, x_train, y_train, x_test, y_test)
+    else:
+         # Testing process on logistic regression
+        model = logistic.create_model(*model_params)
+        model.fit(x_train, y_train)
+        score = model.score(x_test, y_test)
+        metrics.print_acc(score)

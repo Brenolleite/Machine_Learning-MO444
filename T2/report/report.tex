@@ -74,7 +74,7 @@ A principal função utilizada para as camadas da Rede Neural é denominada \tex
 	\item \textit{units}: Dimensão da saída de cada camada definida como $3800$.
 	\item \textit{activation}: Funções de ativação empregadas nos experimentos: linear, tangente hiperbólica, sigmoidal, relu e softmax. 
 	\item \textit{use\_bias}: Verdadeiro, o vetor de bias é utilizado.
-	\item \textit{kernel\_initializer}: Inicialização das matrizer de pesos utiliza Inicialização uniforme Glorot, definida como padrão.
+	\item \textit{kernel\_initializer}: Inicialização das matrizes de pesos utiliza inicialização uniforme Glorot, definida como padrão.
 	\item \textit{bias\_initializer}: Bias inicializados com $0$.
 	\item \textit{kernel\_regularizer}: Nenhuma função de regularização aplicada `as matrizes de peso.
 	\item \textit{bias\_regularizer}: Nenhuma função de regularização aplicada ao vetor de bias.
@@ -82,6 +82,18 @@ A principal função utilizada para as camadas da Rede Neural é denominada \tex
 	\item \textit{kernel\_constraint}: Nenhuma constante de regularização aplicada `as matrizes de peso.
 	\item \textit{bias\_constraint}: Nenhuma constante de regularização aplicada ao vetor de bias.
 \end{itemize}
+
+\subsection{Metodologia} \label{sec:met}
+
+Um processo gradual foi adotado para solucionar o problema proposto neste trabalho. Primeiramente uma regressão logística foi aplicada, utilizando o método \emph{one-vs-all}. Em sequência um modelo de regressão multinomial foi implementado, esses modelos foram utilizados como \emph{baseline} para o trabalho.
+
+Com intuito de melhorar os resultados, redes neurais foram utilizadas. Diversos experimentos foram executados para encontrar a melhor configuração da rede. Os experimentos deste trabalho são divididos em treino e teste, na parte de treino um processo de 5-\emph{fold} foi utilizado, onde os dados de teste nunca são utilizados. Após escolher os melhores modelos estes são testados utilizando da base de teste para verificar o resultado da nossa escolha.
+
+\section{Experimentos e Discussões}
+
+Esta seção tem como objetivo mostrar os resultados obtidos pelos modelos desenvolvidos neste trabalho, assim como explicar os diversos experimentos realizados para a escolha do modelo final.
+
+\subsection{}
 
 
 
