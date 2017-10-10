@@ -74,15 +74,15 @@ A principal função utilizada para as camadas da Rede Neural é denominada \tex
 
 \begin{itemize}
 	\footnotesize \item \textit{units}: Dimensão da saída de cada camada definida como $3800$.
-	\small \item \textit{activation}: Funções de ativação empregadas nos experimentos: linear, tangente hiperbólica, sigmoidal, relu e softmax. 
-	\small \item \textit{use\_bias}: Verdadeiro, o vetor de bias é utilizado.
-	\small \item \textit{kernel\_initializer}: Inicialização das matrizes de pesos utiliza inicialização uniforme Glorot, definida como padrão.
-	\small \item \textit{bias\_initializer}: Bias inicializados com $0$.
-	\small \item \textit{kernel\_regularizer}: Nenhuma função de regularização aplicada `as matrizes de peso.
-	\small \item \textit{bias\_regularizer}: Nenhuma função de regularização aplicada ao vetor de bias.
-	\small \item \textit{activity\_regularizer}:Nenhuma função de regularização aplicada `a saída da camada.
-	\small \item \textit{kernel\_constraint}: Nenhuma constante de regularização aplicada `as matrizes de peso.
-	\small \item \textit{bias\_constraint}: Nenhuma constante de regularização aplicada ao vetor de bias.
+	\footnotesize \item \textit{activation}: Funções de ativação empregadas nos experimentos: linear, tangente hiperbólica, sigmoidal, relu e softmax. 
+	\footnotesize \item \textit{use\_bias}: Verdadeiro, o vetor de bias é utilizado.
+	\footnotesize \item \textit{kernel\_initializer}: Inicialização das matrizes de pesos utiliza inicialização uniforme Glorot, definida como padrão.
+	\footnotesize \item \textit{bias\_initializer}: Bias inicializados com $0$.
+	\footnotesize \item \textit{kernel\_regularizer}: Nenhuma função de regularização aplicada `as matrizes de peso.
+	\footnotesize \item \textit{bias\_regularizer}: Nenhuma função de regularização aplicada ao vetor de bias.
+	\footnotesize \item \textit{activity\_regularizer}:Nenhuma função de regularização aplicada `a saída da camada.
+	\footnotesize \item \textit{kernel\_constraint}: Nenhuma constante de regularização aplicada `as matrizes de peso.
+	\footnotesize \item \textit{bias\_constraint}: Nenhuma constante de regularização aplicada ao vetor de bias.
 \end{itemize}
 
 \subsection{Metodologia} \label{sec:met}
@@ -229,7 +229,7 @@ A Figura~\ref{fig:grafico} mostra a função de custo por época de cada uma das
 	{
 		\setlength{\fboxsep}{1pt}
 		\setlength{\fboxrule}{1pt}
-		\fbox{\includegraphics[scale=0.3]{Images/Loss.png}}
+		\fbox{\includegraphics[scale=0.28]{Images/Loss.png}}
 	}
 	\caption{Custo por época das redes com diferentes números de camadas escondidas.}
 	\label{fig:grafico}
@@ -292,7 +292,7 @@ A Figura~\ref{fig:confusion} mostra a matriz de confusão normalizada para o mod
 	{
 		\setlength{\fboxsep}{1pt}
 		\setlength{\fboxrule}{1pt}
-		\fbox{\includegraphics[scale=0.3]{Images/cm100epochs_norm.png}}
+		\fbox{\includegraphics[scale=0.28]{Images/cm100epochs_norm.png}}
 	}
 	\caption{Matriz de confusão obtida considerando o melhor modelo no conjunto de test.}
 	\label{fig:confusion}
