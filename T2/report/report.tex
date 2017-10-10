@@ -126,7 +126,7 @@ Após a normalização, os dados foram escalados utilizando a média dos dados. 
 Assim, todos os experimentos consideraram a normalização utilizando a constante $l2$, bem como empregaram a escalabilidade dos dados com a informação da média.
 
 
-\subsection{Regressão Logística}
+\subsection{Baselime: Regressão Logística}
 
 Esta seção mostra os resultados dos modelos de regressão logística utilizados como \emph{baseline} para o trabalho. Todos os experimentos foram feitos na base de treinamento utilizando o processo de validação com 5-\emph{fold}. Alguns testes foram feitos e diversos \emph{solvers} foram testados para as regressões, porém apenas o \emph{solver} $lbfgs$ convergiu. Os resultados das duas regressões logísticas são mostrados na Tabela~\ref{tab:reg}.
 
@@ -145,9 +145,9 @@ Esta seção mostra os resultados dos modelos de regressão logística utilizado
 O resultado obtido pela regressão logística multinomial apresentou a melhor taxa de acurácia. Acredita-se que o principal motivo para a diferença entre as técnicas é causada pelo desbalanceamento que a abordagem \emph{one-vs-all} acaba ocasionando e impossibilitando o modelo de aprender algumas informações relevantes. Porém, pode-se notar que a diferença entre ambos os modelos não é muito significante. Como o intuito do experimento é apenas ter \emph{baseline} para comparação, tal diferença não foi melhor estudada.
 
 
-\subsection{Redes Neurais}
+\subsection{Seleção de Modelos: Redes Neurais}
 
-Com objetivo de tentar obter resultados mais promissores, as redes neurais foram agora empregadas para a tarefa de classificação. Nesta seção os resultados obtidos na base de testes serão apresentados. O intuito desde experimento é escolher a melhor configuração possível para a rede, evitando \emph{overfitting} e possibilitando uma maior acurácia do sistema. A tabela~\ref{tab:1hl} mostra os resultados obtidos por pelos modelos de rede neural com uma camada escondida e utilizando 20 épocas. As seguintes nomenclaturas serão utilizadas nas tabelas apresentadas nessa seção:
+Com objetivo de tentar obter resultados mais promissores, as redes neurais foram agora empregadas para a tarefa de classificação. Nesta seção são apresentados os resultados obtidos a partir de diferentes modelos de redes neurais utilizando a base de treinamento e considerando uma validação com $5$-\emph{folds}. O intuito desde experimento é escolher a melhor configuração possível para a rede, evitando \emph{overfitting} e possibilitando uma maior acurácia do sistema. As seguintes nomenclaturas serão utilizadas nas tabelas apresentadas nessa seção:
 
 \begin{itemize}
 	\item \emph{Func Ativação:} Função de ativação utilizada em todas as camadas da rede, exceto a camada de saída.
@@ -156,6 +156,8 @@ Com objetivo de tentar obter resultados mais promissores, as redes neurais foram
 	
 	\item \emph{Nº Cam Esc:} Número de camadas escondidas presente na rede neural.
 \end{itemize}
+
+ A tabela~\ref{tab:1hl} mostra os resultados obtidos dos experimentos com os modelos de rede neural considerando uma camada escondida e utilizando $20$ épocas.
 
 \begin{table}[h!]
 	\centering
@@ -172,12 +174,13 @@ Com objetivo de tentar obter resultados mais promissores, as redes neurais foram
 		
 		softmax                & sigmoid                      & 0.095      \\ \bottomrule      
 	\end{tabular}
-	\caption{Redes neurais com uma camada escondida.}
+	\caption{Resultados de acurácia média dos $5$-\emph{folds} utilizando redes neurais de uma camada escondida.}
 	\label{tab:1hl}
 \end{table}
 
-Como a tabela mostra o uso das funções relu/softmax e relu/sigmoid obtiveram os melhores resultados para as redes neurais com uma camada escondida. Para verificar modelos de redes mais robustos, experimentos com redes utilizando duas camadas escondidas também foram realizados. Os resultados obtidos por esses modelos são apresentados na Tabela~\ref{tab:2hl}, e os mesmos também utilizaram apenas 20 épocas pois esse número foi suficiente para o modelo convergir.
+Como apresentado na tabela ~\ref{tab:1hl}, o uso das funções \emph{relu/softmax} e \emph{relu/sigmoid} obtiveram os melhores resultados para as redes neurais com uma camada escondida.
 
+A fim de entender o comportamento das mesmas funções em outros modelos de rede, experimentos com redes neurais utilizando duas camadas escondidas também foram realizados. Assim como no experimento realizado com apenas uma camada escondida, foram empregadas $20$ épocas para convergência. Os resultados obtidos por esses modelos são apresentados na Tabela~\ref{tab:2hl}.
 
 \begin{table}[h!]
 	\centering	
@@ -192,11 +195,11 @@ Como a tabela mostra o uso das funções relu/softmax e relu/sigmoid obtiveram o
 		linear                 & sigmoid                      & 0.188             \\
 		softmax                & sigmoid                      & 0.095             \\ \bottomrule      
 	\end{tabular}
-	\caption{Redes neurais com duas camadas escondidas.}
+	\caption{Resultados de acurácia média dos $5$-\emph{folds} utilizando redes neurais com duas camadas escondidas.}
 	\label{tab:2hl}
 \end{table}
 
-Novamente as funções relu e softmax foram as que obtiveram os melhores resultados, indicando que ambas possam ser as melhores a serem utilizadas em nosso modelo. Devido a isso, outros experimentos foram realizados utilizando essas funções e alterando número de épocas e camadas ocultas. Os resultados desses experimentos são mostrados na Tabela~\ref{tab:misc} 
+Novamente as funções \emph{relu} e \emph{softmax} foram as funções que obtiveram os melhores resultados. Tais resultados indicam que tal configuração é apropriada para o problema e base de dados em questão. Outro experimento também foi realizados considerando as funções com melhor resultado e alterando número de épocas e camadas escondidas. Os resultados desses experimentos são apresentados na Tabela~\ref{tab:misc} 
 
 
 \begin{table}[h!]
@@ -214,13 +217,13 @@ Novamente as funções relu e softmax foram as que obtiveram os melhores resulta
 	4                              & 50              & 0.564                \\
 	\bottomrule      
 	\end{tabular}
-	\caption{Redes neurais com as funções relu e softmax em diversos experimentos.}
+	\caption{Resultados de acurácia média dos $5$-\emph{folds} de redes neurais com as funções \emph{relu} e \emph{softmax}.}
 	\label{tab:misc}
 \end{table}
 
-Os resultados mostrar que para redes de uma e duas camadas a partir de 20 épocas a rede começa a convergir, mudando muito pouco o resultado quando as mesmas são aumentadas. Já para redes com mais de duas camadas, podemos ver que 20 épocas não é o suficiente. Redes com 3 camadas obtiveram bons resultados com 100 épocas, talvez um número maior de épocas poderia melhorar o resultado. 
+O experimento permitiu observar que para redes de uma e duas camadas escondidas, o valor de acurácia obtido variou muito pouco quando aumentou-se o número de épocas de $20$ para $50$. Já para redes com mais de $2$ camadas, pode-se observar que $20$ épocas foi suficiente para a convergência da rede utilizando os parâmetros escolhidos na base em questão. As redes com $3$ camadas obtiveram bons resultados com $100$ épocas e um resultado semelhante ao encontrado com apenas uma camada escondida e $20$ épocas. O mesmo acontece com redes de $4$ camadas escondidas. Tal resultado mostra a dificuldade de convergência de redes neurais quando o número de camadas escondidas começa a aumentar. Tal deficiência é motivada pela facilidade com que rede com muitas camadas escondidas têm de convergirem em mínimos locais. Esse obstáculo deve ser solucionado utilizando métodos diferentes de inicialização dos pesos da rede ou de pré-treinamento. Técnicas para aumentar a quantidade de dados baseando-se na criação de novas imagens poderiam, também, ser utilizadas para tentar melhorar a convergência dessas redes.
 
-Já redes com 4 camadas parecem não possuir dados suficientes para o treinamento, um processo de aumentação de dados seria necessário para que redes desse porte fossem utilizadas. A Figura~\ref{fig:grafico} mostra a função de custo por época de cada uma das redes.
+A Figura~\ref{fig:grafico} mostra a função de custo por época de cada uma das redes.
 
 \begin{figure}[!h]
 	\centering
@@ -233,7 +236,7 @@ Já redes com 4 camadas parecem não possuir dados suficientes para o treinament
 	\label{fig:grafico}
 \end{figure}
 
-Podemos perceber que conforme o número de camadas cresce maior é o número de épocas necessárias. Além disso, o gráfico nos mostra que os modelos estão convergindo. Ou seja, o resultados não tendem melhorar muito com o aumento do número de épocas. Isso indica que para o treinamento de redes mais profundas, como 3 e 4 camadas é necessário um maior número de dados. A Tabela~\ref{tab:time} mostra o tempo que os experimentos levam em média por época, mostrando o motivo de épocas maiores que 100 não serem testadas neste trabalho.
+Podemos perceber que conforme o número de camadas cresce maior é o número de épocas necessárias. Além disso, o gráfico nos mostra que os modelos estão convergindo. Ou seja, o resultados não tendem melhorar muito com o aumento do número de épocas. Isso indica que para o treinamento de redes com mais camadas, como $3$ e $4$ camadas, é necessário um maior número de dados. A Tabela~\ref{tab:time} mostra o tempo que os experimentos levam em média por época, mostrando o motivo de épocas maiores que 100 não serem empregadas neste trabalho.
 
 \begin{table}[h!]
 	\centering
@@ -248,9 +251,10 @@ Podemos perceber que conforme o número de camadas cresce maior é o número de 
 	\label{tab:time}
 \end{table}
 
+
 \subsection{Resultado dos melhores modelos na base de testes}
 
-Esta seção tem como objetivo testar a robustez dos melhores modelos encontrados para as redes neurais e regressão lwn user's credentials to access the display server. Thisogística. Em todas as redes neurais a as funções de ativação relu e softmax foram utilizadas. O número de épocas varia entre 20 e 100, devido a necessidade de mais épocas para redes mais profundas generalizarem. A Tabela~\ref{tab:result} mostra os resultados obtidos na base de testes.
+Esta seção tem como objetivo confirmar o resultados obtido com o melhor modelo encontrado para as redes neurais e regressão logística nos experimentos anteriores. Assim, o conjunto de teste foi utilizado para obter tais resultados e confirmar uma boa convergência do modelo também no conjunto de teste, ou seja, sem que haja \emph{overfitting}. Para os experimentos realizados com redes neurais, as funções de ativação \emph{relu} e \emph{softmax} foram utilizadas, variando o número de épocas entre $20$ e $100$. A Tabela~\ref{tab:result} mostra os resultados obtidos na base de teste.
 
 \begin{table}[h!]
 	\centering	
@@ -271,38 +275,38 @@ Esta seção tem como objetivo testar a robustez dos melhores modelos encontrado
 	\label{tab:result}
 \end{table}
 
-Primeiramente os resultados mostram, como o esperado, que as regressões logísticas não são bons candidatos para resolver o problema, ambas obtiveram resultados bem inferiores aos outros modelos. Foi comprovado também que a rede de quatro camadas tem a necessidade de um maior número de dados para aprender.
+Primeiramente os resultados mostram, como o esperado, que as regressões logísticas não são bons candidatos para resolver o problema, ambas obtiveram resultados bem inferiores aos outros modelos. Foi observado também que a rede com $4$ camadas apresentou a menor taxa de acurácia no conjunto de teste, como explicado  tem a necessidade de um maior número de dados para aprender.
 
-Já a rede com três camadas escondidas obteve um resultado melhor do que o esperado, utilizando apenas 50 épocas. Um dos motivos para essa melhora pode ser as 10000 images a mais no processo de treinamento, que durante o k-\emph{fold} eram utilizadas para a validação. Há uma possibilidade desse aumento dos dados de treinamento ter proporcionado essa melhora na rede com três camadas.
+A rede neural com $3$ camadas escondidas apresentou um resultado melhor do que o esperado, utilizando apenas $50$ épocas. Um dos motivos para essa melhora pode se dar por haver mais dados para o treinamento, considerando todo o conjunto de treinamento, quando antes considerava-se a validação cruzada. Há uma possibilidade desse aumento dos dados de treinamento ter proporcionado uma melhora na rede com três camadas.
 
-E como era esperado os modelos com uma e duas camadas escondidas obtiveram resultados melhores, o melhor resultado foi de 0.594 obtido pela rede com uma única camada utilizando 100 épocas. A principal motivo que nos leva a acreditar que ela tenha obtido o melhor resultado é o número suficiente de dados para que o processo de treinamento fosse suficiente. 
+E como era esperado os modelos com uma e duas camadas escondidas obtiveram resultados de acurácia melhores. O melhor resultado foi de $0.594$ de acurácia obtido pela rede com uma única camada escondida durante $100$ épocas. Redes com uma camada escondida convergem com menos facilidade para mínimos locais, comparado com redes com muitas camadas escondidas.
 
-A melhora dos resultados em geral sobre os obtidos no processo de treinamento pode ser explicado pelo aumento do número de dados utilizados no treinamento, mostrando o quanto o número de dados é importante para o processo. 
+A melhora dos resultados em geral sobre os obtidos no processo de treinamento pode ser explicado pelo aumento do número de dados utilizados no treinamento, mostrando o quanto o número de dados importante para o processo. Tal melhora permite observar, também, que o modelo não apresentou \emph{overfitting} nos dados. A normalização realizada no pré-processamento dos dados teve significativa importância para tal questão.
 
-Acreditamos que processos de aumentação de dados poderiam tornar as redes mais profundas (2, 3 e 4) melhores e provavelmente ultrapassar a rede com somente uma camada. O processo de aumentação de dados não foi aplicado neste trabalho, devido a restrições de tempo e recurso.
+Acredita-se que processos de gerar novos de dados para treinamento poderiam melhorar o resultado com redes de mais camadas escondidas e provavelmente ultrapassar o resultado obtido com a rede de só uma camada.
 
-A Figura~\ref{fig:confusion} mostra a matriz de confusão normalizada para o modelo com o melhor resultado (1 camada escondida e 100 épocas).
+A Figura~\ref{fig:confusion} mostra a matriz de confusão normalizada para o modelo com o melhor resultado: 1 camada escondida, 100 épocas e funções de ativação \emph{relu} e \emph{softmax}.
 
 \begin{figure}[!h]
 	\centering
 	{
 		\setlength{\fboxsep}{1pt}
 		\setlength{\fboxrule}{1pt}
-		\fbox{\includegraphics[scale=0.4]{Images/confusionMat_norm.png}}
+		\fbox{\includegraphics[scale=0.4]{Images/cm100epochs_norm.png}}
 	}
-	\caption{Matriz de confusão.}
+	\caption{Matriz de confusão obtida considerando o melhor modelo no conjunto de test.}
 	\label{fig:confusion}
 \end{figure}
 
-A matriz de confusão mostra que o modelo proposto é bom em reconhecer aeronaves, cavalos, carros e navios. Porém o mesmo tem muita dificuldade em reconhecer classes como passaro, gato, cachorro e veado. O modelo confunde bastante cachorro e gato, assim como gatos e passaros e caminhos e carros.
+A matriz de confusão mostra que o modelo proposto é bom em reconhecer aeronaves, cavalos, carros e navios. Porém o mesmo tem muita dificuldade em reconhecer classes como ave, gato, cachorro e veado. O modelo confunde bastante cachorro e gato, assim como gatos e ave e caminhão e carros.
 
-Pode-se perceber que todos as confusões feitas pelo sistema são relacionada a características similares, como por exemplo, cachorro e gato. Re-enforçando a necessidade de uma maior quantidade de dados para o processo de treinamento para poder utilizar redes mais profundas que aprendas informações mais complexas sobre as classes propostas nesse trabalho.
+Pode-se perceber que todos as confusões feitas pelo sistema são relacionada a características similares, como por exemplo, cachorro e gato. Reforçando a necessidade de uma maior quantidade de dados para o processo de treinamento para poder utilizar redes mais profundas que aprendas informações mais complexas sobre as classes propostas nesse trabalho.
 
-\begin{thebibliography}{00}
+%\begin{thebibliography}{00}
 %\bibitem{b1} Christopher M. Bishop. ``Pattern Recognition and Machine Learning''. Springer-Verlag New York, Inc., Secaucus, NJ, USA, 2006.
-\bibitem{b1} Aurélien Géron ``Hands-On Machine Learning with Scikit-Learn and TensorFlow
-Concepts, Tools, and Techniques to Build Intelligent Systems". O'Reilly Media, March 2017.
-\end{thebibliography}
+%\bibitem{b1} Aurélien Géron ``Hands-On Machine Learning with Scikit-Learn and TensorFlow
+%Concepts, Tools, and Techniques to Build Intelligent Systems". O'Reilly Media, March 2017.
+%\end{thebibliography}
 
 
 \end{document}
