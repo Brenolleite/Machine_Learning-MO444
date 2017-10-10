@@ -10,6 +10,7 @@
 \usepackage{textcomp}
 \usepackage{subfig}
 \usepackage{diagbox}
+\usepackage{ctable}
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
@@ -87,25 +88,112 @@ A principal função utilizada para as camadas da Rede Neural é denominada \tex
 
 Um processo gradual foi adotado para solucionar o problema proposto neste trabalho. Primeiramente uma regressão logística foi aplicada, utilizando o método \emph{one-vs-all}. Em sequência um modelo de regressão multinomial foi implementado, esses modelos foram utilizados como \emph{baseline} para o trabalho.
 
-Com intuito de melhorar os resultados, redes neurais foram utilizadas. Diversos experimentos foram executados para encontrar a melhor configuração da rede. Os experimentos estão divididos da seguinte forma: 
+Com intuito de melhorar os resultados, redes neurais foram utilizadas. Diversos experimentos foram executados para encontrar a melhor configuração da rede. A principal métrica utilizada nos experimentos foi a acurácia, que mede em porcentagem a quantidade de acertos na classificação. Os experimentos deste trabalho estão divididos da seguinte forma: 
 
 \begin{itemize}
 	\item \textbf{Comparação entre regressão logística multinomial e utilizando a técnica \emph{one-vs-all}:} Neste experimento é realizada uma comparação entre a regressão logística utilizando a técnica \emph{one-vs-all} e a regressão logística multinomial, ambas utilizam os mesmos parâmetros. Como esses modelos são utilizados como \emph{baselines} os experimentos são mais superficiais.
 	
-	\item \textbf{Comparação entre diferentes modelos de redes neurais:} 
+	\item \textbf{Comparação entre diferentes modelos de redes neurais:} Nesta fase o foco é analisar diferentes modelos para as redes neurais, utilizando diversas funções de ativação e número de camadas.  
+	
+	\item \textbf{Resultados dos melhores modelos na base de teste:} Neste experimento os melhores modelos encontrados serão verificados na base de testes com intuito de provar a sua robustez.
 \end{itemize}
 
 
-%Todos os experimentos desse trabalho utilizaram o processo de 5-\emph{fold} para treino e validação. Em todos os experimentos os dados foram normalizados e a normalização $l2$ foi utilizada, a mesma mostrou melhores resultados. 
-
-
-%Os experimentos deste trabalho são divididos em treino e teste, na parte de treino um processo de 5-\emph{fold} foi utilizado, onde os dados de teste nunca são utilizados. Após escolher os melhores modelos estes são testados utilizando da base de teste para verificar o resultado da nossa escolha.
-
 \section{Experimentos e Discussões}
 
-Esta seção tem como objetivo mostrar os resultados obtidos pelos modelos desenvolvidos neste trabalho, assim como explicar os diversos experimentos realizados para a escolha do modelo final.
+Esta seção tem como objetivo mostrar os resultados obtidos pelos modelos desenvolvidos neste trabalho, assim como explicar os diversos experimentos realizados para a escolha do modelo final. Todos os experimentos desse trabalho utilizaram o processo de 5-\emph{fold} para o processo de treino. Em todos os experimentos os dados foram escalados e a normalização $l2$ foi utilizada. 
+
+Outras técnicas de pré-processamento foram testadas, como PCA para redução de dimensionalidade e aplicar um filtro de Sobel antes da classificação. Essas técnicas não deram bons resultados, e devido a isso não foram utilizadas.
 
 \subsection{Regressão Logística}
+
+Esta seção mostra os resultados dos modelos de regressão logística utilizados como \emph{baseline} para o trabalho. Todos os experimentos foram feitos na base de treinamento utilizando o processo de  no processo de 5-\emph{fold}. Diversos \emph{solvers} foram testados para as regressões, porém apenas o \emph{solver} $lbfgs$ convergiu. Os resultados das duas regressões lineares são mostrados na Tabela~\ref{tab:reg}.
+
+\begin{table}[h!]
+	\centering
+	
+	\begin{tabular}{cc} \toprule
+		\textbf{Regressão Logística} & \textbf{Acurácia} \\ \toprule 	
+		Multinomial		          & \textbf{0.400}    \\
+		\emph{one-vs-all}         & 0.386             \\ \bottomrule
+	\end{tabular}
+	\caption{Comparação das duas técnicas da regressão logística.}
+	\label{tab:reg}
+\end{table}
+
+Os resultados obtidos pela regressão logística multinomial foram melhores, acreditamos que o principal motivo para essa melhora é o desbalanceamento que a técnica \emph{one-vs-all} causa, impossibilitando o modelo de aprender algumas informações relevantes. Porém, pode-se notar que a diferença entre ambos os modelos não é muito significante. Como esse experimento era apenas um \emph{baseline} para a nossa solução, não realizamos outros experimentos para entender essa correlação mais a fundo.
+
+\subsection{Redes Neurais}
+
+Com intuito de obter melhores resultados as redes neurais foram utilizada, nesta seção os resultados obtidos na base de testes serão apresentados. O intuito desde experimento é escolher a melhor configuração possível para a rede, evitando \emph{overfitting} e possibilitando uma maior acurácia do sistema. A tabela~\ref{tab:1hl} mostra os resultados obtidos por pelos modelos de rede neural com uma camada escondida e utilizando 20 épocas. As seguintes nomenclaturas serão utilizadas nas tabelas apresentadas nessa seção:
+
+\begin{itemize}
+	\item \emph{Func Ativação:} Função de ativação utilizada em todas as camadas da rede, exceto a camada de saída.
+	
+	\item \emph{Func Ativação Final:} Função de ativação utilizada na última camada da rede.
+\end{itemize}
+
+\begin{table}[h!]
+	\centering
+	
+	\begin{tabular}{ccc} \toprule
+		\textbf{Func Ativação} & \textbf{Func Ativação Final} & \textbf{Acurácia} \\ \toprule 
+		relu                   & softmax                      & \textbf{0.578}             \\
+		relu                   & sigmoid                      & \textbf{0.578}             \\
+		tanh                   & sigmoid                      & 0.533             \\
+		tanh                   & softmax                      & 0.531             \\	
+		sigmoid                & softmax                      & 0.435             \\
+		linear                 & sigmoid                      & 0.367             \\
+		linear                 & softmax                      & 0.360             \\
+		
+		softmax                & sigmoid                      & 0.095      \\ \bottomrule      
+	\end{tabular}
+	\caption{Redes neurais com uma camada escondida.}
+	\label{tab:1hl}
+\end{table}
+
+Como a tabela mostra o uso das funções relu e softmax e relu e sigmoid obtiveram os melhores resultados para as redes neurais com uma camada escondida. Para verificar modelos de redes mais robustos, experimentos com redes utilizando duas camadas escondidas também foram realizados. Os resultados obtidos por esses modelos são apresentados na Tabela~\ref{tab:2hl}, e os mesmos também utilizaram apenas 20 épocas pois esse número foi suficiente para o modelo convergir.
+
+
+\begin{table}[h!]
+	\centering	
+	\begin{tabular}{ccc} \toprule
+		\textbf{Func Ativação} & \textbf{Func Ativação Final} & \textbf{Acurácia} \\ \toprule 	
+		relu                   & softmax                      & \textbf{0.574}             \\
+		relu                   & sigmoid                      & 0.553             \\
+		tanh                   & softmax                      & 0.544             \\
+		tanh                   & sigmoid                      & 0.550             \\
+		sigmoid                & softmax                      & 0.470             \\
+		linear                 & softmax                      & 0.217             \\
+		linear                 & sigmoid                      & 0.188             \\
+		softmax                & sigmoid                      & 0.095             \\ \bottomrule      
+	\end{tabular}
+	\caption{Redes neurais com duas camadas escondidas.}
+	\label{tab:2hl}
+\end{table}
+
+Novamente as funções relu e softmax foram as que obtiveram os melhores resultados, indicando que ambas possam ser as melhores a serem utilizadas em nosso modelo. Devido a isso, outros experimentos foram realizados utilizando essas funções e alterando número de épocas e camadas ocultas. Os resultados desses experimentos são mostrados na Tabela~\ref{tab:misc} 
+
+
+\begin{table}[h!]
+	\centering
+	
+	\begin{tabular}{ccc} \toprule
+	\textbf{Nº Camadas Escondidas} & \textbf{Épocas} & \textbf{Acurácia}    \\ \toprule 	
+	1                              & 20              & 0.578                \\
+	1                              & 50              & \multicolumn{1}{l}{} \\
+	2                              & 20              & 0.574                \\
+	2                              & 50              &                      \\
+	3                              & 20              &                      \\
+	3                              & 100             & 0.571                \\
+	4                              & 50              &                      \\
+	\bottomrule      
+	\end{tabular}
+	\caption{Redes neurais com as funções relu e softmax em diversos experimentos.}
+	\label{tab:misc}
+\end{table}
+
+
 
 
 
