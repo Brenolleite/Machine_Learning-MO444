@@ -249,11 +249,10 @@ Podemos perceber que conforme o número de camadas cresce maior é o número de 
 
 \subsection{Resultado dos melhores modelos na base de testes}
 
-Esta seção tem como objetivo testar a robustez dos melhores modelos encontrados para as redes neurais e regressão logística. Em todas as redes neurais a as funções de ativação relu e softmax foram utilizadas. O número de épocas varia entre 20 e 100, devido a necessidade de mais épocas para redes mais profundas generalizarem. A Tabela~\ref{tab:result} mostra os resultados obtidos na base de testes.
+Esta seção tem como objetivo testar a robustez dos melhores modelos encontrados para as redes neurais e regressão lwn user's credentials to access the display server. Thisogística. Em todas as redes neurais a as funções de ativação relu e softmax foram utilizadas. O número de épocas varia entre 20 e 100, devido a necessidade de mais épocas para redes mais profundas generalizarem. A Tabela~\ref{tab:result} mostra os resultados obtidos na base de testes.
 
 \begin{table}[h!]
-	\centering
-	
+	\centering	
 	\begin{tabular}{lccc} \toprule
 		\textbf{Modelo} & \textbf{Nº Cam Esc} & \textbf{Épocas} & \textbf{Acurácia}    \\ \toprule 	
 		Reg Logística (\emph{one-vs-all}) & - & - & 0.391 \\
@@ -270,6 +269,33 @@ Esta seção tem como objetivo testar a robustez dos melhores modelos encontrado
 	\caption{Resultado dos modelos desenvolvidos no trabalho.}
 	\label{tab:result}
 \end{table}
+
+Primeiramente os resultados mostram, como o esperado, que as regressões logísticas não são bons candidatos para resolver o problema, ambas obtiveram resultados bem inferiores aos outros modelos. Foi comprovado também que a rede de quatro camadas tem a necessidade de um maior número de dados para aprender.
+
+Já a rede com três camadas escondidas obteve um resultado melhor do que o esperado, utilizando apenas 50 épocas. Um dos motivos para essa melhora pode ser as 10000 images a mais no processo de treinamento, que durante o k-\emph{fold} eram utilizadas para a validação. Há uma possibilidade desse aumento dos dados de treinamento ter proporcionado essa melhora na rede com três camadas.
+
+E como era esperado os modelos com uma e duas camadas escondidas obtiveram resultados melhores, o melhor resultado foi de 0.594 obtido pela rede com uma única camada utilizando 100 épocas. A principal motivo que nos leva a acreditar que ela tenha obtido o melhor resultado é o número suficiente de dados para que o processo de treinamento fosse suficiente. 
+
+A melhora dos resultados em geral sobre os obtidos no processo de treinamento pode ser explicado pelo aumento do número de dados utilizados no treinamento, mostrando o quanto o número de dados é importante para o processo. 
+
+Acreditamos que processos de aumentação de dados poderiam tornar as redes mais profundas (2, 3 e 4) melhores e provavelmente ultrapassar a rede com somente uma camada. O processo de aumentação de dados não foi aplicado neste trabalho, devido a restrições de tempo e recurso.
+
+A Figura~\ref{fig:confusion} mostra a matriz de confusão normalizada para o modelo com o melhor resultado (1 camada escondida e 100 épocas).
+
+\begin{figure}[!h]
+	\centering
+	{
+		\setlength{\fboxsep}{1pt}
+		\setlength{\fboxrule}{1pt}
+		\fbox{\includegraphics[scale=0.4]{Images/confusionMat_norm.png}}
+	}
+	\caption{Matriz de confusão.}
+	\label{fig:confusion}
+\end{figure}
+
+A matriz de confusão mostra que o modelo proposto é bom em reconhecer aeronaves, cavalos, carros e navios. Porém o mesmo tem muita dificuldade em reconhecer classes como passaro, gato, cachorro e veado. O modelo confunde bastante cachorro e gato, assim como gatos e passaros e caminhos e carros.
+
+Pode-se perceber que todos as confusões feitas pelo sistema são relacionada a características similares, como por exemplo, cachorro e gato. Re-enforçando a necessidade de uma maior quantidade de dados para o processo de treinamento para poder utilizar redes mais profundas que aprendas informações mais complexas sobre as classes propostas nesse trabalho.
 
 \begin{thebibliography}{00}
 %\bibitem{b1} Christopher M. Bishop. ``Pattern Recognition and Machine Learning''. Springer-Verlag New York, Inc., Secaucus, NJ, USA, 2006.

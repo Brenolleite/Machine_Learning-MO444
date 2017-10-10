@@ -5,6 +5,7 @@ from keras.models import Sequential
 from keras.layers import Dense
 import metrics
 from sklearn.metrics import accuracy_score, confusion_matrix
+import gradient_checking as grad
 
 def create_model(hidden_layers, n_neurons_input, n_neurons, activation, final_activation, loss, optimizer, batch_size, epochs, generate_confusionMatrix):
     # Create neural network (input: 3072)
@@ -43,7 +44,7 @@ def predict(model, data, labels, verbose):
     return score[1]
 
 
-def kfold(model_params, train_data, train_labels, n_folds, verbose):
+def kfold(model_params, train_data, train_labels, n_folds, verbose, grad_check):
     # Create array for storage models and errors
     models = []
     iterations = 1
@@ -75,6 +76,10 @@ def kfold(model_params, train_data, train_labels, n_folds, verbose):
             # Verify on validation set
             acc = predict(model, train_data[validate], train_labels[validate], generate_confusionMatrix)
 
+            # Check gradient
+            if grad_check:
+                grad.check(model, train_data)
+
         # Store model and erros related to it
         models.append([model, acc])
 
@@ -104,3 +109,20 @@ def test(model_params, train_data, train_labels, test_data, test_labels):
     acc = predict(model, test_data, test_labels, generate_confusionMatrix)
 
 
+def get_gradients(model):
+    """Return the gradient of every trainable weight in model
+
+    Parameters
+    -----------
+    model : a keras model instance
+
+    First, find all tensors which are trainable in the model. Surprisingly,
+    `model.trainable_weights` will return tensors for which
+    trainable=False has been set on their layer (last time I checked), hence the extra check.
+    Next, get the gradients of the loss with respect to the weights.
+
+    """
+    weights = [tensor for tensor in model.trainable_weights if model.get_layer(tensor.name[:-2]).trainable]
+    optimizer = model.optimizer
+
+    return optimizer.get_gradients(model.total_loss, weights)
