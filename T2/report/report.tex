@@ -178,7 +178,6 @@ Com objetivo de tentar obter resultados mais promissores, as redes neurais foram
 
 Como a tabela mostra o uso das funções relu/softmax e relu/sigmoid obtiveram os melhores resultados para as redes neurais com uma camada escondida. Para verificar modelos de redes mais robustos, experimentos com redes utilizando duas camadas escondidas também foram realizados. Os resultados obtidos por esses modelos são apresentados na Tabela~\ref{tab:2hl}, e os mesmos também utilizaram apenas 20 épocas pois esse número foi suficiente para o modelo convergir.
 
-
 \begin{table}[h!]
 	\centering	
 	\begin{tabular}{ccc} \toprule
@@ -197,7 +196,6 @@ Como a tabela mostra o uso das funções relu/softmax e relu/sigmoid obtiveram o
 \end{table}
 
 Novamente as funções relu e softmax foram as que obtiveram os melhores resultados, indicando que ambas possam ser as melhores a serem utilizadas em nosso modelo. Devido a isso, outros experimentos foram realizados utilizando essas funções e alterando número de épocas e camadas ocultas. Os resultados desses experimentos são mostrados na Tabela~\ref{tab:misc} 
-
 
 \begin{table}[h!]
 	\centering
@@ -248,7 +246,9 @@ Podemos perceber que conforme o número de camadas cresce maior é o número de 
 	\label{tab:time}
 \end{table}
 
-\subsection{Resultado dos melhores modelos na base de testes}
+Considerando que todas as redes implementadas neste trabalho utilizam o \emph{framework} do Keras a checagem de gradiente não é necessária, pois sabe-se que a implementação do \emph{framework} está correta. Mesmo sabendo disso houve a tentativa de implementar uma checagem do gradiente para cumprir os requisitos do trabalho, porém devido a restrições do Keras a implementação acabou levando muito tempo e sendo muito complicado, desta forma, foi decidido utilizar esse tempo para realizar outros experimentos ao invés de finalizar a implementação do mesmo.
+
+\subsection{Resultados dos melhores modelos na base de testes}
 
 Esta seção tem como objetivo testar a robustez dos melhores modelos encontrados para as redes neurais e regressão lwn user's credentials to access the display server. Thisogística. Em todas as redes neurais a as funções de ativação relu e softmax foram utilizadas. O número de épocas varia entre 20 e 100, devido a necessidade de mais épocas para redes mais profundas generalizarem. A Tabela~\ref{tab:result} mostra os resultados obtidos na base de testes.
 

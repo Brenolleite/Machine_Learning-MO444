@@ -1,3 +1,2 @@
 Para executar o código é necessário ter o Keras instalado.
-Uma imagem do docker esta sendo
-disponivel para testes caso haja a necessidade (Dockerfile).
+Uma imagem do docker foi criada para facilitar o trabalho de executar o código (Dockerfile).
