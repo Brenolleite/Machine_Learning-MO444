@@ -108,11 +108,11 @@ Com intuito de melhorar os resultados, redes neurais foram utilizadas. Diversos 
 Os experimentos do trabalho estão divididos da seguinte forma: 
 
 \begin{itemize}
-	\item \textbf{Comparação entre regressão logística multinomial e utilizando a técnica \emph{one-vs-all}:} Neste experimento é realizada uma comparação entre a regressão logística utilizando a técnica \emph{one-vs-all} e a regressão logística multinomial, ambas utilizam os mesmos parâmetros. O objetivo desse experimento é encontrar um\emph{baselines}, a configuração de parâmetros não foi muito explorada.
+	\item \small \textbf{Comparação entre regressão logística multinomial e utilizando a técnica \emph{one-vs-all}:} Neste experimento é realizada uma comparação entre a regressão logística utilizando a técnica \emph{one-vs-all} e a regressão logística multinomial, ambas utilizam os mesmos parâmetros. O objetivo desse experimento é encontrar um\emph{baselines}, a configuração de parâmetros não foi muito explorada.
 	
-	\item \textbf{Comparação entre diferentes modelos de redes neurais:} Para esta etapa, o objetivo é analisar diferentes modelos para as redes neurais, utilizando diferentes funções de ativação e números de camadas.  
+	\item \small \textbf{Comparação entre diferentes modelos de redes neurais:} Para esta etapa, o objetivo é analisar diferentes modelos para as redes neurais, utilizando diferentes funções de ativação e números de camadas.  
 	
-	\item \textbf{Resultados dos melhores modelos na base de teste:} Por fim, os melhores modelos encontrados na etapa anterior são aplicados na base de testes com intuito de provar e mostrar a sua robustez.
+	\item \small \textbf{Resultados dos melhores modelos na base de teste:} Por fim, os melhores modelos encontrados na etapa anterior são aplicados na base de testes com intuito de provar e mostrar a sua robustez.
 \end{itemize}
 
 \section{Experimentos e Discussões} \label{sec:exp}
@@ -138,7 +138,7 @@ Esta seção mostra os resultados dos modelos de regressão logística utilizado
 		Multinomial		          & \textbf{0.400}    \\
 		\emph{one-vs-all}         & 0.386             \\ \bottomrule
 	\end{tabular}
-	\caption{Comparação das duas técnicas da regressão logística.}
+	\caption{\small Comparação das duas técnicas da regressão logística.}
  	\label{tab:reg}
 \end{table}
 
@@ -150,11 +150,11 @@ O resultado obtido pela regressão logística multinomial apresentou a melhor ta
 Com objetivo de tentar obter resultados mais promissores, as redes neurais foram agora empregadas para a tarefa de classificação. Nesta seção são apresentados os resultados obtidos a partir de diferentes modelos de redes neurais utilizando a base de treinamento e considerando uma validação com $5$-\emph{folds}. O intuito desde experimento é escolher a melhor configuração possível para a rede, evitando \emph{overfitting} e possibilitando uma maior acurácia do sistema. As seguintes nomenclaturas serão utilizadas nas tabelas apresentadas nessa seção:
 
 \begin{itemize}
-	\item \emph{Func Ativação:} Função de ativação utilizada em todas as camadas da rede, exceto a camada de saída.
+	\item \small \emph{Func Ativação:} Função de ativação utilizada em todas as camadas da rede, exceto a camada de saída.
 	
-	\item \emph{Func Ativação Final:} Função de ativação utilizada na última camada da rede.
+	\item \small \emph{Func Ativação Final:} Função de ativação utilizada na última camada da rede.
 	
-	\item \emph{Nº Cam Esc:} Número de camadas escondidas presente na rede neural.
+	\item \small \emph{Nº Cam Esc:} Número de camadas escondidas presente na rede neural.
 \end{itemize}
 
  A tabela~\ref{tab:1hl} mostra os resultados obtidos dos experimentos com os modelos de rede neural considerando uma camada escondida e utilizando $20$ épocas.
@@ -174,7 +174,7 @@ Com objetivo de tentar obter resultados mais promissores, as redes neurais foram
 		
 		softmax                & sigmoid                      & 0.095      \\ \bottomrule      
 	\end{tabular}
-	\caption{Resultados de acurácia média dos $5$-\emph{folds} utilizando redes neurais de uma camada escondida.}
+	\caption{\small Resultados de acurácia média dos $5$-\emph{folds} utilizando redes neurais de uma camada escondida.}
 	\label{tab:1hl}
 \end{table}
 
@@ -195,7 +195,7 @@ A fim de entender o comportamento das mesmas funções em outros modelos de rede
 		linear                 & sigmoid                      & 0.188             \\
 		softmax                & sigmoid                      & 0.095             \\ \bottomrule      
 	\end{tabular}
-	\caption{Resultados de acurácia média dos $5$-\emph{folds} utilizando redes neurais com duas camadas escondidas.}
+	\caption{\small Resultados de acurácia média dos $5$-\emph{folds} utilizando redes neurais com duas camadas escondidas.}
 	\label{tab:2hl}
 \end{table}
 
@@ -216,7 +216,7 @@ Novamente as funções \emph{relu} e \emph{softmax} foram as funções que obtiv
 	4                              & 50              & 0.564                \\
 	\bottomrule      
 	\end{tabular}
-	\caption{Resultados de acurácia média dos $5$-\emph{folds} de redes neurais com as funções \emph{relu} e \emph{softmax}.}
+	\caption{\small Resultados de acurácia média dos $5$-\emph{folds} de redes neurais com as funções \emph{relu} e \emph{softmax}.}
 	\label{tab:misc}
 \end{table}
 
@@ -231,7 +231,7 @@ A Figura~\ref{fig:grafico} mostra a função de custo por época de cada uma das
 		\setlength{\fboxrule}{1pt}
 		\fbox{\includegraphics[scale=0.28]{Images/Loss.png}}
 	}
-	\caption{Custo por época das redes com diferentes números de camadas escondidas.}
+	\caption{\small Custo por época das redes com diferentes números de camadas escondidas.}
 	\label{fig:grafico}
 \end{figure}
 
@@ -246,7 +246,7 @@ Podemos perceber que conforme o número de camadas cresce maior é o número de 
          GeForce GTX 1060 & 9s         & 12s         & 15s         & 18s \\  
          \toprule
 	\end{tabular}
-	\caption{Tempo dos experimentos por época.}
+	\caption{\small Tempo dos experimentos por época.}
 	\label{tab:time}
 \end{table}
 
@@ -271,7 +271,7 @@ Esta seção tem como objetivo confirmar o resultados obtido com o melhor modelo
 	    
 		\bottomrule      
 	\end{tabular}
-	\caption{Resultado dos modelos desenvolvidos no trabalho.}
+	\caption{\small Resultado dos modelos desenvolvidos no trabalho.}
 	\label{tab:result}
 \end{table}
 
@@ -294,7 +294,7 @@ A Figura~\ref{fig:confusion} mostra a matriz de confusão normalizada para o mod
 		\setlength{\fboxrule}{1pt}
 		\fbox{\includegraphics[scale=0.28]{Images/cm100epochs_norm.png}}
 	}
-	\caption{Matriz de confusão obtida considerando o melhor modelo no conjunto de test.}
+	\caption{\small Matriz de confusão obtida considerando o melhor modelo no conjunto de test.}
 	\label{fig:confusion}
 \end{figure}
 
