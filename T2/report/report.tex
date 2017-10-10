@@ -43,7 +43,7 @@ Os materiais, como a base de dados e pacote utilizados, e a metodologia empregad
 
 \subsection{Base de dados \textit{Cifar-10}} \label{sec:base}
 
-A base de dados \emph{Cifar-10} é utilizada para a validação dos estudos e objetivos propostos para o presente trabalho. A base de dados apresenta imagens de diferentes objetos, bem como o rótulo de cada objeto. O rótulo das imagens de objetos estão dividos em 10 classes, como, por exemplo, avião, carro, ave, gato, veado, cachorro, sapo, cavalo, barco e caminhão. A base de dados apresenta $60.000$ imagens coloridas de tamanho $32 \times 32$ \textit{pixels}, que são  divididas em $50.000$ imagens de treinamento e $10.000$ imagens para teste.
+A base de dados \emph{Cifar-10} é utilizada para a validação dos estudos e objetivos propostos para o presente trabalho. A base de dados apresenta imagens de diferentes objetos, bem como o rótulo de cada objeto. O rótulo das imagens de objetos estão dividos em $10$ classes: avião, carro, ave, gato, veado, cachorro, sapo, cavalo, barco e caminhão. A base de dados apresenta $60.000$ imagens coloridas de tamanho $32 \times 32$ \textit{pixels}, que são  divididas em $50.000$ imagens de treinamento e $10.000$ imagens para teste.
 
 \subsection{Pacote \textit{Scikit-Learn}} \label{sec:pac}
 
@@ -78,16 +78,18 @@ A principal função utilizada para as camadas da Rede Neural é denominada \tex
 	\footnotesize \item \textit{use\_bias}: Verdadeiro, o vetor de bias é utilizado.
 	\footnotesize \item \textit{kernel\_initializer}: Inicialização das matrizes de pesos utiliza inicialização uniforme Glorot, definida como padrão.
 	\footnotesize \item \textit{bias\_initializer}: Bias inicializados com $0$.
-	\footnotesize \item \textit{kernel\_regularizer}: Nenhuma função de regularização aplicada `as matrizes de peso.
-	\footnotesize \item \textit{bias\_regularizer}: Nenhuma função de regularização aplicada ao vetor de bias.
-	\footnotesize \item \textit{activity\_regularizer}:Nenhuma função de regularização aplicada `a saída da camada.
-	\footnotesize \item \textit{kernel\_constraint}: Nenhuma constante de regularização aplicada `as matrizes de peso.
-	\footnotesize \item \textit{bias\_constraint}: Nenhuma constante de regularização aplicada ao vetor de bias.
+	%\footnotesize \item \textit{kernel\_regularizer}: Nenhuma função de regularização aplicada `as matrizes de peso.
+	%\footnotesize \item \textit{bias\_regularizer}: Nenhuma função de regularização aplicada ao vetor de bias.
+	%\footnotesize \item \textit{activity\_regularizer}:Nenhuma função de regularização aplicada `a saída da camada.
+	%\footnotesize \item \textit{kernel\_constraint}: Nenhuma constante de regularização aplicada `as matrizes de peso.
+	%\footnotesize \item \textit{bias\_constraint}: Nenhuma constante de regularização aplicada ao vetor de bias.
 \end{itemize}
+
+Para os parâmetros \textit{kernel\_regularizer}, \textit{bias\_regularizer}, \textit{activity\_regularizer}, \textit{kernel\_constraint} e \textit{bias\_constraint} nenhuma configuração foi feita. Para compilar o modelo, a função \emph{categorical\_crossentropy} foi utilizada por ser adequada a um problema multiclasse, sendo necessário utilizar as classes do problema como vetores de $0$ e $1$, e a função de otimização \emph{adadelta} por convergir mais com mais rapidez ao objetivo.
 
 \subsection{Metodologia} \label{sec:met}
 
-Um processo gradual foi abordado para solucionar o problema proposto neste trabalho, a partir de um modelo de menor complexidade para um modelo de maior complexidade. Primeiramente a técnica Regressão Logística foi aplicada utilizando a abordagem \emph{one-vs-all} para considerar o problema multiclasse. Em sequência um modelo de Regressão Lo Multinomial foi implementado, esses modelos foram utilizados como \emph{baseline} para o trabalho.
+Um processo gradual foi abordado para solucionar o problema proposto neste trabalho, a partir de um modelo de menor complexidade para um modelo de maior complexidade. Primeiramente a técnica Regressão Logística foi aplicada utilizando a abordagem \emph{one-vs-all} para considerar o problema multiclasse. Em sequência um modelo de Regressão Multinomial foi implementado. Tais modelos foram utilizados como \emph{baseline} para o trabalho.
 
 Com intuito de melhorar os resultados, redes neurais foram utilizadas. Diversos experimentos foram executados para encontrar a melhor configuração da rede. A principal métrica utilizada nos experimentos foi a acurácia, que mede em porcentagem a quantidade de acertos na classificação. A Tabela~\ref{tab:config} mostra as GPUs utilizados para os testes realizados nesse trabalho.
 
@@ -101,7 +103,7 @@ Com intuito de melhorar os resultados, redes neurais foram utilizadas. Diversos 
 		  GeForce GTX 1060 & 6072 MiB \\ 
 		 \bottomrule
 	\end{tabular}
-	\caption{Configuração das placas de vídeo utilizadas nos experimentos.}
+	\caption{\small Configuração das placas de vídeo utilizadas nos experimentos.}
 	\label{tab:config}
 \end{table}
 
@@ -117,18 +119,15 @@ Os experimentos do trabalho estão divididos da seguinte forma:
 
 \section{Experimentos e Discussões} \label{sec:exp}
 
-Esta seção tem como objetivo mostrar os resultados obtidos pelos modelos desenvolvidos neste trabalho, assim como explicar os diversos experimentos realizados para a escolha do modelo final. Todos os experimentos desse trabalho utilizaram o processo de validação considerando $5$-\emph{folds} para o processo de treinamento. 
+Esta seção tem como objetivo mostrar os resultados obtidos pelos modelos desenvolvidos neste trabalho, assim como explicar os diversos experimentos realizados para a escolha do modelo final. Todos os experimentos desse trabalho utilizaram o processo de validação considerando $5$-\emph{folds} para o processo de treinamento utilizando o conjunto de treinamento dos dados. 
 
-Como etapa de pré-processamento das imagens da base de dados, algumas técnicas foram consideradas e a biblioteca \emph{Scikit-Learn} foi utilizada. Primeiramente, os dados foram normalizados. Observou-se que a normalização padrão da biblioteca apresentava resultados diferentes comparada com a normalização que utilizava uma constante de regularização $l2$. Comparando a acurácia no conjunto de treinamento e de validação do modelo de redes neurais, observou-se que a normalização original apresentava alta taxa de acurácia de treinamento e baixa acurácia de validação e, ainda, que a diferença entre tais acurácias era reduzida quando utilizava-se a constante $l2$. Assim, o \emph{overfitting} dos dados pôde ser reduzido nesta etapa.
-
-Após a normalização, os dados foram escalados utilizando a média dos dados. Considerando que a dimensão do problema, ou seja, o tamanho das imagens vetorizadas, é de $3.072$, tentou-se reduzir a dimensionalidade do problema.  A técnica \emph{Principal Component Analysis} (PCA) foi empregada considerando os valores de componentes principais de $2.000$, $1.000$, $500$, $300$ e $200$, e para nenhum dos valores o modelo apresentou alguma melhora na taxa de acerto. Observou-se, então que a redução de dimensionalidade não foi relevante para o problema para os valores de componentes principais escolhidos. Com o intuito de ressaltar as informações de contorno dos objetos, o filtro de Sobel foi aplicado. O filtro de Sobel, no entanto, não apresentou uma melhora, quanto a acurácia dos resultados. Acredita-se que a informação de cor deveria ser considerada ao problema e um descritor combinado poderia ter sido empregado. Como o objetivo da presente atividade não era explorar as técnicas para extração de características, o descritor combinado não foi implementado.
+Como etapa de pré-processamento das imagens da base de dados, algumas técnicas foram consideradas e a biblioteca \emph{Scikit-Learn} foi utilizada. Primeiramente, os dados foram normalizados. Comparando a acurácia no conjunto de treinamento e de validação com redes neurais, observou-se que a normalização original apresentava alta acurácia de treinamento e baixa acurácia de validação e, ainda, que a diferença entre tais acurácias era reduzida quando utilizava-se a constante de regularização $l2$. Assim, o \emph{overfitting} dos dados pôde ser reduzido nesta etapa. Após a normalização, os dados foram escalados utilizando a média dos dados. Considerando que a dimensão do problema, ou seja, o tamanho das imagens vetorizadas, é de $3.072$, tentou-se reduzir a dimensionalidade do problema. A técnica \emph{Principal Component Analysis} (PCA) foi empregada considerando os valores de componentes principais de $2.000$, $1.000$, $500$, $300$ e $200$, e para nenhum dos valores o modelo apresentou alguma melhora na taxa de acurácia. Com o intuito de ressaltar as informações de contorno dos objetos, o filtro de Sobel foi aplicado. O filtro de Sobel, no entanto, não apresentou uma melhora quanto aos resultados. Acredita-se que a informação de cor deveria ser considerada ao problema e um descritor combinado ter sido empregado para obter melhores resultados.
 
 Assim, todos os experimentos consideraram a normalização utilizando a constante $l2$, bem como empregaram a escalabilidade dos dados com a informação da média.
 
-
 \subsection{Baselime: Regressão Logística}
 
-Esta seção mostra os resultados dos modelos de regressão logística utilizados como \emph{baseline} para o trabalho. Todos os experimentos foram feitos na base de treinamento utilizando o processo de validação com 5-\emph{fold}. Alguns testes foram feitos e diversos \emph{solvers} foram testados para as regressões, porém apenas o \emph{solver} $lbfgs$ convergiu. Os resultados das duas regressões logísticas são mostrados na Tabela~\ref{tab:reg}.
+Esta seção mostra os resultados dos modelos de regressão logística utilizados como \emph{baseline} para o trabalho. Alguns testes foram feitos e diversos \emph{solvers} foram testados para as regressões, porém apenas o \emph{solver} $lbfgs$ convergiu. Os resultados das duas regressões logísticas são mostrados na Tabela~\ref{tab:reg}.
 
 \begin{table}[h!]
 	\centering
@@ -142,18 +141,16 @@ Esta seção mostra os resultados dos modelos de regressão logística utilizado
  	\label{tab:reg}
 \end{table}
 
-O resultado obtido pela regressão logística multinomial apresentou a melhor taxa de acurácia. Acredita-se que o principal motivo para a diferença entre as técnicas é causada pelo desbalanceamento que a abordagem \emph{one-vs-all} acaba ocasionando e impossibilitando o modelo de aprender algumas informações relevantes. Porém, pode-se notar que a diferença entre ambos os modelos não é muito significante. Como o intuito do experimento é apenas ter \emph{baseline} para comparação, tal diferença não foi melhor estudada.
+O resultado obtido pela regressão logística multinomial apresentou a melhor taxa de acurácia. Acredita-se que o principal motivo para a diferença entre as técnicas é causada pelo desbalanceamento que a abordagem \emph{one-vs-all} acaba ocasionando e impossibilitando que o modelo aprenda algumas informações relevantes. Porém, pode-se notar que a diferença entre ambos os modelos não é muito significante. Como o intuito do experimento é apenas ter \emph{baseline} para comparação, tal diferença não foi melhor estudada.
 
 
 \subsection{Seleção de Modelos: Redes Neurais}
 
-Com objetivo de tentar obter resultados mais promissores, as redes neurais foram agora empregadas para a tarefa de classificação. Nesta seção são apresentados os resultados obtidos a partir de diferentes modelos de redes neurais utilizando a base de treinamento e considerando uma validação com $5$-\emph{folds}. O intuito desde experimento é escolher a melhor configuração possível para a rede, evitando \emph{overfitting} e possibilitando uma maior acurácia do sistema. As seguintes nomenclaturas serão utilizadas nas tabelas apresentadas nessa seção:
+Com objetivo de tentar obter resultados mais promissores, as redes neurais foram agora empregadas para a tarefa de classificação. Nesta seção são apresentados os resultados obtidos a partir de diferentes modelos de redes neurais. O intuito desde experimento é escolher a melhor configuração possível para a rede, evitando \emph{overfitting} e possibilitando uma maior acurácia do sistema. A quantidade de neurônios na camada escondida foi escolhida considerando uma quantidade maior do que a de entrada, ou seja, de $3072$. Alguns experimentos foram realizados neste sentido. Para um número de neurônios da camada escondida igual ao de entrada, o modelo não apresentou bons resultados. Quando se aumentava o número de neurônios da camada escondida, os resultados melhoravam. Optou-se, então, por um número alto que pudesse guardar mais informação, mas que não demorasse muito para computar, isto é, $3800$ neurônios. As seguintes nomenclaturas serão utilizadas nas tabelas apresentadas nessa seção:
 
 \begin{itemize}
 	\item \small \emph{Func Ativação:} Função de ativação utilizada em todas as camadas da rede, exceto a camada de saída.
-	
 	\item \small \emph{Func Ativação Final:} Função de ativação utilizada na última camada da rede.
-	
 	\item \small \emph{Nº Cam Esc:} Número de camadas escondidas presente na rede neural.
 \end{itemize}
 
@@ -235,7 +232,7 @@ A Figura~\ref{fig:grafico} mostra a função de custo por época de cada uma das
 	\label{fig:grafico}
 \end{figure}
 
-Podemos perceber que conforme o número de camadas cresce maior é o número de épocas necessárias. Além disso, o gráfico nos mostra que os modelos estão convergindo. Ou seja, o resultados não tendem melhorar muito com o aumento do número de épocas. Isso indica que para o treinamento de redes com mais camadas, como $3$ e $4$ camadas, é necessário um maior número de dados. A Tabela~\ref{tab:time} mostra o tempo que os experimentos levam em média por época, mostrando o motivo de épocas maiores que 100 não serem empregadas neste trabalho.
+Pode-se perceber que conforme o número de camadas cresce, maior é o número de épocas necessárias. Além disso, o gráfico nos mostra que os modelos estão convergindo. Ou seja, o resultados não tendem melhorar muito com o aumento do número de épocas. Isso indica que para o treinamento de redes com mais camadas, como $3$ e $4$ camadas, é necessário um maior número de dados. A Tabela~\ref{tab:time} mostra o tempo que os experimentos levam em média por época, mostrando o motivo de épocas maiores que 100 não serem empregadas neste trabalho.
 
 \begin{table}[h!]
 	\centering
@@ -275,15 +272,7 @@ Esta seção tem como objetivo confirmar o resultados obtido com o melhor modelo
 	\label{tab:result}
 \end{table}
 
-Primeiramente os resultados mostram, como o esperado, que as regressões logísticas não são bons candidatos para resolver o problema, ambas obtiveram resultados bem inferiores aos outros modelos. Foi observado também que a rede com $4$ camadas apresentou a menor taxa de acurácia no conjunto de teste, como explicado  tem a necessidade de um maior número de dados para aprender.
-
-A rede neural com $3$ camadas escondidas apresentou um resultado melhor do que o esperado, utilizando apenas $50$ épocas. Um dos motivos para essa melhora pode se dar por haver mais dados para o treinamento, considerando todo o conjunto de treinamento, quando antes considerava-se a validação cruzada. Há uma possibilidade desse aumento dos dados de treinamento ter proporcionado uma melhora na rede com três camadas.
-
-E como era esperado os modelos com uma e duas camadas escondidas obtiveram resultados de acurácia melhores. O melhor resultado foi de $0.594$ de acurácia obtido pela rede com uma única camada escondida durante $100$ épocas. Redes com uma camada escondida convergem com menos facilidade para mínimos locais, comparado com redes com muitas camadas escondidas.
-
-A melhora dos resultados em geral sobre os obtidos no processo de treinamento pode ser explicado pelo aumento do número de dados utilizados no treinamento, mostrando o quanto o número de dados importante para o processo. Tal melhora permite observar, também, que o modelo não apresentou \emph{overfitting} nos dados. A normalização realizada no pré-processamento dos dados teve significativa importância para tal questão.
-
-Acredita-se que processos de gerar novos de dados para treinamento poderiam melhorar o resultado com redes de mais camadas escondidas e provavelmente ultrapassar o resultado obtido com a rede de só uma camada.
+Os resultados mostram que o melhor resultado obtido no conjunto de teste foi utilizando rede neural com uma camada escondida, o que confirma os resultados obtidos com o experimento no conjunto de treinamento.
 
 A Figura~\ref{fig:confusion} mostra a matriz de confusão normalizada para o modelo com o melhor resultado: 1 camada escondida, 100 épocas e funções de ativação \emph{relu} e \emph{softmax}.
 
@@ -292,15 +281,15 @@ A Figura~\ref{fig:confusion} mostra a matriz de confusão normalizada para o mod
 	{
 		\setlength{\fboxsep}{1pt}
 		\setlength{\fboxrule}{1pt}
-		\fbox{\includegraphics[scale=0.28]{Images/cm100epochs_norm.png}}
+		\fbox{\includegraphics[scale=0.38]{Images/cm100epochs_norm.png}}
 	}
 	\caption{\small Matriz de confusão obtida considerando o melhor modelo no conjunto de test.}
 	\label{fig:confusion}
 \end{figure}
 
-A matriz de confusão mostra que o modelo proposto é bom em reconhecer aeronaves, cavalos, carros e navios. Porém o mesmo tem muita dificuldade em reconhecer classes como ave, gato, cachorro e veado. O modelo confunde bastante cachorro e gato, assim como gatos e ave e caminhão e carros.
+A matriz de confusão mostra que o modelo proposto é bom em reconhecer aeronaves, cavalos, carros e navios. Porém o mesmo tem muita dificuldade em diferenciar classes como ave, gato, cachorro e veado. O modelo confunde bastante cachorro e gato, assim como gatos e ave e caminhão e carros.
 
-Pode-se perceber que todos as confusões feitas pelo sistema são relacionada a características similares, como por exemplo, cachorro e gato. Reforçando a necessidade de uma maior quantidade de dados para o processo de treinamento para poder utilizar redes mais profundas que aprenda informações mais complexas sobre as classes propostas nesse trabalho.
+Pode-se perceber que todos as confusões feitas pelo sistema são relacionada a características similares, como por exemplo, cachorro e gato. Reforçando a necessidade de uma maior quantidade de dados representativos para o processo de treinamento para poder utilizar redes com mais camadas que aprenda informações mais complexas sobre as classes propostas nesse trabalho.
 
 %\begin{thebibliography}{00}
 %\bibitem{b1} Christopher M. Bishop. ``Pattern Recognition and Machine Learning''. Springer-Verlag New York, Inc., Secaucus, NJ, USA, 2006.
@@ -308,5 +297,12 @@ Pode-se perceber que todos as confusões feitas pelo sistema são relacionada a 
 %Concepts, Tools, and Techniques to Build Intelligent Systems". O'Reilly Media, March 2017.
 %\end{thebibliography}
 
+\section{Conclusão}
+
+Primeiramente, os resultados obtidos com o conjunto de teste mostram que as regressões logísticas não são bons candidatos para resolver o problema, ou seja, ambas obtiveram resultados inferiores aos outros modelos. Foi observado também que a rede com $4$ camadas apresentou a menor taxa de acurácia no conjunto de teste, e possivelmente tem a necessidade de um maior número de dados para aprender. A rede neural com $3$ camadas escondidas apresentou um resultado melhor do que mostrado no experimento anterior utilizando apenas $50$ épocas. Um dos motivos para essa melhora pode se dar por haver mais dados para o treinamento, quando antes considerava-se a validação cruzada. Os modelos com uma e duas camadas escondidas obtiveram resultados de acurácia melhores. O melhor resultado foi de $0.594$ de acurácia obtido pela rede com uma única camada escondida durante $100$ épocas. Redes com uma camada escondida convergem com menos facilidade para mínimos locais, comparado com redes com muitas camadas escondidas.
+
+A melhora dos resultados em geral sobre os obtidos no processo de treinamento pode ser explicado pelo aumento do número de dados utilizados no treinamento, mostrando o quanto o número de dados importante para o processo. Tal melhora permite observar, também, que o modelo não apresentou \emph{overfitting} nos dados. A normalização realizada no pré-processamento dos dados teve significativa importância para tal questão.
+
+Acredita-se que processos de gerar novos de dados para treinamento poderiam melhorar o resultado com redes de mais camadas escondidas e provavelmente ultrapassar o resultado obtido com a rede de só uma camada.
 
 \end{document}
