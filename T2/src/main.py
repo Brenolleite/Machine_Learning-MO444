@@ -14,7 +14,8 @@ sys.setrecursionlimit(100000)
 
 # -------------- Params -------------
 
-training = False # Set for k-fold training
+training = False    # Set for k-fold training
+grad_check = False  # Gradient checking (not working)
 
 # Defines type model (model_type):
 	#  "net"		    : Neural Net
@@ -37,7 +38,7 @@ else :
         multi_class = 'multinomial'
 
 # --- Neural Network Config---
-hidden_layers    =  2
+hidden_layers    =  1
 n_neurons_input  = 	3072
 n_neurons        =	3800
 activation       =	'relu'
@@ -45,7 +46,7 @@ final_activation = 	'softmax'
 loss             =	'categorical_crossentropy'
 optimizer        =  'adadelta'
 batch_size       =  256
-epochs           =	20
+epochs           =	100
 n_pca            =	500
 confusionMatrix  =  False
 
@@ -87,7 +88,7 @@ x_train = proc.st_scale(x_train)
 # Trainning process using K-Fold
 if training:
     if model_type == "net":
-        models = net.kfold(model_params, x_train, y_train, n_folds, verbose)
+        models = net.kfold(model_params, x_train, y_train, n_folds, verbose, grad_check)
     else :
         models = logistic.kfold(model_params, x_train, y_train, n_folds, verbose)
 
