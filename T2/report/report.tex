@@ -51,18 +51,18 @@ Os modelos desenvolvidos para a Regressão Logística foram implementados utiliz
 
 A configuração dos parâmetros da função \emph{LogisticRegression} foi dada da seguinte forma:
 \begin{itemize}
-	\item \textit{penalty}: Uma penalidade que utiliza uma constante de regularização \textit{l2} é utilizada para obter uma solução esparsa.
-	\item \textit{dual}: Falso, uma formulação primária é utilizada devido ao número de amostras ser maior que o número de características.
-	\item \textit{tol}: Valor de tolerância utilizado como critério de parada de $0.0001$.
-	\item \textit{C}: Valor responsável por controlar a força da regularização adicionada atribuído como $1$.
-	\item \textit{fit\_intercept}: Verdadeiro, ou seja, a intersecção com o eixo y é calculada.
-	\item \textit{intercept\_scaling}: Falso, pois é incompatível com o algoritmo de otimização escolhido.
-	\item \textit{class\_weight}: Nenhum tipo de balanceamento, uma vez que o conjunto de dados é balanceado.
-	\item \textit{random\_state}: Nenhum tipo de randomização é adicionada, pois é incompatível com o algoritmo de otimização escolhido.
-	\item \textit{solver}: Algoritmo de otimização escolhido definido como \textit{lbfgs}, apropriado para o problema multiclasse.
-	\item \textit{max\_iter}: Número máximo de iterações definido como $50$.
-	\item \textit{multi\_class}: Parâmetro que define se o problema deve ser encarado como \textit{one vs rest} ou \textit{multinomial}. A documentação do pacote define o problema \textit{one vs all} com mesmo parâmetro para o problema \textit{one vs rest}. Ambos os parâmetros são abordados no presente trabalho. 
-	\item \textit{warm\_start}: Falso, não se utiliza coeficientes obtidos anteriormente.
+	\small \item \textit{penalty}: Uma penalidade que utiliza uma constante de regularização \small \textit{l2} é utilizada para obter uma solução esparsa.
+	\small \item \textit{dual}: Falso, uma formulação primária é utilizada devido ao número de amostras ser maior que o número de características.
+	\small \item \textit{tol}: Valor de tolerância utilizado como critério de parada de $0.0001$.
+	\small \item \textit{C}: Valor responsável por controlar a força da regularização adicionada atribuído como $1$.
+	\small \item \textit{fit\_intercept}: Verdadeiro, ou seja, a intersecção com o eixo y é calculada.
+	\small \item \textit{intercept\_scaling}: Falso, pois é incompatível com o algoritmo de otimização escolhido.
+	\small \item \textit{class\_weight}: Nenhum tipo de balanceamento, uma vez que o conjunto de dados é balanceado.
+	\small \item \textit{random\_state}: Nenhum tipo de randomização é adicionada, pois é incompatível com o algoritmo de otimização escolhido.
+	\small \item \textit{solver}: Algoritmo de otimização escolhido definido como \textit{lbfgs}, apropriado para o problema multiclasse.
+	\small \item \textit{max\_iter}: Número máximo de iterações definido como $50$.
+	\small \item \textit{multi\_class}: Parâmetro que define se o problema deve ser encarado como \textit{one vs rest} ou \textit{multinomial}. A documentação do pacote define o problema \textit{one vs all} com mesmo parâmetro para o problema \textit{one vs rest}. Ambos os parâmetros são abordados no presente trabalho. 
+	\small \item \textit{warm\_start}: Falso, não se utiliza coeficientes obtidos anteriormente.
 \end{itemize}
 
 
@@ -73,16 +73,16 @@ Já para os modelos desenvolvidos considerando Rede Neural, uma biblioteca de in
 A principal função utilizada para as camadas da Rede Neural é denominada \textit{Dense}. Tal função é capaz de representar redes neurais multicamadas totalmente conectada. A configuração de parâmetros é dada como segue:
 
 \begin{itemize}
-	\item \textit{units}: Dimensão da saída de cada camada definida como $3800$.
-	\item \textit{activation}: Funções de ativação empregadas nos experimentos: linear, tangente hiperbólica, sigmoidal, relu e softmax. 
-	\item \textit{use\_bias}: Verdadeiro, o vetor de bias é utilizado.
-	\item \textit{kernel\_initializer}: Inicialização das matrizes de pesos utiliza inicialização uniforme Glorot, definida como padrão.
-	\item \textit{bias\_initializer}: Bias inicializados com $0$.
-	\item \textit{kernel\_regularizer}: Nenhuma função de regularização aplicada `as matrizes de peso.
-	\item \textit{bias\_regularizer}: Nenhuma função de regularização aplicada ao vetor de bias.
-	\item \textit{activity\_regularizer}:Nenhuma função de regularização aplicada `a saída da camada.
-	\item \textit{kernel\_constraint}: Nenhuma constante de regularização aplicada `as matrizes de peso.
-	\item \textit{bias\_constraint}: Nenhuma constante de regularização aplicada ao vetor de bias.
+	\small \item \textit{units}: Dimensão da saída de cada camada definida como $3800$.
+	\small \item \textit{activation}: Funções de ativação empregadas nos experimentos: linear, tangente hiperbólica, sigmoidal, relu e softmax. 
+	\small \item \textit{use\_bias}: Verdadeiro, o vetor de bias é utilizado.
+	\small \item \textit{kernel\_initializer}: Inicialização das matrizes de pesos utiliza inicialização uniforme Glorot, definida como padrão.
+	\small \item \textit{bias\_initializer}: Bias inicializados com $0$.
+	\small \item \textit{kernel\_regularizer}: Nenhuma função de regularização aplicada `as matrizes de peso.
+	\small \item \textit{bias\_regularizer}: Nenhuma função de regularização aplicada ao vetor de bias.
+	\small \item \textit{activity\_regularizer}:Nenhuma função de regularização aplicada `a saída da camada.
+	\small \item \textit{kernel\_constraint}: Nenhuma constante de regularização aplicada `as matrizes de peso.
+	\small \item \textit{bias\_constraint}: Nenhuma constante de regularização aplicada ao vetor de bias.
 \end{itemize}
 
 \subsection{Metodologia} \label{sec:met}
