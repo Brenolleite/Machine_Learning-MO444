@@ -88,7 +88,23 @@ A principal função utilizada para as camadas da Rede Neural é denominada \tex
 
 Um processo gradual foi adotado para solucionar o problema proposto neste trabalho. Primeiramente uma regressão logística foi aplicada, utilizando o método \emph{one-vs-all}. Em sequência um modelo de regressão multinomial foi implementado, esses modelos foram utilizados como \emph{baseline} para o trabalho.
 
-Com intuito de melhorar os resultados, redes neurais foram utilizadas. Diversos experimentos foram executados para encontrar a melhor configuração da rede. A principal métrica utilizada nos experimentos foi a acurácia, que mede em porcentagem a quantidade de acertos na classificação. Os experimentos deste trabalho estão divididos da seguinte forma: 
+Com intuito de melhorar os resultados, redes neurais foram utilizadas. Diversos experimentos foram executados para encontrar a melhor configuração da rede. A principal métrica utilizada nos experimentos foi a acurácia, que mede em porcentagem a quantidade de acertos na classificação. A Tabela~\ref{tab:config} mostra as GPUs utilizados para os testes realizados nesse trabalho.
+
+
+% comando nvidia-smi voce consegue ver (vc provavelmente sabe, mas se precisar ta aqui)
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{lc} \toprule
+		  \textbf{GPU} & \textbf{GPU Memory} \\ \toprule 	
+		  GeForce GTX 980 & 4043 MiB \\ 
+		  ??????????? & ?????????? \\ 
+		 \bottomrule
+	\end{tabular}
+	\caption{Configuração das placas de vídeo utilizadas nos experimentos.}
+	\label{tab:config}
+\end{table}
+
+Os experimentos do trabalho estão divididos da seguinte forma: 
 
 \begin{itemize}
 	\item \textbf{Comparação entre regressão logística multinomial e utilizando a técnica \emph{one-vs-all}:} Neste experimento é realizada uma comparação entre a regressão logística utilizando a técnica \emph{one-vs-all} e a regressão logística multinomial, ambas utilizam os mesmos parâmetros. Como esses modelos são utilizados como \emph{baselines} os experimentos são mais superficiais.
@@ -131,6 +147,8 @@ Com intuito de obter melhores resultados as redes neurais foram utilizada, nesta
 	\item \emph{Func Ativação:} Função de ativação utilizada em todas as camadas da rede, exceto a camada de saída.
 	
 	\item \emph{Func Ativação Final:} Função de ativação utilizada na última camada da rede.
+	
+	\item \emph{Nº Cam Esc:} Número de camadas escondidas presente na rede neural.
 \end{itemize}
 
 \begin{table}[h!]
@@ -152,7 +170,7 @@ Com intuito de obter melhores resultados as redes neurais foram utilizada, nesta
 	\label{tab:1hl}
 \end{table}
 
-Como a tabela mostra o uso das funções relu e softmax e relu e sigmoid obtiveram os melhores resultados para as redes neurais com uma camada escondida. Para verificar modelos de redes mais robustos, experimentos com redes utilizando duas camadas escondidas também foram realizados. Os resultados obtidos por esses modelos são apresentados na Tabela~\ref{tab:2hl}, e os mesmos também utilizaram apenas 20 épocas pois esse número foi suficiente para o modelo convergir.
+Como a tabela mostra o uso das funções relu/softmax e relu/sigmoid obtiveram os melhores resultados para as redes neurais com uma camada escondida. Para verificar modelos de redes mais robustos, experimentos com redes utilizando duas camadas escondidas também foram realizados. Os resultados obtidos por esses modelos são apresentados na Tabela~\ref{tab:2hl}, e os mesmos também utilizaram apenas 20 épocas pois esse número foi suficiente para o modelo convergir.
 
 
 \begin{table}[h!]
@@ -179,21 +197,49 @@ Novamente as funções relu e softmax foram as que obtiveram os melhores resulta
 	\centering
 	
 	\begin{tabular}{ccc} \toprule
-	\textbf{Nº Camadas Escondidas} & \textbf{Épocas} & \textbf{Acurácia}    \\ \toprule 	
+	\textbf{Nº Cam Esc} & \textbf{Épocas} & \textbf{Acurácia}    \\ \toprule 	
 	1                              & 20              & 0.578                \\
 	1                              & 50              & 0.580   				\\
 	2                              & 20              & 0.574                \\
 	2                              & 50              & 0.564                \\
 	3                              & 20              & 0.527                \\
+	3                              & 50              & 0.556                \\
 	3                              & 100             & 0.571                \\
-	4                              & 50              &                      \\
+	4                              & 50              & 0.564                \\
 	\bottomrule      
 	\end{tabular}
 	\caption{Redes neurais com as funções relu e softmax em diversos experimentos.}
 	\label{tab:misc}
 \end{table}
 
+Os resultados mostrar que para redes de uma e duas camadas a partir de 20 épocas a rede começa a convergir, mudando muito pouco o resultado quando as mesmas são aumentadas. Já para redes com mais de duas camadas, podemos ver que 20 épocas não é o suficiente. Redes com 3 camadas obtiveram bons resultados com 100 épocas, talvez um número maior de épocas poderia melhorar o resultado. 
 
+Já redes com 4 camadas parecem não possuir dados suficientes para o treinamento, um processo de aumentação de dados seria necessário para que redes desse porte fossem utilizadas. A Figura~\ref{fig:grafico} mostra a função de custo por época de cada uma das redes.
+
+\begin{figure}[!h]
+	\centering
+	{
+		\setlength{\fboxsep}{1pt}
+		\setlength{\fboxrule}{1pt}
+		\fbox{\includegraphics[scale=0.4]{Images/Loss.png}}
+	}
+	\caption{Custo por época das redes com diferentes números de camadas escondidas.}
+	\label{fig:grafico}
+\end{figure}
+
+Podemos perceber que conforme o número de camadas cresce maior é o número de épocas necessárias. Além disso, o gráfico nos mostra que os modelos estão convergindo. Ou seja, o resultados não tendem melhorar muito com o aumento do número de épocas. Isso indica que para o treinamento de redes mais profundas, como 3 e 4 camadas é necessário um maior número de dados. A Tabela~\ref{tab:time} mostra o tempo que os experimentos levam em média por época, mostrando o motivo de épocas maiores que 100 não serem testadas neste trabalho.
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{lcccc} \toprule
+         & \multicolumn{4}{c}{\textbf{Tempo por época}} \\ \toprule
+         \backslashbox{\textbf{GPU}}{\textbf{\emph{Nº Cam Esc}}}    & \emph{1}          & \emph{2}          & \emph{3}          & \emph{4}         \\ \toprule
+         GeForce GTX 980 & 11s         & 15s         & 19s         & 23s        \\
+         ??????????????? &  \\  \toprule
+	\end{tabular}
+	\caption{Tempo dos experimentos por época.}
+	\label{tab:time}
+\end{table}
 
 \subsection{Resultado dos melhores modelos na base de testes}
 
@@ -203,22 +249,19 @@ Esta seção tem como objetivo testar a robustez dos melhores modelos encontrado
 	\centering
 	
 	\begin{tabular}{lccc} \toprule
-		\textbf{Modelo} & \textbf{Nº Camadas Escondidas} & \textbf{Épocas} & \textbf{Acurácia}    \\ \toprule 	
-		Regressão Logística (\emph{one-vs-all}) & - & - & 0.391 \\
-		Regressão Logística (Multinomial) & - & - & 0.402 \\  \toprule 
-	    Rede Neural & 1 & 20  &  \\
-   	    Rede Neural & 1 & 100 &  \\
+		\textbf{Modelo} & \textbf{Nº Cam Esc} & \textbf{Épocas} & \textbf{Acurácia}    \\ \toprule 	
+		Reg Logística (\emph{one-vs-all}) & - & - & 0.391 \\
+		Reg Logística (Multinomial) & - & - & 0.402 \\  \toprule 
+	    Rede Neural & 1 & 20  & 0.580 \\
+   	    Rede Neural & 1 & 100 & \textbf{0.594} \\
 	    Rede Neural & 2 & 20  & 0.586 \\
 	    Rede Neural & 2 & 100 & 0.587 \\
 	    Rede Neural & 3 & 50  & 0.585 \\
-	    Rede Neural & 3 & 100 &  \\
-   	    Rede Neural & 4 & 100 &  \\
+   	    Rede Neural & 4 & 50 &  0.568\\
 	    
-		
-	
 		\bottomrule      
 	\end{tabular}
-	\caption{Resultado dos modelos apresentados no trabalho2.}
+	\caption{Resultado dos modelos desenvolvidos no trabalho.}
 	\label{tab:result}
 \end{table}
 
