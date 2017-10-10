@@ -68,7 +68,7 @@ A configuração dos parâmetros da função \emph{LogisticRegression} foi dada 
 
 \subsection{Biblioteca \textit{Keras}} \label{sec:bib}
 
-Já para os modelos desenvolvidos considerando Rede Neural, uma biblioteca de interface de desenvolvimento em alto nível de redes neurais foi utilizada\footnote{https://keras.io/}. Tal biblioteca é escrita em \emph{Python}. Optou-se por utilizar como base do \textit{Keras}, a biblioteca \textit{Theano}, uma biblioteca que executa expressões matemáticas envolvendo vetores de muitas dimensões eficientemente.
+Já para os modelos desenvolvidos considerando Rede Neural, uma biblioteca de interface de desenvolvimento em alto nível de redes neurais foi utilizada\footnote{https://keras.io/}. Tal biblioteca é escrita em \emph{Python}. Optou-se por utilizar como base do \textit{Keras}, a biblioteca \textit{Theano}, uma biblioteca que executa expressões matemáticas envolvendo vetores de muitas dimensões eficientemente. Ambas as bibliotecas foram escolhidas por apresentarem suporte ao processamento gráfico em GPUs e alcançar um maior aproveitamento dos experimentos em relação ao tempo de processamento, bem como os resultados encontrados.
 
 A principal função utilizada para as camadas da Rede Neural é denominada \textit{Dense}. Tal função é capaz de representar redes neurais multicamadas totalmente conectada. A configuração de parâmetros é dada como segue:
 \begin{itemize}
@@ -86,7 +86,7 @@ A principal função utilizada para as camadas da Rede Neural é denominada \tex
 
 \subsection{Metodologia} \label{sec:met}
 
-Um processo gradual foi adotado para solucionar o problema proposto neste trabalho. Primeiramente uma regressão logística foi aplicada, utilizando o método \emph{one-vs-all}. Em sequência um modelo de regressão multinomial foi implementado, esses modelos foram utilizados como \emph{baseline} para o trabalho.
+Um processo gradual foi abordado para solucionar o problema proposto neste trabalho, a partir de um modelo de menor complexidade para um modelo de maior complexidade. Primeiramente a técnica Regressão Logística foi aplicada utilizando a abordagem \emph{one-vs-all} para considerar o problema multiclasse. Em sequência um modelo de Regressão Lo Multinomial foi implementado, esses modelos foram utilizados como \emph{baseline} para o trabalho.
 
 Com intuito de melhorar os resultados, redes neurais foram utilizadas. Diversos experimentos foram executados para encontrar a melhor configuração da rede. A principal métrica utilizada nos experimentos foi a acurácia, que mede em porcentagem a quantidade de acertos na classificação. A Tabela~\ref{tab:config} mostra as GPUs utilizados para os testes realizados nesse trabalho.
 
@@ -97,7 +97,7 @@ Com intuito de melhorar os resultados, redes neurais foram utilizadas. Diversos 
 	\begin{tabular}{lc} \toprule
 		  \textbf{GPU} & \textbf{GPU Memory} \\ \toprule 	
 		  GeForce GTX 980 & 4043 MiB \\ 
-		  ??????????? & ?????????? \\ 
+		  GeForce GTX 1060 & 6072MiB \\ 
 		 \bottomrule
 	\end{tabular}
 	\caption{Configuração das placas de vídeo utilizadas nos experimentos.}
@@ -107,23 +107,28 @@ Com intuito de melhorar os resultados, redes neurais foram utilizadas. Diversos 
 Os experimentos do trabalho estão divididos da seguinte forma: 
 
 \begin{itemize}
-	\item \textbf{Comparação entre regressão logística multinomial e utilizando a técnica \emph{one-vs-all}:} Neste experimento é realizada uma comparação entre a regressão logística utilizando a técnica \emph{one-vs-all} e a regressão logística multinomial, ambas utilizam os mesmos parâmetros. Como esses modelos são utilizados como \emph{baselines} os experimentos são mais superficiais.
+	\item \textbf{Comparação entre regressão logística multinomial e utilizando a técnica \emph{one-vs-all}:} Neste experimento é realizada uma comparação entre a regressão logística utilizando a técnica \emph{one-vs-all} e a regressão logística multinomial, ambas utilizam os mesmos parâmetros. O objetivo desse experimento é encontrar um\emph{baselines}, a configuração de parâmetros não foi muito explorada.
 	
-	\item \textbf{Comparação entre diferentes modelos de redes neurais:} Nesta fase o foco é analisar diferentes modelos para as redes neurais, utilizando diversas funções de ativação e número de camadas.  
+	\item \textbf{Comparação entre diferentes modelos de redes neurais:} Para esta etapa, o objetivo é analisar diferentes modelos para as redes neurais, utilizando diferentes funções de ativação e números de camadas.  
 	
-	\item \textbf{Resultados dos melhores modelos na base de teste:} Neste experimento os melhores modelos encontrados serão verificados na base de testes com intuito de provar a sua robustez.
+	\item \textbf{Resultados dos melhores modelos na base de teste:} Por fim, os melhores modelos encontrados na etapa anterior são aplicados na base de testes com intuito de provar e mostrar a sua robustez.
 \end{itemize}
 
 
 \section{Experimentos e Discussões}
 
-Esta seção tem como objetivo mostrar os resultados obtidos pelos modelos desenvolvidos neste trabalho, assim como explicar os diversos experimentos realizados para a escolha do modelo final. Todos os experimentos desse trabalho utilizaram o processo de 5-\emph{fold} para o processo de treino. Em todos os experimentos os dados foram escalados e a normalização $l2$ foi utilizada. 
+Esta seção tem como objetivo mostrar os resultados obtidos pelos modelos desenvolvidos neste trabalho, assim como explicar os diversos experimentos realizados para a escolha do modelo final. Todos os experimentos desse trabalho utilizaram o processo de validação considerando $5$-\emph{folds} para o processo de treinamento. 
 
-Outras técnicas de pré-processamento foram testadas, como PCA para redução de dimensionalidade e aplicar um filtro de Sobel antes da classificação. Essas técnicas não deram bons resultados, e devido a isso não foram utilizadas.
+Como etapa de pré-processamento das imagens da base de dados, algumas técnicas foram consideradas e a biblioteca \emph{Scikit-Learn} foi utilizada. Primeiramente, os dados foram normalizados. Observou-se que a normalização padrão da biblioteca apresentava resultados diferentes comparada com a normalização que utilizava uma constante de regularização $l2$. Comparando a acurácia no conjunto de treinamento e de validação do modelo de redes neurais, observou-se que a normalização original apresentava alta taxa de acurácia de treinamento e baixa acurácia de validação e, ainda, que a diferença entre tais acurácias era reduzida quando utilizava-se a constante $l2$. Assim, o \emph{overfitting} dos dados pôde ser reduzido nesta etapa.
+
+Após a normalização, os dados foram escalados utilizando a média dos dados. Considerando que a dimensão do problema, ou seja, o tamanho das imagens vetorizadas, é de $3.072$, tentou-se reduzir a dimensionalidade do problema.  A técnica \emph{Principal Component Analysis} (PCA) foi empregada considerando os valores de componentes principais de $2.000$, $1.000$, $500$, $300$ e $200$, e para nenhum dos valores o modelo apresentou alguma melhora na taxa de acerto. Observou-se, então que a redução de dimensionalidade não foi relevante para o problema para os valores de componentes principais escolhidos. Com o intuito de ressaltar as informações de contorno dos objetos, o filtro de Sobel foi aplicado. O filtro de Sobel, no entanto, não apresentou uma melhora, quanto a acurácia dos resultados. Acredita-se que a informação de cor deveria ser considerada ao problema e um descritor combinado poderia ter sido empregado. Como o objetivo da presente atividade não era explorar as técnicas para extração de características, o descritor combinado não foi implementado.
+
+Assim, todos os experimentos consideraram a normalização utilizando a constante $l2$, bem como empregaram a escalabilidade dos dados com a informação da média.
+
 
 \subsection{Regressão Logística}
 
-Esta seção mostra os resultados dos modelos de regressão logística utilizados como \emph{baseline} para o trabalho. Todos os experimentos foram feitos na base de treinamento utilizando o processo de  no processo de 5-\emph{fold}. Diversos \emph{solvers} foram testados para as regressões, porém apenas o \emph{solver} $lbfgs$ convergiu. Os resultados das duas regressões lineares são mostrados na Tabela~\ref{tab:reg}.
+Esta seção mostra os resultados dos modelos de regressão logística utilizados como \emph{baseline} para o trabalho. Todos os experimentos foram feitos na base de treinamento utilizando o processo de validação com 5-\emph{fold}. Alguns testes foram feitos e diversos \emph{solvers} foram testados para as regressões, porém apenas o \emph{solver} $lbfgs$ convergiu. Os resultados das duas regressões logísticas são mostrados na Tabela~\ref{tab:reg}.
 
 \begin{table}[h!]
 	\centering
@@ -134,14 +139,15 @@ Esta seção mostra os resultados dos modelos de regressão logística utilizado
 		\emph{one-vs-all}         & 0.386             \\ \bottomrule
 	\end{tabular}
 	\caption{Comparação das duas técnicas da regressão logística.}
-	\label{tab:reg}
+% 	\label{tab:reg}
 \end{table}
 
-Os resultados obtidos pela regressão logística multinomial foram melhores, acreditamos que o principal motivo para essa melhora é o desbalanceamento que a técnica \emph{one-vs-all} causa, impossibilitando o modelo de aprender algumas informações relevantes. Porém, pode-se notar que a diferença entre ambos os modelos não é muito significante. Como esse experimento era apenas um \emph{baseline} para a nossa solução, não realizamos outros experimentos para entender essa correlação mais a fundo.
+O resultado obtido pela regressão logística multinomial apresentou a melhor taxa de acurácia. Acredita-se que o principal motivo para a diferença entre as técnicas é causada pelo desbalanceamento que a abordagem \emph{one-vs-all} acaba ocasionando e impossibilitando o modelo de aprender algumas informações relevantes. Porém, pode-se notar que a diferença entre ambos os modelos não é muito significante. Como o intuito do experimento é apenas ter \emph{baseline} para comparação, tal diferença não foi melhor estudada.
+
 
 \subsection{Redes Neurais}
 
-Com intuito de obter melhores resultados as redes neurais foram utilizada, nesta seção os resultados obtidos na base de testes serão apresentados. O intuito desde experimento é escolher a melhor configuração possível para a rede, evitando \emph{overfitting} e possibilitando uma maior acurácia do sistema. A tabela~\ref{tab:1hl} mostra os resultados obtidos por pelos modelos de rede neural com uma camada escondida e utilizando 20 épocas. As seguintes nomenclaturas serão utilizadas nas tabelas apresentadas nessa seção:
+Com objetivo de tentar obter resultados mais promissores, as redes neurais foram agora empregadas para a tarefa de classificação. Nesta seção os resultados obtidos na base de testes serão apresentados. O intuito desde experimento é escolher a melhor configuração possível para a rede, evitando \emph{overfitting} e possibilitando uma maior acurácia do sistema. A tabela~\ref{tab:1hl} mostra os resultados obtidos por pelos modelos de rede neural com uma camada escondida e utilizando 20 épocas. As seguintes nomenclaturas serão utilizadas nas tabelas apresentadas nessa seção:
 
 \begin{itemize}
 	\item \emph{Func Ativação:} Função de ativação utilizada em todas as camadas da rede, exceto a camada de saída.
@@ -235,7 +241,7 @@ Podemos perceber que conforme o número de camadas cresce maior é o número de 
          & \multicolumn{4}{c}{\textbf{Tempo por época}} \\ \toprule
          \backslashbox{\textbf{GPU}}{\textbf{\emph{Nº Cam Esc}}}    & \emph{1}          & \emph{2}          & \emph{3}          & \emph{4}         \\ \toprule
          GeForce GTX 980 & 11s         & 15s         & 19s         & 23s        \\
-         ??????????????? &  \\  \toprule
+         GeForce GTX 1060 & 9s         & 12s         & 15s         & 18s \\  \toprules &
 	\end{tabular}
 	\caption{Tempo dos experimentos por época.}
 	\label{tab:time}
