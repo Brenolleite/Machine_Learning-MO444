@@ -94,10 +94,10 @@ Com intuito de melhorar os resultados, redes neurais foram utilizadas. Diversos 
 % comando nvidia-smi voce consegue ver (vc provavelmente sabe, mas se precisar ta aqui)
 \begin{table}[h!]
 	\centering
-	\begin{tabular}{lc} \toprule
+	\begin{tabular}{ll} \toprule
 		  \textbf{GPU} & \textbf{GPU Memory} \\ \toprule 	
 		  GeForce GTX 980 & 4043 MiB \\ 
-		  GeForce GTX 1060 & 6072MiB \\ 
+		  GeForce GTX 1060 & 6072 MiB \\ 
 		 \bottomrule
 	\end{tabular}
 	\caption{Configuração das placas de vídeo utilizadas nos experimentos.}
@@ -139,7 +139,7 @@ Esta seção mostra os resultados dos modelos de regressão logística utilizado
 		\emph{one-vs-all}         & 0.386             \\ \bottomrule
 	\end{tabular}
 	\caption{Comparação das duas técnicas da regressão logística.}
-% 	\label{tab:reg}
+ 	\label{tab:reg}
 \end{table}
 
 O resultado obtido pela regressão logística multinomial apresentou a melhor taxa de acurácia. Acredita-se que o principal motivo para a diferença entre as técnicas é causada pelo desbalanceamento que a abordagem \emph{one-vs-all} acaba ocasionando e impossibilitando o modelo de aprender algumas informações relevantes. Porém, pode-se notar que a diferença entre ambos os modelos não é muito significante. Como o intuito do experimento é apenas ter \emph{baseline} para comparação, tal diferença não foi melhor estudada.
@@ -240,8 +240,9 @@ Podemos perceber que conforme o número de camadas cresce maior é o número de 
 	\begin{tabular}{lcccc} \toprule
          & \multicolumn{4}{c}{\textbf{Tempo por época}} \\ \toprule
          \backslashbox{\textbf{GPU}}{\textbf{\emph{Nº Cam Esc}}}    & \emph{1}          & \emph{2}          & \emph{3}          & \emph{4}         \\ \toprule
-         GeForce GTX 980 & 11s         & 15s         & 19s         & 23s        \\
-         GeForce GTX 1060 & 9s         & 12s         & 15s         & 18s \\  \toprules &
+         GeForce GTX 980 & 11s         & 15s         & 19s         & 23s \\
+         GeForce GTX 1060 & 9s         & 12s         & 15s         & 18s \\  
+         \toprule
 	\end{tabular}
 	\caption{Tempo dos experimentos por época.}
 	\label{tab:time}
