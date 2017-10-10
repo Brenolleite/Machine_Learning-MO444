@@ -181,10 +181,10 @@ Novamente as funções relu e softmax foram as que obtiveram os melhores resulta
 	\begin{tabular}{ccc} \toprule
 	\textbf{Nº Camadas Escondidas} & \textbf{Épocas} & \textbf{Acurácia}    \\ \toprule 	
 	1                              & 20              & 0.578                \\
-	1                              & 50              & \multicolumn{1}{l}{} \\
+	1                              & 50              & 0.580   				\\
 	2                              & 20              & 0.574                \\
-	2                              & 50              &                      \\
-	3                              & 20              &                      \\
+	2                              & 50              & 0.564                \\
+	3                              & 20              & 0.527                \\
 	3                              & 100             & 0.571                \\
 	4                              & 50              &                      \\
 	\bottomrule      
@@ -195,8 +195,32 @@ Novamente as funções relu e softmax foram as que obtiveram os melhores resulta
 
 
 
+\subsection{Resultado dos melhores modelos na base de testes}
 
+Esta seção tem como objetivo testar a robustez dos melhores modelos encontrados para as redes neurais e regressão logística. Em todas as redes neurais a as funções de ativação relu e softmax foram utilizadas. O número de épocas varia entre 20 e 100, devido a necessidade de mais épocas para redes mais profundas generalizarem. A Tabela~\ref{tab:result} mostra os resultados obtidos na base de testes.
 
+\begin{table}[h!]
+	\centering
+	
+	\begin{tabular}{lccc} \toprule
+		\textbf{Modelo} & \textbf{Nº Camadas Escondidas} & \textbf{Épocas} & \textbf{Acurácia}    \\ \toprule 	
+		Regressão Logística (\emph{one-vs-all}) & - & - & 0.391 \\
+		Regressão Logística (Multinomial) & - & - & 0.402 \\  \toprule 
+	    Rede Neural & 1 & 20  &  \\
+   	    Rede Neural & 1 & 100 &  \\
+	    Rede Neural & 2 & 20  & 0.586 \\
+	    Rede Neural & 2 & 100 & 0.587 \\
+	    Rede Neural & 3 & 50  & 0.585 \\
+	    Rede Neural & 3 & 100 &  \\
+   	    Rede Neural & 4 & 100 &  \\
+	    
+		
+	
+		\bottomrule      
+	\end{tabular}
+	\caption{Resultado dos modelos apresentados no trabalho2.}
+	\label{tab:result}
+\end{table}
 
 \begin{thebibliography}{00}
 %\bibitem{b1} Christopher M. Bishop. ``Pattern Recognition and Machine Learning''. Springer-Verlag New York, Inc., Secaucus, NJ, USA, 2006.
