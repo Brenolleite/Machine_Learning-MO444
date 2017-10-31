@@ -1,6 +1,4 @@
 from __future__ import print_function
-import keras
-import keras.backend as K
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
@@ -88,6 +86,6 @@ def find_clusters(range_n_clusters, X):
 		plt.suptitle(("Silhouette analysis for KMeans clustering on sample data "
 		              "with n_clusters = %d" % n_clusters),
 		             fontsize=14, fontweight='bold')
-		
+
 		plt.savefig(name_fig)
 

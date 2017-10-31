@@ -1,15 +1,11 @@
 # -*- coding: utf-8 -*-
 import numpy as np
-import sys
 from sklearn.manifold import TSNE
 import matplotlib.pyplot as plt
 
-
-from PIL import Image
 import cluster as cl
 import processing as proc
 import metrics
-#import keras
 '''
 For n_clusters = 5 The average silhouette_score is : -0.00466366
 For n_clusters = 20 The average silhouette_score is : -0.0434674
@@ -33,10 +29,10 @@ Rodando 10, 25, 30, 35, 40, 45, 55, 60, 65,  70, 80, 90
 # -----------------------------------
 
 # Load dataset
-x_train = np.genfromtxt('data.csv', delimiter=',', skip_header=10, skip_footer=10)
+x_train = np.genfromtxt('../documents/data.csv', delimiter=',', skip_header=10, skip_footer=10)
 
 # Load ids
-g = open('ids', 'rb')
+g = open('../documents/ids', 'rb')
 y_train = [line.split() for line in g]
 
 # Normalizing
@@ -53,8 +49,6 @@ x_train = proc.st_scale(x_train)
 range_n_clusters = [10, 25, 30, 35, 40, 45, 55, 60, 65, 70, 80, 90]
 cl.find_clusters(range_n_clusters, x_train)
 
-
-
 # Usar no final pra plotar :) ele reduz para duas dimensões para visualizar. aplicar PCA antes ou alguma redução
 
 #TSNE
@@ -65,4 +59,3 @@ cl.find_clusters(range_n_clusters, x_train)
 #plt.plot(Y[:, 1], Y[:, 2], marker='o', color='black', ls='', alpha = 0.5)
 #plt.scatter(x_train[:, 0], x_train[:, 1], color='red')
 #plt.savefig('tsne2')
-
