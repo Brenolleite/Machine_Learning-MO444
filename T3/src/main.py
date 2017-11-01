@@ -35,9 +35,6 @@ x_train = np.genfromtxt('../documents/data.csv', delimiter=',', skip_header=10, 
 g = open('../documents/ids', 'rb')
 y_train = [line.split() for line in g]
 
-# Normalizing
-x_train = x_train.astype('float32') / 255.
-
 # Pre-prossesing data
 x_train = proc.normalize_l2(x_train)
 x_train = proc.st_scale(x_train)
