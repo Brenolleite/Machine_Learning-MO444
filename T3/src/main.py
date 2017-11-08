@@ -3,7 +3,6 @@ import matplotlib
 matplotlib.use('Agg')
 
 import numpy as np
-import sys
 from sklearn.manifold import TSNE
 from sklearn.cluster import KMeans
 from sklearn import metrics
@@ -11,12 +10,16 @@ from scipy.spatial.distance import cdist
 from sklearn.metrics import pairwise_distances_argmin_min
 import matplotlib.pyplot as plt
 
+
 from PIL import Image
 import cluster as cl
 import processing as proc
 import metrics
 #import keras
 
+import cluster as cl
+import processing as proc
+import metrics
 
 
 # -------------- Params -------------
@@ -24,10 +27,10 @@ import metrics
 # -----------------------------------
 
 # Load dataset
-x_train = np.genfromtxt('data.csv', delimiter=',', skip_header=10, skip_footer=10)
+x_train = np.genfromtxt('../documents/data.csv', delimiter=',', skip_header=10, skip_footer=10)
 
 # Load ids
-g = open('ids', 'rb')
+g = open('../documents/ids', 'rb')
 y_train = [line.split() for line in g]
 
 # Normalizing
@@ -85,4 +88,3 @@ print id_centroids
 #plt.plot(Y[:, 1], Y[:, 2], marker='o', color='black', ls='', alpha = 0.5)
 #plt.scatter(x_train[:, 0], x_train[:, 1], color='red')
 #plt.savefig('tsne2')
-

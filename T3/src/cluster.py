@@ -1,12 +1,9 @@
 from __future__ import print_function
-import keras
-import keras.backend as K
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_samples, silhouette_score
-
 
 def find_clusters(range_n_clusters, X):
 
@@ -20,6 +17,7 @@ def find_clusters(range_n_clusters, X):
 		# The 1st subplot is the silhouette plot
 		# The silhouette coefficient can range from -1, 1 but in this example all lie within [-0.1, 1]
 		ax1.set_xlim([-0.1, 1])
+
 		# The (n_clusters+1)*10 is for inserting blank space between silhouette plots of individual clusters, to demarcate them clearly.
 		ax1.set_ylim([0, len(X) + (n_clusters + 1) * 10])
 
@@ -75,6 +73,7 @@ def find_clusters(range_n_clusters, X):
 
 		# Labeling the clusters
 		centers = clusterer.cluster_centers_
+
 		# Draw white circles at cluster centers
 		ax2.scatter(centers[:, 0], centers[:, 1], marker='o', c="white", alpha=1, s=200, edgecolor='k')
 
@@ -88,6 +87,6 @@ def find_clusters(range_n_clusters, X):
 		plt.suptitle(("Silhouette analysis for KMeans clustering on sample data "
 		              "with n_clusters = %d" % n_clusters),
 		             fontsize=14, fontweight='bold')
-		
+
 		plt.savefig(name_fig)
 
