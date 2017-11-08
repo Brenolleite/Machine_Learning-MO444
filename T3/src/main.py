@@ -1,32 +1,23 @@
 # -*- coding: utf-8 -*-
+import matplotlib
+matplotlib.use('Agg')
+
 import numpy as np
 import sys
 from sklearn.manifold import TSNE
+from sklearn.cluster import KMeans
+from sklearn import metrics
+from scipy.spatial.distance import cdist
+from sklearn.metrics import pairwise_distances_argmin_min
 import matplotlib.pyplot as plt
-
 
 from PIL import Image
 import cluster as cl
 import processing as proc
 import metrics
 #import keras
-'''
-For n_clusters = 5 The average silhouette_score is : -0.00466366
-For n_clusters = 20 The average silhouette_score is : -0.0434674
-For n_clusters = 50 The average silhouette_score is : -0.0533876
-For n_clusters = 100 The average silhouette_score is : -0.0305307
-For n_clusters = 200 The average silhouette_score is : -0.0235541
-
-For n_clusters = 3 The average silhouette_score is : 0.00595137
-For n_clusters = 4 The average silhouette_score is : -0.00943799
-For n_clusters = 6 The average silhouette_score is : -0.00773504
-For n_clusters = 12 The average silhouette_score is : -0.0108736
 
 
-
-Rodando 1500, 1200, 900, 600, 300
-Rodando 10, 25, 30, 35, 40, 45, 55, 60, 65,  70, 80, 90
-'''
 
 # -------------- Params -------------
 
@@ -40,7 +31,7 @@ g = open('ids', 'rb')
 y_train = [line.split() for line in g]
 
 # Normalizing
-x_train = x_train.astype('float32') / 255.
+x_train = x_train.astype('float32')
 
 # Pre-prossesing data
 x_train = proc.normalize_l2(x_train)
@@ -50,10 +41,39 @@ x_train = proc.st_scale(x_train)
 
 # Finding the number of clusters
 # 19904 data and 2209 features
-range_n_clusters = [10, 25, 30, 35, 40, 45, 55, 60, 65, 70, 80, 90]
+range_n_clusters = range(75, 95)
+print range_n_clusters
 cl.find_clusters(range_n_clusters, x_train)
 
 
+#calcula elbow
+'''
+# k means determine k
+distortions = []
+K = range(5, 105, 5) 
+
+for k in K:
+    kmeanModel = KMeans(n_clusters=k, n_jobs=-1).fit(x_train)
+    kmeanModel.fit(x_train)
+    distortions.append(sum(np.min(cdist(x_train, kmeanModel.cluster_centers_, 'euclidean'), axis=1)) / x_train.shape[0])
+ 
+# Plot the elbow
+plt.plot(K, distortions, 'bx-')
+plt.xlabel('k')
+plt.ylabel('Distortion')
+plt.title('The Elbow Method showing the optimal k')
+plt.savefig('elbow_correto2')
+'''
+
+# descobrir centróides
+'''
+k = 43
+kmeanModel = KMeans(n_clusters=k, n_jobs=-1).fit(x_train)
+kmeanModel.fit(x_train)
+id_centroids, _ = pairwise_distances_argmin_min(kmeanModel.cluster_centers_, x_train)
+
+print id_centroids
+'''
 
 # Usar no final pra plotar :) ele reduz para duas dimensões para visualizar. aplicar PCA antes ou alguma redução
 
