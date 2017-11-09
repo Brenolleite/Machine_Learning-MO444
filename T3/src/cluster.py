@@ -5,6 +5,15 @@ import matplotlib.cm as cm
 from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_samples, silhouette_score
 
+def k_means(K, X):
+	# Initialize the clusterer with n_clusters value and a random generator
+	# seed of 10 for reproducibility.
+	clusterer = KMeans(n_clusters=K, random_state=10, n_jobs=-1)
+	cluster_labels = clusterer.fit_predict(X)
+
+
+	return cluster_labels, clusterer.cluster_centers_
+
 def find_clusters(range_n_clusters, X):
 
 	for n_clusters in range_n_clusters:
@@ -21,10 +30,8 @@ def find_clusters(range_n_clusters, X):
 		# The (n_clusters+1)*10 is for inserting blank space between silhouette plots of individual clusters, to demarcate them clearly.
 		ax1.set_ylim([0, len(X) + (n_clusters + 1) * 10])
 
-		# Initialize the clusterer with n_clusters value and a random generator
-		# seed of 10 for reproducibility.
-		clusterer = KMeans(n_clusters=n_clusters, random_state=10, njobs=-1)
-		cluster_labels = clusterer.fit_predict(X)
+		# Call the kmeans function
+		cluster_labels, cluster_centers = k_means(n_clusters, X)
 
 		# The silhouette_score gives the average value for all the samples.
 		# This gives a perspective into the density and separation of the formed

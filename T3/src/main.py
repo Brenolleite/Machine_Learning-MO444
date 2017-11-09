@@ -5,17 +5,9 @@ matplotlib.use('Agg')
 import numpy as np
 from sklearn.manifold import TSNE
 from sklearn.cluster import KMeans
-from sklearn import metrics
 from scipy.spatial.distance import cdist
 from sklearn.metrics import pairwise_distances_argmin_min
 import matplotlib.pyplot as plt
-
-
-from PIL import Image
-import cluster as cl
-import processing as proc
-import metrics
-#import keras
 
 import cluster as cl
 import processing as proc
@@ -42,14 +34,11 @@ x_train = proc.st_scale(x_train)
 # Aplying PCA
 x_train, ncomp = proc.PCA_reduction(x_train, 0.8)
 
-#print x_train.shape
+# Using kmeans
+labels, centers = cl.k_means(2, x_train)
 
-# Finding the number of clusters
-# 19904 data and 2209 features
-range_n_clusters = range(75, 95)
-print(range_n_clusters)
-#cl.find_clusters(range_n_clusters, x_train)
-
+# Verifying cluster variance
+metrics.verify_clusters(labels)
 
 #calcula elbow
 '''
