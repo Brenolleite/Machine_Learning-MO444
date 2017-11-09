@@ -27,16 +27,13 @@ def PCA_reduction(data, var, ncomp = None):
             variances[i] = variances[i] + variances[i-1]
 
         # Get first component higher than variance expected
-        comp = np.where(variances >= var)
-
-        print(variances[2208], len(variances))
-        print(comp[0])
+        comp = np.where(variances >= var)[0][0] + 1
     # Using number of components expecified on parameter
     else:
         comp = ncomp
 
     # Executing PCA with number of components found
-    #pca = PCA(n_components = comp)
-    #reduction = pca.fit_transform(data)
+    pca = PCA(n_components = comp)
+    reduction = pca.fit_transform(data)
 
     return reduction, comp

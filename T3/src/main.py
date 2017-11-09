@@ -40,7 +40,7 @@ x_train = proc.normalize_l2(x_train)
 x_train = proc.st_scale(x_train)
 
 # Aplying PCA
-proc.PCA_reduction(x_train, 0.8)
+x_train, ncomp = proc.PCA_reduction(x_train, 0.8)
 
 #print x_train.shape
 
