@@ -1,60 +1,97 @@
-from sklearn.metrics import accuracy_score, confusion_matrix
 import numpy as np
-import matplotlib.pyplot as plt
-import itertools
+import re
 
-def print_acc(acc):
-    print("Accuracy: {0}".format(acc))
+def verify_clusters(labels, qtde = None):
+    # Find clusters
+    clusters = np.unique(labels)
 
-def print_confusionMatrix(cm):
-    print("Confusion_Matrix: {0}".format(cm))
+    # Create list of newsgroups
+    f = open('newsgroups.data', 'r')
+    newsgroups = [line.rstrip('\n') for line in f]
+    f.close()
 
-def compute_acc(predictions, groundTruth, verbose):
-    acc = accuracy_score(groundTruth, predictions)
+    # Read ids of files
+    f = open('../documents/ids', 'r')
+    ids = [line.rstrip('\n') for line in f]
+    f.close()
 
-    if verbose:
-        print_acc(acc)
+    # Create array of histograms
+    histograms = []
 
-    return acc
+    # Create normalization factor
+    factor = 0
 
-def print_acc_nn(score):
-    print("Test loss: {0}", score[0])
-    print("Test accuracy: {0}", score[1])
+    for cluster in clusters:
+        # Create a new histogram
+        hist = np.zeros(len(newsgroups))
+
+        # Create dictionary of newsgroups
+        hist = dict(zip(newsgroups, hist))
+
+        # Get rows of files (idx on ids)
+        files_idx = np.where(labels == cluster)[0]
+
+        # Update factor for normalization
+        if len(files_idx) > factor:
+            factor = len(files_idx)
+
+        # Run over all files
+        for idx in files_idx:
+            # Open and read file
+            f = open('../documents/docs/' + ids[idx])
+            filetext = filetext = f.read()
+            f.close()
+
+            # Use regex to find newsgroups for each text file
+            # Fixing issues where a newsgroups is shown on the message
+            matches = re.findall('Newsgroups: [\\/\w.,\d-]+', filetext)
+
+            # Go over all matches
+            for match in matches:
+                # Get all groups for that file
+                groups = match.replace('Newsgroups: ', '').split(',')
+
+                # Counting the occurrence of each group
+                for item in groups:
+                    # Fix issue in the files
+                    # 'b04aa255198b5e2526cff7c76c7c6257ad70e49f'
+                    # '1cfd267dfba20241fac4126124d73c27840c27fa'
+                    # Where there is a comma but not another group
+                    if item != '' and item != 'm.h.a':
+                        if item in newsgroups:
+                            hist[item] += 1
+                        else:
+                            hist[item] = 1
+
+        # Sort newsgroups
+        hist = sorted(hist.items(), reverse=True, key=lambda x: x[1])
+
+        # Adding histogram and count of classes to array
+        histograms.append((hist, 0))
+
+    # Generating variance, and organizing bins
+    ret_histograms = []
+    for hist in histograms:
+        # Normalizing
+        array = np.array(hist[0])[:,1].astype(np.float)
+        for i in range(len(array)):
+            array[i] = array[i]/factor
+
+        # Getting variance value
+        var = np.var(array)
+
+        # Removing small values from dict
+        hist = [i for i in hist[0] if i[1] != 0]
+
+        ret_histograms.append((hist, var))
+
+    for i in range(len(ret_histograms)):
+        print('Cluster: {0} -> Variance: {1}'.format(i, ret_histograms[i][1]))
+
+    # Create histogram with qtde of bins
+    if qtde != None:
+        for i in range(len(ret_histograms)):
+            print('Cluster: {0} -> {1}'.format(i, np.array(ret_histograms)[i,0][0:qtde]))
 
 
-def plot_confusion_matrix(cm, classes,
-                          normalize=False,
-                          title='Confusion matrix',
-                          cmap=plt.cm.Blues):
-    """
-    This function prints and plots the confusion matrix.
-    Normalization can be applied by setting `normalize=True`.
-    """
-    if normalize:
-        cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
-        print("Normalized confusion matrix")
-    else:
-        print('Confusion matrix, without normalization')
-
-    print(cm)
-
-    plt.imshow(cm, interpolation='nearest', cmap=cmap)
-    plt.title(title)
-    plt.colorbar()
-    tick_marks = np.arange(len(classes))
-    plt.xticks(tick_marks, classes, rotation=45)
-    plt.yticks(tick_marks, classes)
-
-    fmt = '.2f' if normalize else 'd'
-    thresh = cm.max() / 2.
-    for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
-        plt.text(j, i, format(cm[i, j], fmt),
-                 horizontalalignment="center",
-                 color="white" if cm[i, j] > thresh else "black")
-
-    plt.tight_layout()
-    plt.ylabel('True label')
-    plt.xlabel('Predicted label')
-    plt.show()
-
-
+verify_clusters(np.zeros(19924), 10)
