@@ -92,6 +92,3 @@ def verify_clusters(labels, qtde = None):
     if qtde != None:
         for i in range(len(ret_histograms)):
             print('Cluster: {0} -> {1}'.format(i, np.array(ret_histograms)[i,0][0:qtde]))
-
-
-verify_clusters(np.zeros(19924), 10)
