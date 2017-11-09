@@ -1,0 +1,227 @@
+K = 31
+
+Cluster: 0 -> Variance: 1.783647729203374e-05
+Cluster: 1 -> Variance: 1.1277196165597785e-06
+Cluster: 2 -> Variance: 1.11986914153723e-08
+Cluster: 3 -> Variance: 8.05332286049497e-07
+Cluster: 4 -> Variance: 5.124141887023972e-05
+Cluster: 5 -> Variance: 3.088020262828932e-07
+Cluster: 6 -> Variance: 8.230170368620609e-05
+Cluster: 7 -> Variance: 0.0001846810468756355
+Cluster: 8 -> Variance: 2.0480151292361797e-07
+Cluster: 9 -> Variance: 5.781777848512924e-06
+Cluster: 10 -> Variance: 2.3674475730276352e-07
+Cluster: 11 -> Variance: 3.3400889162134456e-05
+Cluster: 12 -> Variance: 4.609838521744571e-07
+Cluster: 13 -> Variance: 4.1856085855017754e-07
+Cluster: 14 -> Variance: 1.1246358804649877e-08
+Cluster: 15 -> Variance: 7.641571322902241e-05
+Cluster: 16 -> Variance: 5.4428185717296774e-05
+Cluster: 17 -> Variance: 0.0001652947074693165
+Cluster: 18 -> Variance: 1.1296303908868711e-05
+Cluster: 19 -> Variance: 7.308739644783162e-05
+Cluster: 20 -> Variance: 2.725289023133089e-06
+Cluster: 21 -> Variance: 3.5058627689085305e-09
+Cluster: 22 -> Variance: 7.0178191009824505e-09
+Cluster: 23 -> Variance: 1.4717557061809532e-07
+Cluster: 24 -> Variance: 4.013541487507706e-05
+Cluster: 25 -> Variance: 2.4791121180332536e-07
+Cluster: 26 -> Variance: 6.18808328368325e-05
+Cluster: 27 -> Variance: 6.639106115919517e-07
+Cluster: 28 -> Variance: 8.939149838276562e-06
+Cluster: 29 -> Variance: 7.492920461328496e-08
+Cluster: 30 -> Variance: 1.4389359715387615e-08
+Cluster: 0 -> [('alt.atheism', 245.0), ('talk.religion.misc', 203.0), ('talk.politics.misc', 191.0), ('talk.politics.guns', 173.0), ('sci.med', 157.0)]
+Cluster: 1 -> [('misc.forsale', 112.0), ('ne.forsale', 17.0), ('rec.autos', 11.0), ('rec.motorcycles', 10.0), ('ny.forsale', 6.0)]
+Cluster: 2 -> [('rec.sport.hockey', 11.0), ('talk.politics.guns', 2.0), ('misc.forsale', 2.0), ('sci.med', 1.0), ('or.politics', 1.0)]
+Cluster: 3 -> [('rec.autos', 44.0), ('alt.atheism', 43.0), ('talk.religion.misc', 36.0), ('sci.space', 29.0), ('talk.politics.mideast', 23.0)]
+Cluster: 4 -> [('talk.politics.mideast', 683.0), ('soc.culture.jewish', 207.0), ('talk.politics.misc', 142.0), ('soc.culture.arabic', 141.0), ('soc.culture.turkish', 139.0)]
+Cluster: 5 -> [('comp.sys.mac.hardware', 41.0), ('comp.sys.ibm.pc.hardware', 21.0), ('talk.religion.misc', 19.0), ('talk.politics.misc', 19.0), ('talk.abortion', 17.0)]
+Cluster: 6 -> [('rec.motorcycles', 777.0), ('rec.autos', 583.0), ('rec.autos.tech', 104.0), ('sci.electronics', 62.0), ('ba.motorcycles', 37.0)]
+Cluster: 7 -> [('comp.sys.ibm.pc.hardware', 754.0), ('comp.os.ms-windows.misc', 688.0), ('comp.sys.mac.hardware', 590.0), ('comp.windows.x', 580.0), ('comp.graphics', 464.0)]
+Cluster: 8 -> [('talk.politics.guns', 30.0), ('rec.sport.baseball', 17.0), ('rec.motorcycles', 14.0), ('comp.windows.x', 13.0), ('sci.med', 11.0)]
+Cluster: 9 -> [('talk.politics.mideast', 144.0), ('soc.culture.turkish', 129.0), ('soc.history', 91.0), ('talk.politics.soviet', 80.0), ('soc.culture.soviet', 67.0)]
+Cluster: 10 -> [('talk.politics.guns', 25.0), ('rec.sport.baseball', 19.0), ('talk.religion.misc', 18.0), ('talk.origins', 15.0), ('alt.atheism', 15.0)]
+Cluster: 11 -> [('misc.forsale', 594.0), ('misc.forsale.computers.other', 104.0), ('misc.forsale.computers', 84.0), ('misc.forsale.computers.pc-clone', 81.0), ('ne.forsale', 49.0)]
+Cluster: 12 -> [('rec.sport.hockey', 68.0), ('misc.forsale', 15.0), ('comp.os.ms-windows.misc', 12.0), ('rec.sport.baseball', 12.0), ('rec.collecting', 9.0)]
+Cluster: 13 -> [('rec.autos', 49.0), ('misc.forsale', 26.0), ('talk.religion.misc', 21.0), ('talk.politics.misc', 20.0), ('comp.graphics', 15.0)]
+Cluster: 14 -> [('sci.med', 7.0), ('rec.food.cooking', 5.0), ('misc.consumers', 5.0), ('sci.environment', 5.0), ('alt.politics.clinton', 2.0)]
+Cluster: 15 -> [('rec.sport.hockey', 693.0), ('rec.sport.baseball', 643.0), ('rec.sport.baseball.fantasy', 5.0), ('maine.hockey-l', 4.0), ('edm.general', 4.0)]
+Cluster: 16 -> [('sci.crypt', 707.0), ('comp.org.eff.talk', 238.0), ('alt.privacy.clipper', 139.0), ('alt.security', 137.0), ('comp.security.misc', 130.0)]
+Cluster: 17 -> [('talk.politics.misc', 718.0), ('talk.religion.misc', 688.0), ('alt.atheism', 656.0), ('talk.politics.guns', 465.0), ('sci.med', 344.0)]
+Cluster: 18 -> [('talk.politics.guns', 258.0), ('talk.politics.misc', 184.0), ('talk.religion.misc', 138.0), ('sci.skeptic', 59.0), ('alt.conspiracy', 53.0)]
+Cluster: 19 -> [('soc.religion.christian', 924.0), ('talk.religion.misc', 3.0), ('alt.atheism', 1.0)]
+Cluster: 20 -> [('comp.graphics', 131.0), ('comp.windows.x', 73.0), ('comp.os.ms-windows.misc', 68.0), ('news.answers', 32.0), ('sci.space', 25.0)]
+Cluster: 21 -> [('comp.graphics', 5.0), ('comp.sys.mac.hardware', 4.0)]
+Cluster: 22 -> [('rec.sport.baseball', 9.0), ('sci.crypt', 1.0)]
+Cluster: 23 -> [('alt.atheism', 26.0), ('rec.sport.hockey', 23.0), ('comp.sys.ibm.pc.hardware', 10.0), ('misc.forsale', 9.0), ('sci.med', 8.0)]
+Cluster: 24 -> [('sci.space', 633.0), ('sci.astro', 239.0), ('alt.sci.planetary', 56.0), ('sci.space.shuttle', 45.0), ('sci.electronics', 35.0)]
+Cluster: 25 -> [('rec.sport.hockey', 34.0), ('rec.sport.baseball', 28.0), ('comp.sys.ibm.pc.hardware', 18.0), ('misc.forsale', 13.0), ('sci.electronics', 12.0)]
+Cluster: 26 -> [('sci.electronics', 357.0), ('comp.graphics', 337.0), ('sci.med', 318.0), ('comp.windows.x', 272.0), ('comp.sys.mac.hardware', 260.0)]
+Cluster: 27 -> [('sci.space', 75.0), ('sci.crypt', 31.0), ('sci.astro', 21.0), ('talk.religion.misc', 10.0), ('alt.atheism', 10.0)]
+Cluster: 28 -> [('alt.atheism', 210.0), ('talk.religion.misc', 176.0), ('talk.abortion', 172.0), ('rec.sport.hockey', 2.0), ('comp.sys.ibm.pc.hardware', 1.0)]
+Cluster: 29 -> [('comp.windows.x', 21.0), ('comp.sys.mac.hardware', 18.0), ('misc.forsale', 5.0), ('comp.sys.ibm.pc.hardware', 4.0), ('sci.electronics', 4.0)]
+Cluster: 30 -> [('rec.motorcycles', 10.0), ('sci.space', 5.0), ('sci.astro', 5.0), ('rec.autos', 3.0), ('comp.windows.x', 2.0)]
+
+=====================================================================================
+
+K = 79
+
+Cluster: 0 -> Variance: 8.048047193685135e-08
+Cluster: 1 -> Variance: 8.493039915471732e-07
+Cluster: 2 -> Variance: 6.249128427193151e-08
+Cluster: 3 -> Variance: 6.495886089645489e-06
+Cluster: 4 -> Variance: 3.9966145371332996e-07
+Cluster: 5 -> Variance: 1.0495347112571446e-07
+Cluster: 6 -> Variance: 1.196447217500186e-06
+Cluster: 7 -> Variance: 8.492061721785747e-06
+Cluster: 8 -> Variance: 7.311599020303366e-07
+Cluster: 9 -> Variance: 1.0880015424618598e-06
+Cluster: 10 -> Variance: 1.6517707567230072e-06
+Cluster: 11 -> Variance: 1.2742269979459833e-06
+Cluster: 12 -> Variance: 1.044231510784421e-07
+Cluster: 13 -> Variance: 3.4884067914840106e-05
+Cluster: 14 -> Variance: 5.6031144147511436e-08
+Cluster: 15 -> Variance: 1.297629538789362e-06
+Cluster: 16 -> Variance: 7.806436850159804e-06
+Cluster: 17 -> Variance: 1.34654019146371e-05
+Cluster: 18 -> Variance: 1.4025304217490899e-09
+Cluster: 19 -> Variance: 6.197236953533847e-07
+Cluster: 20 -> Variance: 1.2218732595130344e-07
+Cluster: 21 -> Variance: 1.9871870906542772e-09
+Cluster: 22 -> Variance: 1.0066800633589938e-08
+Cluster: 23 -> Variance: 6.484575330067635e-06
+Cluster: 24 -> Variance: 2.5911991635673197e-07
+Cluster: 25 -> Variance: 3.452527419092746e-08
+Cluster: 26 -> Variance: 2.5608310444210652e-06
+Cluster: 27 -> Variance: 3.030002352364954e-07
+Cluster: 28 -> Variance: 2.6613485490747684e-07
+Cluster: 29 -> Variance: 1.8179634833810994e-07
+Cluster: 30 -> Variance: 2.034811027918975e-05
+Cluster: 31 -> Variance: 1.727395848027204e-05
+Cluster: 32 -> Variance: 0.00010589781242393255
+Cluster: 33 -> Variance: 2.9286632080539353e-09
+Cluster: 34 -> Variance: 1.9091508252147853e-07
+Cluster: 35 -> Variance: 2.2995682208238613e-05
+Cluster: 36 -> Variance: 6.098815040220881e-08
+Cluster: 37 -> Variance: 8.717267247455165e-07
+Cluster: 38 -> Variance: 6.036567329270183e-07
+Cluster: 39 -> Variance: 0.00012858085462296863
+Cluster: 40 -> Variance: 2.2619528606197242e-07
+Cluster: 41 -> Variance: 8.868941739900005e-07
+Cluster: 42 -> Variance: 3.933132147502923e-07
+Cluster: 43 -> Variance: 1.1714652832215747e-10
+Cluster: 44 -> Variance: 4.7008696071635316e-07
+Cluster: 45 -> Variance: 2.9286632080539353e-09
+Cluster: 46 -> Variance: 1.4025304217490899e-09
+Cluster: 47 -> Variance: 1.1826017621204361e-05
+Cluster: 48 -> Variance: 3.317469980120003e-07
+Cluster: 49 -> Variance: 2.3899061898037464e-07
+Cluster: 50 -> Variance: 3.4304307056242003e-06
+Cluster: 51 -> Variance: 1.8743444531545196e-09
+Cluster: 52 -> Variance: 1.6100209982969198e-07
+Cluster: 53 -> Variance: 2.4054217162184923e-07
+Cluster: 54 -> Variance: 8.155873108445036e-09
+Cluster: 55 -> Variance: 1.62631929485499e-08
+Cluster: 56 -> Variance: 7.945691255167328e-07
+Cluster: 57 -> Variance: 3.445704407173361e-07
+Cluster: 58 -> Variance: 2.422041459622361e-05
+Cluster: 59 -> Variance: 4.328747069615376e-05
+Cluster: 60 -> Variance: 2.6203970278996496e-07
+Cluster: 61 -> Variance: 1.4977540061946556e-08
+Cluster: 62 -> Variance: 3.967420707698618e-08
+Cluster: 63 -> Variance: 1.3449829630662125e-06
+Cluster: 64 -> Variance: 9.488868794094745e-09
+Cluster: 65 -> Variance: 2.4724345067925296e-06
+Cluster: 66 -> Variance: 1.862679174019831e-05
+Cluster: 67 -> Variance: 3.0051581425926604e-07
+Cluster: 68 -> Variance: 4.7369563867434546e-08
+Cluster: 69 -> Variance: 1.8743444531545196e-09
+Cluster: 70 -> Variance: 1.362191545982878e-05
+Cluster: 71 -> Variance: 1.4174729926981045e-08
+Cluster: 72 -> Variance: 3.2669737740666845e-06
+Cluster: 73 -> Variance: 1.005173701571154e-08
+Cluster: 74 -> Variance: 6.664164723889969e-07
+Cluster: 75 -> Variance: 4.184173660786014e-06
+Cluster: 76 -> Variance: 9.476952396380233e-08
+Cluster: 77 -> Variance: 2.326274508960467e-07
+Cluster: 78 -> Variance: 5.94008335039728e-05
+Cluster: 0 -> [('comp.graphics', 9.0), ('talk.politics.misc', 9.0), ('misc.forsale', 8.0), ('rec.motorcycles', 8.0), ('sci.electronics', 8.0)]
+Cluster: 1 -> [('comp.graphics', 45.0), ('comp.sys.ibm.pc.hardware', 39.0), ('sci.electronics', 34.0), ('comp.os.ms-windows.misc', 31.0), ('sci.space', 23.0)]
+Cluster: 2 -> [('rec.sport.baseball', 13.0), ('misc.forsale', 9.0), ('ba.forsale', 7.0), ('ba.market.misc', 7.0), ('ba.market.computers', 7.0)]
+Cluster: 3 -> [('sci.crypt', 227.0), ('alt.privacy.clipper', 43.0), ('comp.org.eff.talk', 38.0), ('comp.security.misc', 15.0), ('alt.security', 14.0)]
+Cluster: 4 -> [('rec.motorcycles', 36.0), ('comp.sys.ibm.pc.hardware', 23.0), ('rec.autos', 21.0), ('rec.sport.baseball', 15.0), ('comp.graphics', 14.0)]
+Cluster: 5 -> [('sci.electronics', 25.0), ('misc.forsale', 10.0), ('comp.sys.ibm.pc.hardware', 10.0), ('sci.space', 5.0), ('comp.sys.mac.hardware', 5.0)]
+Cluster: 6 -> [('comp.windows.x', 69.0), ('comp.graphics', 37.0), ('comp.os.ms-windows.misc', 32.0), ('alt.atheism', 27.0), ('sci.crypt', 24.0)]
+Cluster: 7 -> [('soc.religion.christian', 247.0), ('talk.religion.misc', 78.0), ('alt.atheism', 74.0), ('talk.politics.mideast', 3.0), ('alt.pagan', 3.0)]
+Cluster: 8 -> [('rec.autos', 47.0), ('sci.space', 32.0), ('talk.politics.mideast', 22.0), ('comp.os.ms-windows.misc', 20.0), ('comp.sys.mac.hardware', 19.0)]
+Cluster: 9 -> [('sci.space', 82.0), ('sci.crypt', 31.0), ('sci.astro', 28.0), ('sci.space.shuttle', 13.0), ('talk.religion.misc', 10.0)]
+Cluster: 10 -> [('comp.windows.x', 111.0), ('sci.electronics', 19.0), ('sci.med', 19.0), ('comp.sys.mac.hardware', 19.0), ('talk.politics.mideast', 11.0)]
+Cluster: 11 -> [('comp.windows.x', 102.0), ('comp.windows.x.motif', 17.0), ('comp.windows.x.intrinsics', 8.0), ('comp.os.ms-windows.misc', 8.0), ('comp.windows.open-look', 7.0)]
+Cluster: 12 -> [('rec.autos', 14.0), ('talk.religion.misc', 12.0), ('comp.sys.mac.hardware', 12.0), ('talk.abortion', 10.0), ('sci.electronics', 9.0)]
+Cluster: 13 -> [('sci.crypt', 447.0), ('comp.org.eff.talk', 204.0), ('alt.security', 131.0), ('comp.security.misc', 112.0), ('comp.org.ieee', 94.0)]
+Cluster: 14 -> [('comp.sys.mac.hardware', 21.0), ('sci.space', 4.0), ('sci.electronics', 3.0), ('comp.sys.ibm.pc.hardware', 3.0), ('rec.radio.amateur.packet', 2.0)]
+Cluster: 15 -> [('talk.politics.misc', 73.0), ('talk.religion.misc', 53.0), ('talk.abortion', 52.0), ('talk.politics.medicine', 12.0), ('alt.activism.d', 11.0)]
+Cluster: 16 -> [('alt.atheism', 171.0), ('talk.religion.misc', 139.0), ('talk.abortion', 135.0), ('rec.sport.hockey', 2.0), ('talk.politics.misc', 1.0)]
+Cluster: 17 -> [('talk.politics.guns', 240.0), ('talk.politics.misc', 165.0), ('talk.religion.misc', 122.0), ('soc.culture.usa', 60.0), ('alt.rush-limbaugh', 59.0)]
+Cluster: 18 -> [('talk.religion.misc', 2.0), ('alt.atheism', 2.0), ('talk.origins', 2.0)]
+Cluster: 19 -> [('rec.autos', 52.0), ('misc.forsale', 28.0), ('talk.religion.misc', 23.0), ('talk.politics.misc', 20.0), ('comp.graphics', 14.0)]
+Cluster: 20 -> [('sci.med', 23.0), ('talk.religion.misc', 10.0), ('misc.forsale', 8.0), ('alt.magick', 8.0), ('comp.sys.ibm.pc.hardware', 8.0)]
+Cluster: 21 -> [('comp.graphics', 3.0), ('comp.answers', 2.0), ('news.answers', 2.0)]
+Cluster: 22 -> [('comp.windows.x', 9.0), ('comp.windows.x.intrinsics', 2.0), ('comp.windows.x.motif', 1.0)]
+Cluster: 23 -> [('talk.politics.misc', 127.0), ('alt.sex', 109.0), ('soc.men', 107.0), ('misc.legal', 97.0), ('ca.politics', 62.0)]
+Cluster: 24 -> [('misc.forsale', 29.0), ('rec.autos', 25.0), ('talk.politics.misc', 13.0), ('rec.autos.tech', 12.0), ('comp.sys.mac.hardware', 10.0)]
+Cluster: 25 -> [('rec.sport.baseball', 9.0), ('comp.sys.mac.hardware', 8.0), ('sci.crypt', 6.0), ('misc.forsale', 5.0), ('comp.os.ms-windows.misc', 4.0)]
+Cluster: 26 -> [('comp.windows.x', 81.0), ('rec.motorcycles', 51.0), ('comp.graphics', 51.0), ('sci.electronics', 44.0), ('comp.sys.ibm.pc.hardware', 43.0)]
+Cluster: 27 -> [('rec.motorcycles', 45.0), ('rec.sport.hockey', 16.0), ('misc.forsale', 9.0), ('comp.windows.x', 7.0), ('rec.autos', 7.0)]
+Cluster: 28 -> [('rec.autos', 25.0), ('sci.electronics', 23.0), ('rec.motorcycles', 18.0), ('talk.politics.guns', 11.0), ('sci.space', 10.0)]
+Cluster: 29 -> [('talk.politics.guns', 21.0), ('rec.sport.baseball', 20.0), ('rec.sport.hockey', 15.0), ('misc.forsale', 13.0), ('comp.os.ms-windows.misc', 12.0)]
+Cluster: 30 -> [('talk.politics.misc', 234.0), ('talk.politics.guns', 223.0), ('alt.atheism', 142.0), ('sci.med', 122.0), ('talk.religion.misc', 106.0)]
+Cluster: 31 -> [('soc.religion.christian', 384.0)]
+Cluster: 32 -> [('comp.os.ms-windows.misc', 544.0), ('comp.sys.mac.hardware', 408.0), ('comp.sys.ibm.pc.hardware', 380.0), ('comp.windows.x', 306.0), ('comp.graphics', 295.0)]
+Cluster: 33 -> [('rec.sport.hockey', 5.0)]
+Cluster: 34 -> [('talk.religion.misc', 38.0), ('talk.politics.misc', 8.0), ('sci.skeptic', 7.0), ('comp.sys.ibm.pc.hardware', 6.0), ('rec.motorcycles', 4.0)]
+Cluster: 35 -> [('rec.sport.baseball', 443.0), ('rec.sport.hockey', 6.0), ('rec.sport.baseball.fantasy', 4.0), ('soc.culture.jewish', 3.0), ('talk.politics.misc', 2.0)]
+Cluster: 36 -> [('talk.politics.guns', 19.0), ('rec.motorcycles', 8.0), ('rec.sport.baseball', 8.0), ('sci.space', 3.0), ('comp.windows.x', 3.0)]
+Cluster: 37 -> [('talk.religion.misc', 76.0), ('alt.atheism', 37.0), ('talk.politics.misc', 11.0), ('talk.abortion', 11.0), ('alt.conspiracy', 7.0)]
+Cluster: 38 -> [('talk.politics.misc', 34.0), ('sci.electronics', 31.0), ('rec.autos', 26.0), ('rec.motorcycles', 24.0), ('talk.politics.guns', 20.0)]
+Cluster: 39 -> [('sci.space', 476.0), ('rec.motorcycles', 439.0), ('rec.autos', 423.0), ('sci.med', 423.0), ('talk.politics.misc', 311.0)]
+Cluster: 40 -> [('alt.atheism', 27.0), ('talk.religion.misc', 25.0), ('talk.origins', 24.0), ('sci.space', 2.0), ('alt.consciousness', 1.0)]
+Cluster: 41 -> [('talk.politics.guns', 82.0), ('sci.crypt', 15.0), ('soc.culture.usa', 12.0), ('talk.religion.misc', 9.0), ('alt.rush-limbaugh', 9.0)]
+Cluster: 42 -> [('sci.med', 24.0), ('sci.crypt', 22.0), ('rec.sport.baseball', 22.0), ('sci.electronics', 17.0), ('talk.politics.guns', 17.0)]
+Cluster: 43 -> [('sci.med', 1.0)]
+Cluster: 44 -> [('talk.politics.mideast', 57.0), ('talk.politics.misc', 18.0), ('soc.culture.jewish', 18.0), ('misc.headlines', 7.0), ('soc.culture.arabic', 6.0)]
+Cluster: 45 -> [('rec.sport.hockey', 5.0)]
+Cluster: 46 -> [('talk.religion.misc', 2.0), ('alt.atheism', 2.0), ('alt.pagan', 2.0)]
+Cluster: 47 -> [('talk.politics.mideast', 180.0), ('soc.culture.turkish', 164.0), ('talk.politics.soviet', 108.0), ('soc.history', 94.0), ('soc.culture.greek', 91.0)]
+Cluster: 48 -> [('alt.atheism', 41.0), ('talk.religion.misc', 28.0), ('talk.origins', 19.0), ('talk.politics.misc', 2.0), ('alt.politics.clinton', 2.0)]
+Cluster: 49 -> [('talk.politics.misc', 32.0), ('alt.fan.rush-limbaugh', 24.0), ('ca.politics', 18.0), ('sci.med', 8.0), ('talk.politics.drugs', 6.0)]
+Cluster: 50 -> [('sci.image.processing', 84.0), ('comp.graphics', 75.0), ('sci.med', 52.0), ('sci.skeptic', 51.0), ('sci.energy', 51.0)]
+Cluster: 51 -> [('rec.motorcycles', 4.0)]
+Cluster: 52 -> [('rec.sport.hockey', 25.0), ('talk.religion.misc', 18.0), ('comp.os.ms-windows.misc', 11.0), ('comp.sys.ibm.pc.hardware', 9.0), ('talk.politics.guns', 8.0)]
+Cluster: 53 -> [('rec.sport.hockey', 24.0), ('talk.politics.mideast', 21.0), ('sci.electronics', 14.0), ('talk.politics.misc', 12.0), ('comp.windows.x', 11.0)]
+Cluster: 54 -> [('alt.atheism', 5.0), ('talk.religion.misc', 4.0), ('talk.abortion', 4.0), ('soc.religion.christian', 3.0), ('sci.space', 1.0)]
+Cluster: 55 -> [('rec.motorcycles', 11.0), ('tx.motorcycles', 4.0), ('comp.windows.x', 1.0), ('comp.sys.sun.hardware', 1.0)]
+Cluster: 56 -> [('news.answers', 50.0), ('sci.space', 30.0), ('comp.windows.x', 29.0), ('sci.answers', 29.0), ('comp.answers', 24.0)]
+Cluster: 57 -> [('rec.motorcycles', 37.0), ('comp.graphics', 22.0), ('comp.os.ms-windows.misc', 16.0), ('alt.atheism', 15.0), ('sci.electronics', 12.0)]
+Cluster: 58 -> [('rec.sport.hockey', 452.0), ('rec.sport.baseball', 50.0), ('rec.autos.sport', 2.0), ('misc.forsale', 1.0), ('rec.sport.baseball.fantasy', 1.0)]
+Cluster: 59 -> [('talk.politics.mideast', 531.0), ('soc.culture.jewish', 167.0), ('soc.culture.arabic', 125.0), ('talk.politics.misc', 104.0), ('soc.culture.turkish', 98.0)]
+Cluster: 60 -> [('alt.atheism', 28.0), ('talk.religion.misc', 27.0), ('talk.abortion', 27.0)]
+Cluster: 61 -> [('rec.motorcycles', 8.0), ('rec.autos', 8.0)]
+Cluster: 62 -> [('talk.politics.guns', 17.0), ('rec.autos', 7.0), ('rec.motorcycles', 1.0)]
+Cluster: 63 -> [('alt.atheism', 104.0), ('sci.space', 16.0), ('talk.politics.guns', 12.0), ('sci.electronics', 11.0), ('sci.astro', 8.0)]
+Cluster: 64 -> [('sci.med', 9.0)]
+Cluster: 65 -> [('rec.sport.hockey', 83.0), ('rec.motorcycles', 54.0), ('sci.electronics', 52.0), ('comp.graphics', 43.0), ('comp.os.ms-windows.misc', 43.0)]
+Cluster: 66 -> [('alt.atheism', 285.0), ('talk.religion.misc', 227.0), ('talk.origins', 144.0), ('talk.abortion', 77.0), ('talk.politics.misc', 4.0)]
+Cluster: 67 -> [('talk.religion.misc', 30.0), ('alt.atheism', 28.0), ('talk.origins', 28.0), ('talk.politics.guns', 9.0), ('comp.os.ms-windows.misc', 3.0)]
+Cluster: 68 -> [('rec.motorcycles', 19.0), ('comp.os.ms-windows.misc', 6.0), ('sci.electronics', 2.0), ('alt.atheism', 1.0), ('sci.crypt', 1.0)]
+Cluster: 69 -> [('talk.politics.guns', 4.0)]
+Cluster: 70 -> [('soc.religion.christian', 341.0)]
+Cluster: 71 -> [('comp.graphics', 11.0)]
+Cluster: 72 -> [('rec.sport.hockey', 166.0), ('rec.sport.baseball', 18.0), ('maine.hockey-l', 3.0), ('edm.general', 2.0), ('ut.general', 1.0)]
+Cluster: 73 -> [('comp.os.ms-windows.misc', 6.0), ('alt.fan.bill-gates', 5.0), ('comp.os.ms-windows.advocacy', 5.0)]
+Cluster: 74 -> [('comp.sys.ibm.pc.hardware', 33.0), ('alt.atheism', 29.0), ('talk.politics.misc', 29.0), ('comp.sys.mac.hardware', 25.0), ('rec.autos', 21.0)]
+Cluster: 75 -> [('comp.sys.ibm.pc.hardware', 186.0), ('comp.sys.mac.hardware', 26.0), ('misc.forsale', 14.0), ('comp.periphs.scsi', 12.0), ('comp.os.ms-windows.misc', 6.0)]
+Cluster: 76 -> [('rec.sport.hockey', 22.0), ('comp.os.ms-windows.misc', 12.0), ('rec.sport.baseball', 10.0), ('misc.forsale', 6.0), ('rec.collecting', 4.0)]
+Cluster: 77 -> [('comp.sys.mac.hardware', 29.0), ('comp.sys.ibm.pc.hardware', 21.0), ('misc.forsale', 18.0), ('sci.electronics', 14.0), ('alt.cd-rom', 9.0)]
+Cluster: 78 -> [('misc.forsale', 391.0), ('comp.graphics', 227.0), ('sci.electronics', 221.0), ('comp.sys.mac.hardware', 206.0), ('rec.autos', 178.0)]

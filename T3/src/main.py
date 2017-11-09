@@ -4,70 +4,40 @@ matplotlib.use('Agg')
 
 import numpy as np
 from sklearn.manifold import TSNE
-from sklearn.cluster import KMeans
-from scipy.spatial.distance import cdist
 from sklearn.metrics import pairwise_distances_argmin_min
-import matplotlib.pyplot as plt
-
 import cluster as cl
 import processing as proc
 import metrics
 
-# -------------- Params -------------
-
-# -----------------------------------
-
 # Load dataset
-x_train = np.genfromtxt('../documents/data.csv', delimiter=',', skip_header=0, skip_footer=0)
+x_train = np.genfromtxt('../documents/data.csv', delimiter=',', skip_header=0, skip_footer=19000)
 
 # Load ids
 g = open('../documents/ids', 'rb')
 y_train = [line.split() for line in g]
-
-# Normalizing
-x_train = x_train.astype('float32')
+g.close()
 
 # Pre-prossesing data
 x_train = proc.normalize_l2(x_train)
 x_train = proc.st_scale(x_train)
 
 # Aplying PCA
-x_train, ncomp = proc.PCA_reduction(x_train, 0.8)
+#x_train, ncomp = proc.PCA_reduction(x_train, 0.8)
 
 # Using kmeans
-labels, centers = cl.k_means(2, x_train)
+labels, centers = cl.k_means(10, x_train)
 
 # Verifying cluster variance
-metrics.verify_clusters(labels)
+#metrics.verify_clusters(labels, 5)
 
-#calcula elbow
-'''
-# k means determine k
-distortions = []
-K = range(5, 105, 5)
+# Create elbow graph
+#metrics.elbow_graph(x_train, 0, 200, 1)
 
-for k in K:
-    kmeanModel = KMeans(n_clusters=k, n_jobs=-1).fit(x_train)
-    kmeanModel.fit(x_train)
-    distortions.append(sum(np.min(cdist(x_train, kmeanModel.cluster_centers_, 'euclidean'), axis=1)) / x_train.shape[0])
+# Find medoids
+id_medoids, distances = pairwise_distances_argmin_min(centers, x_train)
 
-# Plot the elbow
-plt.plot(K, distortions, 'bx-')
-plt.xlabel('k')
-plt.ylabel('Distortion')
-plt.title('The Elbow Method showing the optimal k')
-plt.savefig('elbow_correto2')
-'''
-
-# descobrir centróides
-'''
-k = 43
-kmeanModel = KMeans(n_clusters=k, n_jobs=-1).fit(x_train)
-kmeanModel.fit(x_train)
-id_centroids, _ = pairwise_distances_argmin_min(kmeanModel.cluster_centers_, x_train)
-
-print id_centroids
-'''
+# Get closest files to medoid (n_closest values)
+metrics.closest_docs(x_train, id_medoids, labels, 5)
 
 # Usar no final pra plotar :) ele reduz para duas dimensões para visualizar. aplicar PCA antes ou alguma redução
 

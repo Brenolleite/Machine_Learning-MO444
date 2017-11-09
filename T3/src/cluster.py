@@ -8,14 +8,12 @@ from sklearn.metrics import silhouette_samples, silhouette_score
 def k_means(K, X):
 	# Initialize the clusterer with n_clusters value and a random generator
 	# seed of 10 for reproducibility.
-	clusterer = KMeans(n_clusters=K, random_state=10, n_jobs=-1)
+	clusterer = KMeans(n_clusters=K, random_state=10, n_jobs=3)
 	cluster_labels = clusterer.fit_predict(X)
-
 
 	return cluster_labels, clusterer.cluster_centers_
 
 def find_clusters(range_n_clusters, X):
-
 	for n_clusters in range_n_clusters:
 		name_fig = 'fig_' + str(n_clusters)
 

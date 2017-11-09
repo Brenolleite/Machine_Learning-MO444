@@ -1,6 +1,12 @@
 import numpy as np
 import re
+import cluster as cl
+from scipy.spatial.distance import cdist
+from sklearn.metrics.pairwise import paired_distances
+import matplotlib.pyplot as plt
 
+
+# Verify variance for clusters, and create histogram of classes
 def verify_clusters(labels, qtde = None):
     # Find clusters
     clusters = np.unique(labels)
@@ -92,3 +98,105 @@ def verify_clusters(labels, qtde = None):
     if qtde != None:
         for i in range(len(ret_histograms)):
             print('Cluster: {0} -> {1}'.format(i, np.array(ret_histograms)[i,0][0:qtde]))
+
+# kmeans generate elbow graph to check value of K
+def elbow_graph(x_train, start, end, step):
+    distortions = []
+    K = range(start, end, step)
+
+    # Try out some K values
+    for k in K:
+        _ , centroids = cl.k_means(k, x_train)
+        distortions.append(sum(np.min(cdist(x_train, centroids, 'euclidean'), axis=1)) / x_train.shape[0])
+
+    # Plot the elbow
+    plt.plot(K, distortions, 'bx-')
+    plt.xlabel('k')
+    plt.ylabel('Distortion')
+    plt.title('The Elbow Method showing the optimal k')
+    plt.savefig('elbow')
+
+def closest_docs(x_train, id_medoids, labels, n_closest):
+    # Read ids of files
+    f = open('../documents/ids', 'r')
+    ids = [line.rstrip('\n') for line in f]
+    f.close()
+
+    for idx in range(len(id_medoids)):
+        # Get medoid ID
+        medoid_id = id_medoids[idx]
+
+        # Get train id from elements from cluster
+        cluster_ids = list(np.arange(len(x_train)))
+
+        # Remove medoid from list of ids
+        if len(cluster_ids) > 1:
+            cluster_ids.remove(medoid_id)
+
+        # Get all data using cluster ids - medoid_id
+        X = x_train[cluster_ids]
+
+        # Create a matrix of medoids to make distance measurement
+        medoids = np.repeat(x_train[medoid_id], len(X)).reshape(X.shape)
+
+        # Get distance from medoid matrix and data
+        distances = paired_distances(medoids, X, 'euclidean')
+
+        # Create indexes for the list of distances
+        distances = {v: k for v, k in enumerate(distances)}
+
+        # Sort list of distances
+        distances = sorted(distances.items(), key=lambda x: x[1])
+
+        # Get n closest values
+        closest = distances[0:n_closest]
+
+        # Get filenames from ids
+        array = []
+        for item in closest:
+             array.append(ids[item[0]])
+
+        print('Cluster: {0} - Medoid: {1} -> {2}'.format(idx, ids[medoid_id], array))
+
+
+def closest_docs2(x_train, id_medoids, labels, n_closest):
+    # Read ids of files
+    f = open('../documents/ids', 'r')
+    ids = [line.rstrip('\n') for line in f]
+    f.close()
+
+    for idx in range(len(id_medoids)):
+        # Get medoid ID
+        medoid_id = id_medoids[idx]
+
+        # Get train id from elements from cluster
+        cluster_ids = list(np.where(labels == idx)[0])
+
+        # Remove medoid from list of ids
+        if len(cluster_ids) > 1:
+            cluster_ids.remove(medoid_id)
+
+        # Get all data using cluster ids - medoid_id
+        X = x_train[cluster_ids]
+
+        # Create a matrix of medoids to make distance measurement
+        medoids = np.repeat(x_train[medoid_id], len(X)).reshape(X.shape)
+
+        # Get distance from medoid matrix and data
+        distances = paired_distances(medoids, X, 'euclidean')
+
+        # Create indexes for the list of distances
+        distances = {v: k for v, k in enumerate(distances)}
+
+        # Sort list of distances
+        distances = sorted(distances.items(), key=lambda x: x[1])
+
+        # Get n closest values
+        closest = distances[0:n_closest]
+
+        # Get filenames from ids
+        array = []
+        for item in closest:
+             array.append(ids[item[0]])
+
+        print('Cluster: {0} - Medoid: {1} -> {2}'.format(idx, ids[medoid_id], array))
