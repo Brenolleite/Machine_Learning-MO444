@@ -21,13 +21,12 @@ import cluster as cl
 import processing as proc
 import metrics
 
-
 # -------------- Params -------------
 
 # -----------------------------------
 
 # Load dataset
-x_train = np.genfromtxt('../documents/data.csv', delimiter=',', skip_header=10, skip_footer=10)
+x_train = np.genfromtxt('../documents/data.csv', delimiter=',', skip_header=0, skip_footer=0)
 
 # Load ids
 g = open('../documents/ids', 'rb')
@@ -40,26 +39,29 @@ x_train = x_train.astype('float32')
 x_train = proc.normalize_l2(x_train)
 x_train = proc.st_scale(x_train)
 
+# Aplying PCA
+proc.PCA_reduction(x_train, 0.8)
+
 #print x_train.shape
 
 # Finding the number of clusters
 # 19904 data and 2209 features
 range_n_clusters = range(75, 95)
-print range_n_clusters
-cl.find_clusters(range_n_clusters, x_train)
+print(range_n_clusters)
+#cl.find_clusters(range_n_clusters, x_train)
 
 
 #calcula elbow
 '''
 # k means determine k
 distortions = []
-K = range(5, 105, 5) 
+K = range(5, 105, 5)
 
 for k in K:
     kmeanModel = KMeans(n_clusters=k, n_jobs=-1).fit(x_train)
     kmeanModel.fit(x_train)
     distortions.append(sum(np.min(cdist(x_train, kmeanModel.cluster_centers_, 'euclidean'), axis=1)) / x_train.shape[0])
- 
+
 # Plot the elbow
 plt.plot(K, distortions, 'bx-')
 plt.xlabel('k')
