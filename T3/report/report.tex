@@ -108,7 +108,7 @@ Para tentar encontrar a quantidade de agrupamento dos dados, primeiramente escol
 \begin{figure}[!h]
 	\centering
 	{
-		\fbox{\includegraphics[scale=0.45]{Images/elbow.png}}
+		\fbox{\includegraphics[scale=0.3]{Images/elbow.png}}
 	}
 	\caption{\small Gráfico do método \emph{Elbow} para os quantidades de grupos diferentes.}
 	\label{fig:elbow}
@@ -121,7 +121,7 @@ Como existiam 3 possíveis valores para números de grupos, escolheu-se utilizar
 \begin{figure}[!h]
 	\centering
 	{
-		\fbox{\includegraphics[scale=0.45]{Images/silhueta.png}}
+		\fbox{\includegraphics[scale=0.3]{Images/silhueta.png}}
 	}
 	\caption{\small Gráfico da métrica silhueta pelo número de agrupamentos.}
 	\label{fig:silhueta}
@@ -137,7 +137,7 @@ Com o objetivo de tentar entender a estrutura dos dados, os documentos foram abe
 \begin{figure}[!h]
 	\centering
 	{
-		\fbox{\includegraphics[scale=0.3]{Images/occurrence.png}}
+		\fbox{\includegraphics[scale=0.25]{Images/occurrence.png}}
 	}
 	\caption{\small Maiores ocorrências dos identificadores.}
 	\label{fig:occurrence}
@@ -150,33 +150,16 @@ Outra análise foi feita para avaliar a ocorrência dos \emph{Newsgroups}. O Gr�
 \begin{figure}[!h]
 	\centering
 	{
-		\fbox{\includegraphics[scale=0.3]{Images/occurence_word.png}}
+		\fbox{\includegraphics[scale=0.25]{Images/occurence_word.png}}
 	}
 	\caption{\small Maiores ocorrências de cada identificador.}
 	\label{fig:occurrence_word}
 \end{figure}
 
-A partir do Gráfico \ref{fig:occurrence_word}, é possível visualizar que a grande parte dos documentos na base estão dentro de apenas 7 de um total de 141 classes principais. Desta forma, $95.98\%$ dos documentos estão distribuidos dentro dessas 7 classes.
+A partir do Gráfico \ref{fig:occurrence_word}, é possível visualizar que a grande parte dos documentos na base estão dentro de apenas 7 de um total de 141 classes principais. Desta forma, $95.98\%$ dos documentos estão distribuídos dentro dessas 7 classes.
 
 \subsubsection{Análise dos medóides}
 
-
-\begin{table}[h!]
-	\centering	
-	\begin{tabular}{cc} \toprule
-		\textbf{Grupo} & \textbf{Documents} \\ \toprule 	
-		relu                   & softmax               \\
-		relu                   & sigmoid                \\
-		tanh                   & softmax               \\
-		tanh                   & sigmoid                \\
-		sigmoid                & softmax             \\
-		linear                 & softmax                \\
-		linear                 & sigmoid                 \\
-		softmax                & sigmoid              \\ \bottomrule      
-	\end{tabular}
-	\caption{\small Resultados de acurácia média dos $5$-\emph{folds} utilizando redes neurais com duas camadas escondidas.}
-	\label{tab:2hl}
-\end{table}
 
 
 
@@ -200,7 +183,7 @@ A partir do Gráfico \ref{fig:occurrence_word}, é possível visualizar que a gr
 \begin{figure}[!h]
 	\centering
 	{
-		\fbox{\includegraphics[scale=0.45]{Images/variancia.png}}
+		\fbox{\includegraphics[scale=0.3]{Images/variancia.png}}
 	}
 	\caption{\small Gráfico da métrica silhueta pelo número de agrupamentos.}
 	\label{fig:silhueta}
@@ -242,6 +225,33 @@ A partir do Gráfico \ref{fig:occurrence_word}, é possível visualizar que a gr
 
 
 \subsection{Visualização dos dados}
+
+Dada as métricas aplicadas e encontradas a partir dos dados, bem como análise e entendimento do problema, foi possível identificar pelos agrupamentos, que a maioria deles e em grande parte apresentavam elementos de um mesmo \emph{Newsgroup}. Para validar a abordagem escolhida para mensurar a qualidade dos agrupamentos, optou-se por visualizar a projeção dos dados a fim de se identificar os agrupamentos. Para isto, utilizamos o algoritmo \emph{t-SNE}, conhecido por manter classes semelhantes na alta dimensão, para uma dimensão visível, no caso, de duas dimensões.  
+
+Assim, a partir da redução de dimensionalidade feita utilizando o algoritmo PCA, a projeção do \emph{t-SNE} foi aplicada para um número de componentes $2$, ou seja, duas dimensões. As Figuras \ref{fig:tsne31} e \ref{fig:tsne79} apresentam a projeção para $K=31$ grupos e $K=79$ grupos, respectivamente. 
+
+\begin{figure}[!h]
+	\centering
+	\subfloat[K = 31]{
+		{
+			\fbox{\includegraphics[scale=0.12]{Images/tsne31}}
+		}
+		\label{fig:tsne31}
+	}
+	%\quad
+	\subfloat[K = 79]{
+		{
+			\fbox{\includegraphics[scale=0.12]{Images/tsne79}}
+		}
+		\label{fig:tsne79}
+	}
+	\caption{Projeções para $31$ e $79$ agrupamentos.}
+	\label{fig:clusters}
+\end{figure}
+
+Com a visualização da projeção, é possível identificar a presença de agrupamentos no espaço, ou seja, uma maior concentração de pontos e uma devida separação entre essas concentrações de pontos. Tais agrupamentos correspondem a documentos de mesma classe, ou seja, documentos que apresentam vetor de características semelhantes. Além disso, pode-se visualizar que os agrupamentos apresentam mesma coloração. Isso indica que numero de agrupamentos escolhidos, foi condizente com os agrupamentos, caso contrario, haveria muita mistura dentro do mesmo grupo.
+
+Seguindo tal linha entendimento, a projeção com $31$ agrupamentos permitiu visualizar agrupamentos maiores, enquanto a com $79$ permitiu a visualização de agrupamentos menores e em maior quantidade. Em ambas as projeções, existem pontos que estão aparentemente fora de agrupamentos e que apresentam cores misturadas, ou seja, diferentes classes. Isso ocorre na parte superior e inferior das figuras e tendem a mostrar possíveis \emph{outliers}, amostras específicas que são pouco representativas a um grupo. A visualização, de qualquer modo, ficou prejudicada pela grande quantidade de classes e cores, dificultando uma melhor identificação dos grupos pelas cores.
 
 \section{Conclusão}
 
