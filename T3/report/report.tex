@@ -208,7 +208,6 @@ Pode-se notar que acima de 1500 componentes $87\%$  da variância dos dados é m
 		}
 		\label{fig:pca95}
 	}\smallskip
-	\enskip
 	{
 		{
 			\setlength{\fboxsep}{1pt}
@@ -217,7 +216,6 @@ Pode-se notar que acima de 1500 componentes $87\%$  da variância dos dados é m
 		}
 		\label{fig:pca90}
 	}\smallskip
-	\enskip
 	{
 		{
 			\setlength{\fboxsep}{1pt}
@@ -230,7 +228,11 @@ Pode-se notar que acima de 1500 componentes $87\%$  da variância dos dados é m
 	\label{fig:clusters_pca}
 \end{figure}
 
+Os resultados obtidos mostram que a redução de dimensionalidade pode ajudar no agrupamento, principalmente para o agrupamento mais especifico utilizando as sub classes. Na redução de $2209$ para $1830$ dimensões ($-5\%$ variância) a melhoria não pode ser muito notada, os resultados são muito similares com os mostrados anteriormente, veja Figura \ref{fig:pca_95}.
 
+Por outro lado, a Figura \ref{fig:pca90} mostra que com uma redução de $2209$ para $1608$ componentes ($-10\%$ variância) o agrupamento se tornou muito mais especifico, dois dos agrupamentos mostram um alto índice dentro de uma única categoria. Como por exemplo a categoria \emph{comp.windows.x}, neste tipo de agrupamento a variância é muito alta pois uma das categorias possuí grande parte dos dados.
+
+E por último a redução de  $2209$ para $1424$ componentes ($-15\%$ variância) mostra ainda mais acentuadamente a melhoria dos agrupamentos para categorias especificas, os três grupos são largamente dominados por apenas uma categoria. Pode-se ver ainda outras categorias aparecendo com um número menor de ocorrência, e as mesmas também fazem parte da categoria principal. Um dos agrupamentos teve todos os documentos dentro de uma mesma categoria (\emph{soc.religion.christian}), mostrando a robustez do agrupamento.
 
 \subsection{Visualização dos dados}
 
