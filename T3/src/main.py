@@ -25,25 +25,29 @@ x_train = proc.st_scale(x_train)
 # Aplying PCA
 x_train, ncomp = proc.PCA_reduction(x_train, 0.85)
 
+# Set value of K
+K = 31
+
 # Using kmeans
-labels, centers = cl.k_means(31, x_train)
+labels, centers = cl.k_means(K, x_train)
 
 # Verifying cluster variance
-metrics.verify_clusters(labels, 4)
+#metrics.verify_clusters(labels, 4)
 
 # Create elbow graph
 #metrics.elbow_graph(x_train, 0, 200, 1)
 
 # Find medoids
-id_medoids, distances = pairwise_distances_argmin_min(centers, x_train)
+#id_medoids, distances = pairwise_distances_argmin_min(centers, x_train)
 
 # Get closest files to medoid (n_closest values)
-metrics.closest_docs(x_train, id_medoids, labels, 3)
+#metrics.closest_docs(x_train, id_medoids, labels, 3)
 
 # TSNE
 tsne = TSNE(n_components=2)
 
 Y = tsne.fit_transform(x_train)
 plt.figure(figsize=(20, 20))
-plt.plot(Y[:, 0], Y[:, 1], c=labels, s=100, alpha = 0.5)
-plt.savefig('tsne2')
+plt.scatter(Y[:, 0], Y[:, 1], c=labels, s=100, cmap=plt.cm.get_cmap("jet", K), alpha = 0.5)
+plt.colorbar(ticks=range(K))
+plt.savefig('../output/tsne' + str(K))
