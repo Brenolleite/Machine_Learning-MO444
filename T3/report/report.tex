@@ -127,12 +127,12 @@ Como existiam 3 possíveis valores para números de grupos, escolheu-se utilizar
 	\label{fig:silhueta}
 \end{figure}
 
-No gráfico, é possível observar que os valores de silhueta não ficaram próximos a $1$. Uma possível motivo pode ser atribuído ao ``mau da dimensionalidade'', ou seja, devido a alta dimensionalidade do problema: o vetor de características apresenta dimensão de $2209$.  Os dados estão muito dispersos e não são capazes de apresentar uma silhueta bem definida. Contudo, ainda é possível observar que os valores mais promissores referem-se ao número de agrupamentos de $31$, $79$ e $92$ grupos. Tais valores encontram-se dentro dos intervalos sugeridos pelo método \textit{Elbow}. Para realizar os experimentos, optou-se por utilizar os melhores valores de silhueta: $31$ e $79$.
+No gráfico, é possível observar que os valores de silhueta não ficaram próximos a $1$. Uma possível motivo pode ser atribuído ao ``mal da dimensionalidade'', ou seja, devido a alta dimensionalidade do problema: o vetor de características apresenta dimensão de $2209$.  Os dados estão muito dispersos e não são capazes de apresentar uma silhueta bem definida. Contudo, ainda é possível observar que os valores mais promissores referem-se ao número de agrupamentos de $31$, $79$ e $92$ grupos. Tais valores encontram-se dentro dos intervalos sugeridos pelo método \textit{Elbow}. Para realizar os experimentos, optou-se por utilizar os melhores valores de silhueta: $31$ e $79$.
 
 
 \subsection{Análise dos documentos}
 
-Com o objetivo de tentar entender a estrutura dos dados, os documentos foram abertos e analisados. No cabeçalho de cada documento, foi possível notar a presença de um identificador denominado \emph{Newsgroup}. Tal identificador mostra a algumas siglas de palavras-chave para o entendimento da classe da cada documento. Mais de uma palavra pode aparecer no identificador, indicando subclasses. Desta forma, algumas análises puderam ser feitas neste caminho. O Gráfico \ref{fig:occurrence} apresenta as maiores ocorrências de cada \emph{Newsgroup}, considerando todas as palavras-chave que o compõe.
+Com o objetivo de tentar entender a estrutura dos dados, os documentos foram abertos e analisados. No cabeçalho de cada documento, foi possível notar a presença de um identificador denominado \emph{Newsgroup}. Tal identificador mostra a algumas siglas de palavras-chave para o entendimento da classe da cada documento. Mais de uma palavra pode aparecer no identificador, indicando subclasses. Desta forma, algumas análises puderam ser feitas neste caminho. O Gráfico \ref{fig:occurrence} apresenta as maiores ocorrências de \emph{Newsgroup}, considerando o conjunto palavras-chave que o compõe.
 
 \begin{figure}[!h]
 	\centering
@@ -143,16 +143,20 @@ Com o objetivo de tentar entender a estrutura dos dados, os documentos foram abe
 	\label{fig:occurrence}
 \end{figure}
 
-O Gráfico \ref{fig:occurrence} mostra as $20$ primeiras maiores ocorrências dos \emph{Newsgroup}. As $20$ primeiras ocorrências apresentam valor maior do que $950$ e somam $62,42\%$ de todas as ocorrências. A partir da ocorrência $21$ o numero da ocorrência de cada \emph{Newsgroup} ´e menor do que $300$ ocorrências cada uma. Assim, tais dados sugerem que existam $20$ agrupamentos de maior densidade de informação, ou seja, que apresentem o mesmo \emph{Newsgroup} em sua composição. Com relação ao agrupamento dos dados, imagina-se que as maiores ocorrências sugiram agrupamentos maiores de informação.
+O Gráfico \ref{fig:occurrence} mostra as $20$ primeiras maiores ocorrências dos \emph{Newsgroup}. As $20$ primeiras ocorrências apresentam valor maior do que $950$ e somam $62,42\%$ de todas as ocorrências. A partir da ocorrência $21$ o numero da ocorrência de cada \emph{Newsgroup} é menor do que $300$ ocorrências cada uma. Assim, tais dados sugerem que existam $20$ agrupamentos de maior densidade de informação, ou seja, que apresentem o mesmo \emph{Newsgroup} em sua composição. Com relação ao agrupamento dos dados, imagina-se que as maiores ocorrências sugiram agrupamentos maiores de informação.
+
+Outra análise foi feita para avaliar a ocorrência dos \emph{Newsgroup}. O Gráfico \ref{fig:occurrence_word} apresenta as maiores ocorrências de cada \emph{Newsgroup} individualmente, considerando todas as palavras-chave que o compõe.
 
 \begin{figure}[!h]
 	\centering
 	{
 		\fbox{\includegraphics[scale=0.3]{Images/occurence_word.png}}
 	}
-	\caption{\small Gráfico da métrica silhueta pelo número de agrupamentos.}
-	\label{fig:silhueta}
+	\caption{\small Maiores ocorrências de cada identificador.}
+	\label{fig:occurrence_word}
 \end{figure}
+
+A partir do Gráfico \ref{fig:occurrence_word}, é possível visualizar que quase $8.000$ dados apresentam informação de \emph{Newgroup}
 
 \subsubsection{Análise dos medóides}
 
