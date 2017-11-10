@@ -201,47 +201,49 @@ Os resultados utilizando $K = 79$ foram bem similares, os agrupamentos continuar
 
 \subsection{Redução de dimensionalidade}
 
+Com intuito de melhorar os agrupamentos foram feitos experimentos utilizando redução de dimensionalidade, a Figura \ref{fig:var_comp} mostra a distribuição da variância dos dados por número de componentes.
+
+\begin{figure}[!h]
+	\centering
+	{
+		\fbox{\includegraphics[scale=0.3]{Images/variancia.png}}
+	}
+	\caption{\small Variância por numero de componentes.}
+	\label{fig:var_comp}
+\end{figure}
+
+Pode-se notar que acima de 1500 componentes $87\%$  da variância dos dados é mantida, para os experimentos deste trabalho foram utilizados os valores de 1424, 1608 e 1830 componentes, que são responsáveis por $85\%$, $90\%$ e $95\%$ da variância dos dados. A Figura \ref{fig:clusters_pca} mostra os histogramas obtidos pelos agrupamentos de maior variância utilizando o processo de redução de dimensionalidade antes do agrupamento. Em todos esses experimentos $K = 79$ foi utilizado, pois o mesmo mostrou melhores resultados.
 
 
 \begin{figure}[!h]
 	\centering
 	{
-		\fbox{\includegraphics[scale=0.45]{Images/variancia.png}}
-	}
-	\caption{\small Gráfico da métrica silhueta pelo número de agrupamentos.}
-	\label{fig:silhueta}
-\end{figure}
-
-
-\begin{figure}[!h]
-	\centering
-	\subfloat[K = 2.]{
 		{
 			\setlength{\fboxsep}{1pt}
 			\setlength{\fboxrule}{1pt}
-			\fbox{\includegraphics[scale=0.15]{Images/pca_85}}
+			\fbox{\includegraphics[scale=0.2]{Images/pca_95}}
+		}
+		\label{fig:pca95}
+	}\smallskip
+	\enskip
+	{
+		{
+			\setlength{\fboxsep}{1pt}
+			\setlength{\fboxrule}{1pt}
+			\fbox{\includegraphics[scale=0.2]{Images/pca_90}}
+		}
+		\label{fig:pca90}
+	}\smallskip
+	\enskip
+	{
+		{
+			\setlength{\fboxsep}{1pt}
+			\setlength{\fboxrule}{1pt}
+			\fbox{\includegraphics[scale=0.25]{Images/pca_85}}
 		}
 		\label{fig:pca85}
 	}
-	\quad
-	\subfloat[K = 10.]{
-		{
-			\setlength{\fboxsep}{1pt}
-			\setlength{\fboxrule}{1pt}
-			\fbox{\includegraphics[scale=0.15]{Images/pca_90}}
-		}
-		\label{fig:pca90}
-	}
-	\quad
-	\subfloat[K = 10.]{
-		{
-			\setlength{\fboxsep}{1pt}
-			\setlength{\fboxrule}{1pt}
-			\fbox{\includegraphics[scale=0.15]{Images/pca_95}}
-		}
-		\label{fig:pca95}
-	}
-	\caption{}
+	\caption{Histogramas utilizando diferentes reduções de dimensionalidade.}
 	\label{fig:clusters_pca}
 \end{figure}
 
