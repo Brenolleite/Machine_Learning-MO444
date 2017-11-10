@@ -10,8 +10,30 @@ import processing as proc
 import metrics
 import matplotlib.pyplot as plt
 
+
+# -------------- Params ------------------------
+# Set value of K
+K = 2
+
+# Generate elbow graph
+elbow = False
+
+# Print closest docs from medoid
+closest_docs = 3
+
+# Use PCA with percentage (0 - 1)
+PCA = False
+
+# Verify cluster variance and histograms (N cluster)
+n_cluster = 0
+
+# Generate TSNE graph
+TSNE_graph = True
+
+# -------------- Params ------------------------
+
 # Load dataset
-x_train = np.genfromtxt('../documents/data.csv', delimiter=',', skip_header=0, skip_footer=0)
+x_train = np.genfromtxt('../documents/data.csv', delimiter=',', skip_header=0, skip_footer=19500)
 
 # Load ids
 g = open('../documents/ids', 'rb')
@@ -22,32 +44,43 @@ g.close()
 x_train = proc.normalize_l2(x_train)
 x_train = proc.st_scale(x_train)
 
-# Aplying PCA
-x_train, ncomp = proc.PCA_reduction(x_train, 0.85)
-
-# Set value of K
-K = 31
+if PCA:
+    # Aplying PCA
+    print('==> Applying PCA')
+    x_train, ncomp = proc.PCA_reduction(x_train, PCA)
 
 # Using kmeans
+print('==> Applying K-Means')
 labels, centers = cl.k_means(K, x_train)
 
-# Verifying cluster variance
-#metrics.verify_clusters(labels, 4)
+if n_cluster:
+    print("==> Cluster metrics")
+    # Verifying cluster variance
+    metrics.verify_clusters(labels, n_cluster)
 
-# Create elbow graph
-#metrics.elbow_graph(x_train, 0, 200, 1)
+if elbow:
+    print("==> Generating elbow graph")
+    # Create elbow graph (X, start, end, step)
+    metrics.elbow_graph(x_train, 10, 100, 5)
 
-# Find medoids
-#id_medoids, distances = pairwise_distances_argmin_min(centers, x_train)
+if closest_docs:
+    print("==> Getting closest documents")
 
-# Get closest files to medoid (n_closest values)
-#metrics.closest_docs(x_train, id_medoids, labels, 3)
+    # Find medoids
+    id_medoids, distances = pairwise_distances_argmin_min(centers, x_train)
+
+    print(centers, distances, id_medoids)
+
+    # Get closest files to medoid (n_closest values)
+    #metrics.closest_docs(x_train, id_medoids, labels, 3)
 
 # TSNE
-tsne = TSNE(n_components=2)
+if TSNE_graph:
+    print("==> Generating t-SNE graph")
+    tsne = TSNE(n_components=2)
 
-Y = tsne.fit_transform(x_train)
-plt.figure(figsize=(20, 20))
-plt.scatter(Y[:, 0], Y[:, 1], c=labels, s=100, cmap=plt.cm.get_cmap("jet", K), alpha = 0.5)
-plt.colorbar(ticks=range(K))
-plt.savefig('../output/tsne' + str(K))
+    Y = tsne.fit_transform(x_train)
+    plt.figure(figsize=(20, 20))
+    plt.scatter(Y[:, 0], Y[:, 1], c=labels, s=100, cmap=plt.cm.get_cmap("jet", K), alpha = 0.5)
+    plt.colorbar(ticks=range(K))
+    plt.savefig('../output/tsne' + str(K))

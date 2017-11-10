@@ -8,7 +8,7 @@ from sklearn.metrics import silhouette_samples, silhouette_score
 def k_means(K, X):
 	# Initialize the clusterer with n_clusters value and a random generator
 	# seed of 10 for reproducibility.
-	clusterer = KMeans(n_clusters=K, random_state=10, n_jobs=3)
+	clusterer = KMeans(n_clusters=K, n_jobs=-1)
 	cluster_labels = clusterer.fit_predict(X)
 
 	return cluster_labels, clusterer.cluster_centers_

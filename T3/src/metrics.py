@@ -34,8 +34,8 @@ def verify_clusters(labels, qtde = None):
         # Get rows of files (idx on ids)
         files_idx = np.where(labels == cluster)[0]
 
-        # Get factor to normalize
-        factor = len(files_idx)
+        # Factor to normalize
+        factor = 0
 
         # Run over all files
         for idx in files_idx:
@@ -60,6 +60,7 @@ def verify_clusters(labels, qtde = None):
                     # '1cfd267dfba20241fac4126124d73c27840c27fa'
                     # Where there is a comma but not another group
                     if item != '' and item != 'm.h.a':
+                        factor += 1
                         if item in newsgroups:
                             hist[item] += 1
                         else:
@@ -103,7 +104,7 @@ def elbow_graph(x_train, start, end, step):
     plt.xlabel('k')
     plt.ylabel('Distortion')
     plt.title('The Elbow Method showing the optimal k')
-    plt.savefig('elbow')
+    plt.savefig('../output/elbow')
 
 def closest_docs(x_train, id_medoids, labels, n_closest):
     # Read ids of files
