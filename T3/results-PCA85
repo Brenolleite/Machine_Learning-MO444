@@ -1,0 +1,336 @@
+K = 31
+
+Cluster: 1 -> Variance: 7.218798591968093e-05
+Cluster: 2 -> Variance: 0.0028102005961505474
+Cluster: 3 -> Variance: 0.0010678917498115786
+Cluster: 4 -> Variance: 8.216086315201595e-05
+Cluster: 5 -> Variance: 0.0006809514037623687
+Cluster: 6 -> Variance: 0.0006436058598594064
+Cluster: 7 -> Variance: 0.0003209629370136596
+Cluster: 8 -> Variance: 0.0002387592151201381
+Cluster: 9 -> Variance: 0.0001565033467772096
+Cluster: 10 -> Variance: 0.0011508817257164167
+Cluster: 11 -> Variance: 0.0026079296140176654
+Cluster: 12 -> Variance: 0.0007966765644185068
+Cluster: 13 -> Variance: 0.0005918238356589291
+Cluster: 14 -> Variance: 0.0014395510873576134
+Cluster: 15 -> Variance: 0.00014100321489971917
+Cluster: 16 -> Variance: 0.0022909447118676218
+Cluster: 17 -> Variance: 0.0004474050542286347
+Cluster: 18 -> Variance: 0.0001008931810660093
+Cluster: 19 -> Variance: 0.0007939751211251862
+Cluster: 20 -> Variance: 0.001146788990825688
+Cluster: 21 -> Variance: 6.911192797319722e-05
+Cluster: 22 -> Variance: 0.003548187054320069
+Cluster: 23 -> Variance: 0.001061020745117497
+Cluster: 24 -> Variance: 0.00010859848960657975
+Cluster: 25 -> Variance: 0.001146788990825688
+Cluster: 26 -> Variance: 0.0002118414109981146
+Cluster: 27 -> Variance: 0.0023051427216330017
+Cluster: 28 -> Variance: 0.00048676376393427063
+Cluster: 29 -> Variance: 0.0006594884666692232
+Cluster: 30 -> Variance: 0.00020927044424800254
+Cluster: 0 -> [('rec.sport.hockey', 615.0), ('rec.sport.baseball', 580.0), ('maine.hockey-l', 4.0), ('rec.sport.baseball.fantasy', 4.0)]
+Cluster: 1 -> [('comp.graphics', 301.0), ('rec.sport.baseball', 246.0), ('sci.electronics', 243.0), ('comp.sys.mac.hardware', 240.0)]
+Cluster: 2 -> [('alt.atheism', 206.0), ('talk.religion.misc', 193.0), ('talk.origins', 178.0), ('talk.abortion', 8.0)]
+Cluster: 3 -> [('misc.forsale', 681.0), ('misc.forsale.computers.other', 103.0), ('misc.forsale.computers', 77.0), ('misc.forsale.computers.pc-clone', 74.0)]
+Cluster: 4 -> [('comp.sys.mac.hardware', 37.0), ('rec.autos', 35.0), ('sci.electronics', 34.0), ('sci.med', 33.0)]
+Cluster: 5 -> [('alt.atheism', 162.0), ('talk.religion.misc', 22.0), ('talk.abortion', 14.0), ('talk.politics.guns', 12.0)]
+Cluster: 6 -> [('sci.electronics', 302.0), ('comp.sys.mac.hardware', 40.0), ('comp.sys.ibm.pc.hardware', 28.0), ('rec.audio', 25.0)]
+Cluster: 7 -> [('alt.atheism', 245.0), ('talk.religion.misc', 208.0), ('soc.religion.christian', 178.0), ('talk.politics.misc', 56.0)]
+Cluster: 8 -> [('comp.os.ms-windows.misc', 642.0), ('comp.sys.ibm.pc.hardware', 621.0), ('comp.sys.mac.hardware', 410.0), ('comp.windows.x', 400.0)]
+Cluster: 9 -> [('rec.sport.hockey', 23.0), ('talk.politics.guns', 22.0), ('rec.sport.baseball', 20.0), ('comp.os.ms-windows.misc', 13.0)]
+Cluster: 10 -> [('rec.sport.hockey', 39.0), ('news.answers', 1.0), ('rec.answers', 1.0), ('soc.culture.europe', 1.0)]
+Cluster: 11 -> [('alt.atheism', 200.0), ('talk.religion.misc', 169.0), ('talk.abortion', 165.0), ('rec.sport.hockey', 2.0)]
+Cluster: 12 -> [('talk.politics.guns', 269.0), ('talk.politics.misc', 203.0), ('talk.religion.misc', 166.0), ('sci.skeptic', 71.0)]
+Cluster: 13 -> [('talk.politics.misc', 836.0), ('talk.politics.mideast', 669.0), ('talk.politics.guns', 374.0), ('soc.culture.jewish', 237.0)]
+Cluster: 14 -> [('sci.crypt', 709.0), ('comp.org.eff.talk', 240.0), ('alt.security', 146.0), ('comp.security.misc', 134.0)]
+Cluster: 15 -> [('comp.windows.x', 71.0), ('comp.graphics', 39.0), ('comp.os.ms-windows.misc', 31.0), ('sci.crypt', 24.0)]
+Cluster: 16 -> [('talk.politics.guns', 5.0), ('misc.headlines', 5.0), ('alt.super.nes', 0.0), ('sci.space', 0.0)]
+Cluster: 17 -> [('rec.sport.hockey', 70.0), ('misc.forsale', 16.0), ('rec.sport.baseball', 12.0), ('comp.os.ms-windows.misc', 12.0)]
+Cluster: 18 -> [('rec.motorcycles', 99.0), ('comp.windows.x', 95.0), ('comp.graphics', 82.0), ('alt.atheism', 55.0)]
+Cluster: 19 -> [('sci.med', 130.0), ('rec.sport.hockey', 8.0), ('talk.religion.misc', 6.0), ('comp.graphics', 5.0)]
+Cluster: 20 -> [('rec.sport.hockey', 9.0), ('alt.super.nes', 0.0), ('sci.space', 0.0), ('misc.fosale.computers.pc-clone', 0.0)]
+Cluster: 21 -> [('rec.autos', 149.0), ('comp.sys.mac.hardware', 146.0), ('sci.electronics', 141.0), ('comp.graphics', 137.0)]
+Cluster: 22 -> [('talk.politics.mideast', 187.0), ('soc.culture.turkish', 171.0), ('talk.politics.soviet', 113.0), ('soc.culture.greek', 96.0)]
+Cluster: 23 -> [('soc.religion.christian', 50.0), ('alt.atheism', 1.0), ('talk.religion.misc', 1.0), ('alt.super.nes', 0.0)]
+Cluster: 24 -> [('rec.sport.baseball', 17.0), ('misc.forsale', 14.0), ('comp.os.ms-windows.misc', 13.0), ('alt.atheism', 12.0)]
+Cluster: 25 -> [('soc.religion.christian', 747.0), ('alt.super.nes', 0.0), ('sci.space', 0.0), ('misc.fosale.computers.pc-clone', 0.0)]
+Cluster: 26 -> [('soc.religion.christian', 18.0), ('sci.electronics', 17.0), ('sci.med', 16.0), ('talk.politics.mideast', 11.0)]
+Cluster: 27 -> [('alt.atheism', 27.0), ('talk.religion.misc', 25.0), ('talk.origins', 24.0), ('sci.space', 2.0)]
+Cluster: 28 -> [('comp.windows.x', 120.0), ('comp.sys.mac.hardware', 13.0), ('rec.sport.baseball', 10.0), ('sci.crypt', 8.0)]
+Cluster: 29 -> [('talk.politics.guns', 90.0), ('sci.crypt', 19.0), ('soc.culture.usa', 18.0), ('alt.rush-limbaugh', 14.0)]
+Cluster: 30 -> [('sci.space', 609.0), ('rec.autos', 517.0), ('rec.motorcycles', 516.0), ('sci.med', 401.0)]
+Cluster: 0 - Medoid: d0126f61a6058dcd3e45049aaa720db5d131113b -> ['591fb49470fdd7a8c736363db18c0fba3d9d860d', 'd83755572385f59e6495d9520574fea0d731afc3', '70c9328c9595fc41bd3c7f6da590b62359d0b054']
+Cluster: 1 - Medoid: 2080cf6f9bb6579500d969d638f185ef3172ff29 -> ['7a2fa8905b47000390f66aefc91fe281f477ab8a', 'c2a53f7e82cd83500ef67b36022b661d58d0f93c', '4a13a7e0420cfb5fced11e757b85734a554e0343']
+Cluster: 2 - Medoid: 3faf3b73925fa637ea1babb162bb2f7f6068117b -> ['59406b1c8eb87ef5ce2fc745cae56954d57fced8', 'af831b93f2833331719a8a1c6bbc057ac582cee3', 'dc3034632271b8f8bf365d9eb053870a42f6ef87']
+Cluster: 3 - Medoid: 04b6a0c8ec142073c2f513cd272c23b211f71789 -> ['59406b1c8eb87ef5ce2fc745cae56954d57fced8', '15d8a0b475fd1212e8fd7426fe5f9d9199741dc8', 'fbd6594aaa466d95a2e72914b6d9ab964613ffa5']
+Cluster: 4 - Medoid: 7a2fa8905b47000390f66aefc91fe281f477ab8a -> ['d0126f61a6058dcd3e45049aaa720db5d131113b', 'be965b80f1922d215f9ef3a1df16cd4548d7245e', 'a8a33879a91488a03a9a5a68298eae44b48d0524']
+Cluster: 5 - Medoid: 337116336954bf77361157513a9b9e78be74d589 -> ['591fb49470fdd7a8c736363db18c0fba3d9d860d', '70c9328c9595fc41bd3c7f6da590b62359d0b054', '15d8a0b475fd1212e8fd7426fe5f9d9199741dc8']
+Cluster: 6 - Medoid: 3faf3b73925fa637ea1babb162bb2f7f6068117b -> ['59406b1c8eb87ef5ce2fc745cae56954d57fced8', 'af831b93f2833331719a8a1c6bbc057ac582cee3', 'dc3034632271b8f8bf365d9eb053870a42f6ef87']
+Cluster: 7 - Medoid: c788bab2f233008ce64b36bfd4d32fe1171e9f7b -> ['59406b1c8eb87ef5ce2fc745cae56954d57fced8', 'c2a53f7e82cd83500ef67b36022b661d58d0f93c', 'd46155ca7818ae5c5335f0b2bf2fae9a50509f8c']
+Cluster: 8 - Medoid: 4a13a7e0420cfb5fced11e757b85734a554e0343 -> ['3faf3b73925fa637ea1babb162bb2f7f6068117b', 'c788bab2f233008ce64b36bfd4d32fe1171e9f7b', '59406b1c8eb87ef5ce2fc745cae56954d57fced8']
+Cluster: 9 - Medoid: 0a7baa30e85435c2754c8fce78f0e4e262d236e5 -> ['1397e1b92e7453c14a4e25a3c6da18c3c9ad337d', '59406b1c8eb87ef5ce2fc745cae56954d57fced8', 'a959ef6fc8e2b4948623774a9d9466a0d521b67d']
+Cluster: 10 - Medoid: 7677cea8616a584096a0474fa3e85ba642a60925 -> ['cfbf574978a89c1c41421c2ba8deaab6eb611cb6', 'c2a53f7e82cd83500ef67b36022b661d58d0f93c', 'c788bab2f233008ce64b36bfd4d32fe1171e9f7b']
+Cluster: 11 - Medoid: b5897767abea4f471be01149445abdb0d2bb6294 -> ['c788bab2f233008ce64b36bfd4d32fe1171e9f7b', 'c2a53f7e82cd83500ef67b36022b661d58d0f93c', 'bb1c339608da43f2b19bdebb791c735e1b4e4389']
+Cluster: 12 - Medoid: c788bab2f233008ce64b36bfd4d32fe1171e9f7b -> ['59406b1c8eb87ef5ce2fc745cae56954d57fced8', 'c2a53f7e82cd83500ef67b36022b661d58d0f93c', 'd46155ca7818ae5c5335f0b2bf2fae9a50509f8c']
+Cluster: 13 - Medoid: c788bab2f233008ce64b36bfd4d32fe1171e9f7b -> ['59406b1c8eb87ef5ce2fc745cae56954d57fced8', 'c2a53f7e82cd83500ef67b36022b661d58d0f93c', 'd46155ca7818ae5c5335f0b2bf2fae9a50509f8c']
+Cluster: 14 - Medoid: d0126f61a6058dcd3e45049aaa720db5d131113b -> ['591fb49470fdd7a8c736363db18c0fba3d9d860d', 'd83755572385f59e6495d9520574fea0d731afc3', '70c9328c9595fc41bd3c7f6da590b62359d0b054']
+Cluster: 15 - Medoid: f42d8e0565a9e6b93fdb1f64a036a1f0898f988d -> ['70c9328c9595fc41bd3c7f6da590b62359d0b054', '2919fcfc51e8d90807e1e23c53425d92edf28099', '591fb49470fdd7a8c736363db18c0fba3d9d860d']
+Cluster: 16 - Medoid: 41534f8a80c20e61cceffa4a405b96daf286cd2c -> ['591fb49470fdd7a8c736363db18c0fba3d9d860d', 'c2a53f7e82cd83500ef67b36022b661d58d0f93c', 'cfbf574978a89c1c41421c2ba8deaab6eb611cb6']
+Cluster: 17 - Medoid: d0126f61a6058dcd3e45049aaa720db5d131113b -> ['591fb49470fdd7a8c736363db18c0fba3d9d860d', 'd83755572385f59e6495d9520574fea0d731afc3', '70c9328c9595fc41bd3c7f6da590b62359d0b054']
+Cluster: 18 - Medoid: 2f60d1ea142f1e06bcd0abdea377c6201b7ad4d4 -> ['d0126f61a6058dcd3e45049aaa720db5d131113b', 'fbd6594aaa466d95a2e72914b6d9ab964613ffa5', '59406b1c8eb87ef5ce2fc745cae56954d57fced8']
+Cluster: 19 - Medoid: cf5808a6356b07d85382ac735735856cf4d1a69e -> ['c2a53f7e82cd83500ef67b36022b661d58d0f93c', '9d5a47d9dfe055cf5bc5ae072b9953fef4f11946', 'cfbf574978a89c1c41421c2ba8deaab6eb611cb6']
+Cluster: 20 - Medoid: 01eb51b597bb0538dd82ad6d38eb8650512d7a63 -> ['9d5a47d9dfe055cf5bc5ae072b9953fef4f11946', 'd83d45fa0b42ebb7ecf18d02f386315d81e0b310', '04b6a0c8ec142073c2f513cd272c23b211f71789']
+Cluster: 21 - Medoid: 4a13a7e0420cfb5fced11e757b85734a554e0343 -> ['3faf3b73925fa637ea1babb162bb2f7f6068117b', 'c788bab2f233008ce64b36bfd4d32fe1171e9f7b', '59406b1c8eb87ef5ce2fc745cae56954d57fced8']
+Cluster: 22 - Medoid: d82fc7b6c2bd1fe7421382541b57d739e7892c69 -> ['70c9328c9595fc41bd3c7f6da590b62359d0b054', 'dc3034632271b8f8bf365d9eb053870a42f6ef87', '78b60e9e5f01abb52dac9c37c1ff79621c07bd91']
+Cluster: 23 - Medoid: 80ee9b0666536b6cc9157201e0d4d8ae8f76a8e1 -> ['d83d45fa0b42ebb7ecf18d02f386315d81e0b310', '889622de80ffdd4ce2586ec6f76796f3c6745220', '92a407abb96cc97e927a04da03a818c0c4b6625a']
+Cluster: 24 - Medoid: 0bb1ce80ebb47ebb04077a570b9d42bcace1e319 -> ['78b60e9e5f01abb52dac9c37c1ff79621c07bd91', '70c9328c9595fc41bd3c7f6da590b62359d0b054', 'af831b93f2833331719a8a1c6bbc057ac582cee3']
+Cluster: 25 - Medoid: 441cc76945e83acfb0f361f13576bcb52cb45a04 -> ['3faf3b73925fa637ea1babb162bb2f7f6068117b', 'c788bab2f233008ce64b36bfd4d32fe1171e9f7b', '59406b1c8eb87ef5ce2fc745cae56954d57fced8']
+Cluster: 26 - Medoid: 8258d8aa8e9f15281bdc29bcfb29190bebc06a6b -> ['3faf3b73925fa637ea1babb162bb2f7f6068117b', '59406b1c8eb87ef5ce2fc745cae56954d57fced8', 'af831b93f2833331719a8a1c6bbc057ac582cee3']
+Cluster: 27 - Medoid: 66dbe4d49c2f4099e149f5543b377c30a99e07a7 -> ['d0126f61a6058dcd3e45049aaa720db5d131113b', '59406b1c8eb87ef5ce2fc745cae56954d57fced8', '2919fcfc51e8d90807e1e23c53425d92edf28099']
+Cluster: 28 - Medoid: 4077a679d842579ad8b4cf6191928b360ccf3f65 -> ['2919fcfc51e8d90807e1e23c53425d92edf28099', '8a1524c17cbdbc8ac223507f003d9e06fea19f3a', 'c2a53f7e82cd83500ef67b36022b661d58d0f93c']
+Cluster: 29 - Medoid: 81bd41ad5be4037cad372836f47598f59065939b -> ['af831b93f2833331719a8a1c6bbc057ac582cee3', 'd83d45fa0b42ebb7ecf18d02f386315d81e0b310', 'd46155ca7818ae5c5335f0b2bf2fae9a50509f8c']
+Cluster: 30 - Medoid: d0126f61a6058dcd3e45049aaa720db5d131113b -> ['591fb49470fdd7a8c736363db18c0fba3d9d860d', 'd83755572385f59e6495d9520574fea0d731afc3', '70c9328c9595fc41bd3c7f6da590b62359d0b054']
+
+============================================================
+
+K = 79
+
+Cluster: 0 -> Variance: 0.0007511905639371194
+Cluster: 1 -> Variance: 0.00031136399935425787
+Cluster: 2 -> Variance: 0.00016484138270950657
+Cluster: 3 -> Variance: 0.00030223180643270184
+Cluster: 4 -> Variance: 0.0001309283887446406
+Cluster: 5 -> Variance: 0.0005813248914235791
+Cluster: 6 -> Variance: 0.0013055395663475696
+Cluster: 7 -> Variance: 0.00010614393482341103
+Cluster: 8 -> Variance: 8.434358132813994e-05
+Cluster: 9 -> Variance: 0.0003077721505346104
+Cluster: 10 -> Variance: 0.00021797693016413895
+Cluster: 11 -> Variance: 0.0006509124927874779
+Cluster: 12 -> Variance: 0.00022232813376310418
+Cluster: 13 -> Variance: 0.00040293012741011514
+Cluster: 14 -> Variance: 0.0005321961368940107
+Cluster: 15 -> Variance: 0.0006608224837922427
+Cluster: 16 -> Variance: 0.0004146894314743882
+Cluster: 17 -> Variance: 0.0001766471764551214
+Cluster: 18 -> Variance: 0.002065075606629009
+Cluster: 19 -> Variance: 0.0035865352990343195
+Cluster: 20 -> Variance: 0.0018093586798228725
+Cluster: 21 -> Variance: 0.0011052939705170379
+Cluster: 22 -> Variance: 0.0034324671631257957
+Cluster: 23 -> Variance: 0.003105158257773002
+Cluster: 24 -> Variance: 0.0005032086183445473
+Cluster: 25 -> Variance: 9.594383352948507e-05
+Cluster: 26 -> Variance: 0.00238938706186397
+Cluster: 27 -> Variance: 0.0003014985089599508
+Cluster: 28 -> Variance: 0.001146788990825688
+Cluster: 29 -> Variance: 0.00014391766514780164
+Cluster: 30 -> Variance: 0.0001298284801033386
+Cluster: 31 -> Variance: 7.418173273689079e-05
+Cluster: 32 -> Variance: 0.00011774419134693565
+Cluster: 33 -> Variance: 0.0008931868389821094
+Cluster: 34 -> Variance: 0.00011394412616567447
+Cluster: 35 -> Variance: 0.005517705202300247
+Cluster: 36 -> Variance: 0.001146788990825688
+Cluster: 37 -> Variance: 0.0010033795644476316
+Cluster: 38 -> Variance: 0.0013451886784607845
+Cluster: 39 -> Variance: 0.0012747241244783088
+Cluster: 40 -> Variance: 0.0011068802139534387
+Cluster: 41 -> Variance: 0.002344040029140087
+Cluster: 42 -> Variance: 0.0005320801917005868
+Cluster: 43 -> Variance: 0.00017468993248296276
+Cluster: 44 -> Variance: 0.0001664267284486043
+Cluster: 45 -> Variance: 0.0001138375534619894
+Cluster: 46 -> Variance: 0.0009517912711320339
+Cluster: 47 -> Variance: 0.001146788990825688
+Cluster: 48 -> Variance: 0.00016088836962090263
+Cluster: 49 -> Variance: 0.0005323646569656584
+Cluster: 50 -> Variance: 0.0022909447118676218
+Cluster: 51 -> Variance: 0.0007649949447918566
+Cluster: 52 -> Variance: 8.753625654118236e-05
+Cluster: 53 -> Variance: 0.0022909447118676218
+Cluster: 54 -> Variance: 0.00012548223688135413
+Cluster: 55 -> Variance: 0.0021844783229231415
+Cluster: 56 -> Variance: 0.00020527409296237627
+Cluster: 57 -> Variance: 0.0034324671631257957
+Cluster: 58 -> Variance: 0.00038385107000527615
+Cluster: 59 -> Variance: 0.0034324671631257957
+Cluster: 60 -> Variance: 0.003619076248319337
+Cluster: 61 -> Variance: 0.0009278932969459342
+Cluster: 62 -> Variance: 0.00047859572988971866
+Cluster: 63 -> Variance: 0.0013029093660680742
+Cluster: 64 -> Variance: 0.001457209750472951
+Cluster: 65 -> Variance: 0.0025156420750963465
+Cluster: 66 -> Variance: 0.00011821711727415868
+Cluster: 67 -> Variance: 0.00033409096070898176
+Cluster: 68 -> Variance: 0.000504575940184594
+Cluster: 69 -> Variance: 0.0010689909756829417
+Cluster: 70 -> Variance: 0.0006871730412464723
+Cluster: 71 -> Variance: 0.00011748977980724959
+Cluster: 72 -> Variance: 0.0034493982649385396
+Cluster: 73 -> Variance: 0.001155979986880832
+Cluster: 74 -> Variance: 0.00022689532024734767
+Cluster: 75 -> Variance: 0.007047247170376423
+Cluster: 76 -> Variance: 0.00011216859199376869
+Cluster: 77 -> Variance: 0.0014007299074529278
+Cluster: 78 -> Variance: 0.0031431632351986674
+Cluster: 0 -> [('alt.atheism', 168.0), ('talk.religion.misc', 25.0), ('talk.abortion', 15.0), ('talk.origins', 11.0)]
+Cluster: 1 -> [('rec.sport.baseball', 28.0), ('talk.religion.misc', 14.0), ('alt.atheism', 10.0), ('comp.sys.mac.hardware', 8.0)]
+Cluster: 2 -> [('misc.forsale', 15.0), ('rec.autos', 7.0), ('sci.med', 5.0), ('sci.electronics', 4.0)]
+Cluster: 3 -> [('comp.sys.ibm.pc.hardware', 100.0), ('comp.os.ms-windows.misc', 83.0), ('comp.graphics', 81.0), ('comp.sys.mac.hardware', 44.0)]
+Cluster: 4 -> [('talk.religion.misc', 27.0), ('talk.politics.misc', 21.0), ('rec.autos', 18.0), ('talk.politics.mideast', 16.0)]
+Cluster: 5 -> [('rec.sport.hockey', 550.0), ('rec.sport.baseball', 446.0), ('maine.hockey-l', 4.0), ('soc.culture.jewish', 2.0)]
+Cluster: 6 -> [('talk.politics.mideast', 561.0), ('soc.culture.jewish', 183.0), ('talk.politics.misc', 121.0), ('soc.culture.arabic', 116.0)]
+Cluster: 7 -> [('rec.autos', 48.0), ('sci.space', 29.0), ('talk.politics.mideast', 25.0), ('comp.sys.mac.hardware', 20.0)]
+Cluster: 8 -> [('comp.graphics', 53.0), ('alt.atheism', 41.0), ('rec.motorcycles', 40.0), ('comp.windows.x', 39.0)]
+Cluster: 9 -> [('comp.graphics', 49.0), ('news.answers', 48.0), ('comp.windows.x', 40.0), ('sci.crypt', 25.0)]
+Cluster: 10 -> [('soc.religion.christian', 18.0), ('sci.electronics', 16.0), ('sci.med', 16.0), ('talk.politics.mideast', 11.0)]
+Cluster: 11 -> [('talk.politics.guns', 82.0), ('sci.crypt', 18.0), ('soc.culture.usa', 13.0), ('comp.org.eff.talk', 10.0)]
+Cluster: 12 -> [('talk.religion.misc', 41.0), ('rec.sport.baseball', 19.0), ('alt.atheism', 18.0), ('rec.motorcycles', 12.0)]
+Cluster: 13 -> [('talk.politics.guns', 320.0), ('talk.politics.misc', 210.0), ('misc.legal', 67.0), ('talk.religion.misc', 47.0)]
+Cluster: 14 -> [('comp.sys.mac.hardware', 556.0), ('comp.sys.ibm.pc.hardware', 358.0), ('sci.electronics', 35.0), ('comp.sys.mac.system', 31.0)]
+Cluster: 15 -> [('soc.religion.christian', 14.0), ('talk.religion.misc', 12.0), ('alt.atheism', 9.0), ('comp.windows.x.i386unix', 0.0)]
+Cluster: 16 -> [('soc.religion.christian', 270.0), ('alt.atheism', 156.0), ('talk.religion.misc', 151.0), ('talk.politics.mideast', 17.0)]
+Cluster: 17 -> [('rec.autos', 50.0), ('misc.forsale', 26.0), ('talk.religion.misc', 24.0), ('talk.politics.misc', 20.0)]
+Cluster: 18 -> [('sci.crypt', 12.0), ('comp.org.eff.talk', 7.0), ('alt.security', 6.0), ('comp.org.ieee', 5.0)]
+Cluster: 19 -> [('talk.politics.mideast', 177.0), ('soc.culture.turkish', 162.0), ('talk.politics.soviet', 107.0), ('soc.history', 93.0)]
+Cluster: 20 -> [('alt.atheism', 43.0), ('talk.religion.misc', 30.0), ('talk.origins', 21.0), ('talk.abortion', 2.0)]
+Cluster: 21 -> [('rec.motorcycles', 506.0), ('ba.motorcycles', 33.0), ('rec.motorcycles.harley', 17.0), ('rec.motorcycles.racing', 11.0)]
+Cluster: 22 -> [('talk.abortion', 18.0), ('alt.atheism', 18.0), ('talk.religion.misc', 18.0), ('comp.windows.x.i386unix', 0.0)]
+Cluster: 23 -> [('misc.forsale', 9.0), ('rec.arts.comics.marketplace', 9.0), ('fl.forsale', 9.0), ('rec.collecting', 9.0)]
+Cluster: 24 -> [('comp.windows.x', 115.0), ('comp.sys.mac.hardware', 12.0), ('rec.sport.baseball', 10.0), ('sci.crypt', 7.0)]
+Cluster: 25 -> [('sci.med', 26.0), ('sci.crypt', 24.0), ('rec.sport.baseball', 23.0), ('sci.electronics', 17.0)]
+Cluster: 26 -> [('talk.politics.misc', 77.0), ('talk.religion.misc', 59.0), ('talk.abortion', 58.0), ('talk.politics.medicine', 12.0)]
+Cluster: 27 -> [('comp.windows.x', 4.0), ('talk.politics.misc', 3.0), ('sci.electronics', 1.0), ('talk.politics.drugs', 1.0)]
+Cluster: 28 -> [('rec.sport.hockey', 7.0), ('comp.windows.x.i386unix', 0.0), ('alt.sex.stories', 0.0), ('comp.sys.amiga.misc', 0.0)]
+Cluster: 29 -> [('comp.windows.x', 41.0), ('sci.crypt', 24.0), ('comp.os.ms-windows.misc', 20.0), ('comp.graphics', 18.0)]
+Cluster: 30 -> [('rec.autos', 25.0), ('sci.electronics', 24.0), ('rec.motorcycles', 16.0), ('sci.med', 12.0)]
+Cluster: 31 -> [('comp.graphics', 242.0), ('sci.electronics', 223.0), ('rec.sport.baseball', 222.0), ('rec.autos', 162.0)]
+Cluster: 32 -> [('comp.sys.ibm.pc.hardware', 34.0), ('alt.atheism', 30.0), ('talk.politics.misc', 29.0), ('comp.sys.mac.hardware', 25.0)]
+Cluster: 33 -> [('talk.politics.misc', 30.0), ('alt.activism', 3.0), ('talk.politics.mideast', 3.0), ('alt.law-enforcement', 2.0)]
+Cluster: 34 -> [('rec.sport.hockey', 19.0), ('talk.politics.guns', 17.0), ('rec.motorcycles', 16.0), ('talk.religion.misc', 11.0)]
+Cluster: 35 -> [('talk.politics.misc', 11.0), ('talk.politics.soviet', 10.0), ('talk.politics.guns', 10.0), ('talk.politics.mideast', 10.0)]
+Cluster: 36 -> [('sci.med', 3.0), ('comp.windows.x.i386unix', 0.0), ('alt.sex.stories', 0.0), ('comp.sys.amiga.misc', 0.0)]
+Cluster: 37 -> [('sci.med', 113.0), ('talk.religion.misc', 4.0), ('talk.politics.medicine', 3.0), ('soc.culture.jewish', 2.0)]
+Cluster: 38 -> [('alt.rush-limbaugh', 76.0), ('talk.politics.misc', 75.0), ('alt.fan.rush-limbaugh', 73.0), ('talk.politics.guns', 70.0)]
+Cluster: 39 -> [('sci.electronics', 40.0), ('rec.audio', 31.0), ('rec.audio.car', 19.0), ('misc.forsale', 7.0)]
+Cluster: 40 -> [('misc.forsale', 611.0), ('misc.forsale.computers.other', 96.0), ('misc.forsale.computers', 78.0), ('misc.forsale.computers.pc-clone', 74.0)]
+Cluster: 41 -> [('talk.politics.misc', 13.0), ('talk.religion.misc', 12.0), ('alt.conspiracy', 7.0), ('sci.skeptic', 6.0)]
+Cluster: 42 -> [('comp.os.ms-windows.misc', 500.0), ('comp.windows.x', 305.0), ('comp.os.ms-windows.apps', 104.0), ('comp.windows.x.motif', 69.0)]
+Cluster: 43 -> [('rec.sport.hockey', 26.0), ('talk.religion.misc', 20.0), ('comp.os.ms-windows.misc', 11.0), ('comp.sys.ibm.pc.hardware', 9.0)]
+Cluster: 44 -> [('talk.politics.guns', 25.0), ('rec.sport.baseball', 19.0), ('rec.autos', 15.0), ('comp.os.ms-windows.misc', 11.0)]
+Cluster: 45 -> [('rec.autos', 433.0), ('sci.med', 379.0), ('sci.electronics', 328.0), ('talk.politics.misc', 242.0)]
+Cluster: 46 -> [('comp.sys.ibm.pc.hardware', 177.0), ('comp.sys.mac.hardware', 17.0), ('comp.periphs.scsi', 12.0), ('misc.forsale', 6.0)]
+Cluster: 47 -> [('soc.religion.christian', 680.0), ('comp.windows.x.i386unix', 0.0), ('alt.sex.stories', 0.0), ('comp.sys.amiga.misc', 0.0)]
+Cluster: 48 -> [('sci.med', 26.0), ('talk.religion.misc', 12.0), ('alt.magick', 9.0), ('comp.sys.ibm.pc.hardware', 9.0)]
+Cluster: 49 -> [('rec.sport.hockey', 72.0), ('rec.sport.baseball', 12.0), ('comp.os.ms-windows.misc', 12.0), ('misc.forsale', 6.0)]
+Cluster: 50 -> [('talk.politics.guns', 5.0), ('misc.headlines', 5.0), ('comp.windows.x.i386unix', 0.0), ('alt.sex.stories', 0.0)]
+Cluster: 51 -> [('talk.politics.guns', 187.0), ('talk.politics.misc', 169.0), ('talk.religion.misc', 117.0), ('sci.skeptic', 53.0)]
+Cluster: 52 -> [('rec.sport.hockey', 37.0), ('sci.electronics', 29.0), ('talk.politics.mideast', 25.0), ('comp.graphics', 21.0)]
+Cluster: 53 -> [('talk.abortion', 9.0), ('talk.religion.misc', 9.0), ('comp.windows.x.i386unix', 0.0), ('alt.sex.stories', 0.0)]
+Cluster: 54 -> [('comp.graphics', 42.0), ('comp.sys.ibm.pc.hardware', 37.0), ('sci.electronics', 36.0), ('comp.os.ms-windows.misc', 26.0)]
+Cluster: 55 -> [('talk.religion.misc', 20.0), ('alt.conspiracy', 19.0), ('talk.origins', 1.0), ('alt.atheism', 1.0)]
+Cluster: 56 -> [('comp.windows.x', 30.0), ('alt.atheism', 24.0), ('comp.graphics', 17.0), ('comp.os.ms-windows.misc', 11.0)]
+Cluster: 57 -> [('sci.skeptic', 8.0), ('talk.politics.misc', 8.0), ('talk.religion.misc', 8.0), ('comp.windows.x.i386unix', 0.0)]
+Cluster: 58 -> [('sci.space', 75.0), ('sci.crypt', 30.0), ('sci.astro', 20.0), ('alt.atheism', 10.0)]
+Cluster: 59 -> [('soc.culture.jewish', 11.0), ('talk.politics.mideast', 11.0), ('talk.politics.misc', 11.0), ('comp.windows.x.i386unix', 0.0)]
+Cluster: 60 -> [('talk.politics.misc', 119.0), ('alt.sex', 102.0), ('soc.men', 98.0), ('misc.legal', 86.0)]
+Cluster: 61 -> [('talk.abortion', 15.0), ('talk.politics.misc', 15.0), ('talk.religion.misc', 15.0), ('comp.sys.ibm.pc.hardware', 11.0)]
+Cluster: 62 -> [('rec.autos', 29.0), ('comp.sys.ibm.pc.hardware', 13.0), ('comp.windows.x', 4.0), ('misc.consumers', 3.0)]
+Cluster: 63 -> [('sci.space', 451.0), ('sci.astro', 178.0), ('sci.space.shuttle', 42.0), ('talk.politics.space', 27.0)]
+Cluster: 64 -> [('sci.crypt', 579.0), ('comp.org.eff.talk', 200.0), ('alt.privacy.clipper', 119.0), ('alt.security', 115.0)]
+Cluster: 65 -> [('alt.atheism', 186.0), ('talk.religion.misc', 153.0), ('talk.abortion', 149.0), ('rec.sport.hockey', 2.0)]
+Cluster: 66 -> [('rec.sport.hockey', 39.0), ('comp.windows.x', 15.0), ('alt.atheism', 15.0), ('misc.forsale', 14.0)]
+Cluster: 67 -> [('sci.space', 7.0), ('sci.astro', 3.0), ('comp.windows.x', 3.0), ('sci.electronics', 1.0)]
+Cluster: 68 -> [('comp.os.ms-windows.misc', 10.0), ('sci.space', 5.0), ('comp.windows.x', 3.0), ('comp.answers', 2.0)]
+Cluster: 69 -> [('comp.graphics', 91.0), ('sci.image.processing', 36.0), ('comp.graphics.animation', 12.0), ('alt.graphics.pixutils', 9.0)]
+Cluster: 70 -> [('rec.motorcycles', 33.0), ('rec.autos', 3.0), ('alt.atheism', 2.0), ('rec.sport.baseball', 1.0)]
+Cluster: 71 -> [('rec.motorcycles', 26.0), ('comp.graphics', 17.0), ('rec.autos', 17.0), ('misc.forsale', 16.0)]
+Cluster: 72 -> [('talk.abortion', 16.0), ('alt.atheism', 16.0), ('talk.religion.misc', 16.0), ('sci.physics', 2.0)]
+Cluster: 73 -> [('comp.graphics', 68.0), ('comp.graphics.animation', 20.0), ('alt.3d', 13.0), ('comp.sys.mac.programmer', 10.0)]
+Cluster: 74 -> [('sci.space', 30.0), ('sci.astro', 23.0), ('rec.autos', 19.0), ('alt.sci.planetary', 19.0)]
+Cluster: 75 -> [('sci.med', 53.0), ('sci.skeptic', 52.0), ('sci.energy', 52.0), ('sci.anthropology', 52.0)]
+Cluster: 76 -> [('rec.motorcycles', 27.0), ('comp.graphics', 18.0), ('alt.atheism', 15.0), ('comp.os.ms-windows.misc', 14.0)]
+Cluster: 77 -> [('talk.politics.mideast', 56.0), ('soc.culture.jewish', 17.0), ('talk.politics.misc', 17.0), ('misc.headlines', 7.0)]
+Cluster: 78 -> [('talk.origins', 156.0), ('alt.atheism', 155.0), ('talk.religion.misc', 154.0), ('sci.philosophy.meta', 3.0)]
+Cluster: 0 - Medoid: 337116336954bf77361157513a9b9e78be74d589 -> ['591fb49470fdd7a8c736363db18c0fba3d9d860d', '70c9328c9595fc41bd3c7f6da590b62359d0b054', 'c2a53f7e82cd83500ef67b36022b661d58d0f93c']
+Cluster: 1 - Medoid: 8661e75804293688fc1f8fb3368b14aa04daf8e3 -> ['a8a33879a91488a03a9a5a68298eae44b48d0524', '64964e68f5f666f8fbf1ddc99ebd9f385fa85434', 'd7b17570861fee058cc75c1681f97380d5e9775d']
+Cluster: 2 - Medoid: 04b6a0c8ec142073c2f513cd272c23b211f71789 -> ['cfbf574978a89c1c41421c2ba8deaab6eb611cb6', 'fbd6594aaa466d95a2e72914b6d9ab964613ffa5', 'be965b80f1922d215f9ef3a1df16cd4548d7245e']
+Cluster: 3 - Medoid: 4a13a7e0420cfb5fced11e757b85734a554e0343 -> ['c788bab2f233008ce64b36bfd4d32fe1171e9f7b', '3faf3b73925fa637ea1babb162bb2f7f6068117b', '15d8a0b475fd1212e8fd7426fe5f9d9199741dc8']
+Cluster: 4 - Medoid: 1e838f8d53afd3d3bf84d6865bcab42201d8bb52 -> ['70c9328c9595fc41bd3c7f6da590b62359d0b054', '591fb49470fdd7a8c736363db18c0fba3d9d860d', '2919fcfc51e8d90807e1e23c53425d92edf28099']
+Cluster: 5 - Medoid: d0126f61a6058dcd3e45049aaa720db5d131113b -> ['591fb49470fdd7a8c736363db18c0fba3d9d860d', '15d8a0b475fd1212e8fd7426fe5f9d9199741dc8', 'd83755572385f59e6495d9520574fea0d731afc3']
+Cluster: 6 - Medoid: c788bab2f233008ce64b36bfd4d32fe1171e9f7b -> ['cfbf574978a89c1c41421c2ba8deaab6eb611cb6', 'd83d45fa0b42ebb7ecf18d02f386315d81e0b310', 'dc3034632271b8f8bf365d9eb053870a42f6ef87']
+Cluster: 7 - Medoid: 77e0da6717e500384a6e02638052b3f8735fb325 -> ['1397e1b92e7453c14a4e25a3c6da18c3c9ad337d', 'd83d45fa0b42ebb7ecf18d02f386315d81e0b310', '70c9328c9595fc41bd3c7f6da590b62359d0b054']
+Cluster: 8 - Medoid: 98645abfd349ef5d56f7aa14e7d23a565180ad12 -> ['59406b1c8eb87ef5ce2fc745cae56954d57fced8', '2919fcfc51e8d90807e1e23c53425d92edf28099', 'd0126f61a6058dcd3e45049aaa720db5d131113b']
+Cluster: 9 - Medoid: d0126f61a6058dcd3e45049aaa720db5d131113b -> ['591fb49470fdd7a8c736363db18c0fba3d9d860d', '15d8a0b475fd1212e8fd7426fe5f9d9199741dc8', 'd83755572385f59e6495d9520574fea0d731afc3']
+Cluster: 10 - Medoid: 8258d8aa8e9f15281bdc29bcfb29190bebc06a6b -> ['3faf3b73925fa637ea1babb162bb2f7f6068117b', 'c788bab2f233008ce64b36bfd4d32fe1171e9f7b', 'c2a53f7e82cd83500ef67b36022b661d58d0f93c']
+Cluster: 11 - Medoid: 81bd41ad5be4037cad372836f47598f59065939b -> ['af831b93f2833331719a8a1c6bbc057ac582cee3', 'd46155ca7818ae5c5335f0b2bf2fae9a50509f8c', '78b60e9e5f01abb52dac9c37c1ff79621c07bd91']
+Cluster: 12 - Medoid: 7a2fa8905b47000390f66aefc91fe281f477ab8a -> ['c788bab2f233008ce64b36bfd4d32fe1171e9f7b', 'c2a53f7e82cd83500ef67b36022b661d58d0f93c', 'be965b80f1922d215f9ef3a1df16cd4548d7245e']
+Cluster: 13 - Medoid: c788bab2f233008ce64b36bfd4d32fe1171e9f7b -> ['cfbf574978a89c1c41421c2ba8deaab6eb611cb6', 'd83d45fa0b42ebb7ecf18d02f386315d81e0b310', 'dc3034632271b8f8bf365d9eb053870a42f6ef87']
+Cluster: 14 - Medoid: 4a13a7e0420cfb5fced11e757b85734a554e0343 -> ['c788bab2f233008ce64b36bfd4d32fe1171e9f7b', '3faf3b73925fa637ea1babb162bb2f7f6068117b', '15d8a0b475fd1212e8fd7426fe5f9d9199741dc8']
+Cluster: 15 - Medoid: 78b60e9e5f01abb52dac9c37c1ff79621c07bd91 -> ['c2a53f7e82cd83500ef67b36022b661d58d0f93c', 'a959ef6fc8e2b4948623774a9d9466a0d521b67d', 'cfbf574978a89c1c41421c2ba8deaab6eb611cb6']
+Cluster: 16 - Medoid: c788bab2f233008ce64b36bfd4d32fe1171e9f7b -> ['cfbf574978a89c1c41421c2ba8deaab6eb611cb6', 'd83d45fa0b42ebb7ecf18d02f386315d81e0b310', 'dc3034632271b8f8bf365d9eb053870a42f6ef87']
+Cluster: 17 - Medoid: b301c86c167a04e6c9aadbe0d99cbbf4cf5cb986 -> ['d0126f61a6058dcd3e45049aaa720db5d131113b', '591fb49470fdd7a8c736363db18c0fba3d9d860d', 'dc3034632271b8f8bf365d9eb053870a42f6ef87']
+Cluster: 18 - Medoid: cf1ec97795e0eaaf089c685799ea7ea84b9f37db -> ['2080cf6f9bb6579500d969d638f185ef3172ff29', 'bb1c339608da43f2b19bdebb791c735e1b4e4389', 'd9fc523c9ded48c17a0f90305331777bd1b5aeaa']
+Cluster: 19 - Medoid: d82fc7b6c2bd1fe7421382541b57d739e7892c69 -> ['70c9328c9595fc41bd3c7f6da590b62359d0b054', '2919fcfc51e8d90807e1e23c53425d92edf28099', 'c2a53f7e82cd83500ef67b36022b661d58d0f93c']
+Cluster: 20 - Medoid: 633594b5d24305e8f2e86689322c79ab2dba947f -> ['9d5a47d9dfe055cf5bc5ae072b9953fef4f11946', 'fbd6594aaa466d95a2e72914b6d9ab964613ffa5', '758f197289f87a6e9ab605d9e189769da952d99c']
+Cluster: 21 - Medoid: 7a2fa8905b47000390f66aefc91fe281f477ab8a -> ['c788bab2f233008ce64b36bfd4d32fe1171e9f7b', 'c2a53f7e82cd83500ef67b36022b661d58d0f93c', 'be965b80f1922d215f9ef3a1df16cd4548d7245e']
+Cluster: 22 - Medoid: 1c1eaf4b40d48cbc04be5c21845878633be20bf8 -> ['d0126f61a6058dcd3e45049aaa720db5d131113b', 'c2a53f7e82cd83500ef67b36022b661d58d0f93c', 'd46155ca7818ae5c5335f0b2bf2fae9a50509f8c']
+Cluster: 23 - Medoid: 073070b8589d7106303def221167aa69a09a8d1a -> ['d83d45fa0b42ebb7ecf18d02f386315d81e0b310', '59406b1c8eb87ef5ce2fc745cae56954d57fced8', 'fbd6594aaa466d95a2e72914b6d9ab964613ffa5']
+Cluster: 24 - Medoid: 4077a679d842579ad8b4cf6191928b360ccf3f65 -> ['c2a53f7e82cd83500ef67b36022b661d58d0f93c', '8a1524c17cbdbc8ac223507f003d9e06fea19f3a', '2919fcfc51e8d90807e1e23c53425d92edf28099']
+Cluster: 25 - Medoid: 95b4ef85a37648154d349ce5f3cc252fbd269952 -> ['591fb49470fdd7a8c736363db18c0fba3d9d860d', '59406b1c8eb87ef5ce2fc745cae56954d57fced8', '70c9328c9595fc41bd3c7f6da590b62359d0b054']
+Cluster: 26 - Medoid: a9e47b77d969c0fd3d561cc0701fd27cd0d3f5f3 -> ['7a2fa8905b47000390f66aefc91fe281f477ab8a', '3faf3b73925fa637ea1babb162bb2f7f6068117b', 'bb1c339608da43f2b19bdebb791c735e1b4e4389']
+Cluster: 27 - Medoid: e63aaf2c1f52095385a9b72cbc70fca785e13cd1 -> ['59406b1c8eb87ef5ce2fc745cae56954d57fced8', 'c2a53f7e82cd83500ef67b36022b661d58d0f93c', 'cfbf574978a89c1c41421c2ba8deaab6eb611cb6']
+Cluster: 28 - Medoid: efe4dab813a90701e44db9837c68638e493463ec -> ['be965b80f1922d215f9ef3a1df16cd4548d7245e', 'd83d45fa0b42ebb7ecf18d02f386315d81e0b310', '099d0a5beb0195b698687ca5f354bb96178eb86f']
+Cluster: 29 - Medoid: adfa5fe8a4a225d30aab38ceddf47a5678bd3645 -> ['d0126f61a6058dcd3e45049aaa720db5d131113b', '59406b1c8eb87ef5ce2fc745cae56954d57fced8', 'bb1c339608da43f2b19bdebb791c735e1b4e4389']
+Cluster: 30 - Medoid: 217bc4d369cd044462217d501a77513a6d3276e9 -> ['d0126f61a6058dcd3e45049aaa720db5d131113b', '9d5a47d9dfe055cf5bc5ae072b9953fef4f11946', '889622de80ffdd4ce2586ec6f76796f3c6745220']
+Cluster: 31 - Medoid: 2080cf6f9bb6579500d969d638f185ef3172ff29 -> ['bb1c339608da43f2b19bdebb791c735e1b4e4389', 'd0126f61a6058dcd3e45049aaa720db5d131113b', '78b60e9e5f01abb52dac9c37c1ff79621c07bd91']
+Cluster: 32 - Medoid: 2b75d2428e9dee17af550deee18a6b06ba56c860 -> ['c2a53f7e82cd83500ef67b36022b661d58d0f93c', '758f197289f87a6e9ab605d9e189769da952d99c', '8a1524c17cbdbc8ac223507f003d9e06fea19f3a']
+Cluster: 33 - Medoid: 8cd8427db7b5681218441f49673b3be7fa45cb30 -> ['fbd6594aaa466d95a2e72914b6d9ab964613ffa5', '7a2fa8905b47000390f66aefc91fe281f477ab8a', 'c788bab2f233008ce64b36bfd4d32fe1171e9f7b']
+Cluster: 34 - Medoid: 6df6a0a55abbc1117e7a85b0a2dc1f3f1eb00f16 -> ['3faf3b73925fa637ea1babb162bb2f7f6068117b', 'd0126f61a6058dcd3e45049aaa720db5d131113b', '59406b1c8eb87ef5ce2fc745cae56954d57fced8']
+Cluster: 35 - Medoid: b5c09a99c74b498f067a0f4b6ea1ac2b4f3e1674 -> ['591fb49470fdd7a8c736363db18c0fba3d9d860d', 'c2a53f7e82cd83500ef67b36022b661d58d0f93c', '59406b1c8eb87ef5ce2fc745cae56954d57fced8']
+Cluster: 36 - Medoid: 440b6c1c644d4ba86c4fdbb931136fa14b45e919 -> ['78b60e9e5f01abb52dac9c37c1ff79621c07bd91', 'eaa35c809fe0f32c972ed39196aa5eea7a53a1b4', '07f127c379d3667d6fa91cbcce5cb784cb35c2d4']
+Cluster: 37 - Medoid: cf5808a6356b07d85382ac735735856cf4d1a69e -> ['dc3034632271b8f8bf365d9eb053870a42f6ef87', 'c2a53f7e82cd83500ef67b36022b661d58d0f93c', '15d8a0b475fd1212e8fd7426fe5f9d9199741dc8']
+Cluster: 38 - Medoid: 525c0c1694559234a435d89d051f1ac5e1c05d29 -> ['59406b1c8eb87ef5ce2fc745cae56954d57fced8', '70c9328c9595fc41bd3c7f6da590b62359d0b054', 'c2a53f7e82cd83500ef67b36022b661d58d0f93c']
+Cluster: 39 - Medoid: 7e321d7fad345e1725abf1ccf065c7822e94e620 -> ['78b60e9e5f01abb52dac9c37c1ff79621c07bd91', '3faf3b73925fa637ea1babb162bb2f7f6068117b', 'a8a33879a91488a03a9a5a68298eae44b48d0524']
+Cluster: 40 - Medoid: 04b6a0c8ec142073c2f513cd272c23b211f71789 -> ['cfbf574978a89c1c41421c2ba8deaab6eb611cb6', 'fbd6594aaa466d95a2e72914b6d9ab964613ffa5', 'be965b80f1922d215f9ef3a1df16cd4548d7245e']
+Cluster: 41 - Medoid: 02a3108599b12345f6676e831865621d53d7fae6 -> ['70c9328c9595fc41bd3c7f6da590b62359d0b054', 'dc3034632271b8f8bf365d9eb053870a42f6ef87', 'fbd6594aaa466d95a2e72914b6d9ab964613ffa5']
+Cluster: 42 - Medoid: 68ce69c5d66c1f9e3583b7797728f268cbcc1cf1 -> ['70c9328c9595fc41bd3c7f6da590b62359d0b054', '59406b1c8eb87ef5ce2fc745cae56954d57fced8', '15d8a0b475fd1212e8fd7426fe5f9d9199741dc8']
+Cluster: 43 - Medoid: a2c12b1bfb817da326d519620db3e56b5683fc73 -> ['c788bab2f233008ce64b36bfd4d32fe1171e9f7b', '7a2fa8905b47000390f66aefc91fe281f477ab8a', 'c2a53f7e82cd83500ef67b36022b661d58d0f93c']
+Cluster: 44 - Medoid: c2b8c6ed9b494499bd0972dc3e5754daf0f89533 -> ['cfbf574978a89c1c41421c2ba8deaab6eb611cb6', '1397e1b92e7453c14a4e25a3c6da18c3c9ad337d', '8a1524c17cbdbc8ac223507f003d9e06fea19f3a']
+Cluster: 45 - Medoid: d0126f61a6058dcd3e45049aaa720db5d131113b -> ['591fb49470fdd7a8c736363db18c0fba3d9d860d', '15d8a0b475fd1212e8fd7426fe5f9d9199741dc8', 'd83755572385f59e6495d9520574fea0d731afc3']
+Cluster: 46 - Medoid: 98d3649ecca5a44622800fcc7ee74e0fb5d60344 -> ['c2a53f7e82cd83500ef67b36022b661d58d0f93c', '15d8a0b475fd1212e8fd7426fe5f9d9199741dc8', 'af831b93f2833331719a8a1c6bbc057ac582cee3']
+Cluster: 47 - Medoid: 441cc76945e83acfb0f361f13576bcb52cb45a04 -> ['3faf3b73925fa637ea1babb162bb2f7f6068117b', 'c2a53f7e82cd83500ef67b36022b661d58d0f93c', 'c788bab2f233008ce64b36bfd4d32fe1171e9f7b']
+Cluster: 48 - Medoid: 88a086e35e55dfb74eb24cd93e8521a5818e2e68 -> ['c2a53f7e82cd83500ef67b36022b661d58d0f93c', 'd0126f61a6058dcd3e45049aaa720db5d131113b', '4a13a7e0420cfb5fced11e757b85734a554e0343']
+Cluster: 49 - Medoid: d0126f61a6058dcd3e45049aaa720db5d131113b -> ['591fb49470fdd7a8c736363db18c0fba3d9d860d', '15d8a0b475fd1212e8fd7426fe5f9d9199741dc8', 'd83755572385f59e6495d9520574fea0d731afc3']
+Cluster: 50 - Medoid: 41534f8a80c20e61cceffa4a405b96daf286cd2c -> ['dc3034632271b8f8bf365d9eb053870a42f6ef87', '92a407abb96cc97e927a04da03a818c0c4b6625a', 'd46155ca7818ae5c5335f0b2bf2fae9a50509f8c']
+Cluster: 51 - Medoid: c788bab2f233008ce64b36bfd4d32fe1171e9f7b -> ['cfbf574978a89c1c41421c2ba8deaab6eb611cb6', 'd83d45fa0b42ebb7ecf18d02f386315d81e0b310', 'dc3034632271b8f8bf365d9eb053870a42f6ef87']
+Cluster: 52 - Medoid: a5af17fc2a437bcc83aa6898674a3331fd96c649 -> ['70c9328c9595fc41bd3c7f6da590b62359d0b054', '1397e1b92e7453c14a4e25a3c6da18c3c9ad337d', '591fb49470fdd7a8c736363db18c0fba3d9d860d']
+Cluster: 53 - Medoid: dd1df3ad85cdf83407db8c0cda2e1eca793ecb30 -> ['591fb49470fdd7a8c736363db18c0fba3d9d860d', '1397e1b92e7453c14a4e25a3c6da18c3c9ad337d', 'c5a7fce72b4d98e2441ae9fc80d9c8eb8384fe10']
+Cluster: 54 - Medoid: 872e7f3f3586e7b66244c3a655894f939a8460de -> ['70c9328c9595fc41bd3c7f6da590b62359d0b054', 'c2a53f7e82cd83500ef67b36022b661d58d0f93c', '78b60e9e5f01abb52dac9c37c1ff79621c07bd91']
+Cluster: 55 - Medoid: 5dbd4bfbd1aab76239e7165e7f70abdd904ac194 -> ['c788bab2f233008ce64b36bfd4d32fe1171e9f7b', '04b6a0c8ec142073c2f513cd272c23b211f71789', '92a407abb96cc97e927a04da03a818c0c4b6625a']
+Cluster: 56 - Medoid: 9eb09426aa2f9ac648f68340e3dfc25236c81f91 -> ['c788bab2f233008ce64b36bfd4d32fe1171e9f7b', 'be965b80f1922d215f9ef3a1df16cd4548d7245e', '2080cf6f9bb6579500d969d638f185ef3172ff29']
+Cluster: 57 - Medoid: fdbddfff766167d261be13c67f05919b3f219cf6 -> ['59406b1c8eb87ef5ce2fc745cae56954d57fced8', '15d8a0b475fd1212e8fd7426fe5f9d9199741dc8', 'd46155ca7818ae5c5335f0b2bf2fae9a50509f8c']
+Cluster: 58 - Medoid: 2510c6d87dd03b95c78d15b2182e86ae161615a5 -> ['15d8a0b475fd1212e8fd7426fe5f9d9199741dc8', 'dc3034632271b8f8bf365d9eb053870a42f6ef87', 'd83d45fa0b42ebb7ecf18d02f386315d81e0b310']
+Cluster: 59 - Medoid: 36dfd4599c8778abd78cdf3b21ebbbd6d5e37b10 -> ['c2a53f7e82cd83500ef67b36022b661d58d0f93c', 'd0126f61a6058dcd3e45049aaa720db5d131113b', '591fb49470fdd7a8c736363db18c0fba3d9d860d']
+Cluster: 60 - Medoid: 638c26ae05f3805af68a485c901186a7f75d495c -> ['3faf3b73925fa637ea1babb162bb2f7f6068117b', 'd0126f61a6058dcd3e45049aaa720db5d131113b', 'a8a33879a91488a03a9a5a68298eae44b48d0524']
+Cluster: 61 - Medoid: 65dacb8b912843b291f754c336e9209a46a18413 -> ['3faf3b73925fa637ea1babb162bb2f7f6068117b', '04b6a0c8ec142073c2f513cd272c23b211f71789', '9d5a47d9dfe055cf5bc5ae072b9953fef4f11946']
+Cluster: 62 - Medoid: aa91b093471043579b379bb4300c6b85acf57331 -> ['59406b1c8eb87ef5ce2fc745cae56954d57fced8', 'd83755572385f59e6495d9520574fea0d731afc3', 'cfbf574978a89c1c41421c2ba8deaab6eb611cb6']
+Cluster: 63 - Medoid: be965b80f1922d215f9ef3a1df16cd4548d7245e -> ['59406b1c8eb87ef5ce2fc745cae56954d57fced8', '758f197289f87a6e9ab605d9e189769da952d99c', '78b60e9e5f01abb52dac9c37c1ff79621c07bd91']
+Cluster: 64 - Medoid: d0126f61a6058dcd3e45049aaa720db5d131113b -> ['591fb49470fdd7a8c736363db18c0fba3d9d860d', '15d8a0b475fd1212e8fd7426fe5f9d9199741dc8', 'd83755572385f59e6495d9520574fea0d731afc3']
+Cluster: 65 - Medoid: b5897767abea4f471be01149445abdb0d2bb6294 -> ['c2a53f7e82cd83500ef67b36022b661d58d0f93c', 'c788bab2f233008ce64b36bfd4d32fe1171e9f7b', 'dc3034632271b8f8bf365d9eb053870a42f6ef87']
+Cluster: 66 - Medoid: f128143520f366ba24d22a7759b7e738a948d203 -> ['c2a53f7e82cd83500ef67b36022b661d58d0f93c', 'bb1c339608da43f2b19bdebb791c735e1b4e4389', 'cfbf574978a89c1c41421c2ba8deaab6eb611cb6']
+Cluster: 67 - Medoid: 9abd57e10b36c3e9ed074a2f75499471beaad8eb -> ['c788bab2f233008ce64b36bfd4d32fe1171e9f7b', '47b044d90d7382a45413cc9b536d742f75ac064e', '542b4308d62fe22f6f36e2f60db42127360fdc2b']
+Cluster: 68 - Medoid: 1533edbb9d5b9b4c611cb4a8dd4cd67c262ab9a5 -> ['59406b1c8eb87ef5ce2fc745cae56954d57fced8', 'dc3034632271b8f8bf365d9eb053870a42f6ef87', '15d8a0b475fd1212e8fd7426fe5f9d9199741dc8']
+Cluster: 69 - Medoid: c4bb13d557de7e1cf3a2ab74ff8bc8a0f0b758c1 -> ['3faf3b73925fa637ea1babb162bb2f7f6068117b', 'c788bab2f233008ce64b36bfd4d32fe1171e9f7b', 'd0126f61a6058dcd3e45049aaa720db5d131113b']
+Cluster: 70 - Medoid: b7defaf6b5613f35676fc03c491425183ed37ce9 -> ['fbd6594aaa466d95a2e72914b6d9ab964613ffa5', 'dc3034632271b8f8bf365d9eb053870a42f6ef87', 'd46155ca7818ae5c5335f0b2bf2fae9a50509f8c']
+Cluster: 71 - Medoid: 85330af40dcacce0278b66d85d8bf19a4bc985a2 -> ['78b60e9e5f01abb52dac9c37c1ff79621c07bd91', '92a407abb96cc97e927a04da03a818c0c4b6625a', 'd46155ca7818ae5c5335f0b2bf2fae9a50509f8c']
+Cluster: 72 - Medoid: d95e4cb119b756b003f86d2952ee736eab6546a8 -> ['92a407abb96cc97e927a04da03a818c0c4b6625a', '9d5a47d9dfe055cf5bc5ae072b9953fef4f11946', '3868830e39ec3663b96afb2f1c5a992c1366c7da']
+Cluster: 73 - Medoid: 5e67091eb59d19c8b08bc3856194396145b15baf -> ['d0126f61a6058dcd3e45049aaa720db5d131113b', '59406b1c8eb87ef5ce2fc745cae56954d57fced8', 'bb1c339608da43f2b19bdebb791c735e1b4e4389']
+Cluster: 74 - Medoid: f2c374542a1ba33f4e3f58273c5204ac8cb109a4 -> ['591fb49470fdd7a8c736363db18c0fba3d9d860d', '15d8a0b475fd1212e8fd7426fe5f9d9199741dc8', 'c2a53f7e82cd83500ef67b36022b661d58d0f93c']
+Cluster: 75 - Medoid: 70e68823d8004c82cb0ebc47f1861b545e445f6b -> ['70c9328c9595fc41bd3c7f6da590b62359d0b054', 'c2a53f7e82cd83500ef67b36022b661d58d0f93c', '2919fcfc51e8d90807e1e23c53425d92edf28099']
+Cluster: 76 - Medoid: 82d07c62355b4682697d769e5908dfc03bd0a1bb -> ['1397e1b92e7453c14a4e25a3c6da18c3c9ad337d', '591fb49470fdd7a8c736363db18c0fba3d9d860d', '15d8a0b475fd1212e8fd7426fe5f9d9199741dc8']
+Cluster: 77 - Medoid: ecc0770eb89d094239b6f0698ae3ba57cc7d4c3e -> ['3faf3b73925fa637ea1babb162bb2f7f6068117b', 'c2a53f7e82cd83500ef67b36022b661d58d0f93c', '15d8a0b475fd1212e8fd7426fe5f9d9199741dc8']
+Cluster: 78 - Medoid: 34edb3e408aed2c269404912402f1bf3cae600d5 -> ['d83d45fa0b42ebb7ecf18d02f386315d81e0b310', 'cfbf574978a89c1c41421c2ba8deaab6eb611cb6', 'd46155ca7818ae5c5335f0b2bf2fae9a50509f8c']
