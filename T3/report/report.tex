@@ -31,7 +31,11 @@ brenolleite@gmail.com}}
 
 \section{Introdução}
 
-A terceira atividade da disciplina de \textit{Machine Learning} (MO444) tem como objetivo explorar técnicas não-supervisionadas, a fim de se encontrar características semelhantes em uma base de dados. O objetivo deste relatório é apresentar os experimentos que foram desenvolvidos com intuito de, principalmente, entender a base de dados em questão, bem como encontrar os agrupamentos mais adequados, capaz de representar as estruturas organizacionais da base de dados utilizando métodos de agrupamento, métricas para avaliação, bem como redução do espaço de características. O mesmo é dividido em Seções. Na Seção \ref{sec:meto}, alguns dados interessantes sobre a base de dados são mostrados, bem como a metodologia empregada e as atividades desenvolvidas. Por fim, a Seção \ref{sec:exp} apresenta os experimentos e as conclusões do trabalho.
+A terceira atividade da disciplina de \textit{Machine Learning} (MO444) tem como objetivo explorar técnicas não-supervisionadas, a fim de se encontrar características semelhantes em uma base de dados, em específico características semelhantes na estrutura organizacional da base de dados.
+
+O objetivo deste relatório é apresentar os experimentos que foram desenvolvidos com intuito de, principalmente, entender a base de dados em questão, bem como encontrar os agrupamentos mais adequados, capaz de representar as estruturas organizacionais da base de dados utilizando métodos de agrupamento, métricas para avaliação, bem como redução do espaço de características.
+
+O mesmo é dividido em Seções. Na Seção \ref{sec:meto}, alguns dados interessantes sobre a base de dados são mostrados, bem como a metodologia empregada e as atividades desenvolvidas. Por fim, a Seção \ref{sec:exp} apresenta os experimentos e as conclusões do trabalho.
 
 \section{Materiais e Métodos} \label{sec:meto}
 
@@ -39,11 +43,13 @@ Os materiais, como a base de dados e pacote utilizados, e a metodologia empregad
 
 \subsection{Base de dados} \label{sec:base}
 
-A base de dados é não-supervisionada, ou seja, não apresenta informação de classe para as amostras. A base é composta por documentos de texto que apresentam certo grau de similaridade entre eles. Cada documento é representado por um vetor de características, ou seja, um histograma de uma abordagem \emph{Bag-of-Words}. A base apresenta $19.924$ documentos, em que cada documento é disponibilizado como um vetor de $2.209$ dimensões.
+A base de dados é não-supervisionada, ou seja, não apresenta informação de classe para as amostras. Desta forma, é utilizada para a validação dos estudos e objetivos propostos para o presente trabalho. A base de dados é composta por documentos de texto que apresentam certo grau de similaridade entre eles. Cada documento é representado por um vetor de características, ou seja, um histograma de \emph{hits} de uma abordagem \emph{Bag-of-Words}. A base apresenta $19.924$ documentos, em que cada documento é disponibilizado como um vetor de $2.209$ dimensões.
 
 \subsection{Pacote \textit{Scikit-Learn}} \label{sec:pac}
 
-Os modelos desenvolvidos que utilizam o algoritmo \emph{K-Means} foram implementados utilizando funções do pacote \emph{Scikit-Learn}, em linguagem de programação \emph{Python}. A função \emph{KMeans} foi empregada, a fim de se obter os agrupamentos, bem como fornecer os centroides para extração das métricas. A configuração dos parametros da função \emph{KMeans} foi dada da seguinte forma:
+Os modelos desenvolvidos que utilizam o algoritmo \emph{K-Means} foram implementados utilizando funções do pacote \emph{Scikit-Learn}, em linguagem de programação \emph{Python}. A função \emph{KMeans} foi empregada, a fim de se obter os agrupamentos, bem como fornecer os centroides para extração das métricas.
+
+A configuração dos parametros da função \emph{KMeans} foi dada da seguinte forma:
 \begin{itemize}
 	\footnotesize \item \textit{n\_clusters}: A quantidade de agrupamentos utilizadas foi definida a partir da analise de dados e métricas e serão discutidos mais adiante.
 	\footnotesize \item \textit{init}: k-means++, que sugere uma inicialização seguindo distribuição uniforme, uma vez que a inicialização randômica pode ser mal inicializada e dois centróides caírem num mesmo agrupamento, por exemplo.
@@ -55,7 +61,7 @@ Os modelos desenvolvidos que utilizam o algoritmo \emph{K-Means} foram implement
 	\footnotesize \item \textit{algorithm}: como utilizamos vetor de características com código esparso, optamos por usar o algoritmo classico do \emph{K-Means}.
 \end{itemize}
 
-Para o pré-processamento, as funções \emph{scale}, \emph{normalize} e \emph{StandardScaler} do Scikit-Learn foram utilizadas com seus parâmetros originais. Como método de redução, o algoritmo \emph{Principal Component Analysis}(PCA) foi utilizado alterando apenas o número de componentes principais. Para avaliar os agrupamentos formados no espaço de alta dimensão, optou-se por utilizar a métricas que mede a silhueta de cada agrupamento (\emph{silhouette\_score}), bem como a função \emph{pairwise\_distances\_argmin\_min}, responsável por retornar o argumento mínimo da menor distância entre dois pares de pontos. Para visualizar a projeção das amostras no espaço de alta dimensão, utilizou-se o algoritmo \emph{t-SNE}, um algoritmo capaz de projetar as amostras num espaço de menor dimensão (normalmente, 2).
+Para o pré-processamento, as funções \emph{scale}, \emph{normalize} e \emph{StandardScaler} do mesmo pacote, o Scikit-Learn, foram utilizadas com seus parâmetros originais. Como método de redução, o algoritmo \emph{Principal Component Analysis}(PCA) foi utilizado do pacote, alterando apenas o número de componentes principais. Para avaliar os agrupamentos formados no espaço de alta dimensão, optou-se por utilizar a métricas que mede a silhueta de cada agrupamento com função \emph{silhouette\_score}, bem como a função \emph{pairwise\_distances\_argmin\_min}, responsável por retornar o argumento mínimo da menor distância entre dois pares de pontos. Uma função semelhante foi utilizada do pacote \emph{Scipy} para computar distâncias. Para visualizar a projeção das amostras no espaço de alta dimensão, utilizou-se o algoritmo \emph{t-SNE}, um algoritmo capaz de projetar num espaço de menor dimensão (normalmente, 2), as amostras segundo a proximidade delas no espaço de alta dimensão.
 
 
 \subsection{Metodologia} \label{sec:met}
@@ -85,27 +91,27 @@ Como etapa de pré-processamento dos vetores de características da base de dado
 
 \subsection{Análise da quantidade de agrupamentos}
 
-Para tentar encontrar a quantidade de agrupamento dos dados, primeiramente escolheu-se utilizar o método \emph{Elbow}, que calcula a soma da distorção, ou seja, o quanto cada elemento se distancia dos outros elementos do seu agrupamento. Assim, a ideia do método é calcular a distorção dos elementos para diferentes quantidades de grupos e encontrar uma grande queda no gráfico, que representa um valor adequado e com pouca distorção para todos os grupos. Testou-se o valor dos grupos para $0, 5, 10, 15, ..., 100$. Os valores são apresentados na Figura \ref{fig:elbow}.
+Para tentar encontrar a quantidade de agrupamento dos dados, primeiramente escolheu-se utilizar o método \emph{Elbow}, que calcula a soma da distorção, ou seja, o quanto cada elemento se distancia dos outros elementos do seu agrupamento. Assim, a ideia do método é calcular a distorção dos elementos para diferentes quantidades de grupos e encontrar uma grande queda no gráfico, que representa um valor adequado e com pouca distorção para todos os grupos. Testou-se o valor dos grupos para $0, 5, 10, 15, ..., 100$. Os valores são apresentados no gráfico \ref{fig:elbow}.
 
 \begin{figure}[!h]
 	\centering
 	{
-		\fbox{\includegraphics[scale=0.20]{Images/elbow.png}}
+		\fbox{\includegraphics[scale=0.25]{Images/elbow.png}}
 	}
-	\caption{\small Método \emph{Elbow} para quantidades de grupos diferentes.}
+	\caption{\small Gráfico do método \emph{Elbow} para os quantidades de grupos diferentes.}
 	\label{fig:elbow}
 \end{figure}
 
 A partir do gráfico, é possível visualizar que existe uma distorção muito pequena, de $2,5$ aproximadamente, para o número mínimo e máximo de grupos testados, $0$ e $100$, respectivamente. Embora não exista uma grande queda no gráfico, é possível observar uma queda mais acentuada entre $20$ e $40$, e duas quedas menores: entre $60$ e $80$, e $80$ e $100$. Desta forma, entendemos que tais intervalos são promissores para escolha de número de agrupamentos.
 
-Como existiam 3 possíveis valores para números de grupos, escolheu-se utilizar outra métrica para tentar encontrar o melhor número de grupos. A métrica escolhida calcula a silhueta dos agrupamentos, isso é, a forma dos agrupamentos e como eles se concentram. Para um valor correto de número de agrupamentos, o valor da medida silhueta deve ser próximo de $1$. Assim, testou-se o valor da medida de silhueta para $0, 5, 10, 15, ..., 100$. Os valores são apresentados na Figura \ref{fig:silhueta}.
+Como existiam 3 possíveis valores para números de grupos, escolheu-se utilizar outra métrica para tentar encontrar o melhor número de grupos. A métrica escolhida calcula a silhueta dos agrupamentos, isso é, a forma dos agrupamentos e como eles se concentram. Para um valor correto de número de agrupamentos, o valor da medida silhueta deve ser próximo de $1$. Assim, testou-se o valor da medida de silhueta para $0, 5, 10, 15, ..., 100$. Os valores são apresentados no gráfico \ref{fig:silhueta}.
 
 \begin{figure}[!h]
 	\centering
 	{
-		\fbox{\includegraphics[scale=0.20]{Images/silhueta.png}}
+		\fbox{\includegraphics[scale=0.25]{Images/silhueta.png}}
 	}
-	\caption{\small Métrica silhueta para diferentes números de agrupamentos.}
+	\caption{\small Gráfico da métrica silhueta pelo número de agrupamentos.}
 	\label{fig:silhueta}
 \end{figure}
 
@@ -114,31 +120,31 @@ No gráfico, é possível observar que os valores de silhueta não ficaram próx
 
 \subsection{Análise dos documentos}
 
-Com o objetivo de tentar entender a estrutura dos dados, os documentos foram abertos e analisados. No cabeçalho de cada documento, foi possível notar a presença de um identificador denominado \emph{Newsgroup}. Tal identificador mostra algumas palavras-chave para identificar o conteúdo do documento e costuma ser muito utilizado em compartilhamento de arquivos de texto, como para definir um tema para cada arquivo, de modo similar a tópico de um fórum \footnote{https://revistausenet.com/o-que-e-um-newsgroup-2/}. Um identificador \emph{Newsgroup} normalmente é separados por classes e subclasses, sendo elas separadas por ponto dentro do nome, os mesmos podem ter até mais de uma subclasse por identificador. Desta forma, algumas análises puderam ser feitas neste caminho. A figura \ref{fig:occurrence} apresenta as maiores ocorrências de \emph{Newsgroup}, considerando o conjunto palavras-chave que o compõe.
+Com o objetivo de tentar entender a estrutura dos dados, os documentos foram abertos e analisados. No cabeçalho de cada documento, foi possível notar a presença de um identificador denominado \emph{Newsgroup}. Tal identificador mostra algumas palavras-chave para identificar o conteúdo do documento e costuma ser muito utilizado em compartilhamento de arquivos de texto, como para definir um tema para cada arquivo, de modo similar a tópico de um fórum \footnote{https://revistausenet.com/o-que-e-um-newsgroup-2/}. Um identificador \emph{Newsgroup} normalmente é separados por classes e subclasses, sendo elas separadas por ponto dentro do nome, os mesmos podem ter até mais de uma subclasse por identificador. Desta forma, algumas análises puderam ser feitas neste caminho. O Gráfico \ref{fig:occurrence} apresenta as maiores ocorrências de \emph{Newsgroup}, considerando o conjunto palavras-chave que o compõe.
 
 \begin{figure}[!h]
 	\centering
 	{
-		\fbox{\includegraphics[scale=0.20]{Images/occurrence.png}}
+		\fbox{\includegraphics[scale=0.25]{Images/occurrence.png}}
 	}
 	\caption{\small Maiores ocorrências dos identificadores.}
 	\label{fig:occurrence}
 \end{figure}
 
-A figura \ref{fig:occurrence} mostra as $20$ primeiras maiores ocorrências dos \emph{Newsgroups}, de um total de 872 diferentes categorias. As $20$ primeiras ocorrências apresentam valor maior do que $950$ e somam $62,42\%$ de todas as ocorrências. A partir da ocorrência $21$ o numero da ocorrência de cada \emph{Newsgroup} é menor do que $300$ ocorrências cada uma. Assim, tais dados sugerem que existam $20$ agrupamentos de maior densidade de informação, ou seja, que apresentem o mesmo \emph{Newsgroup}. Com relação ao agrupamento dos dados, imagina-se que as maiores ocorrências sugiram agrupamentos maiores de
+O Gráfico \ref{fig:occurrence} mostra as $20$ primeiras maiores ocorrências dos \emph{Newsgroups}, de um total de 872 diferentes categorias. As $20$ primeiras ocorrências apresentam valor maior do que $950$ e somam $62,42\%$ de todas as ocorrências. A partir da ocorrência $21$ o numero da ocorrência de cada \emph{Newsgroup} é menor do que $300$ ocorrências cada uma. Assim, tais dados sugerem que existam $20$ agrupamentos de maior densidade de informação, ou seja, que apresentem o mesmo \emph{Newsgroup}. Com relação ao agrupamento dos dados, imagina-se que as maiores ocorrências sugiram agrupamentos maiores de
 
-Outra análise foi feita para avaliar a ocorrência dos \emph{Newsgroups}. A figura \ref{fig:occurrence_word} apresenta as maiores ocorrências de cada \emph{Newsgroup} considerando apenas a classe principal, ignorando todas as subclasses.
+Outra análise foi feita para avaliar a ocorrência dos \emph{Newsgroups}. O Gráfico \ref{fig:occurrence_word} apresenta as maiores ocorrências de cada \emph{Newsgroup} considerando apenas a classe principal, ignorando todas as subclasses.
 
 \begin{figure}[!h]
 	\centering
 	{
-		\fbox{\includegraphics[scale=0.20]{Images/occurence_word.png}}
+		\fbox{\includegraphics[scale=0.25]{Images/occurence_word.png}}
 	}
 	\caption{\small Maiores ocorrências de cada identificador.}
 	\label{fig:occurrence_word}
 \end{figure}
 
-A partir da figura \ref{fig:occurrence_word}, é possível visualizar que a grande parte dos documentos na base estão dentro de apenas $7$ de um total de $141$ classes principais. Desta forma, $95.98\%$ dos documentos estão distribuídos dentro das $7$ classes de mais ocorrência.
+A partir do Gráfico \ref{fig:occurrence_word}, é possível visualizar que a grande parte dos documentos na base estão dentro de apenas $7$ de um total de $141$ classes principais. Desta forma, $95.98\%$ dos documentos estão distribuídos dentro das $7$ classes de mais ocorrência.
 
 \subsubsection{Análise dos medóides}
 
@@ -147,22 +153,22 @@ Como primeira forma de análise dos agrupamentos os arquivos mais próximos do m
 \begin{table}[h!]
 	\centering
 	\resizebox{\columnwidth}{!}{%
-	\begin{tabular}{|c|c|c|c|}		
-		\hline
-		\textbf{Agrupamento} & \textbf{ID}                                       & \textbf{Newsgroup}                                            & \textbf{Trecho do Documento}                                                                                                                \\ \hline
-		1                    & \textbf{d973d26ed60d7c6e21017dd9e543c19666c0b8e1} & comp.windows.x                                                & Given that all the \textbf{source} code contains explicit permission ...                                                                             \\ \hline
-		1                    & 65840edcd1c36154cc7b5e8f547f68582416d7f0          & comp.windows.x, news.answers, comp.answers                    & Float resources are not portable; the size of the value may be larger thanthe size of an XtPointer ...                                      \\ \hline
-		1                    & b4a4f9a27f9aaf185f6691f2ec3c4f8f41823d27          & sci.med                                                       & but just because the net is a \textbf{source} of large amounts of bizarre ...                                                                        \\ \hline
-		2                    & \textbf{ecf5e152282746632776b8e4ec1ee7d11ce7c37c} & talk.politics.misc,soc.culture.canada                         & In the world of the future, Bill Clinton will appoint Canadians to ...                                                                      \\ \hline
-		2                    & 1a21a4e42a3649cc741fa6f94c818aa45be589ed          & talk.abortion,alt.atheism,talk.religion.misc                  & If I can predict with almost 100\% accuracy that Americans prefer to own their portions of the US ...                                       \\ \hline
-		2                    & 6e8b424c0b791f4dcce6e757705d8e85bf602a22          & talk.politics.misc,alt.politics.clinton,alt.fan.rush-limbaugh & The Democrats ran,one of their best campaigns in years against a pathetic Republican ... \\ \hline
-	\end{tabular}
+\begin{tabular}{|c|c|c|c|}
+	\hline
+	\textbf{Agrupamento} & \textbf{ID}                                       & \textbf{Newsgroup}                                                                                          & \textbf{Trecho do Documento}                                                                                                                                                              \\ \hline
+	1                    & \textbf{d973d26ed60d7c6e21017dd9e543c19666c0b8e1} & comp.windows.x                                                                                              & \begin{tabular}[c]{@{}c@{}}Given that all the \textbf{source} code \\ contains explicit permission ...\end{tabular}                                                                                \\ \hline
+	1                    & 65840edcd1c36154cc7b5e8f547f68582416d7f0          & \begin{tabular}[c]{@{}c@{}}comp.windows.x, \\ news.answers, \\ comp.answers\end{tabular}                    & \begin{tabular}[c]{@{}c@{}}Float resources are not portable;\\  the size of the value \\ may be larger thanthe size of an XtPointer ...\end{tabular}                                      \\ \hline
+	1                    & b4a4f9a27f9aaf185f6691f2ec3c4f8f41823d27          & sci.med                                                                                                     & \begin{tabular}[c]{@{}c@{}}but just because the net is a \textbf{source} \\ of large amounts of bizarre ...\end{tabular}                                                                           \\ \hline
+	2                    & \textbf{ecf5e152282746632776b8e4ec1ee7d11ce7c37c} & \begin{tabular}[c]{@{}c@{}}talk.politics.misc,\\ soc.culture.canada\end{tabular}                            & \begin{tabular}[c]{@{}c@{}}In the world of the future, Bill Clinton \\ will appoint Canadians to ...\end{tabular}                                                                         \\ \hline
+	2                    & 1a21a4e42a3649cc741fa6f94c818aa45be589ed          & talk.abortion,alt.atheism,talk.religion.misc                                                                & \begin{tabular}[c]{@{}c@{}}If I can predict with almost 100\% accuracy\\  that Americans prefer to own their portions of the US ...\end{tabular}                                          \\ \hline
+	2                    & 6e8b424c0b791f4dcce6e757705d8e85bf602a22          & \begin{tabular}[c]{@{}c@{}}talk.politics.misc,\\ alt.politics.clinton,\\ alt.fan.rush-limbaugh\end{tabular} & \begin{tabular}[c]{@{}c@{}}On the other hand, Rush made an interesting point: \\ The Democrats ran,one of their \\ best campaigns in years against a pathetic Republican ...\end{tabular} \\ \hline
+\end{tabular}
 	}
 	\caption{Analise de arquivos perto dos medóides dos grupos.}
 	\label{tab:files}
 \end{table}
 
-Pode-se perceber que 
+Pode-se perceber que os arquivos em geral tem alguma semelhança entre sí, apesar de algumas diferenças. Esse não é um resultado comum, analisando diversos outros agrupamentos podê-se perceber que diversos arquivos pertenciam a categorias divergentes do medóide. A Tabela \ref{tab:files} mostra um exemplo disto, onde um documento com \emph{Newsgroup sci.med} foi selecionado como o mais próximo de um \emph{comp.windows.x}, o motivo dessa confusão é a forma com que foi extraída as \emph{features} dos documentos. Uma estrutura de \emph{Bag-of-Words} foi utilizada, a mesma basei-se apenas nas palavras do texto e não em seu contexto fazendo com que a palavra \textbf{source} seja uma palavra característica do agrupamento \emph{comp}. Além disso, a distância euclidiana não é uma boa métrica em espaços de alta dimensão. O uso de similaridade de cossenos pode melhorar os resultados, mas não foram feito experimentos deste tipo neste trabalho.
 
 
 \subsection{Checagem da qualidade dos agrupamentos}
@@ -174,7 +180,7 @@ Para realizar uma checagem mais ampla dentro de cada agrupamento, uma métrica d
 	{
 		\fbox{\includegraphics[scale=0.25]{Images/clusters.png}}
 	}
-	\caption{\small Histograma com 4 maiores categorias para 3 diferentes agrupamentos.}
+	\caption{\small Histograma com as quatro maiores categorias para três diferentes agrupamentos.}
 	\label{fig:clusters}
 \end{figure}
 
@@ -201,18 +207,24 @@ Pode-se notar que acima de $1500$ componentes $87\%$  da variância dos dados é
 	\centering
 	{
 		{
+			\setlength{\fboxsep}{1pt}
+			\setlength{\fboxrule}{1pt}
 			\fbox{\includegraphics[scale=0.2]{Images/pca_95}}
 		}
 		\label{fig:pca95}
 	}\smallskip
 	{
 		{
+			\setlength{\fboxsep}{1pt}
+			\setlength{\fboxrule}{1pt}
 			\fbox{\includegraphics[scale=0.2]{Images/pca_90}}
 		}
 		\label{fig:pca90}
 	}\smallskip
 	{
 		{
+			\setlength{\fboxsep}{1pt}
+			\setlength{\fboxrule}{1pt}
 			\fbox{\includegraphics[scale=0.25]{Images/pca_85}}
 		}
 		\label{fig:pca85}
@@ -227,7 +239,9 @@ E, por último, a redução de $2209$ para $1424$ componentes ($-15\%$ variânci
 
 \subsection{Visualização dos dados}
 
-A partir dos experimentos anteriormente realizados, foi possível identificar pelos agrupamentos que a maioria deles e em grande parte apresentavam elementos de um mesmo \emph{Newsgroup}. Para validar a abordagem escolhida para mensurar a qualidade dos agrupamentos, optou-se por visualizar a projeção dos dados a fim de se identificar os agrupamentos. Para isto, utilizamos o algoritmo \emph{t-SNE}, conhecido por manter classes semelhantes na alta dimensão, para uma dimensão visível, no caso, duas dimensões. Assim, a partir da redução feita com o PCA, a projeção do \emph{t-SNE} foi aplicada para um número de componentes $2$ ($2$ dimensões). As Figuras \ref{fig:tsne31} e \ref{fig:tsne79} apresentam a projeção para $K=31$ e $K=79$ grupos, respectivamente.
+Dada as métricas aplicadas e encontradas a partir dos dados, bem como análise e entendimento do problema, foi possível identificar pelos agrupamentos, que a maioria deles e em grande parte apresentavam elementos de um mesmo \emph{Newsgroup}. Para validar a abordagem escolhida para mensurar a qualidade dos agrupamentos, optou-se por visualizar a projeção dos dados a fim de se identificar os agrupamentos. Para isto, utilizamos o algoritmo \emph{t-SNE}, conhecido por manter classes semelhantes na alta dimensão, para uma dimensão visível, no caso, duas dimensões.
+
+Assim, a partir da redução de dimensionalidade feita utilizando o algoritmo PCA, a projeção do \emph{t-SNE} foi aplicada para um número de componentes $2$, ou seja, duas dimensões. As Figuras \ref{fig:tsne31} e \ref{fig:tsne79} apresentam a projeção para $K=31$ e $K=79$ grupos, respectivamente.
 
 \begin{figure}[!h]
 	\centering
@@ -240,7 +254,7 @@ A partir dos experimentos anteriormente realizados, foi possível identificar pe
 	%\quad
 	\subfloat[K = 79]{
 		{
-			\fbox{\includegraphics[scale=0.081]{Images/tsne79}}
+			\fbox{\includegraphics[scale=0.08]{Images/tsne79}}
 		}
 		\label{fig:tsne79}
 	}
@@ -248,7 +262,9 @@ A partir dos experimentos anteriormente realizados, foi possível identificar pe
 	\label{fig:sne}
 \end{figure}
 
-Com a visualização da projeção, é possível identificar a presença de agrupamentos no espaço, ou seja, uma maior concentração de pontos e uma devida separação entre essas concentrações. Tais agrupamentos correspondem a documentos que apresentam vetor de características semelhantes. Além disso, pode-se visualizar que os agrupamentos apresentam mesma coloração. Isso indica que numero de agrupamentos escolhidos, foi condizente com os agrupamentos, caso contrario, haveria muita mistura dentro do mesmo grupo. Seguindo tal linha de entendimento, a projeção com $31$ agrupamentos permitiu visualizar agrupamentos maiores, enquanto a com $79$ permitiu de agrupamentos menores e em maior quantidade. Sugerindo assim que agrupamentos de $31$ são melhores para identificar as categorias principais, enquanto agrupamentos de $79$ podem ir além da categoria principal dividindo os dados entre as subclasses propostas.
+Com a visualização da projeção, é possível identificar a presença de agrupamentos no espaço, ou seja, uma maior concentração de pontos e uma devida separação entre essas concentrações de pontos. Tais agrupamentos correspondem a documentos de mesma classe, ou seja, documentos que apresentam vetor de características semelhantes. Além disso, pode-se visualizar que os agrupamentos apresentam mesma coloração. Isso indica que numero de agrupamentos escolhidos, foi condizente com os agrupamentos, caso contrario, haveria muita mistura dentro do mesmo grupo.
+
+Seguindo tal linha de entendimento, a projeção com $31$ agrupamentos permitiu visualizar agrupamentos maiores, enquanto a com $79$ permitiu a visualização de agrupamentos menores e em maior quantidade. Sugerindo assim que agrupamentos de $31$ são melhores para identificar as categorias principais, enquanto agrupamentos de $79$ podem ir além da categoria principal dividindo os dados entre as subclasses propostas.
 
 Em ambas as projeções, existem pontos que estão aparentemente fora de agrupamentos e que apresentam cores misturadas, ou seja, diferentes categorias. Isso ocorre na parte superior e inferior das figuras e tendem a mostrar possíveis \emph{outliers}, amostras específicas que são pouco representativas a um grupo. A visualização, de qualquer modo, ficou prejudicada pela grande quantidade de classes e cores, dificultando uma melhor identificação dos grupos pelas cores.
 
@@ -259,8 +275,8 @@ Os experimentos demonstraram uma dificuldade em aplicar as métricas em um espa�
 
 
 \begin{thebibliography}{00}
-%\bibitem{b1} Christopher M. Bishop. ``Pattern Recognition and Machine Learning''. Springer-Verlag New York, Inc., Secaucus, NJ, USA, 2006.
-\bibitem{b1} CC Aggarwal, A Hinneburg, DA Keim, ``On the surprising behavior of distance metrics in high dimensional spaces". ICDT, Springer - 2001.
+	%\bibitem{b1} Christopher M. Bishop. ``Pattern Recognition and Machine Learning''. Springer-Verlag New York, Inc., Secaucus, NJ, USA, 2006.
+	\bibitem{b1} CC Aggarwal, A Hinneburg, DA Keim, ``On the surprising behavior of distance metrics in high dimensional spaces". ICDT, Springer - 2001.
 \end{thebibliography}
 
 \end{document}
