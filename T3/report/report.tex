@@ -166,19 +166,25 @@ A partir do Gráfico \ref{fig:occurrence_word}, é possível visualizar que a gr
 \subsection{Checagem da qualidade dos agrupamentos}
 
 
-
+Para realizar uma checagem mais ampla dentro de cada agrupamento uma métrica diferente foi proposta, para cada agrupamento foi criado um histograma utilizando o número de ocorrência para cada \emph{Newsgroup} dentro do grupo criado. Desta forma, é esperado que a variância dos histogramas sejam altas pois um agrupamento deve conter muitos arquivos da mesma categoria. A Figura \ref{fig:clusters} mostra o resultado para três diferentes clusters (representados pelas cores) mostrando os quatro maiores valores dentro do histograma para $K = 31$ e $K = 79$. Clusters com maior variância foram escolhidos para este experimento.
 
 \begin{figure}[!h]
 	\centering
 	{
 		\fbox{\includegraphics[scale=0.25]{Images/clusters.png}}
 	}
-	\caption{\small Maiores ocorrências de cada identificador.}
-	\label{fig:occurrence_word}
+	\caption{\small Histograma com as quatro maiores categorias para três diferentes agrupamentos.}
+	\label{fig:clusters}
 \end{figure}
+
+Pode-se perceber que os três agrupamentos quando $K = 31$ identificam muito bem a categoria principal, como por exemplo \emph{rec, talk, soc}, outro ponto interessante é que subclasses similares são agrupadas mesmo quando a classe principal é diferente, como por exemplo as classes \emph{sci.eletronics} - \emph{rec.autos.tech} ambos arquivos possuem o tema de tecnologia e acabaram no mesmo agrupamento, o mesmo acontece com as classes \emph{alt.atheism} - \emph{talk.religion.misc}.
+
+Os resultados utilizando $K = 79$ foram bem similares, os agrupamentos continuaram focando nas classes principais. Desta forma, relacões entre diferentes categorias também aconteceram, como por exemplo \emph{sci.crypt} - \emph{comp.security}.
 
 
 \subsection{Redução de dimensionalidade}
+
+
 
 \begin{figure}[!h]
 	\centering
@@ -219,7 +225,7 @@ A partir do Gráfico \ref{fig:occurrence_word}, é possível visualizar que a gr
 		\label{fig:pca95}
 	}
 	\caption{}
-	\label{fig:clusters}
+	\label{fig:clusters_pca}
 \end{figure}
 
 
