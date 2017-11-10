@@ -96,7 +96,7 @@ Para tentar encontrar a quantidade de agrupamento dos dados, primeiramente escol
 \begin{figure}[!h]
 	\centering
 	{
-		\fbox{\includegraphics[scale=0.25]{Images/elbow.png}}
+		\fbox{\includegraphics[scale=0.18]{Images/elbow.png}}
 	}
 	\caption{\small Gráfico do método \emph{Elbow} para os quantidades de grupos diferentes.}
 	\label{fig:elbow}
@@ -125,7 +125,7 @@ Com o objetivo de tentar entender a estrutura dos dados, os documentos foram abe
 \begin{figure}[!h]
 	\centering
 	{
-		\fbox{\includegraphics[scale=0.25]{Images/occurrence.png}}
+		\fbox{\includegraphics[scale=0.2]{Images/occurrence.png}}
 	}
 	\caption{\small Maiores ocorrências dos identificadores.}
 	\label{fig:occurrence}
@@ -138,7 +138,7 @@ Outra análise foi feita para avaliar a ocorrência dos \emph{Newsgroups}. O Gr�
 \begin{figure}[!h]
 	\centering
 	{
-		\fbox{\includegraphics[scale=0.25]{Images/occurence_word.png}}
+		\fbox{\includegraphics[scale=0.2]{Images/occurence_word.png}}
 	}
 	\caption{\small Maiores ocorrências de cada identificador.}
 	\label{fig:occurrence_word}
@@ -149,6 +149,8 @@ A partir do Gráfico \ref{fig:occurrence_word}, é possível visualizar que a gr
 \subsubsection{Análise dos medóides}
 
 Como primeira forma de análise dos agrupamentos os arquivos mais próximos do medóide foram avaliados, a Tabela \ref{tab:files} mostra a comparação de dois arquivos para dois diferentes medóides. Os arquivos marcados em negrito são os medóides do agrupamento, os melhores resultados foram mostrados nesse experimento.
+
+
 
 \begin{table}[h!]
 	\centering
@@ -178,7 +180,7 @@ Para realizar uma checagem mais ampla dentro de cada agrupamento, uma métrica d
 \begin{figure}[!h]
 	\centering
 	{
-		\fbox{\includegraphics[scale=0.25]{Images/clusters.png}}
+		\fbox{\includegraphics[scale=0.2]{Images/clusters.png}}
 	}
 	\caption{\small Histograma com as quatro maiores categorias para três diferentes agrupamentos.}
 	\label{fig:clusters}
@@ -194,7 +196,7 @@ Com intuito de melhorar os agrupamentos foram feitos experimentos utilizando red
 \begin{figure}[!h]
 	\centering
 	{
-		\fbox{\includegraphics[scale=0.3]{Images/variancia.png}}
+		\fbox{\includegraphics[scale=0.25]{Images/variancia.png}}
 	}
 	\caption{\small Variância por número de componentes do PCA.}
 	\label{fig:var_comp}
@@ -209,7 +211,7 @@ Pode-se notar que acima de $1500$ componentes $87\%$  da variância dos dados é
 		{
 			\setlength{\fboxsep}{1pt}
 			\setlength{\fboxrule}{1pt}
-			\fbox{\includegraphics[scale=0.2]{Images/pca_95}}
+			\fbox{\includegraphics[scale=0.15]{Images/pca_95}}
 		}
 		\label{fig:pca95}
 	}\smallskip
@@ -217,7 +219,7 @@ Pode-se notar que acima de $1500$ componentes $87\%$  da variância dos dados é
 		{
 			\setlength{\fboxsep}{1pt}
 			\setlength{\fboxrule}{1pt}
-			\fbox{\includegraphics[scale=0.2]{Images/pca_90}}
+			\fbox{\includegraphics[scale=0.15]{Images/pca_90}}
 		}
 		\label{fig:pca90}
 	}\smallskip
@@ -225,7 +227,7 @@ Pode-se notar que acima de $1500$ componentes $87\%$  da variância dos dados é
 		{
 			\setlength{\fboxsep}{1pt}
 			\setlength{\fboxrule}{1pt}
-			\fbox{\includegraphics[scale=0.25]{Images/pca_85}}
+			\fbox{\includegraphics[scale=0.2]{Images/pca_85}}
 		}
 		\label{fig:pca85}
 	}
