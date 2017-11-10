@@ -24,9 +24,6 @@ def verify_clusters(labels, qtde = None):
     # Create array of histograms
     histograms = []
 
-    # Create normalization factor
-    factor = 0
-
     for cluster in clusters:
         # Create a new histogram
         hist = np.zeros(len(newsgroups))
@@ -37,9 +34,8 @@ def verify_clusters(labels, qtde = None):
         # Get rows of files (idx on ids)
         files_idx = np.where(labels == cluster)[0]
 
-        # Update factor for normalization
-        if len(files_idx) > factor:
-            factor = len(files_idx)
+        # Get factor to normalize
+        factor = len(files_idx)
 
         # Run over all files
         for idx in files_idx:
@@ -72,32 +68,25 @@ def verify_clusters(labels, qtde = None):
         # Sort newsgroups
         hist = sorted(hist.items(), reverse=True, key=lambda x: x[1])
 
-        # Adding histogram and count of classes to array
-        histograms.append((hist, 0))
+        # Normalize histogram
+        array = np.array(hist)[:,1].astype(np.float)
 
-    # Generating variance, and organizing bins
-    ret_histograms = []
-    for hist in histograms:
-        # Normalizing
-        array = np.array(hist[0])[:,1].astype(np.float)
         for i in range(len(array)):
             array[i] = array[i]/factor
 
         # Getting variance value
-        var = np.var(array)
+        var = np.var(array, ddof=1)
 
-        # Removing small values from dict
-        hist = [i for i in hist[0] if i[1] != 0]
+        # Adding histogram and variance to array
+        histograms.append((hist, var))
 
-        ret_histograms.append((hist, var))
-
-    for i in range(len(ret_histograms)):
-        print('Cluster: {0} -> Variance: {1}'.format(i, ret_histograms[i][1]))
+    for i in range(len(histograms)):
+        print('Cluster: {0} -> Variance: {1}'.format(i, histograms[i][1]))
 
     # Create histogram with qtde of bins
     if qtde != None:
-        for i in range(len(ret_histograms)):
-            print('Cluster: {0} -> {1}'.format(i, np.array(ret_histograms)[i,0][0:qtde]))
+        for i in range(len(histograms)):
+            print('Cluster: {0} -> {1}'.format(i, np.array(histograms)[i,0][0:qtde]))
 
 # kmeans generate elbow graph to check value of K
 def elbow_graph(x_train, start, end, step):
@@ -128,49 +117,6 @@ def closest_docs(x_train, id_medoids, labels, n_closest):
 
         # Get train id from elements from cluster
         cluster_ids = list(np.arange(len(x_train)))
-
-        # Remove medoid from list of ids
-        if len(cluster_ids) > 1:
-            cluster_ids.remove(medoid_id)
-
-        # Get all data using cluster ids - medoid_id
-        X = x_train[cluster_ids]
-
-        # Create a matrix of medoids to make distance measurement
-        medoids = np.repeat(x_train[medoid_id], len(X)).reshape(X.shape)
-
-        # Get distance from medoid matrix and data
-        distances = paired_distances(medoids, X, 'euclidean')
-
-        # Create indexes for the list of distances
-        distances = {v: k for v, k in enumerate(distances)}
-
-        # Sort list of distances
-        distances = sorted(distances.items(), key=lambda x: x[1])
-
-        # Get n closest values
-        closest = distances[0:n_closest]
-
-        # Get filenames from ids
-        array = []
-        for item in closest:
-             array.append(ids[item[0]])
-
-        print('Cluster: {0} - Medoid: {1} -> {2}'.format(idx, ids[medoid_id], array))
-
-
-def closest_docs2(x_train, id_medoids, labels, n_closest):
-    # Read ids of files
-    f = open('../documents/ids', 'r')
-    ids = [line.rstrip('\n') for line in f]
-    f.close()
-
-    for idx in range(len(id_medoids)):
-        # Get medoid ID
-        medoid_id = id_medoids[idx]
-
-        # Get train id from elements from cluster
-        cluster_ids = list(np.where(labels == idx)[0])
 
         # Remove medoid from list of ids
         if len(cluster_ids) > 1:

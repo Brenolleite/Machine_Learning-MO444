@@ -10,7 +10,7 @@ import processing as proc
 import metrics
 
 # Load dataset
-x_train = np.genfromtxt('../documents/data.csv', delimiter=',', skip_header=0, skip_footer=19000)
+x_train = np.genfromtxt('../documents/data.csv', delimiter=',', skip_header=0, skip_footer=0)
 
 # Load ids
 g = open('../documents/ids', 'rb')
@@ -25,10 +25,10 @@ x_train = proc.st_scale(x_train)
 #x_train, ncomp = proc.PCA_reduction(x_train, 0.8)
 
 # Using kmeans
-labels, centers = cl.k_means(10, x_train)
+labels, centers = cl.k_means(79, x_train)
 
 # Verifying cluster variance
-#metrics.verify_clusters(labels, 5)
+metrics.verify_clusters(labels, 4)
 
 # Create elbow graph
 #metrics.elbow_graph(x_train, 0, 200, 1)
@@ -37,7 +37,7 @@ labels, centers = cl.k_means(10, x_train)
 id_medoids, distances = pairwise_distances_argmin_min(centers, x_train)
 
 # Get closest files to medoid (n_closest values)
-metrics.closest_docs(x_train, id_medoids, labels, 5)
+metrics.closest_docs(x_train, id_medoids, labels, 3)
 
 # Usar no final pra plotar :) ele reduz para duas dimensões para visualizar. aplicar PCA antes ou alguma redução
 
