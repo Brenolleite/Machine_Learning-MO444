@@ -66,20 +66,18 @@ Para o pré-processamento, as funções \emph{scale}, \emph{normalize} e \emph{S
 
 \subsection{Metodologia} \label{sec:met} 
 
-Com o intuito de tentar encontrar as estruturas de organização dos documentos, primeiramente algumas abordagens foram testadas para descobrir o número de agrupamentos que tais dados apresentavam num espaço de alta dimensão. Para isso, o algoritmo \emph{K-Means} foi utilizado juntamente com algumas métricas para avaliação dos grupos. Posteriormente, os medóides de alguns grupos foram analisados com o objetivo de encontrar alguma similaridade no dado, ou seja, na informação presente no documento, entre elementos próximos no agrupamento. Um método para avaliar a variância de cada agrupamento foi proposto, para validar a qualidade dos agrupamentos conforme seus dados.
-
-Após a análise inicial, aplicou-se o algoritmo PCA. Assim, entende-se que o PCA foi responsável por manter a informação mais relevante e discriminante para os agrupamentos. Foram testados diferentes valores de componentes no PCA, de forma que uma certa variância nos dados fosse mantida.
+Com o intuito de tentar encontrar as estruturas de organização dos documentos, primeiramente algumas abordagens foram testadas para descobrir o número de agrupamentos que tais dados apresentavam num espaço de alta dimensão. Para isso, o algoritmo \emph{K-Means} foi utilizado, bem como algumas métricas para avaliação dos grupos. Posteriormente, os medóides e elementos próximos de alguns grupos foram analisados com o objetivo de encontrar alguma similaridade no dado. Um método para avaliar a variância de cada agrupamento foi proposto, para validar a qualidade dos agrupamentos. Após a análise inicial, aplicou-se o algoritmo PCA. Assim, entende-se que o PCA manteve a informação mais relevante e discriminante para os agrupamentos. Foram testados diferentes valores de componentes no PCA, de forma que uma certa variância nos dados fosse mantida.
 
 Assim, os experimentos do presente trabalho estão divididos da seguinte forma: 
 
 \begin{itemize}
-	\item \small \textbf{Análise da quantidade de agrupamentos:} Neste experimento, é realizada a análise de algumas métricas com o intuito de encontrar a quantidade de agrupamento dos dados, ou seja, a estrutura em que os documentos estão organizados.
+	\item \small \textbf{Análise da quantidade de agrupamentos:} realizada a análise de algumas métricas com o intuito de encontrar a quantidade de agrupamento dos dados.
 	
-	\item \small \textbf{Análise dos documentos:} Para esta etapa, o objetivo é verificar o conteúdo dos documentos mais próximos ao centro de cada agrupamento e verificar se existe alguma similaridade entre eles. Além de estudar a composição dos documentos com intuito de melhor entender e agrupar a base de dados proposta.  
+	\item \small \textbf{Análise dos documentos:} estudar a composição dos documentos para entender a base de dados proposta e verificar o conteúdo dos documentos mais próximos ao centro de cada agrupamento, a fim de encontrar similaridade entre eles.  
 	
-	\item \small \textbf{Checagem da qualidade dos agrupamentos:} Um método para avaliar a qualidade dos agrupamentos é proposta, de forma a complementar os experimentos mostrados anteriormente.
+	\item \small \textbf{Checagem da qualidade dos agrupamentos:} avaliar a qualidade dos agrupamentos.
 	
-	\item \small \textbf{Redução de dimensionalidade:} Para esses experimentos, considerou-se a redução da dimensionalidade do problema, a fim de tentar encontrar os agrupamentos e, assim a quantidade de classes.
+	\item \small \textbf{Redução de dimensionalidade:} reduzir a dimensionalidade do problema, a fim de tentar encontrar os agrupamentos e, assim a quantidade de classes.
 	
 	\item \small \textbf{Visualização dos dados:} Por fim, após a dimensionalidade ter sido reduzida, os dados foram projetados em um espaço de menos dimensão para a visualização dos agrupamentos.
 	
