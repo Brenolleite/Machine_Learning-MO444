@@ -22,10 +22,10 @@ elbow = False
 closest_docs = 3
 
 # Use PCA with percentage (0 - 1)
-PCA = False
+PCA = 0.85
 
 # Verify cluster variance and histograms (N cluster)
-n_cluster = 0
+n_cluster = 3
 
 # Generate TSNE graph
 TSNE_graph = True
@@ -33,7 +33,7 @@ TSNE_graph = True
 # -------------- Params ------------------------
 
 # Load dataset
-x_train = np.genfromtxt('../documents/data.csv', delimiter=',', skip_header=0, skip_footer=19500)
+x_train = np.genfromtxt('../documents/data.csv', delimiter=',', skip_header=0, skip_footer=0)
 
 # Load ids
 g = open('../documents/ids', 'rb')
