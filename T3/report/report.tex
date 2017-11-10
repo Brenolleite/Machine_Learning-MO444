@@ -31,11 +31,7 @@ brenolleite@gmail.com}}
 
 \section{Introdução}
 
-A terceira atividade da disciplina de \textit{Machine Learning} (MO444) tem como objetivo explorar técnicas não-supervisionadas, a fim de se encontrar características semelhantes em uma base de dados, em específico características semelhantes na estrutura organizacional da base de dados.
-
-O objetivo deste relatório é apresentar os experimentos que foram desenvolvidos com intuito de, principalmente, entender a base de dados em questão, bem como encontrar os agrupamentos mais adequados, capaz de representar as estruturas organizacionais da base de dados utilizando métodos de agrupamento, métricas para avaliação, bem como redução do espaço de características.
-
-O mesmo é dividido em Seções. Na Seção \ref{sec:meto}, alguns dados interessantes sobre a base de dados são mostrados, bem como a metodologia empregada e as atividades desenvolvidas. Por fim, a Seção \ref{sec:exp} apresenta os experimentos e as conclusões do trabalho.
+A terceira atividade da disciplina de \textit{Machine Learning} (MO444) tem como objetivo explorar técnicas não-supervisionadas, a fim de se encontrar características semelhantes em uma base de dados. O objetivo deste relatório é apresentar os experimentos que foram desenvolvidos com intuito de, principalmente, entender a base de dados em questão, bem como encontrar os agrupamentos mais adequados, capaz de representar as estruturas organizacionais da base de dados utilizando métodos de agrupamento, métricas para avaliação, bem como redução do espaço de características. O mesmo é dividido em Seções. Na Seção \ref{sec:meto}, alguns dados interessantes sobre a base de dados são mostrados, bem como a metodologia empregada e as atividades desenvolvidas. Por fim, a Seção \ref{sec:exp} apresenta os experimentos e as conclusões do trabalho.
 
 \section{Materiais e Métodos} \label{sec:meto}
 
@@ -43,7 +39,7 @@ Os materiais, como a base de dados e pacote utilizados, e a metodologia empregad
 
 \subsection{Base de dados} \label{sec:base}
 
-A base de dados é não-supervisionada, ou seja, não apresenta informação de classe para as amostras. Desta forma, é utilizada para a validação dos estudos e objetivos propostos para o presente trabalho. A base de dados é composta por documentos de texto que apresentam certo grau de similaridade entre eles. Cada documento é representado por um vetor de características, ou seja, um histograma de \emph{hits} de uma abordagem \emph{Bag-of-Words}. A base apresenta $19.924$ documentos, em que cada documento é disponibilizado como um vetor de $2.209$ dimensões.
+A base de dados é não-supervisionada, ou seja, não apresenta informação de classe para as amostras. A base é composta por documentos de texto que apresentam certo grau de similaridade entre eles. Cada documento é representado por um vetor de características, ou seja, um histograma de uma abordagem \emph{Bag-of-Words}. A base apresenta $19.924$ documentos, em que cada documento é disponibilizado como um vetor de $2.209$ dimensões.
 
 \subsection{Pacote \textit{Scikit-Learn}} \label{sec:pac}
 
@@ -61,7 +57,7 @@ A configuração dos parametros da função \emph{KMeans} foi dada da seguinte f
 	\footnotesize \item \textit{algorithm}: como utilizamos vetor de características com código esparso, optamos por usar o algoritmo classico do \emph{K-Means}.
 \end{itemize}
 
-Para o pré-processamento, as funções \emph{scale}, \emph{normalize} e \emph{StandardScaler} do mesmo pacote, o Scikit-Learn, foram utilizadas com seus parâmetros originais. Como método de redução, o algoritmo \emph{Principal Component Analysis}(PCA) foi utilizado do pacote, alterando apenas o número de componentes principais. Para avaliar os agrupamentos formados no espaço de alta dimensão, optou-se por utilizar a métricas que mede a silhueta de cada agrupamento com função \emph{silhouette\_score}, bem como a função \emph{pairwise\_distances\_argmin\_min}, responsável por retornar o argumento mínimo da menor distância entre dois pares de pontos. Uma função semelhante foi utilizada do pacote \emph{Scipy} para computar distâncias. Para visualizar a projeção das amostras no espaço de alta dimensão, utilizou-se o algoritmo \emph{t-SNE}, um algoritmo capaz de projetar num espaço de menor dimensão (normalmente, 2), as amostras segundo a proximidade delas no espaço de alta dimensão.
+ Para o pré-processamento, as funções \emph{scale}, \emph{normalize} e \emph{StandardScaler} do mesmo pacote, o Scikit-Learn, foram utilizadas com seus parâmetros originais. Como método de redução, o algoritmo \emph{Principal Component Analysis}(PCA) foi utilizado do pacote, alterando apenas o número de componentes principais. Para avaliar os agrupamentos formados no espaço de alta dimensão, optou-se por utilizar a métricas que mede a silhueta de cada agrupamento(\emph{silhouette\_score}), bem como a função \emph{pairwise\_distances\_argmin\_min}, responsável por retornar o argumento mínimo da menor distância entre dois pares de pontos. Para visualizar a projeção das amostras no espaço de alta dimensão, utilizou-se o algoritmo \emph{t-SNE}, um algoritmo capaz de projetar num espaço de menor dimensão (normalmente, 2), as amostras segundo a proximidade delas no espaço de alta dimensão.
 
 
 \subsection{Metodologia} \label{sec:met}
@@ -79,7 +75,7 @@ Assim, os experimentos do presente trabalho estão divididos da seguinte forma:
 
 	\item \small \textbf{Redução de dimensionalidade:} reduzir a dimensionalidade do problema, a fim de tentar encontrar os agrupamentos e, assim a quantidade de classes.
 
-	\item \small \textbf{Visualização dos dados:} Por fim, após a dimensionalidade ter sido reduzida, os dados foram projetados em um espaço de menos dimensão para a visualização dos agrupamentos.
+	\item \small \textbf{Visualização dos dados:} projetar os dados em um espaço de menos dimensão para a visualização dos agrupamentos.
 
 \end{itemize}
 
@@ -168,8 +164,7 @@ Como primeira forma de análise dos agrupamentos os arquivos mais próximos do m
 	\label{tab:files}
 \end{table}
 
-Pode-se perceber que os arquivos em geral tem alguma semelhança entre sí, apesar de algumas diferenças. Esse não é um resultado comum, analisando diversos outros agrupamentos podê-se perceber que diversos arquivos pertenciam a categorias divergentes do medóide. A Tabela \ref{tab:files} mostra um exemplo disto, onde um documento com \emph{Newsgroup sci.med} foi selecionado como o mais próximo de um \emph{comp.windows.x}, o motivo dessa confusão é a forma com que foi extraída as \emph{features} dos documentos. Uma estrutura de \emph{Bag-of-Words} foi utilizada, a mesma basei-se apenas nas palavras do texto e não em seu contexto fazendo com que a palavra \textbf{source} seja uma palavra característica do agrupamento \emph{comp}. Além disso, a distância euclidiana não é uma boa métrica em espaços de alta dimensão. O uso de similaridade de cossenos pode melhorar os resultados, mas não foram feito experimentos deste tipo neste trabalho.
-
+Pode-se perceber que os arquivos em geral tem alguma semelhança entre si. Analisando diversos outros agrupamentos pode-se perceber que alguns arquivos pertenciam a categorias divergentes do medóide. A Tabela \ref{tab:files} mostra um exemplo disto, onde um documento com \emph{Newsgroup sci.med} foi selecionado como o mais próximo de um \emph{comp.windows.x}. Isso pode ser motivado pela forma com que foi extraída as \emph{features} dos documentos para \emph{Bag-of-Words}, que baseia-se apenas nas palavras do texto e não em seu contexto.
 
 \subsection{Checagem da qualidade dos agrupamentos}
 
@@ -262,11 +257,7 @@ Assim, a partir da redução de dimensionalidade feita utilizando o algoritmo PC
 	\label{fig:sne}
 \end{figure}
 
-Com a visualização da projeção, é possível identificar a presença de agrupamentos no espaço, ou seja, uma maior concentração de pontos e uma devida separação entre essas concentrações de pontos. Tais agrupamentos correspondem a documentos de mesma classe, ou seja, documentos que apresentam vetor de características semelhantes. Além disso, pode-se visualizar que os agrupamentos apresentam mesma coloração. Isso indica que numero de agrupamentos escolhidos, foi condizente com os agrupamentos, caso contrario, haveria muita mistura dentro do mesmo grupo.
-
-Seguindo tal linha de entendimento, a projeção com $31$ agrupamentos permitiu visualizar agrupamentos maiores, enquanto a com $79$ permitiu a visualização de agrupamentos menores e em maior quantidade. Sugerindo assim que agrupamentos de $31$ são melhores para identificar as categorias principais, enquanto agrupamentos de $79$ podem ir além da categoria principal dividindo os dados entre as subclasses propostas.
-
-Em ambas as projeções, existem pontos que estão aparentemente fora de agrupamentos e que apresentam cores misturadas, ou seja, diferentes categorias. Isso ocorre na parte superior e inferior das figuras e tendem a mostrar possíveis \emph{outliers}, amostras específicas que são pouco representativas a um grupo. A visualização, de qualquer modo, ficou prejudicada pela grande quantidade de classes e cores, dificultando uma melhor identificação dos grupos pelas cores.
+Com a visualização da projeção, é possível identificar a presença de agrupamentos no espaço, ou seja, uma maior concentração de pontos e uma devida separação entre essas concentrações de pontos. Tais agrupamentos correspondem a documentos de mesma classe, ou seja, documentos que apresentam vetor de características semelhantes. Além disso, pode-se visualizar que os agrupamentos apresentam mesma coloração. Isso indica que numero de agrupamentos escolhidos, foi condizente com os agrupamentos, caso contrario, haveria muita mistura dentro do mesmo grupo. Seguindo tal linha de entendimento, a projeção com $31$ agrupamentos permitiu visualizar agrupamentos maiores, enquanto a com $79$ permitiu a visualização de agrupamentos menores e em maior quantidade. Sugerindo assim que agrupamentos de $31$ são melhores para identificar as categorias principais, enquanto agrupamentos de $79$ podem ir além da categoria principal dividindo os dados entre as subclasses propostas. Em ambas as projeções, existem pontos que estão aparentemente fora de agrupamentos e que apresentam cores misturadas, ou seja, diferentes categorias. Isso ocorre na parte superior e inferior das figuras e tendem a mostrar possíveis \emph{outliers}, amostras específicas que são pouco representativas a um grupo. A visualização, de qualquer modo, ficou prejudicada pela grande quantidade de classes e cores, dificultando uma melhor identificação dos grupos pelas cores.
 
 \section{Conclusão}
 
