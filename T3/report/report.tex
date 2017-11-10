@@ -56,50 +56,40 @@ A configuração dos parametros da função \emph{KMeans} foi dada da seguinte f
 	\footnotesize \item \textit{n\_init}: $10$, quantidade de vezes que as sementes serão inicializadas. A melhor delas é escolhida, evitando uma má Inicialização.
 	\footnotesize \item \textit{max\_iter}: $300$, numero máximo de iterações.
 	\footnotesize \item \textit{tol}: $0,0001$, valor de tolerância para convergência, ou seja, valor em que um centroides muda entre iterações.
-	\footnotesize \item \textit{precompute\_distances}: Verdadeiro, computa as distancias anteriormente para reduzir o tempo de processamento.
+	\footnotesize \item \textit{precompute\_distances}: Verdadeiro, computa as distâncias anteriormente para reduzir o tempo de processamento.
 	\footnotesize \item \textit{random\_state}: Nenhum tipo de gerador de randomização é adicionado, ou seja, é utilizada a função da biblioteca \emph{numpy}.
 	\footnotesize \item \textit{algorithm}: como utilizamos vetor de características com código esparso, optamos por usar o algoritmo classico do \emph{K-Means}.
 \end{itemize}
 
-Para o pré-processamento, as funções \emph{scale}, \emph{normalize} e \emph{StandardScaler} do mesmo pacote, o Scikit-Learn, foram utilizadas com seus parâmetros originais.
-
-Como método de redução, o algoritmo \emph{Principal Component Analysis}-(PCA) foi utilizado do pacote, alterando apenas o número de componentes principais conforme os experimentos.
-
-Para avaliar os agrupamentos formados no espaço de alta dimensão, optou-se por utilizar a métricas que mede a silhueta de cada agrupamento com função \emph{silhouette\_score}, bem como a função \emph{pairwise\_distances\_argmin\_min}, responsavel por retornar o argumento mínimo da menor distancias entre dois pares de pontos. Uma função semelhante foi utilizada do pacote \emph{Scipy} para computar distancias.
-
-Para visualizar a projeção das amostras no espaço de alta dimensão, utilizou-se o algoritmo \emph{t-SNE}, um algoritmo capaz de projetar num espaço de menor dimensão (normalmente, 2), as amostras segundo a proximidade delas no espaço de alta dimensão com a função \emph{TSNE}.
+Para o pré-processamento, as funções \emph{scale}, \emph{normalize} e \emph{StandardScaler} do mesmo pacote, o Scikit-Learn, foram utilizadas com seus parâmetros originais. Como método de redução, o algoritmo \emph{Principal Component Analysis}(PCA) foi utilizado do pacote, alterando apenas o número de componentes principais. Para avaliar os agrupamentos formados no espaço de alta dimensão, optou-se por utilizar a métricas que mede a silhueta de cada agrupamento com função \emph{silhouette\_score}, bem como a função \emph{pairwise\_distances\_argmin\_min}, responsável por retornar o argumento mínimo da menor distância entre dois pares de pontos. Uma função semelhante foi utilizada do pacote \emph{Scipy} para computar distâncias. Para visualizar a projeção das amostras no espaço de alta dimensão, utilizou-se o algoritmo \emph{t-SNE}, um algoritmo capaz de projetar num espaço de menor dimensão (normalmente, 2), as amostras segundo a proximidade delas no espaço de alta dimensão.
 
 
-\subsection{Metodologia} \label{sec:met} 
+\subsection{Metodologia} \label{sec:met}
 
-Com o intuito de tentar encontrar as estruturas de organização dos documentos, primeiramente algumas abordagens foram testadas para descobrir o número de agrupamentos que tais dados apresentavam num espaço de alta dimensão. Para isso, o algoritmo \emph{K-Means} foi utilizado juntamente com algumas métricas para avaliação dos grupos.
-
-Posteriormente, os medóides de alguns grupos foram analisados com o objetivo de encontrar alguma similaridade no dado, ou seja, na informação presente no documento, entre elementos próximos no agrupamento.
-
-Um método para avaliar a variância de cada agrupamento foi proposto, para validar a qualidade dos agrupamentos conforme seus dados.
+Com o intuito de tentar encontrar as estruturas de organização dos documentos, primeiramente algumas abordagens foram testadas para descobrir o número de agrupamentos que tais dados apresentavam num espaço de alta dimensão. Para isso, o algoritmo \emph{K-Means} foi utilizado juntamente com algumas métricas para avaliação dos grupos. Posteriormente, os medóides de alguns grupos foram analisados com o objetivo de encontrar alguma similaridade no dado, ou seja, na informação presente no documento, entre elementos próximos no agrupamento. Um método para avaliar a variância de cada agrupamento foi proposto, para validar a qualidade dos agrupamentos conforme seus dados.
 
 Após a análise inicial, aplicou-se o algoritmo PCA. Assim, entende-se que o PCA foi responsável por manter a informação mais relevante e discriminante para os agrupamentos. Foram testados diferentes valores de componentes no PCA, de forma que uma certa variância nos dados fosse mantida.
 
-Assim, os experimentos do presente trabalho estão divididos da seguinte forma: 
+Assim, os experimentos do presente trabalho estão divididos da seguinte forma:
 
 \begin{itemize}
 	\item \small \textbf{Análise da quantidade de agrupamentos:} Neste experimento, é realizada a análise de algumas métricas com o intuito de encontrar a quantidade de agrupamento dos dados, ou seja, a estrutura em que os documentos estão organizados.
-	
-	\item \small \textbf{Análise dos documentos:} Para esta etapa, o objetivo é verificar o conteúdo dos documentos mais próximos ao centro de cada agrupamento e verificar se existe alguma similaridade entre eles. Além de estudar a composição dos documentos com intuito de melhor entender e agrupar a base de dados proposta.  
-	
+
+	\item \small \textbf{Análise dos documentos:} Para esta etapa, o objetivo é verificar o conteúdo dos documentos mais próximos ao centro de cada agrupamento e verificar se existe alguma similaridade entre eles. Além de estudar a composição dos documentos com intuito de melhor entender e agrupar a base de dados proposta.
+
 	\item \small \textbf{Checagem da qualidade dos agrupamentos:} Um método para avaliar a qualidade dos agrupamentos é proposta, de forma a complementar os experimentos mostrados anteriormente.
-	
+
 	\item \small \textbf{Redução de dimensionalidade:} Para esses experimentos, considerou-se a redução da dimensionalidade do problema, a fim de tentar encontrar os agrupamentos e, assim a quantidade de classes.
-	
+
 	\item \small \textbf{Visualização dos dados:} Por fim, após a dimensionalidade ter sido reduzida, os dados foram projetados em um espaço de menos dimensão para a visualização dos agrupamentos.
-	
+
 \end{itemize}
 
 \section{Experimentos e Discussões} \label{sec:exp}
 
-Esta seção tem como objetivo mostrar os resultados obtidos através da análises da base de dados, bem como os experimentos realizados com o intuito de encontrar a quantidade de classes do problema em questão. 
+Esta seção tem como objetivo mostrar os resultados obtidos através da análises da base de dados, bem como os experimentos realizados com o intuito de encontrar a quantidade de classes do problema em questão.
 
-Como etapa de pré-processamento dos vetores de características da base de dados, algumas técnicas foram consideradas e a biblioteca \emph{Scikit-Learn} foi utilizada. Primeiramente, os dados foram normalizados utilizando a constante de regularização $l2$. Após a normalização, os dados foram escalados utilizando a média dos dados. 
+Como etapa de pré-processamento dos vetores de características da base de dados, algumas técnicas foram consideradas e a biblioteca \emph{Scikit-Learn} foi utilizada. Primeiramente, os dados foram normalizados utilizando a constante de regularização $l2$. Após a normalização, os dados foram escalados utilizando a média dos dados.
 
 \subsection{Análise da quantidade de agrupamentos}
 
@@ -108,31 +98,31 @@ Para tentar encontrar a quantidade de agrupamento dos dados, primeiramente escol
 \begin{figure}[!h]
 	\centering
 	{
-		\fbox{\includegraphics[scale=0.3]{Images/elbow.png}}
+		\fbox{\includegraphics[scale=0.25]{Images/elbow.png}}
 	}
 	\caption{\small Gráfico do método \emph{Elbow} para os quantidades de grupos diferentes.}
 	\label{fig:elbow}
 \end{figure}
 
-A partir do gráfico, é possível visualizar que existe uma distorção muito pequena, de $2,5$ aproximadamente, para o número mínimo e máximo de grupos testados, $0$ e $100$, respectivamente. Embora não exista uma grande queda no gráfico, é possível observar uma queda mais acentuada entre $20$ e $40$, e duas quedas menores: uma entre $60$ até $80$ e $80$ até $100$. Desta forma, entendemos que tais intervalos são promissores para escolha de número de agrupamentos.
+A partir do gráfico, é possível visualizar que existe uma distorção muito pequena, de $2,5$ aproximadamente, para o número mínimo e máximo de grupos testados, $0$ e $100$, respectivamente. Embora não exista uma grande queda no gráfico, é possível observar uma queda mais acentuada entre $20$ e $40$, e duas quedas menores: entre $60$ e $80$, e $80$ e $100$. Desta forma, entendemos que tais intervalos são promissores para escolha de número de agrupamentos.
 
 Como existiam 3 possíveis valores para números de grupos, escolheu-se utilizar outra métrica para tentar encontrar o melhor número de grupos. A métrica escolhida calcula a silhueta dos agrupamentos, isso é, a forma dos agrupamentos e como eles se concentram. Para um valor correto de número de agrupamentos, o valor da medida silhueta deve ser próximo de $1$. Assim, testou-se o valor da medida de silhueta para $0, 5, 10, 15, ..., 100$. Os valores são apresentados no gráfico \ref{fig:silhueta}.
 
 \begin{figure}[!h]
 	\centering
 	{
-		\fbox{\includegraphics[scale=0.3]{Images/silhueta.png}}
+		\fbox{\includegraphics[scale=0.25]{Images/silhueta.png}}
 	}
 	\caption{\small Gráfico da métrica silhueta pelo número de agrupamentos.}
 	\label{fig:silhueta}
 \end{figure}
 
-No gráfico, é possível observar que os valores de silhueta não ficaram próximos a $1$. Um possível motivo pode ser atribuído ao ``mal da dimensionalidade'', ou seja, devido a alta dimensionalidade do problema (o vetor de características apresenta dimensão de $2209$) os dados estão muito dispersos e não são capazes de apresentar uma silhueta bem definida. Contudo, ainda é possível observar que os valores mais promissores referem-se ao número de agrupamentos de $31$, $79$ e $92$ grupos. Tais valores encontram-se dentro dos intervalos sugeridos pelo método \textit{Elbow}. Para realizar os experimentos, optou-se por utilizar os melhores valores de silhueta: $31$ e $79$, o valor $92$ foi ignorado pois o mesmo é muito similar com o valor de $79$.
+No gráfico, é possível observar que os valores de silhueta não ficaram próximos a $1$. Um possível motivo pode ser atribuído ao ``mal da dimensionalidade'', ou seja, devido a alta dimensionalidade do problema (o vetor de características apresenta dimensão de $2209$), que faz com que os dados estejam muito dispersos e não apresentem uma silhueta bem definida. Contudo, ainda é possível observar que os valores mais promissores referem-se ao número de agrupamentos de $31$, $79$ e $92$ grupos. Tais valores encontram-se dentro dos intervalos sugeridos pelo método \textit{Elbow}. Para realizar os experimentos, optou-se por utilizar os melhores valores de silhueta: $31$ e $79$, o valor $92$ foi ignorado pela proximidade com $79$.
 
 
 \subsection{Análise dos documentos}
 
-Com o objetivo de tentar entender a estrutura dos dados, os documentos foram abertos e analisados. No cabeçalho de cada documento, foi possível notar a presença de um identificador denominado \emph{Newsgroup}. Tal identificador mostra algumas palavras-chave para identificar o conteúdo do documento, este identificador é muito utilizado em compartilhamento de arquivos de texto e servem para definir um tema para cada arquivo, muito similar com um tópico de um fórum \footnote{https://revistausenet.com/o-que-e-um-newsgroup-2/}. Um identificador \emph{newsgroup} normalmente é separados por classes e subclasses, sendo elas separadas por ponto dentro do nome, os mesmos podem ter até mais de uma subclasse por identificador. Desta forma, algumas análises puderam ser feitas neste caminho. O Gráfico \ref{fig:occurrence} apresenta as maiores ocorrências de \emph{Newsgroup}, considerando o conjunto palavras-chave que o compõe.
+Com o objetivo de tentar entender a estrutura dos dados, os documentos foram abertos e analisados. No cabeçalho de cada documento, foi possível notar a presença de um identificador denominado \emph{Newsgroup}. Tal identificador mostra algumas palavras-chave para identificar o conteúdo do documento e costuma ser muito utilizado em compartilhamento de arquivos de texto, como para definir um tema para cada arquivo, de modo similar a tópico de um fórum \footnote{https://revistausenet.com/o-que-e-um-newsgroup-2/}. Um identificador \emph{Newsgroup} normalmente é separados por classes e subclasses, sendo elas separadas por ponto dentro do nome, os mesmos podem ter até mais de uma subclasse por identificador. Desta forma, algumas análises puderam ser feitas neste caminho. O Gráfico \ref{fig:occurrence} apresenta as maiores ocorrências de \emph{Newsgroup}, considerando o conjunto palavras-chave que o compõe.
 
 \begin{figure}[!h]
 	\centering
@@ -143,7 +133,7 @@ Com o objetivo de tentar entender a estrutura dos dados, os documentos foram abe
 	\label{fig:occurrence}
 \end{figure}
 
-O Gráfico \ref{fig:occurrence} mostra as $20$ primeiras maiores ocorrências dos \emph{Newsgroups}, de um total de 872 diferentes categorias. As $20$ primeiras ocorrências apresentam valor maior do que $950$ e somam $62,42\%$ de todas as ocorrências. A partir da ocorrência $21$ o numero da ocorrência de cada \emph{Newsgroup} é menor do que $300$ ocorrências cada uma. Assim, tais dados sugerem que existam $20$ agrupamentos de maior densidade de informação, ou seja, que apresentem o mesmo \emph{Newsgroup}. Com relação ao agrupamento dos dados, imagina-se que as maiores ocorrências sugiram agrupamentos maiores de 
+O Gráfico \ref{fig:occurrence} mostra as $20$ primeiras maiores ocorrências dos \emph{Newsgroups}, de um total de 872 diferentes categorias. As $20$ primeiras ocorrências apresentam valor maior do que $950$ e somam $62,42\%$ de todas as ocorrências. A partir da ocorrência $21$ o numero da ocorrência de cada \emph{Newsgroup} é menor do que $300$ ocorrências cada uma. Assim, tais dados sugerem que existam $20$ agrupamentos de maior densidade de informação, ou seja, que apresentem o mesmo \emph{Newsgroup}. Com relação ao agrupamento dos dados, imagina-se que as maiores ocorrências sugiram agrupamentos maiores de
 
 Outra análise foi feita para avaliar a ocorrência dos \emph{Newsgroups}. O Gráfico \ref{fig:occurrence_word} apresenta as maiores ocorrências de cada \emph{Newsgroup} considerando apenas a classe principal, ignorando todas as subclasses.
 
@@ -156,7 +146,7 @@ Outra análise foi feita para avaliar a ocorrência dos \emph{Newsgroups}. O Gr�
 	\label{fig:occurrence_word}
 \end{figure}
 
-A partir do Gráfico \ref{fig:occurrence_word}, é possível visualizar que a grande parte dos documentos na base estão dentro de apenas 7 de um total de 141 categorias principais. Desta forma, $95.98\%$ dos documentos estão distribuídos dentro dessas 7 classes.
+A partir do Gráfico \ref{fig:occurrence_word}, é possível visualizar que a grande parte dos documentos na base estão dentro de apenas $7$ de um total de $141$ classes principais. Desta forma, $95.98\%$ dos documentos estão distribuídos dentro das $7$ classes de mais ocorrência.
 
 \subsubsection{Análise dos medóides}
 
@@ -165,8 +155,7 @@ A partir do Gráfico \ref{fig:occurrence_word}, é possível visualizar que a gr
 
 \subsection{Checagem da qualidade dos agrupamentos}
 
-
-Para realizar uma checagem mais ampla dentro de cada agrupamento uma métrica diferente foi proposta, para cada agrupamento foi criado um histograma utilizando o número de ocorrência para cada \emph{Newsgroup} dentro do grupo criado. Desta forma, é esperado que a variância dos histogramas sejam altas pois um agrupamento deve conter muitos arquivos da mesma categoria. A Figura \ref{fig:clusters} mostra o resultado para três diferentes clusters (representados pelas cores) mostrando os quatro maiores valores dentro do histograma para $K = 31$ e $K = 79$. Clusters com maior variância foram escolhidos para este experimento.
+Para realizar uma checagem mais ampla dentro de cada agrupamento, uma métrica diferente foi proposta. Para cada agrupamento foi criado um histograma utilizando o número de ocorrência para cada \emph{Newsgroup}. Desta forma, é esperado que a variância dos histogramas seja alta, pois um agrupamento deve conter muitos arquivos da mesma categoria. A Figura \ref{fig:clusters} mostra o resultado para $3$ diferentes grupos (representados pelas cores) mostrando os quatro maiores valores dentro do histograma para $K = 31$ e $K = 79$. Grupos com maior variância foram escolhidos para este experimento.
 
 \begin{figure}[!h]
 	\centering
@@ -177,30 +166,28 @@ Para realizar uma checagem mais ampla dentro de cada agrupamento uma métrica di
 	\label{fig:clusters}
 \end{figure}
 
-Pode-se perceber que os três agrupamentos quando $K = 31$ identificam muito bem a categoria principal, como por exemplo \emph{rec, talk, soc}, outro ponto interessante é que subclasses similares são agrupadas mesmo quando a classe principal é diferente, como por exemplo as classes \emph{sci.eletronics} - \emph{rec.autos.tech} ambos arquivos possuem o tema de tecnologia e acabaram no mesmo agrupamento, o mesmo acontece com as classes \emph{alt.atheism} - \emph{talk.religion.misc}.
-
-Os resultados utilizando $K = 79$ foram bem similares, os agrupamentos continuaram focando nas classes principais. Desta forma, relacões entre diferentes categorias também aconteceram, como por exemplo \emph{sci.crypt} - \emph{comp.security}.
+Pode-se perceber que os três agrupamentos quando $K = 31$ identificam muito bem a categoria principal, como por exemplo \emph{rec, talk, soc}. Outro ponto interessante é que subclasses similares são agrupadas mesmo quando a classe principal é diferente, como, por exemplo, as classes \emph{sci.eletronics} - \emph{rec.autos.tech}, em que ambos os arquivos possuem o tema de tecnologia e estão no mesmo agrupamento. O mesmo acontece com as classes \emph{alt.atheism} - \emph{talk.religion.misc}. Os resultados obtidos utilizando $K = 79$ foram bem similares, ou seja, os agrupamentos continuaram focando nas classes principais. As relações entre diferentes categorias também aconteceram, como por exemplo \emph{sci.crypt} - \emph{comp.security}.
 
 
 \subsection{Redução de dimensionalidade}
 
-Com intuito de melhorar os agrupamentos foram feitos experimentos utilizando redução de dimensionalidade, a Figura \ref{fig:var_comp} mostra a distribuição da variância dos dados por número de componentes.
+Com intuito de melhorar os agrupamentos foram feitos experimentos utilizando redução de dimensionalidade, a Figura \ref{fig:var_comp} mostra o experimento realizados da distribuição da variância dos dados por número de componentes do PCA.
 
 \begin{figure}[!h]
 	\centering
 	{
 		\fbox{\includegraphics[scale=0.3]{Images/variancia.png}}
 	}
-	\caption{\small Variância por numero de componentes.}
+	\caption{\small Variância por número de componentes do PCA.}
 	\label{fig:var_comp}
 \end{figure}
 
-Pode-se notar que acima de 1500 componentes $87\%$  da variância dos dados é mantida, para os experimentos deste trabalho foram utilizados os valores de 1424, 1608 e 1830 componentes, que são responsáveis por $85\%$, $90\%$ e $95\%$ da variância dos dados. A Figura \ref{fig:clusters_pca} mostra os histogramas obtidos pelos agrupamentos de maior variância utilizando o processo de redução de dimensionalidade antes do agrupamento. Em todos esses experimentos $K = 79$ foi utilizado, pois o mesmo mostrou melhores resultados.
+Pode-se notar que acima de $1500$ componentes $87\%$  da variância dos dados é mantida. Para os experimentos deste trabalho, foram utilizados os valores de $1424$, $1608$ e $1830$ componentes, que são responsáveis por $85\%$, $90\%$ e $95\%$ da variância dos dados. A Figura \ref{fig:clusters_pca} mostra os histogramas obtidos pelos agrupamentos de maior variância utilizando o processo de redução de dimensionalidade antes do agrupamento. Em todos esses experimentos $K = 79$ foi utilizado, pois o mesmo mostrou melhores resultados.
 
 
 \begin{figure}[!h]
 	\centering
-	\subfloat[]{
+	{
 		{
 			\setlength{\fboxsep}{1pt}
 			\setlength{\fboxrule}{1pt}
@@ -208,7 +195,7 @@ Pode-se notar que acima de 1500 componentes $87\%$  da variância dos dados é m
 		}
 		\label{fig:pca95}
 	}\smallskip
-	\subfloat[]{
+	{
 		{
 			\setlength{\fboxsep}{1pt}
 			\setlength{\fboxrule}{1pt}
@@ -228,30 +215,28 @@ Pode-se notar que acima de 1500 componentes $87\%$  da variância dos dados é m
 	\label{fig:clusters_pca}
 \end{figure}
 
-Os resultados obtidos mostram que a redução de dimensionalidade pode ajudar no agrupamento, principalmente para o agrupamento mais especifico utilizando as sub classes. Na redução de $2209$ para $1830$ dimensões ($-5\%$ variância) a melhoria não pode ser muito notada, os resultados são muito similares com os mostrados anteriormente.
+Os resultados obtidos mostram que a redução de dimensionalidade pode ajudar no agrupamento, principalmente para o agrupamento mais especifico utilizando as sub classes. Na redução de $2209$ para $1830$ dimensões ($-5\%$ variância) a melhoria não pode ser muito notada. Por outro lado, com uma redução de $2209$ para $1608$ componentes ($-10\%$ variância), o agrupamento se tornou muito mais específico. Assim, dois dos agrupamentos mostram um alto índice dentro de uma única categoria, como por exemplo a categoria \emph{comp.windows.x}. Neste tipo de agrupamento a variância é muito alta por uma das categorias conter grande parte dos dados.
 
-Por outro lado, com uma redução de $2209$ para $1608$ componentes ($-10\%$ variância) o agrupamento se tornou muito mais especifico, dois dos agrupamentos mostram um alto índice dentro de uma única categoria. Como por exemplo a categoria \emph{comp.windows.x}, neste tipo de agrupamento a variância é muito alta pois uma das categorias possuí grande parte dos dados.
-
-E por último a redução de  $2209$ para $1424$ componentes ($-15\%$ variância) mostra ainda mais acentuadamente a melhoria dos agrupamentos para categorias especificas, os três grupos são largamente dominados por apenas uma categoria. Pode-se ver ainda outras categorias aparecendo com um número menor de ocorrência, e as mesmas também fazem parte da categoria principal. Um dos agrupamentos teve todos os documentos dentro de uma mesma categoria (\emph{soc.religion.christian}), mostrando a robustez do agrupamento.
+E, por último, a redução de $2209$ para $1424$ componentes ($-15\%$ variância) mostra ainda mais acentuada a melhoria dos agrupamentos para categorias especificas. Os três grupos são largamente representados por apenas uma categoria. Pôde-se perceber ainda outras categorias com um número menor de ocorrência, e fazendo parte da categoria principal. Um dos agrupamentos teve todos os documentos dentro de uma mesma categoria (\emph{soc.religion.christian}), mostrando a robustez do agrupamento.
 
 \subsection{Visualização dos dados}
 
-Dada as métricas aplicadas e encontradas a partir dos dados, bem como análise e entendimento do problema, foi possível identificar pelos agrupamentos, que a maioria deles e em grande parte apresentavam elementos de um mesmo \emph{Newsgroup}. Para validar a abordagem escolhida para mensurar a qualidade dos agrupamentos, optou-se por visualizar a projeção dos dados a fim de se identificar os agrupamentos. Para isto, utilizamos o algoritmo \emph{t-SNE}, conhecido por manter classes semelhantes na alta dimensão, para uma dimensão visível, no caso, de duas dimensões.  
+Dada as métricas aplicadas e encontradas a partir dos dados, bem como análise e entendimento do problema, foi possível identificar pelos agrupamentos, que a maioria deles e em grande parte apresentavam elementos de um mesmo \emph{Newsgroup}. Para validar a abordagem escolhida para mensurar a qualidade dos agrupamentos, optou-se por visualizar a projeção dos dados a fim de se identificar os agrupamentos. Para isto, utilizamos o algoritmo \emph{t-SNE}, conhecido por manter classes semelhantes na alta dimensão, para uma dimensão visível, no caso, duas dimensões.
 
-Assim, a partir da redução de dimensionalidade feita utilizando o algoritmo PCA, a projeção do \emph{t-SNE} foi aplicada para um número de componentes $2$, ou seja, duas dimensões. As Figuras \ref{fig:tsne31} e \ref{fig:tsne79} apresentam a projeção para $K=31$ grupos e $K=79$ grupos, respectivamente. 
+Assim, a partir da redução de dimensionalidade feita utilizando o algoritmo PCA, a projeção do \emph{t-SNE} foi aplicada para um número de componentes $2$, ou seja, duas dimensões. As Figuras \ref{fig:tsne31} e \ref{fig:tsne79} apresentam a projeção para $K=31$ e $K=79$ grupos, respectivamente.
 
 \begin{figure}[!h]
 	\centering
 	\subfloat[K = 31]{
 		{
-			\fbox{\includegraphics[scale=0.12]{Images/tsne31}}
+			\fbox{\includegraphics[scale=0.08]{Images/tsne31}}
 		}
 		\label{fig:tsne31}
 	}
 	%\quad
 	\subfloat[K = 79]{
 		{
-			\fbox{\includegraphics[scale=0.12]{Images/tsne79}}
+			\fbox{\includegraphics[scale=0.08]{Images/tsne79}}
 		}
 		\label{fig:tsne79}
 	}
@@ -261,7 +246,9 @@ Assim, a partir da redução de dimensionalidade feita utilizando o algoritmo PC
 
 Com a visualização da projeção, é possível identificar a presença de agrupamentos no espaço, ou seja, uma maior concentração de pontos e uma devida separação entre essas concentrações de pontos. Tais agrupamentos correspondem a documentos de mesma classe, ou seja, documentos que apresentam vetor de características semelhantes. Além disso, pode-se visualizar que os agrupamentos apresentam mesma coloração. Isso indica que numero de agrupamentos escolhidos, foi condizente com os agrupamentos, caso contrario, haveria muita mistura dentro do mesmo grupo.
 
-Seguindo tal linha entendimento, a projeção com $31$ agrupamentos permitiu visualizar agrupamentos maiores, enquanto a com $79$ permitiu a visualização de agrupamentos menores e em maior quantidade. Em ambas as projeções, existem pontos que estão aparentemente fora de agrupamentos e que apresentam cores misturadas, ou seja, diferentes classes. Isso ocorre na parte superior e inferior das figuras e tendem a mostrar possíveis \emph{outliers}, amostras específicas que são pouco representativas a um grupo. A visualização, de qualquer modo, ficou prejudicada pela grande quantidade de classes e cores, dificultando uma melhor identificação dos grupos pelas cores.
+Seguindo tal linha de entendimento, a projeção com $31$ agrupamentos permitiu visualizar agrupamentos maiores, enquanto a com $79$ permitiu a visualização de agrupamentos menores e em maior quantidade. Sugerindo assim que agrupamentos de $31$ são melhores para identificar as categorias principais, enquanto agrupamentos de $79$ podem ir além da categoria principal dividindo os dados entre as subclasses propostas. 
+
+Em ambas as projeções, existem pontos que estão aparentemente fora de agrupamentos e que apresentam cores misturadas, ou seja, diferentes categorias. Isso ocorre na parte superior e inferior das figuras e tendem a mostrar possíveis \emph{outliers}, amostras específicas que são pouco representativas a um grupo. A visualização, de qualquer modo, ficou prejudicada pela grande quantidade de classes e cores, dificultando uma melhor identificação dos grupos pelas cores.
 
 \section{Conclusão}
 
