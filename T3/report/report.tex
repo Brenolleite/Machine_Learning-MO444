@@ -143,7 +143,7 @@ Com o objetivo de tentar entender a estrutura dos dados, os documentos foram abe
 	\label{fig:occurrence}
 \end{figure}
 
-O Gráfico \ref{fig:occurrence} mostra as $20$ primeiras maiores ocorrências dos \emph{Newsgroups}. As $20$ primeiras ocorrências apresentam valor maior do que $950$ e somam $62,42\%$ de todas as ocorrências. A partir da ocorrência $21$ o numero da ocorrência de cada \emph{Newsgroup} é menor do que $300$ ocorrências cada uma. Assim, tais dados sugerem que existam $20$ agrupamentos de maior densidade de informação, ou seja, que apresentem o mesmo \emph{Newsgroup}. Com relação ao agrupamento dos dados, imagina-se que as maiores ocorrências sugiram agrupamentos maiores de informação.
+O Gráfico \ref{fig:occurrence} mostra as $20$ primeiras maiores ocorrências dos \emph{Newsgroups}, de um total de 872 diferentes categorias. As $20$ primeiras ocorrências apresentam valor maior do que $950$ e somam $62,42\%$ de todas as ocorrências. A partir da ocorrência $21$ o numero da ocorrência de cada \emph{Newsgroup} é menor do que $300$ ocorrências cada uma. Assim, tais dados sugerem que existam $20$ agrupamentos de maior densidade de informação, ou seja, que apresentem o mesmo \emph{Newsgroup}. Com relação ao agrupamento dos dados, imagina-se que as maiores ocorrências sugiram agrupamentos maiores de 
 
 Outra análise foi feita para avaliar a ocorrência dos \emph{Newsgroups}. O Gráfico \ref{fig:occurrence_word} apresenta as maiores ocorrências de cada \emph{Newsgroup} considerando apenas a classe principal, ignorando todas as subclasses.
 
@@ -156,7 +156,7 @@ Outra análise foi feita para avaliar a ocorrência dos \emph{Newsgroups}. O Gr�
 	\label{fig:occurrence_word}
 \end{figure}
 
-A partir do Gráfico \ref{fig:occurrence_word}, é possível visualizar que a grande parte dos documentos na base estão dentro de apenas 7 de um total de 141 classes principais. Desta forma, $95.98\%$ dos documentos estão distribuídos dentro dessas 7 classes.
+A partir do Gráfico \ref{fig:occurrence_word}, é possível visualizar que a grande parte dos documentos na base estão dentro de apenas 7 de um total de 141 categorias principais. Desta forma, $95.98\%$ dos documentos estão distribuídos dentro dessas 7 classes.
 
 \subsubsection{Análise dos medóides}
 
@@ -200,7 +200,7 @@ Pode-se notar que acima de 1500 componentes $87\%$  da variância dos dados é m
 
 \begin{figure}[!h]
 	\centering
-	{
+	\subfloat[]{
 		{
 			\setlength{\fboxsep}{1pt}
 			\setlength{\fboxrule}{1pt}
@@ -208,7 +208,7 @@ Pode-se notar que acima de 1500 componentes $87\%$  da variância dos dados é m
 		}
 		\label{fig:pca95}
 	}\smallskip
-	{
+	\subfloat[]{
 		{
 			\setlength{\fboxsep}{1pt}
 			\setlength{\fboxrule}{1pt}
@@ -228,9 +228,9 @@ Pode-se notar que acima de 1500 componentes $87\%$  da variância dos dados é m
 	\label{fig:clusters_pca}
 \end{figure}
 
-Os resultados obtidos mostram que a redução de dimensionalidade pode ajudar no agrupamento, principalmente para o agrupamento mais especifico utilizando as sub classes. Na redução de $2209$ para $1830$ dimensões ($-5\%$ variância) a melhoria não pode ser muito notada, os resultados são muito similares com os mostrados anteriormente, veja Figura \ref{fig:pca_95}.
+Os resultados obtidos mostram que a redução de dimensionalidade pode ajudar no agrupamento, principalmente para o agrupamento mais especifico utilizando as sub classes. Na redução de $2209$ para $1830$ dimensões ($-5\%$ variância) a melhoria não pode ser muito notada, os resultados são muito similares com os mostrados anteriormente.
 
-Por outro lado, a Figura \ref{fig:pca90} mostra que com uma redução de $2209$ para $1608$ componentes ($-10\%$ variância) o agrupamento se tornou muito mais especifico, dois dos agrupamentos mostram um alto índice dentro de uma única categoria. Como por exemplo a categoria \emph{comp.windows.x}, neste tipo de agrupamento a variância é muito alta pois uma das categorias possuí grande parte dos dados.
+Por outro lado, com uma redução de $2209$ para $1608$ componentes ($-10\%$ variância) o agrupamento se tornou muito mais especifico, dois dos agrupamentos mostram um alto índice dentro de uma única categoria. Como por exemplo a categoria \emph{comp.windows.x}, neste tipo de agrupamento a variância é muito alta pois uma das categorias possuí grande parte dos dados.
 
 E por último a redução de  $2209$ para $1424$ componentes ($-15\%$ variância) mostra ainda mais acentuadamente a melhoria dos agrupamentos para categorias especificas, os três grupos são largamente dominados por apenas uma categoria. Pode-se ver ainda outras categorias aparecendo com um número menor de ocorrência, e as mesmas também fazem parte da categoria principal. Um dos agrupamentos teve todos os documentos dentro de uma mesma categoria (\emph{soc.religion.christian}), mostrando a robustez do agrupamento.
 
@@ -256,7 +256,7 @@ Assim, a partir da redução de dimensionalidade feita utilizando o algoritmo PC
 		\label{fig:tsne79}
 	}
 	\caption{Projeções para $31$ e $79$ agrupamentos.}
-	\label{fig:clusters}
+	\label{fig:sne}
 \end{figure}
 
 Com a visualização da projeção, é possível identificar a presença de agrupamentos no espaço, ou seja, uma maior concentração de pontos e uma devida separação entre essas concentrações de pontos. Tais agrupamentos correspondem a documentos de mesma classe, ou seja, documentos que apresentam vetor de características semelhantes. Além disso, pode-se visualizar que os agrupamentos apresentam mesma coloração. Isso indica que numero de agrupamentos escolhidos, foi condizente com os agrupamentos, caso contrario, haveria muita mistura dentro do mesmo grupo.
