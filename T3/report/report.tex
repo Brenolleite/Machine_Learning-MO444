@@ -33,7 +33,7 @@ brenolleite@gmail.com}}
 
 A terceira atividade da disciplina de \textit{Machine Learning} (MO444) tem como objetivo explorar técnicas não-supervisionadas, a fim de se encontrar características semelhantes em uma base de dados, em específico características semelhantes na estrutura organizacional da base de dados.
 
-O objetivo deste relatório é apresentar os experimentos que foram desenvolvidos com intuito de, principalmente, entender a base de dados não-supervisionada em questão, bem como encontrar o agrupamento mais adequado, capaz de representar as estruturas organizacionais da base de dados utilizando métodos de agrupamento, métricas para avaliação, bem como redução do espaço de características.
+O objetivo deste relatório é apresentar os experimentos que foram desenvolvidos com intuito de, principalmente, entender a base de dados em questão, bem como encontrar os agrupamentos mais adequados, capaz de representar as estruturas organizacionais da base de dados utilizando métodos de agrupamento, métricas para avaliação, bem como redução do espaço de características.
 
 O mesmo é dividido em Seções. Na Seção \ref{sec:meto}, alguns dados interessantes sobre a base de dados são mostrados, bem como a metodologia empregada e as atividades desenvolvidas. Por fim, a Seção \ref{sec:exp} apresenta os experimentos e as conclusões do trabalho.
 
@@ -78,18 +78,18 @@ Posteriormente, os medóides de alguns grupos foram analisados com o objetivo de
 
 Um método para avaliar a variância de cada agrupamento foi proposto, para validar a qualidade dos agrupamentos conforme seus dados.
 
-Após a análise inicial, aplicou-se o algoritmo PCA. Assim, entende-se que o PCA foi responsável por manter a informação mais relevante e discriminante para os agrupamentos. Foram testados valores de PCA para algumas variâncias nos dados iniciais.
+Após a análise inicial, aplicou-se o algoritmo PCA. Assim, entende-se que o PCA foi responsável por manter a informação mais relevante e discriminante para os agrupamentos. Foram testados diferentes valores de componentes no PCA, de forma que uma certa variância nos dados fosse mantida.
 
 Assim, os experimentos do presente trabalho estão divididos da seguinte forma: 
 
 \begin{itemize}
 	\item \small \textbf{Análise da quantidade de agrupamentos:} Neste experimento, é realizada a análise de algumas métricas com o intuito de encontrar a quantidade de agrupamento dos dados, ou seja, a estrutura em que os documentos estão organizados.
 	
-	\item \small \textbf{Análise dos documentos segundo os medóides:} Para esta etapa, o objetivo é verificar o conteúdo dos documentos mais próximos ao centro de cada agrupamento e verificar se existe alguma similaridade entre eles.  
+	\item \small \textbf{Análise dos documentos:} Para esta etapa, o objetivo é verificar o conteúdo dos documentos mais próximos ao centro de cada agrupamento e verificar se existe alguma similaridade entre eles. Além de estudar a composição dos documentos com intuito de melhor entender e agrupar a base de dados proposta.  
 	
-	\item \small \textbf{Checagem da qualidade dos agrupamentos:} Um método para avaliar a qualidade dos agrupamentos é explorado conforme a variância dos dados.
+	\item \small \textbf{Checagem da qualidade dos agrupamentos:} Um método para avaliar a qualidade dos agrupamentos é proposta, de forma a complementar os experimentos mostrados anteriormente.
 	
-	\item \small \textbf{Redução de dimensionalidade:} Para esse experimentos, considerou-se a redução da dimensionalidade do problema, a fim de tentar encontrar os agrupamentos e, assim a quantidade de classes.
+	\item \small \textbf{Redução de dimensionalidade:} Para esses experimentos, considerou-se a redução da dimensionalidade do problema, a fim de tentar encontrar os agrupamentos e, assim a quantidade de classes.
 	
 	\item \small \textbf{Visualização dos dados:} Por fim, após a dimensionalidade ter sido reduzida, os dados foram projetados em um espaço de menos dimensão para a visualização dos agrupamentos.
 	
@@ -116,7 +116,7 @@ Para tentar encontrar a quantidade de agrupamento dos dados, primeiramente escol
 
 A partir do gráfico, é possível visualizar que existe uma distorção muito pequena, de $2,5$ aproximadamente, para o número mínimo e máximo de grupos testados, $0$ e $100$, respectivamente. Embora não exista uma grande queda no gráfico, é possível observar uma queda mais acentuada entre $20$ e $40$, e duas quedas menores: uma entre $60$ até $80$ e $80$ até $100$. Desta forma, entendemos que tais intervalos são promissores para escolha de número de agrupamentos.
 
-Como existiam 3 possíveis valores para números de grupos, escolheu-se utilizar outra métrica para tentar encontrar o melhor número de grupos, ou seja, o melhor número de classes para os dados. A métrica escolhida calcula a silhueta dos agrupamentos, isso é, a forma dos agrupamentos e como eles se concentram. Para um valor correto de número de agrupamentos, o valor da medida silhueta deve ser próximo de $1$. Assim, testou-se o valor da medida de silhueta para $0, 5, 10, 15, ..., 100$. Os valores são apresentados no gráfico \ref{fig:silhueta}.
+Como existiam 3 possíveis valores para números de grupos, escolheu-se utilizar outra métrica para tentar encontrar o melhor número de grupos. A métrica escolhida calcula a silhueta dos agrupamentos, isso é, a forma dos agrupamentos e como eles se concentram. Para um valor correto de número de agrupamentos, o valor da medida silhueta deve ser próximo de $1$. Assim, testou-se o valor da medida de silhueta para $0, 5, 10, 15, ..., 100$. Os valores são apresentados no gráfico \ref{fig:silhueta}.
 
 \begin{figure}[!h]
 	\centering
@@ -127,12 +127,12 @@ Como existiam 3 possíveis valores para números de grupos, escolheu-se utilizar
 	\label{fig:silhueta}
 \end{figure}
 
-No gráfico, é possível observar que os valores de silhueta não ficaram próximos a $1$. Uma possível motivo pode ser atribuído ao ``mal da dimensionalidade'', ou seja, devido a alta dimensionalidade do problema: o vetor de características apresenta dimensão de $2209$.  Os dados estão muito dispersos e não são capazes de apresentar uma silhueta bem definida. Contudo, ainda é possível observar que os valores mais promissores referem-se ao número de agrupamentos de $31$, $79$ e $92$ grupos. Tais valores encontram-se dentro dos intervalos sugeridos pelo método \textit{Elbow}. Para realizar os experimentos, optou-se por utilizar os melhores valores de silhueta: $31$ e $79$.
+No gráfico, é possível observar que os valores de silhueta não ficaram próximos a $1$. Um possível motivo pode ser atribuído ao ``mal da dimensionalidade'', ou seja, devido a alta dimensionalidade do problema (o vetor de características apresenta dimensão de $2209$) os dados estão muito dispersos e não são capazes de apresentar uma silhueta bem definida. Contudo, ainda é possível observar que os valores mais promissores referem-se ao número de agrupamentos de $31$, $79$ e $92$ grupos. Tais valores encontram-se dentro dos intervalos sugeridos pelo método \textit{Elbow}. Para realizar os experimentos, optou-se por utilizar os melhores valores de silhueta: $31$ e $79$, o valor $92$ foi ignorado pois o mesmo é muito similar com o valor de $79$.
 
 
 \subsection{Análise dos documentos}
 
-Com o objetivo de tentar entender a estrutura dos dados, os documentos foram abertos e analisados. No cabeçalho de cada documento, foi possível notar a presença de um identificador denominado \emph{Newsgroup}. Tal identificador mostra a algumas siglas de palavras-chave para o entendimento da classe da cada documento. Mais de uma palavra pode aparecer no identificador, indicando subclasses. Desta forma, algumas análises puderam ser feitas neste caminho. O Gráfico \ref{fig:occurrence} apresenta as maiores ocorrências de \emph{Newsgroup}, considerando o conjunto palavras-chave que o compõe.
+Com o objetivo de tentar entender a estrutura dos dados, os documentos foram abertos e analisados. No cabeçalho de cada documento, foi possível notar a presença de um identificador denominado \emph{Newsgroup}. Tal identificador mostra algumas palavras-chave para identificar o conteúdo do documento, este identificador é muito utilizado em compartilhamento de arquivos de texto e servem para definir um tema para cada arquivo, muito similar com um tópico de um fórum \footnote{https://revistausenet.com/o-que-e-um-newsgroup-2/}. Um identificador \emph{newsgroup} normalmente é separados por classes e subclasses, sendo elas separadas por ponto dentro do nome, os mesmos podem ter até mais de uma subclasse por identificador. Desta forma, algumas análises puderam ser feitas neste caminho. O Gráfico \ref{fig:occurrence} apresenta as maiores ocorrências de \emph{Newsgroup}, considerando o conjunto palavras-chave que o compõe.
 
 \begin{figure}[!h]
 	\centering
@@ -143,9 +143,9 @@ Com o objetivo de tentar entender a estrutura dos dados, os documentos foram abe
 	\label{fig:occurrence}
 \end{figure}
 
-O Gráfico \ref{fig:occurrence} mostra as $20$ primeiras maiores ocorrências dos \emph{Newsgroup}. As $20$ primeiras ocorrências apresentam valor maior do que $950$ e somam $62,42\%$ de todas as ocorrências. A partir da ocorrência $21$ o numero da ocorrência de cada \emph{Newsgroup} é menor do que $300$ ocorrências cada uma. Assim, tais dados sugerem que existam $20$ agrupamentos de maior densidade de informação, ou seja, que apresentem o mesmo \emph{Newsgroup} em sua composição. Com relação ao agrupamento dos dados, imagina-se que as maiores ocorrências sugiram agrupamentos maiores de informação.
+O Gráfico \ref{fig:occurrence} mostra as $20$ primeiras maiores ocorrências dos \emph{Newsgroups}. As $20$ primeiras ocorrências apresentam valor maior do que $950$ e somam $62,42\%$ de todas as ocorrências. A partir da ocorrência $21$ o numero da ocorrência de cada \emph{Newsgroup} é menor do que $300$ ocorrências cada uma. Assim, tais dados sugerem que existam $20$ agrupamentos de maior densidade de informação, ou seja, que apresentem o mesmo \emph{Newsgroup}. Com relação ao agrupamento dos dados, imagina-se que as maiores ocorrências sugiram agrupamentos maiores de informação.
 
-Outra análise foi feita para avaliar a ocorrência dos \emph{Newsgroup}. O Gráfico \ref{fig:occurrence_word} apresenta as maiores ocorrências de cada \emph{Newsgroup} individualmente, considerando todas as palavras-chave que o compõe.
+Outra análise foi feita para avaliar a ocorrência dos \emph{Newsgroups}. O Gráfico \ref{fig:occurrence_word} apresenta as maiores ocorrências de cada \emph{Newsgroup} considerando apenas a classe principal, ignorando todas as subclasses.
 
 \begin{figure}[!h]
 	\centering
@@ -156,7 +156,7 @@ Outra análise foi feita para avaliar a ocorrência dos \emph{Newsgroup}. O Grá
 	\label{fig:occurrence_word}
 \end{figure}
 
-A partir do Gráfico \ref{fig:occurrence_word}, é possível visualizar que quase $8.000$ dados apresentam informação de \emph{Newgroup}
+A partir do Gráfico \ref{fig:occurrence_word}, é possível visualizar que a grande parte dos documentos na base estão dentro de apenas 7 de um total de 141 classes principais. Desta forma, $95.98\%$ dos documentos estão distribuidos dentro dessas 7 classes.
 
 \subsubsection{Análise dos medóides}
 
@@ -185,6 +185,16 @@ A partir do Gráfico \ref{fig:occurrence_word}, é possível visualizar que quas
 
 
 
+\begin{figure}[!h]
+	\centering
+	{
+		\fbox{\includegraphics[scale=0.25]{Images/clusters.png}}
+	}
+	\caption{\small Maiores ocorrências de cada identificador.}
+	\label{fig:occurrence_word}
+\end{figure}
+
+
 \subsection{Redução de dimensionalidade}
 
 \begin{figure}[!h]
@@ -195,6 +205,40 @@ A partir do Gráfico \ref{fig:occurrence_word}, é possível visualizar que quas
 	\caption{\small Gráfico da métrica silhueta pelo número de agrupamentos.}
 	\label{fig:silhueta}
 \end{figure}
+
+
+\begin{figure}[!h]
+	\centering
+	\subfloat[K = 2.]{
+		{
+			\setlength{\fboxsep}{1pt}
+			\setlength{\fboxrule}{1pt}
+			\fbox{\includegraphics[scale=0.15]{Images/pca_85}}
+		}
+		\label{fig:pca85}
+	}
+	\quad
+	\subfloat[K = 10.]{
+		{
+			\setlength{\fboxsep}{1pt}
+			\setlength{\fboxrule}{1pt}
+			\fbox{\includegraphics[scale=0.15]{Images/pca_90}}
+		}
+		\label{fig:pca90}
+	}
+	\quad
+	\subfloat[K = 10.]{
+		{
+			\setlength{\fboxsep}{1pt}
+			\setlength{\fboxrule}{1pt}
+			\fbox{\includegraphics[scale=0.15]{Images/pca_95}}
+		}
+		\label{fig:pca95}
+	}
+	\caption{}
+	\label{fig:clusters}
+\end{figure}
+
 
 
 \subsection{Visualização dos dados}

@@ -1,0 +1,63 @@
+NO PCA - K = 31
+
+('alt.atheism', 247.0), ('talk.religion.misc', 202.0), ('talk.politics.misc', 191.0), ('talk.politics.guns', 174.0)]
+
+[('talk.politics.mideast', 682.0), ('soc.culture.jewish', 205.0), ('talk.politics.misc', 142.0), ('soc.culture.arabic', 141.0)]
+
+[('rec.motorcycles', 777.0), ('rec.autos', 584.0), ('rec.autos.tech', 104.0), ('sci.electronics', 61.0)]
+
+NO PCA - K = 79
+
+[('sci.crypt', 446.0), ('comp.org.eff.talk', 204.0), ('alt.security', 131.0), ('comp.security.misc', 112.0)]
+
+[('comp.os.ms-windows.misc', 544.0), ('comp.sys.mac.hardware', 408.0), ('comp.sys.ibm.pc.hardware', 380.0), ('comp.windows.x', 307.0)]
+
+[('talk.politics.guns', 240.0), ('talk.politics.misc', 165.0), ('talk.religion.misc', 122.0), ('soc.culture.usa', 60.0)]
+
+95 PCA - K = 31
+
+[('talk.politics.misc', 105.0), ('talk.religion.misc', 85.0), ('talk.abortion', 84.0), ('talk.politics.medicine', 12.0)]
+
+[('soc.religion.christian', 963.0), ('talk.religion.misc', 4.0), ('bit.listserv.christia', 1.0), ('alt.atheism', 1.0)]
+
+[('comp.os.ms-windows.misc', 637.0), ('comp.sys.ibm.pc.hardware', 534.0), ('comp.windows.x', 458.0), ('comp.graphics', 373.0)]
+
+95 PCA - K = 79
+
+[('talk.religion.misc', 77.0), ('alt.atheism', 38.0), ('talk.abortion', 11.0), ('talk.politics.misc', 10.0)]
+
+[('sci.crypt', 455.0), ('comp.org.eff.talk', 211.0), ('alt.security', 128.0), ('comp.security.misc', 112.0)]
+
+[('alt.atheism', 138.0), ('talk.religion.misc', 121.0), ('talk.abortion', 117.0), ('rec.sport.hockey', 2.0)]
+
+90 PCA - K = 31
+
+[('alt.atheism', 209.0), ('talk.religion.misc', 176.0), ('talk.abortion', 172.0), ('rec.sport.hockey', 2.0)]
+
+[('talk.politics.misc', 617.0), ('talk.religion.misc', 563.0), ('alt.atheism', 526.0), ('sci.space', 459.0)]
+
+[('rec.sport.hockey', 715.0), ('rec.sport.baseball', 572.0), ('rec.sport.baseball.fantasy', 6.0), ('maine.hockey-l', 4.0)]
+
+90 PCA - K = 79
+
+[('comp.windows.x', 112.0), ('comp.sys.mac.hardware', 3.0), ('comp.sys.mac.misc', 2.0), ('sci.med', 2.0)]
+
+[('sci.crypt', 70.0), ('comp.org.eff.talk', 16.0), ('alt.privacy.clipper', 13.0), ('comp.security.misc', 5.0)]
+
+[('talk.religion.misc', 242.0), ('talk.politics.misc', 241.0), ('talk.politics.guns', 229.0), ('alt.atheism', 208.0)]
+
+85 PCA - K = 31
+
+[('alt.atheism', 206.0), ('talk.religion.misc', 193.0), ('talk.origins', 178.0), ('talk.abortion', 8.0)]
+
+[('comp.os.ms-windows.misc', 642.0), ('comp.sys.ibm.pc.hardware', 621.0), ('comp.sys.mac.hardware', 410.0), ('comp.windows.x', 400.0)]
+
+[('talk.politics.mideast', 187.0), ('soc.culture.turkish', 171.0), ('talk.politics.soviet', 113.0), ('soc.culture.greek', 96.0)]
+
+85 PCA - K = 79
+
+[('alt.atheism', 168.0), ('talk.religion.misc', 25.0), ('talk.abortion', 15.0), ('talk.origins', 11.0)]
+
+[('rec.motorcycles', 506.0), ('ba.motorcycles', 33.0), ('rec.motorcycles.harley', 17.0), ('rec.motorcycles.racing', 11.0)]
+
+[('soc.religion.christian', 680.0), ('comp.windows.x.i386unix', 0.0), ('alt.sex.stories', 0.0), ('comp.sys.amiga.misc', 0.0)]
