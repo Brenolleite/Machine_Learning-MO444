@@ -28,7 +28,7 @@ def load_labels(path):
     #Removing first line and column
     f = f[1:,1]
 
-    #Taking the first word of the labels > considering one class for each data
+    #Taking the first word of the labels > considering just one class for each data
     for i in xrange(len(f)):
         f[i] = f[i].split(' ', 1)[0]
 
@@ -36,7 +36,7 @@ def load_labels(path):
     f_min = array(f_min)
     print str(f_min.size) + ' classes.'
 
-    #Generating label composed of number  
+    #Generating label composed by a number  
     le = preprocessing.LabelEncoder()
     le.fit(f_min)
     label = le.transform(f)
