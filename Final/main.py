@@ -1,5 +1,5 @@
 import preprocessing as pp
-import data as dat 
+import data as dat
 import tsne as t
 import time
 
