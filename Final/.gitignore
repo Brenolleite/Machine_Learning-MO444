@@ -1,0 +1,5 @@
+src/__pycache__/*
+src/*pyc
+documents/*
+!report/report.tex
+!report/IEEEtran.cls

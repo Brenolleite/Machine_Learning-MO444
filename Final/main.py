@@ -1,5 +1,5 @@
 import preprocessing as pp
-import data as dat 
+import data as dat
 import tsne as t
 import time
 
@@ -17,7 +17,7 @@ data = dat.load_images(new_path_train)
 print 'Loaded in ' + str(time.time()-start_time) + 's'
 
 data = data.astype('float32')
-data /= 255.  
+data /= 255.
 
 #Loading labels
 label = dat.load_labels(path_label)
