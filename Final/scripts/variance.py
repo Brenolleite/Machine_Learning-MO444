@@ -1,8 +1,10 @@
+#!/usr/bin/env python
 from __future__ import print_function
 from sklearn.decomposition import PCA
 import data as dat
 import time
 import argparse
+from sklearn.preprocessing import scale, normalize
 
 # Parse arguments
 parser = argparse.ArgumentParser()
@@ -15,9 +17,11 @@ train_data = dat.load_images(ARGS.path_train)
 print('Loaded in ' + str(time.time()-start_time) + 's')
 
 # Normalizing
-train_data = train_data.astype('float32')
-train_data /= 255.
+train_data = train_data/255
+train_data = scale(train_data)
+train_data = normalize(train_data, norm = 'l2')
 
+print('Starting PCA')
 # Use PCA with all components to get variance values
 start_time = time.time()
 pca = PCA(n_components = 89401)
