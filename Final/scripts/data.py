@@ -29,7 +29,7 @@ def load_labels(path):
     f = f[1:,1]
 
     #Taking the first word of the labels > considering just one class for each data
-    for i in xrange(len(f)):
+    for i in range(len(f)):
         f[i] = f[i].split(' ', 1)[0]
 
     f_min = list(set(f))

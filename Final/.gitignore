@@ -1,5 +1,4 @@
-src/__pycache__/*
-src/*pyc
+scripts/__pycache__/*
+script/*.pyc
 documents/*
-!report/report.tex
-!report/IEEEtran.cls
+data/*
