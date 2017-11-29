@@ -17,7 +17,7 @@ def load_images(path):
     print('\nLoading ' + str(len(imlist)) + ' images...')
 
     data = array([array(Image.open(path + im)).flatten()
-              for im in imlist], dtype='float32', order='f')
+                 for im in imlist], dtype='float32', order='f')
 
     return data
 
