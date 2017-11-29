@@ -7,7 +7,7 @@ from sklearn import preprocessing
 
 # Parse arguments
 parser = argparse.ArgumentParser()
-parser.add_argument('-l', '--labels_path', help='f File', required=True)
+parser.add_argument('-l', '--labels_path', help='Labels File', required=True)
 ARGS = parser.parse_args()
 
 print('\nLoading labels...')
