@@ -15,7 +15,7 @@ def create_image(path, labels, predicts):
     # Writing images
     img = Image.open(path).convert('RGB')
     draw = ImageDraw.Draw(img)
-    font = ImageFont.truetype("/usr/share/fonts/truetype/freefont/FreeSerifBold.ttf", 18)
+    font = ImageFont.truetype("/usr/share/fonts/truetype/freefont/FreeSerifBold.ttf", 22)
 
     # Getting all labels
     pos = 0
@@ -25,7 +25,7 @@ def create_image(path, labels, predicts):
         else:
             draw.text((0, pos), pred, fill=wrong, font=font)
 
-        pos += 18
+        pos += 25
 
     return img
 
